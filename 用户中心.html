@@ -66,6 +66,30 @@
   .sec-title{font-size:24px;margin:34px 0 16px;display:flex;align-items:center;gap:10px}
   .sec-title::before{content:"";width:6px;height:22px;border-radius:3px;background:var(--accent)}
   .anchor{scroll-margin-top:80px}
+  @media(max-width:640px){
+    .card2{padding:16px 14px;border-radius:13px}
+    .card2 h3{font-size:16.5px}
+    .stat2{gap:10px;margin-bottom:16px}
+    .stat2 .s{padding:12px 8px}
+    .stat2 .s b{font-size:21px}
+    .stat2 .s span{font-size:11.5px}
+    .kv{grid-template-columns:84px 1fr;font-size:13.5px;gap:7px 10px}
+    .sec-title{font-size:20px;margin:26px 0 12px}
+    .sec-title::before{height:18px}
+    .toolbar{gap:8px}
+    .toolbar .inp{width:100%;min-width:0}
+    .pmt th,.pmt td{padding:8px 8px;font-size:13px}
+    .pmt td.c,.pmt th.c{width:auto;min-width:40px}
+    .pmt td b{font-size:13.5px}
+    .utable{min-width:640px}
+    .minibtn{padding:6px 10px;margin-bottom:4px}
+    .loglist li{flex-wrap:wrap;gap:2px 10px}
+    .btn3{padding:10px 16px}
+  }
+  @media(max-width:420px){
+    .stat2{grid-template-columns:1fr 1fr;gap:8px}
+    .stat2 .s b{font-size:18px}
+  }
 </style>
 </head>
 <body>
@@ -102,7 +126,7 @@
 
 <footer class="footer"><div class="wrap"><div class="cols">
   <div><h4>大连财经学院 · 计算机国家二级考试（WPS 类）</h4><p class="small"><span class="org">主办：大连财经学院计算机国家二级考试（WPS 类）课程组</span></p><p class="small">本站为<b>校内教学辅助资料</b>，依据《全国计算机等级考试(NCRE) 二级 WPS Office 高级应用与设计考试大纲(2025 年版)》与《二级公共基础知识考试大纲(2025 年版)》编写，供教学与备考使用。</p></div>
-  <div><h4>成果导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教学日历.html">教学日历</a> · <a href="./教案.html">教案</a></p><p class="small"><a href="./培训课件.html">培训课件</a> · <a href="./电子书.html">电子书</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p><p class="small"><a href="./用户中心.html">用户中心</a> · <a href="./群管理.html">班级群</a> · <a href="./关于本站.html">关于本站</a></p></div>
+  <div><h4>成果导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教学日历.html">教学日历</a> · <a href="./教案.html">教案</a></p><p class="small"><a href="./培训课件.html">培训课件</a> · <a href="./电子书.html">电子书</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p><p class="small"><a href="./用户中心.html">用户中心</a> · <a href="./群管理.html">班级群</a> · <a href="./使用说明.html">使用说明</a> · <a href="./关于本站.html">关于本站</a></p></div>
   <div><h4>官方信息</h4><p class="small">本站为<b>非官方</b>网站，不提供报名、缴费、查分服务。考试政策与报名信息以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 当年公告为准。</p><p class="small">学校官网：<a href="https://www.dlufe.edu.cn/" target="_blank" rel="noopener">www.dlufe.edu.cn</a></p></div>
   <div><h4>免责声明</h4><p class="small">本站不收集任何个人信息，无收费项目，不含广告与商业推广；内容仅供校内教学与备考参考，如与官方文件不一致，以官方文件为准。</p><p class="small"><a href="./关于本站.html">关于本站 / 免责声明 →</a></p></div>
 </div>
@@ -149,7 +173,7 @@
 
   function permTable() {
     var perms = A.permList(), roles = A.roleList();
-    var h = '<table class="pmt"><thead><tr><th>权限</th>' + roles.map(function (r) { return '<th class="c">' + e(r.name) + '</th>'; }).join('') + '</tr></thead><tbody>';
+    var h = '<div class="tblwrap"><table class="pmt"><thead><tr><th>权限</th>' + roles.map(function (r) { return '<th class="c">' + e(r.name) + '</th>'; }).join('') + '</tr></thead><tbody>';
     perms.forEach(function (p) {
       h += '<tr><td><b>' + e(p.label) + '</b><div style="font-size:12.5px;color:var(--muted)">' + e(p.desc) + '</div></td>';
       roles.forEach(function (r) {
@@ -158,7 +182,7 @@
       });
       h += '</tr>';
     });
-    return h + '</tbody></table>';
+    return h + '</tbody></table></div>';
   }
 
   /* ================= 已登录 ================= */
@@ -250,17 +274,17 @@
       '</tr></thead><tbody>' + inviteRows() + '</tbody></table></div>' +
     '</div>';
 
-    var st = A.settings();
     h += '<div class="card2"><h3>系统设置</h3>' + msgBox('stMsg') +
+      '<p style="font-size:13px;color:var(--muted);margin:0 0 10px;line-height:1.85">本站已启用<b>整站登录门禁</b>：未登录访客无法访问任何页面与内容。以下「需登录」开关保留用于兼容旧版按功能控制。</p>' +
       '<label style="display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line-2);cursor:pointer">' +
         '<input type="checkbox" data-set="allowOpenReg" ' + (st.allowOpenReg ? 'checked' : '') + ' style="margin-top:4px">' +
         '<span><b>允许学生自助注册</b><br><span style="font-size:12.5px;color:var(--muted)">关闭后，所有新用户注册均需邀请码</span></span></label>' +
       '<label style="display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line-2);cursor:pointer">' +
         '<input type="checkbox" data-set="examRequireLogin" ' + (st.examRequireLogin ? 'checked' : '') + ' style="margin-top:4px">' +
-        '<span><b>模拟考试需登录</b><br><span style="font-size:12.5px;color:var(--muted)">关闭后，未登录访客也可直接使用模拟考试系统</span></span></label>' +
+        '<span><b>模拟考试需登录</b><br><span style="font-size:12.5px;color:var(--muted)">旧版按功能控制；整站门禁已开启，未登录本就无法进入</span></span></label>' +
       '<label style="display:flex;gap:10px;align-items:flex-start;padding:10px 0;cursor:pointer">' +
         '<input type="checkbox" data-set="groupRequireLogin" ' + (st.groupRequireLogin ? 'checked' : '') + ' style="margin-top:4px">' +
-        '<span><b>班级群需登录</b><br><span style="font-size:12.5px;color:var(--muted)">关闭后，未登录访客也可查看班级群与二维码</span></span></label>' +
+        '<span><b>班级群需登录</b><br><span style="font-size:12.5px;color:var(--muted)">旧版按功能控制；整站门禁已开启，未登录本就无法进入</span></span></label>' +
     '</div>';
 
     h += '<div class="card2"><h3>数据包（导入 / 导出）</h3>' + msgBox('dpMsg') +

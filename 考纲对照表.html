@@ -24,6 +24,27 @@
   .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink-2);font-weight:600}
   .legend span{display:inline-flex;align-items:center;gap:6px}
   .legend i{width:10px;height:10px;border-radius:3px;font-style:normal}
+  @media(max-width:760px){
+    .fwdwrap{border:0;background:transparent;overflow:visible;border-radius:0}
+    table.tbl.fwd{min-width:0;display:block;font-size:13.5px}
+    table.tbl.fwd thead{display:none}
+    table.tbl.fwd tbody{display:block}
+    table.tbl.fwd tr{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;
+      padding:9px 13px;margin-bottom:10px;box-shadow:var(--shadow)}
+    table.tbl.fwd tbody tr:hover{background:#fff}
+    table.tbl.fwd tr.mhd{background:#eef3f9;border-color:#d6e2ef;padding:11px 13px;margin-bottom:8px}
+    table.tbl.fwd td{display:flex;gap:10px;border:0;padding:5px 0;text-align:left;white-space:normal;line-height:1.6}
+    table.tbl.fwd td::before{content:attr(data-label);flex:none;width:76px;color:var(--muted);font-weight:800;font-size:12.5px}
+    table.tbl.fwd td.num{text-align:left}
+    table.tbl.fwd td.lno{font-size:15px}
+    table.tbl.fwd tr.mhd td{display:block;padding:0;border:0}
+    table.tbl.fwd tr.mhd td::before{display:none}
+    table.tbl.fwd tr.mhd .mid{font-size:13.5px;flex-wrap:wrap}
+    table.tbl.fwd tr.mhd .meta{display:block;margin-top:4px;font-size:12px;line-height:1.6}
+    .statbar{height:auto;font-size:11.5px}
+    .statbar i{padding:5px 2px}
+    .legend{gap:10px;font-size:12.5px}
+  }
   @media print{.mhd td{border-top:1px solid #999}}
 </style>
 </head>
@@ -68,8 +89,8 @@
   <section class="section-sm">
     <h2>一、正向对照：课时 → 考纲条目</h2>
     <p class="lead">按模块顺序列出全部 44 个课时，逐课时标注「对应考纲条目 · 题型 · 分值 · 考频」。分值越高、考频越高的课时，越应优先投入练习时间。</p>
-    <div class="table-wrap mt2">
-      <table class="tbl">
+    <div class="table-wrap mt2 fwdwrap">
+      <table class="tbl fwd">
         <thead><tr>
           <th class="num" style="width:74px">课时</th>
           <th style="width:230px">课时标题</th>
@@ -112,7 +133,7 @@
 
 <footer class="footer"><div class="wrap"><div class="cols">
   <div><h4>大连财经学院 · 计算机国家二级考试（WPS 类）</h4><p class="small"><span class="org">主办：大连财经学院计算机国家二级考试（WPS 类）课程组</span></p><p class="small">本站为<b>校内教学辅助资料</b>，依据《全国计算机等级考试(NCRE) 二级 WPS Office 高级应用与设计考试大纲(2025 年版)》与《二级公共基础知识考试大纲(2025 年版)》编写，供教学与备考使用。</p></div>
-  <div><h4>成果导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教学日历.html">教学日历</a> · <a href="./教案.html">教案</a></p><p class="small"><a href="./培训课件.html">培训课件</a> · <a href="./电子书.html">电子书</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p><p class="small"><a href="./用户中心.html">用户中心</a> · <a href="./群管理.html">班级群</a> · <a href="./关于本站.html">关于本站</a></p></div>
+  <div><h4>成果导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教学日历.html">教学日历</a> · <a href="./教案.html">教案</a></p><p class="small"><a href="./培训课件.html">培训课件</a> · <a href="./电子书.html">电子书</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p><p class="small"><a href="./用户中心.html">用户中心</a> · <a href="./群管理.html">班级群</a> · <a href="./使用说明.html">使用说明</a> · <a href="./关于本站.html">关于本站</a></p></div>
   <div><h4>官方信息</h4><p class="small">本站为<b>非官方</b>网站，不提供报名、缴费、查分服务。考试政策与报名信息以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 当年公告为准。</p><p class="small">学校官网：<a href="https://www.dlufe.edu.cn/" target="_blank" rel="noopener">www.dlufe.edu.cn</a></p></div>
   <div><h4>免责声明</h4><p class="small">本站不收集任何个人信息，无收费项目，不含广告与商业推广；内容仅供校内教学与备考参考，如与官方文件不一致，以官方文件为准。</p><p class="small"><a href="./关于本站.html">关于本站 / 免责声明 →</a></p></div>
 </div>
@@ -134,12 +155,12 @@
       '<span class="meta">　｜　第 '+m.lessons[0].no+'–'+m.lessons[m.lessons.length-1].no+' 课时 · '+m.hours+' 课时 · '+esc(m.score)+'　｜　'+esc(m.syl)+'</span></td></tr>';
     m.lessons.forEach(function(ls){
       rows+='<tr>'+
-        '<td class="num lno">'+ls.no+'</td>'+
-        '<td><b>'+esc(ls.title)+'</b></td>'+
-        '<td class="small">'+esc(ls.syl)+'</td>'+
-        '<td class="num small">'+esc(ls.exam)+'</td>'+
-        '<td class="num"><b style="color:var(--accent)">'+esc(ls.score)+'</b></td>'+
-        '<td class="num"><span class="'+freqCls(ls.freq)+'">'+esc(ls.freq)+'</span></td>'+
+        '<td class="num lno" data-label="课时">'+ls.no+'</td>'+
+        '<td data-label="课时标题"><b>'+esc(ls.title)+'</b></td>'+
+        '<td class="small" data-label="考纲条目">'+esc(ls.syl)+'</td>'+
+        '<td class="num small" data-label="题型">'+esc(ls.exam)+'</td>'+
+        '<td class="num" data-label="分值"><b style="color:var(--accent)">'+esc(ls.score)+'</b></td>'+
+        '<td class="num" data-label="考频"><span class="'+freqCls(ls.freq)+'">'+esc(ls.freq)+'</span></td>'+
       '</tr>';
     });
   });

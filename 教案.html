@@ -57,7 +57,29 @@
   .focusbox{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:9px;background:#fff7f5;padding:11px 14px;margin-bottom:16px}
   .focusbox h5{margin:0 0 5px;font-size:13px;font-weight:900;color:var(--accent)}
   .focusbox p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.7}
+  .tblx{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line-2);border-radius:9px}
+  .tblx .steps{min-width:520px}
   @media(max-width:760px){.two{grid-template-columns:1fr}.pq-opts{grid-template-columns:1fr}}
+  @media(max-width:820px){
+    .filterbar{position:static;padding:8px 0;margin:12px 0 18px}
+    .lp{margin-bottom:18px}
+    .lp-head{flex-wrap:wrap;gap:9px;padding:14px 16px}
+    .lp-head .no{font-size:13.5px;padding:5px 10px}
+    .lp-head h3{font-size:17px;flex:1 1 100%}
+    .lp-head .tags span{font-size:11.5px;padding:3px 9px}
+    .lp-body{padding:16px 15px}
+    .lp-sec h4{font-size:13.5px}
+    .steps th{width:auto!important}
+    .steps th,.steps td{padding:7px 9px;font-size:13px}
+    .steps td.tm{width:auto;white-space:nowrap}
+    .sylmeta{font-size:12px}
+    .pq{padding:11px 12px}
+    .pq-q{font-size:14px}
+    .pq-opts li,.pq-req,.pq-steps{font-size:13px}
+    .ratio{height:auto;font-size:11px}
+    .ratio i{padding:4px 0}
+    .reflect{min-height:44px}
+  }
 </style>
 </head>
 <body>
@@ -103,7 +125,7 @@
 
 <footer class="footer"><div class="wrap"><div class="cols">
   <div><h4>大连财经学院 · 计算机国家二级考试（WPS 类）</h4><p class="small"><span class="org">主办：大连财经学院计算机国家二级考试（WPS 类）课程组</span></p><p class="small">本站为<b>校内教学辅助资料</b>，依据《全国计算机等级考试(NCRE) 二级 WPS Office 高级应用与设计考试大纲(2025 年版)》与《二级公共基础知识考试大纲(2025 年版)》编写，供教学与备考使用。</p></div>
-  <div><h4>成果导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教学日历.html">教学日历</a> · <a href="./教案.html">教案</a></p><p class="small"><a href="./培训课件.html">培训课件</a> · <a href="./电子书.html">电子书</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p><p class="small"><a href="./用户中心.html">用户中心</a> · <a href="./群管理.html">班级群</a> · <a href="./关于本站.html">关于本站</a></p></div>
+  <div><h4>成果导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教学日历.html">教学日历</a> · <a href="./教案.html">教案</a></p><p class="small"><a href="./培训课件.html">培训课件</a> · <a href="./电子书.html">电子书</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p><p class="small"><a href="./用户中心.html">用户中心</a> · <a href="./群管理.html">班级群</a> · <a href="./使用说明.html">使用说明</a> · <a href="./关于本站.html">关于本站</a></p></div>
   <div><h4>官方信息</h4><p class="small">本站为<b>非官方</b>网站，不提供报名、缴费、查分服务。考试政策与报名信息以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 当年公告为准。</p><p class="small">学校官网：<a href="https://www.dlufe.edu.cn/" target="_blank" rel="noopener">www.dlufe.edu.cn</a></p></div>
   <div><h4>免责声明</h4><p class="small">本站不收集任何个人信息，无收费项目，不含广告与商业推广；内容仅供校内教学与备考参考，如与官方文件不一致，以官方文件为准。</p><p class="small"><a href="./关于本站.html">关于本站 / 免责声明 →</a></p></div>
 </div>
@@ -171,7 +193,7 @@
         }).join('');
         return '<div class="lessonblock"><h5>第 '+n+' 课时 · '+ls.title+' <em>（导入与讲授约 '+Math.round(ls.hours*45*0.4)+' 分钟 · 随堂练习约 '+Math.round(ls.hours*45*0.6)+' 分钟）</em></h5>'+
           '<div class="sylmeta"><b>对应考纲：</b>'+ls.syl+'　｜　<b>题型分值：</b>'+ls.exam+' '+ls.score+'　｜　<b>考频：</b><span class="fr">'+ls.freq+'</span></div>'+
-          '<table class="steps"><thead><tr><th>教学环节</th><th>时长</th><th>教学活动</th></tr></thead><tbody>'+steps+'</tbody></table></div>';
+          '<div class="tblx"><table class="steps"><thead><tr><th>教学环节</th><th>时长</th><th>教学活动</th></tr></thead><tbody>'+steps+'</tbody></table></div></div>';
       }).join('');
 
       // 作业：汇总 4 课时的作业
@@ -195,7 +217,7 @@
           '<div class="lp-sec"><h4>一、教学目标</h4><ul>'+goals+'</ul></div>'+
 
           '<div class="lp-sec"><h4>二、课时安排（含考纲对接）</h4>'+
-            '<table class="steps"><thead><tr><th style="width:90px">课时</th><th>内容与重点</th><th style="width:240px">对应考纲 · 题型分值 · 考频</th></tr></thead><tbody>'+lesTable+'</tbody></table>'+
+            '<div class="tblx"><table class="steps"><thead><tr><th style="width:90px">课时</th><th>内容与重点</th><th style="width:240px">对应考纲 · 题型分值 · 考频</th></tr></thead><tbody>'+lesTable+'</tbody></table></div>'+
           '</div>'+
 
           '<div class="lp-sec"><h4>三、教学过程（讲练结合）</h4>'+processBlocks+'</div>'+

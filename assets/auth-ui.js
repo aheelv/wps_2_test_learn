@@ -15,6 +15,9 @@
   })();
   var BASE = SELF ? SELF.replace(/assets\/auth-ui\.js.*$/, '') : './';
 
+  /* 未登录时在脚本解析阶段即锁定滚动，避免正文先于登录墙短暂出现 */
+  try { if (A && !A.current()) document.documentElement.classList.add('aui-locked'); } catch (e) {}
+
   function esc(s) {
     return String(s === null || s === undefined ? '' : s)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -78,7 +81,25 @@
     '.aui-gate p{color:var(--muted,#6b7a90);font-size:14.5px;line-height:1.8;margin:0 0 20px}',
     '.aui-gate .acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}',
     '.aui-gate .acts .aui-btn{width:auto;padding:11px 24px}',
-    '@media(max-width:640px){.aui-row{grid-template-columns:1fr}}'
+    '.aui-wall{position:fixed;inset:0;z-index:700;background:linear-gradient(160deg,#0f2740,#16324f 55%,#1d3f63);',
+    'display:flex;align-items:center;justify-content:center;padding:22px;overflow-y:auto;-webkit-overflow-scrolling:touch}',
+    '.aui-wall-card{background:#fff;border-radius:18px;width:100%;max-width:460px;padding:26px 26px 20px;margin:auto;',
+    'box-shadow:0 40px 90px -30px rgba(0,0,0,.6)}',
+    '.aui-wall-brand{display:flex;align-items:center;gap:11px;margin-bottom:16px}',
+    '.aui-wall-logo{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:#fff;',
+    'font-size:13px;font-weight:900;background:linear-gradient(135deg,#e8503a,#f2a33c)}',
+    '.aui-wall-name{font-size:14.5px;font-weight:800;color:var(--ink,#12213a);line-height:1.35}',
+    '.aui-wall-name small{display:block;font-size:11.5px;font-weight:600;color:var(--muted,#6b7a90);margin-top:2px}',
+    '.aui-wall-lead{font-size:13.5px;color:var(--muted,#6b7a90);line-height:1.7;margin:0 0 16px}',
+    '.aui-wall-foot{font-size:11.5px;color:var(--muted,#6b7a90);line-height:1.65;margin:12px 0 0;padding-top:12px;',
+    'border-top:1px solid var(--line-2,#eef2f7)}',
+    '.aui-wall-foot a{color:#1f4a75}',
+    '@media(max-width:640px){.aui-row{grid-template-columns:1fr}}',
+    '@media(max-width:520px){.aui-wall{padding:14px}.aui-wall-card{padding:20px 18px 16px;border-radius:15px}',
+    '.aui-dlg{border-radius:15px}.aui-dlg-head{padding:16px 18px}.aui-dlg-body{padding:16px 18px 18px}}',
+    'html.aui-locked,html.aui-locked body{overflow:hidden!important}',
+    '@media(max-width:400px){.aui-wall-name{font-size:13.5px}.aui-wall-lead{font-size:13px}',
+    '.aui-wall-logo{width:34px;height:34px}.aui-wall{padding:12px}.aui-wall-card{padding:18px 15px 14px}}'
   ].join('');
 
   function injectCSS() {
@@ -175,27 +196,7 @@
       tabs.forEach(function (b) { b.classList.toggle('on', b.dataset.tab === t); });
       var pane = mask.querySelector('#aui-pane');
       pane.innerHTML = t === 'login' ? loginForm() : regForm();
-      if (t === 'login') {
-        pane.querySelector('form').onsubmit = function (e) {
-          e.preventDefault();
-          var f = e.target;
-          var r = A.login(f.username.value, f.password.value);
-          showMsg(pane, r.msg, !r.ok);
-          if (r.ok) { toast('登录成功，欢迎回来'); setTimeout(function () { location.reload(); }, 700); }
-        };
-      } else {
-        pane.querySelector('form').onsubmit = function (e) {
-          e.preventDefault();
-          var f = e.target;
-          if (f.password.value !== f.password2.value) return showMsg(pane, '两次输入的密码不一致', true);
-          var r = A.register({
-            username: f.username.value, name: f.name.value, password: f.password.value,
-            className: f.className.value, invite: f.invite.value
-          });
-          showMsg(pane, r.msg, !r.ok);
-          if (r.ok) { toast('注册成功，正在进入…'); setTimeout(function () { location.reload(); }, 700); }
-        };
-      }
+      bindAuthForm(pane, t);
     }
   }
 
@@ -204,6 +205,84 @@
     if (!box) return;
     box.className = 'aui-msg ' + (bad ? 'bad' : 'ok');
     box.textContent = msg;
+  }
+
+  /* 登录 / 注册表单统一绑定：弹窗与整站登录墙共用 */
+  function bindAuthForm(scope, t) {
+    var form = scope.querySelector('form');
+    if (!form) return;
+    form.onsubmit = function (e) {
+      e.preventDefault();
+      var f = e.target;
+      if (t === 'login') {
+        var r = A.login(f.username.value, f.password.value);
+        showMsg(scope, r.msg, !r.ok);
+        if (r.ok) { toast('登录成功，正在进入…'); afterAuth(); }
+      } else {
+        if (f.password.value !== f.password2.value) return showMsg(scope, '两次输入的密码不一致', true);
+        var r2 = A.register({
+          username: f.username.value, name: f.name.value, password: f.password.value,
+          className: f.className.value, invite: f.invite.value
+        });
+        showMsg(scope, r2.msg, !r2.ok);
+        if (r2.ok) { toast('注册成功，正在进入…'); afterAuth(); }
+      }
+    };
+  }
+
+  function afterAuth() {
+    if (A.persistent()) { setTimeout(function () { location.reload(); }, 550); return; }
+    // 无持久化存储（file:// 或隐私模式）时重载会丢失会话，改为直接放行
+    var w = document.getElementById('aui-wall');
+    if (w && w.parentNode) w.parentNode.removeChild(w);
+    unlockScroll();
+    unlockPending();
+    toast('已登录（当前环境不保存登录状态，关闭页面后需重新登录）');
+  }
+
+  /* ---------------- 整站登录门禁：未登录不可使用任何页面 ---------------- */
+  function unlockPending() { document.documentElement.classList.remove('aui-pending'); }
+  function lockScroll() { document.documentElement.classList.add('aui-locked'); }
+  function unlockScroll() { document.documentElement.classList.remove('aui-locked'); }
+
+  function wallHTML() {
+    return '<div class="aui-wall" id="aui-wall" role="dialog" aria-modal="true">' +
+      '<div class="aui-wall-card">' +
+        '<div class="aui-wall-brand"><span class="aui-wall-logo">WPS</span>' +
+          '<span class="aui-wall-name">大连财经学院 · 计算机国家二级考试（WPS 类）' +
+          '<small>校内教学辅助资料 · 非官方考试网站</small></span></div>' +
+        '<p class="aui-wall-lead">本站全部内容需登录后使用。请用演示账号登录，或注册一个新账号。</p>' +
+        '<div class="aui-tabs"><button data-tab="login">登录</button><button data-tab="reg">注册</button></div>' +
+        '<div id="aui-wall-pane"></div>' +
+        '<div class="aui-hint">权限系统为纯前端演示：账号与数据仅保存在<b>本机浏览器</b>，不会上传到任何服务器，也不收集个人信息。默认演示账号 <code>admin / admin123</code>、<code>teacher / teacher123</code>、<code>student / student123</code>。</div>' +
+        '<p class="aui-wall-foot">本站不提供报名、缴费、查分服务，与考试机构无隶属关系；考试政策以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 为准。</p>' +
+      '</div></div>';
+  }
+
+  function renderWallPane(wall, t) {
+    wall.querySelectorAll('.aui-tabs button').forEach(function (b) {
+      b.classList.toggle('on', b.dataset.tab === t);
+    });
+    var pane = wall.querySelector('#aui-wall-pane');
+    pane.innerHTML = t === 'login' ? loginForm() : regForm();
+    bindAuthForm(pane, t);
+  }
+
+  function guardPage() {
+    if (!A) { unlockPending(); return; }
+    injectCSS();
+    if (A.current()) { unlockPending(); unlockScroll(); return; }
+    if (document.getElementById('aui-wall')) { unlockPending(); return; }
+    var host = document.createElement('div');
+    host.innerHTML = wallHTML();
+    var wall = host.firstChild;
+    document.body.appendChild(wall);
+    lockScroll();
+    wall.querySelectorAll('.aui-tabs button').forEach(function (b) {
+      b.onclick = function () { renderWallPane(wall, b.dataset.tab); };
+    });
+    renderWallPane(wall, 'login');
+    unlockPending();
   }
 
   function loginForm() {
@@ -309,8 +388,9 @@
   }
 
   function init() {
-    if (!A) return;
+    if (!A) { unlockPending(); return; }
     mountChip();
+    guardPage();
   }
 
   global.AuthUI = {
@@ -318,7 +398,8 @@
     allow: allow, gateHTML: gateHTML, gateInto: gateInto,
     openAuth: openAuth, openLogin: function () { openAuth('login'); },
     openRegister: function () { openAuth('reg'); },
-    mountChip: mountChip, toast: toast
+    mountChip: mountChip, toast: toast,
+    guardPage: guardPage, wallHTML: wallHTML
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
