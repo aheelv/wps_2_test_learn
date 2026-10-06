@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<meta name="description" content="全国计算机等级考试（NCRE）二级 WPS Office 高级应用与设计 上机考试模拟系统，纯静态单文件，无需联网。" />
-<title>NCRE 二级 WPS Office 高级应用与设计 · 考试模拟系统</title>
+<meta name="description" content="大连财经学院计算机国家二级考试（WPS 类）校内教学辅助资料：NCRE 二级 WPS Office 高级应用与设计上机考试模拟系统。本站为非官方考试网站，不提供报名、缴费、查分服务，不收集任何个人信息。" />
+<title>考试模拟系统 · 大连财经学院 计算机国家二级考试（WPS 类）培训</title>
 <style>
 :root{
   --navy:#16324F;
@@ -271,11 +271,46 @@ table.info td.n{font-variant-numeric:tabular-nums;font-weight:700;color:var(--na
   .kpi b{font-size:21px}
   .modal-foot .btn{flex:1}
 }
+
+/* ---------- 非官方声明条 ---------- */
+.noticebar{background:#fff8ec;border-bottom:1px solid #f0dcb4;color:#7a5310}
+.noticebar .nb-in{max-width:1180px;margin:0 auto;padding:9px 18px;display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.62}
+.noticebar .nb-ic{flex:none;font-weight:900;font-size:14px;line-height:1.5}
+.noticebar b{color:#8a5a06}
+.noticebar a{color:#8a5a06;text-decoration:underline}
+.noticebar a:hover{color:#5f3d02}
+
+/* ---------- 站点页脚 ---------- */
+.sitefooter{background:var(--navy);color:#a9c0d8;margin-top:0;font-size:13px}
+.sitefooter .ft-in{max-width:1180px;margin:0 auto;padding:30px 18px 34px}
+.sitefooter .cols{display:grid;grid-template-columns:1.5fr 1fr 1.05fr 1.05fr;gap:24px}
+.sitefooter h4{color:#fff;font-size:14.5px;margin:0 0 10px}
+.sitefooter p{margin:0 0 8px;line-height:1.7}
+.sitefooter .org{color:#fff;font-weight:800}
+.sitefooter a{color:#cfe0f2;text-decoration:none}
+.sitefooter a:hover{color:#fff;text-decoration:underline}
+.sitefooter .disc{border-top:1px solid rgba(255,255,255,.14);margin-top:24px;padding-top:15px;font-size:12.5px;color:#8fa8c2}
+@media (max-width:1000px){.sitefooter .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.sitefooter .cols{grid-template-columns:1fr}}
+@media print{.noticebar,.sitefooter{display:none!important}}
 </style>
 </head>
 <body>
+<div class="noticebar"><div class="nb-in">
+  <span class="nb-ic">ⓘ</span>
+  <span><b>大连财经学院</b> 计算机国家二级考试（WPS 类）校内教学辅助资料 · <b>本站为非官方考试网站</b>，不提供报名、缴费、查分服务，不收集任何个人信息。官方信息请以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 为准。</span>
+</div></div>
 <div id="app"></div>
 <div id="modal" class="modal-mask" hidden></div>
+
+<footer class="sitefooter"><div class="ft-in"><div class="cols">
+  <div><h4>大连财经学院 · 计算机国家二级考试（WPS 类）</h4><p><span class="org">主办：大连财经学院计算机国家二级考试（WPS 类）课程组</span></p><p>本站为<b>校内教学辅助资料</b>，依据《全国计算机等级考试(NCRE) 二级 WPS Office 高级应用与设计考试大纲(2025 年版)》与《二级公共基础知识考试大纲(2025 年版)》编写，供教学与备考使用。</p></div>
+  <div><h4>成果导航</h4><p><a href="../教学大纲.html">教学大纲</a> · <a href="../教学日历.html">教学日历</a> · <a href="../教案.html">教案</a></p><p><a href="../培训课件.html">培训课件</a> · <a href="../电子书.html">电子书</a> · <a href="../index.html">学习中心</a></p></div>
+  <div><h4>官方信息</h4><p>本站为<b>非官方</b>网站，不提供报名、缴费、查分服务。考试政策与报名信息以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 当年公告为准。</p><p>学校官网：<a href="https://www.dlufe.edu.cn/" target="_blank" rel="noopener">www.dlufe.edu.cn</a></p></div>
+  <div><h4>免责声明</h4><p>本站不收集任何个人信息，无收费项目，不含广告与商业推广；内容仅供校内教学与备考参考，如与官方文件不一致，以官方文件为准。</p><p><a href="../关于本站.html">关于本站 / 免责声明 →</a></p></div>
+</div>
+<div class="disc">© 大连财经学院 · 计算机国家二级考试（WPS 类）课程组 ｜ 校内教学辅助资料，非官方考试网站 ｜ 考试政策以中国教育考试网公告为准</div>
+</div></footer>
 
 <script>
 /* =========================================================
@@ -783,7 +818,7 @@ function afterRender() {
 function navBar(right) {
   return '<div class="topbar"><div class="topbar-in">' +
     '<div class="brand"><div class="brand-logo">WPS</div><div class="brand-txt">' +
-      '<b>NCRE 二级 · WPS Office 高级应用与设计</b><span>全国计算机等级考试 · 上机考试模拟系统</span></div></div>' +
+      '<b>大连财经学院 · 计算机国家二级考试（WPS 类）</b><span>二级 WPS Office 高级应用与设计 · 上机考试模拟系统（校内教学辅助资料 · 非官方）</span></div></div>' +
     '<div class="spacer"></div><div class="tb-right">' + (right || '') + '</div>' +
   '</div></div>';
 }
@@ -802,8 +837,9 @@ function viewHome() {
   return navBar('<span class="tag" style="background:rgba(255,255,255,.16);color:#fff">题库 ' + SINGLE.length + ' 题 · 操作题 ' + OPS.length + ' 套</span>') +
   '<div class="page">' +
     '<div class="hero">' +
-      '<h1>NCRE 二级 WPS Office 高级应用与设计</h1>' +
-      '<div class="sub">上机考试全真模拟 · 严格对齐 2025 年版考试大纲。单选 20 题 20 分，文字 / 表格 / 演示操作题 30 / 30 / 20 分，满分 100 分，60 分合格。</div>' +
+      '<h1>大连财经学院 · 计算机国家二级考试（WPS 类）</h1>' +
+      '<div class="sub">NCRE 二级 WPS Office 高级应用与设计 · 上机考试全真模拟，严格对齐 2025 年版考试大纲。单选 20 题 20 分，文字 / 表格 / 演示操作题 30 / 30 / 20 分，满分 100 分，60 分合格。</div>' +
+      '<div class="sub" style="color:#f2a33c;font-weight:700">校内教学辅助资料 · 本站为非官方考试网站，不提供报名、缴费、查分服务，不收集任何个人信息。</div>' +
       '<div class="kpis">' +
         '<div class="kpi"><b>120</b><span>考试时长（分钟）</span></div>' +
         '<div class="kpi"><b>100</b><span>试卷满分</span></div>' +

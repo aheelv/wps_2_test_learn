@@ -6,7 +6,8 @@
 <meta name="x-content-type" content="presentation">
 <meta name="x-presentation-version" content="1.0">
 <meta name="x-presentation-indicator" content="deck-stage .slide">
-<title>44课时培训课件 · 国家计算机二级 WPS Office</title>
+<title>培训课件 · 大连财经学院 计算机国家二级考试（WPS 类）培训</title>
+<meta name="description" content="大连财经学院计算机国家二级考试（WPS 类）校内教学辅助资料：44 课时培训课件。依据 NCRE 二级 WPS Office 高级应用与设计考试大纲（2025 年版）编写，本站为非官方考试网站，不提供报名、缴费、查分服务，不收集任何个人信息。">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -177,6 +178,9 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
 #notes{position:fixed;left:0;right:0;bottom:0;background:#0f2740;color:#cfe0f2;border-top:2px solid var(--gold);padding:16px 22px;font-size:14.5px;line-height:1.6;z-index:45;display:none;max-height:34vh;overflow:auto}
 #notes.on{display:block}
 #notes b{color:var(--gold)}
+#orgbar{position:fixed;left:14px;top:12px;z-index:60;font-size:12.5px;font-weight:700;color:#e8f1fa;
+  background:rgba(15,39,64,.74);border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:5px 13px;
+  backdrop-filter:blur(6px);pointer-events:none;max-width:70vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #overview{position:fixed;inset:0;background:#0b1a2b;z-index:70;display:none;overflow:auto;padding:28px}
 #overview.on{display:block}
 #overview .og-title{color:#fff;font-size:20px;font-weight:800;margin-bottom:16px}
@@ -244,6 +248,7 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
 </style>
 </head>
 <body>
+<div id="orgbar">大连财经学院 · 计算机国家二级考试（WPS 类）校内教学辅助资料 ｜ 非官方考试网站</div>
 <div id="viewport"><deck-stage id="stage"></deck-stage></div>
 
 <div id="hud"><i></i></div>
@@ -340,8 +345,8 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
     if(s.type==='cover'){
       el.classList.add('cover');
       el.innerHTML =
-        '<div class="eyebrow">NCRE · 全国计算机等级考试</div>'+
-        '<h1>二级 WPS Office<br>高级应用与设计<br>11 次课 · 44 课时通关培训</h1>'+
+        '<div class="eyebrow">大连财经学院 · 计算机国家二级考试（WPS 类）</div>'+
+        '<h1>大连财经学院<br>计算机国家二级考试（WPS 类）<br>11 次课 · 44 课时通关培训</h1>'+
         '<div class="lead">依据《'+esc(C.meta.official)+'》编写 · 5 大模块按考试分值配置课时 · 每次课 4 课时，其中课堂练习占 60% · 覆盖单项选择题、文字文档、电子表格、演示文稿全部题型</div>'+
         '<div class="stats">'+
           '<div class="stat"><b>'+C.meta.code.replace('科目代码 ','')+'</b><span>科目代码</span></div>'+
@@ -349,7 +354,7 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
           '<div class="stat"><b>44</b><span>课时</span></div>'+
           '<div class="stat"><b>'+C.meta.duration.replace(' 分钟','')+'</b><span>分钟 / 场</span></div>'+
         '</div>'+
-        '<div class="badge-line">满分 '+C.meta.full+' · '+C.meta.pass+' · 上机考试 · 讲授 40% + 课堂练习 60% · 以帮助学生通过为第一原则</div>';
+        '<div class="badge-line">满分 '+C.meta.full+' · '+C.meta.pass+' · 上机考试 · 讲授 40% + 课堂练习 60% · 以帮助学生通过为第一原则<br><b style="color:#ffd79a">本站为大连财经学院校内教学辅助资料，非官方考试网站，不提供报名、缴费、查分服务，不收集个人信息</b></div>';
       el._note = '开场说明课程节奏：11 次课、每次 4 课时，其中约 60% 时间用于课堂练习，强调"以练促会、当堂过关"。';
     }
     else if(s.type==='overview'){

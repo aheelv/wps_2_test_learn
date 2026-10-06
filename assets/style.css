@@ -229,9 +229,21 @@ ul.tight li{margin-bottom:4px}
 /* ---------- 页脚 ---------- */
 .footer{background:#0f2740;color:#a9c0d8;padding:40px 0;margin-top:60px;font-size:14px}
 .footer a{color:#cfe0f2}
-.footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:26px}
+.footer .cols{display:grid;grid-template-columns:1.5fr 1fr 1.05fr 1.05fr;gap:24px}
+@media(max-width:1000px){.footer .cols{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.footer .cols{grid-template-columns:1fr}}
 .footer h4{color:#fff;font-size:15px;margin-bottom:10px}
+.footer .org{color:#fff;font-weight:800}
+.footer .disc{border-top:1px solid rgba(255,255,255,.14);margin-top:26px;padding-top:16px;font-size:12.5px;color:#8fa8c2}
+
+/* ---------- 非官方声明条 ---------- */
+.noticebar{background:#fff8ec;border-bottom:1px solid #f0dcb4;color:#7a5310}
+.noticebar .wrap{display:flex;gap:10px;align-items:flex-start;padding:9px 22px;font-size:13px;line-height:1.62}
+.noticebar .nb-ic{flex:none;font-weight:900;font-size:14px;line-height:1.5}
+.noticebar b{color:#8a5a06}
+.noticebar a{color:#8a5a06;text-decoration:underline}
+.noticebar a:hover{color:#5f3d02}
+@media print{.noticebar{display:none!important}}
 
 /* ---------- 工具类 ---------- */
 .center{text-align:center}
