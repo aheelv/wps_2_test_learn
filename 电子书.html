@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>电子书 · 二级 WPS Office 高级应用与设计精讲</title>
+<link rel="stylesheet" href="./assets/style.css">
+<style>
+  body{background:#e9edf3}
+  .bookwrap{display:grid;grid-template-columns:300px 1fr;gap:0;max-width:1400px;margin:0 auto;min-height:100vh}
+  /* 侧栏 */
+  .side{position:sticky;top:0;height:100vh;overflow:auto;background:#0f2740;color:#b9cee3;padding:22px 0}
+  .side .bk{padding:0 20px 18px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:12px}
+  .side .bk b{color:#fff;font-size:16px;display:block;line-height:1.4}
+  .side .bk span{font-size:12px;color:#7f9bb8}
+  .side .bk-nav{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .side .bk-nav a{padding:5px 10px;border:1px solid rgba(255,255,255,.2);border-radius:99px;font-size:12px;color:#cfe0f2;line-height:1}
+  .side .bk-nav a:hover{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.35)}
+  .side .part{padding:12px 20px 4px;font-size:12px;font-weight:900;letter-spacing:.08em;color:#f2a33c;text-transform:uppercase}
+  .side a{display:block;padding:8px 20px 8px 24px;font-size:13.5px;color:#b9cee3;border-left:3px solid transparent;line-height:1.4}
+  .side a:hover{background:rgba(255,255,255,.06);color:#fff}
+  .side a.on{background:rgba(232,80,58,.16);border-left-color:#e8503a;color:#fff;font-weight:700}
+  .side a .n{color:#6f8cab;font-variant-numeric:tabular-nums;margin-right:6px;font-size:12px}
+  /* 内容 */
+  .paper{background:#fff;padding:0}
+  .chapter{padding:56px 68px;max-width:900px;margin:0 auto;border-bottom:1px solid var(--line-2)}
+  .chapter .cnum{font-size:13px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .chapter h1{font-size:34px;font-weight:900;line-height:1.2;margin-bottom:8px}
+  .chapter .cmod{font-size:14px;color:var(--muted);font-weight:700;margin-bottom:26px}
+  .exambar{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13.5px;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:11px 16px;margin:0 0 26px;line-height:1.6}
+  .exambar b{color:var(--brand);font-weight:800}
+  .exambar .fr{color:var(--accent);font-weight:800}
+  .chapter h3{font-size:18px;margin:26px 0 10px;color:var(--brand);display:flex;align-items:center;gap:9px}
+  .chapter h3::before{content:"";width:5px;height:17px;border-radius:2px;background:var(--accent)}
+  .chapter p{font-size:16.5px;line-height:1.9;color:var(--ink-2);margin:0 0 16px;text-align:justify}
+  .chapter p:first-letter{}
+  .kbox{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:18px 0}
+  .kbox h4{margin:0 0 10px;font-size:14px;letter-spacing:.04em;color:var(--brand);font-weight:900}
+  .kbox ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .kbox li{position:relative;padding-left:20px;font-size:15px;color:var(--ink-2);line-height:1.6}
+  .kbox li::before{content:"";position:absolute;left:2px;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  /* 课堂练习 */
+  .practice-ch{background:linear-gradient(180deg,#f2fbf6,#fff);border-top:4px solid var(--ok)}
+  .practice-ch .cnum{color:var(--ok)}
+  .practice-ch h1{font-size:30px}
+  .pq{border:1px solid var(--line);border-left:4px solid var(--brand-2);border-radius:9px;padding:14px 16px;margin-bottom:14px;background:#fff}
+  .pq.oper{border-left-color:var(--accent)}
+  .pq-tag{display:inline-block;font-size:11.5px;font-weight:800;color:#fff;background:var(--brand-2);border-radius:99px;padding:2px 10px;margin-bottom:8px}
+  .pq.oper .pq-tag{background:var(--accent)}
+  .pq-q{font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:9px}
+  .pq-opts{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:5px 18px;margin:0 0 10px;padding:0}
+  .pq-opts li{font-size:14.5px;color:var(--ink-2)}
+  .pq-ans{font-size:14px;color:#12703f;background:#e8f7ee;border-radius:7px;padding:9px 12px;line-height:1.75}
+  .pq-req,.pq-steps{font-size:14.5px;color:var(--ink-2);line-height:1.75;margin-bottom:8px}
+  .pq-steps ol{margin:5px 0 0;padding-left:22px}
+  .pq-steps ol li{margin-bottom:4px}
+  .pcount{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 16px}
+  .pcount span{font-size:12.5px;font-weight:800;padding:4px 12px;border-radius:99px;background:var(--line-2);color:var(--muted)}
+  .pcount span.hi{background:#e8f7ee;color:#12703f}
+  .cover-book{background:linear-gradient(150deg,#0d2036,#16324f 50%,#1c3f63);color:#fff;padding:90px 68px;position:relative;overflow:hidden}
+  .cover-book::after{content:"";position:absolute;inset:0;opacity:.4;background:radial-gradient(600px 400px at 80% 10%,rgba(232,80,58,.4),transparent 60%)}
+  .cover-book .in{position:relative;z-index:2;max-width:820px;margin:0 auto}
+  .cover-book .eb{font-size:14px;font-weight:900;letter-spacing:.24em;color:#f2a33c;margin-bottom:20px}
+  .cover-book h1{font-size:48px;font-weight:900;color:#fff;line-height:1.16;letter-spacing:-.5px}
+  .cover-book p{color:#bcd4ec;font-size:18px;margin-top:20px;line-height:1.7}
+  .cover-book .toc-mini{margin-top:34px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .cover-book .toc-mini a{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:12px 16px;color:#dbe8f5;font-size:14.5px;font-weight:700}
+  .cover-book .toc-mini a:hover{background:rgba(255,255,255,.16);color:#fff}
+  .pager{display:flex;justify-content:space-between;gap:14px;padding:26px 68px;max-width:900px;margin:0 auto}
+  .pager a{border:1px solid var(--line);border-radius:10px;padding:12px 18px;font-size:14px;font-weight:700;color:var(--ink-2);background:#fff}
+  .pager a:hover{border-color:var(--brand);color:var(--brand)}
+  .pager .sp{flex:1}
+  #topbtn{position:fixed;right:22px;bottom:22px;z-index:40;background:var(--brand);color:#fff;border:0;border-radius:12px;padding:12px 15px;font-weight:800;cursor:pointer;box-shadow:var(--shadow-l);display:none}
+  .sidebar-toggle{display:none}
+  @media(max-width:980px){
+    .bookwrap{grid-template-columns:1fr}
+    .side{position:fixed;left:0;top:0;width:280px;z-index:60;transform:translateX(-100%);transition:.25s}
+    .side.on{transform:none}
+    .sidebar-toggle{display:block;position:fixed;left:14px;bottom:22px;z-index:61;background:var(--brand);color:#fff;border:0;border-radius:12px;padding:12px 15px;font-weight:800;cursor:pointer;box-shadow:var(--shadow-l)}
+    .chapter,.pager,.cover-book{padding-left:24px;padding-right:24px}
+  }
+  @media print{
+    .side,#topbtn,.sidebar-toggle{display:none!important}
+    .bookwrap{grid-template-columns:1fr;max-width:none}
+    .chapter{border:0;padding:0 0 24px;break-after:page}
+    .cover-book{background:#fff!important;color:#12213a!important;padding:0 0 30px}
+    .cover-book h1,.cover-book .eb,.cover-book p{color:#12213a!important}
+    .cover-book .toc-mini{display:none}
+    .pager{display:none}
+  }
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sbT">目录</button>
+<div class="bookwrap">
+  <aside class="side" id="side">
+    <div class="bk"><b>二级 WPS Office 高级应用与设计</b><span>11 次课 44 课时精讲 · 网页电子书</span>
+      <div class="bk-nav">
+        <a href="./index.html">学习中心</a>
+        <a href="./考纲对照表.html">考纲对照表</a>
+        <a href="./资料汇编.html">资料汇编</a>
+        <a href="./考试模拟系统/index.html">模拟考试</a>
+      </div>
+    </div>
+    <nav id="sideNav"></nav>
+  </aside>
+  <div class="paper" id="paper">
+    <section class="cover-book" id="cover">
+      <div class="in">
+        <div class="eb">NCRE · 全国计算机等级考试</div>
+        <h1>二级 WPS Office<br>高级应用与设计<br>知识点精讲</h1>
+        <p>依据官方考试大纲（2025 年版）编写，按 <b>5 大模块</b>、44 个知识点系统讲解，课时按考试分值配置，并按 11 次课统筹组织。每完成一次课的 4 个知识点，即配套一组「课堂练习」（单项选择题 + 上机操作题，附答案与解析）。每个知识点均标注<b>对应考纲条目、题型分值与考频</b>。涵盖公共基础知识、WPS 文字、WPS 表格、WPS 演示全部考点，可作为独立教材阅读，也可配合课件与模拟系统使用。</p>
+        <div class="toc-mini" id="coverToc"></div>
+      </div>
+    </section>
+    <div id="chapters"></div>
+  </div>
+</div>
+<button id="topbtn">↑ 顶部</button>
+
+<script src="./assets/curriculum.js"></script>
+<script>
+(function(){
+  const C=window.CURRICULUM;
+  const sideNav=document.getElementById('sideNav');
+  const chaptersEl=document.getElementById('chapters');
+  const flat=[];
+  C.modules.forEach(function(m){ m.lessons.forEach(function(ls){ flat.push({m:m,ls:ls}); }); });
+
+  // 次课 -> 课时 映射
+  const S=C.sessions||[];
+  const sesOfLesson={};
+  S.forEach(function(se){ se.lessons.forEach(function(n){ sesOfLesson[n]=se; }); });
+
+  // 侧栏
+  let snav='';
+  C.modules.forEach(function(m){
+    snav+='<div class="part">'+m.id+' · '+m.name+'</div>';
+    m.lessons.forEach(function(ls){
+      snav+='<a href="#ch'+ls.no+'" data-no="'+ls.no+'"><span class="n">'+ls.no+'</span>'+ls.title+'</a>';
+    });
+  });
+  if(S.length){
+    snav+='<div class="part">课堂练习 · 随堂检测</div>';
+    S.forEach(function(se){
+      const ch=(se.practice||[]).filter(function(p){return p.type==='choice';}).length;
+      const op=(se.practice||[]).filter(function(p){return p.type==='oper';}).length;
+      snav+='<a href="#pr'+se.no+'" data-no="pr'+se.no+'"><span class="n">练'+se.no+'</span>第 '+se.no+' 次课（'+ch+'+'+op+' 题）</a>';
+    });
+  }
+  sideNav.innerHTML=snav;
+
+  // 封面迷你目录
+  document.getElementById('coverToc').innerHTML = C.modules.map(function(m){
+    return '<a href="#ch'+m.lessons[0].no+'">'+m.id+' · '+m.short+'<br><span style="font-weight:500;font-size:12.5px;color:#a9c6e2">第 '+m.lessons[0].no+'–'+m.lessons[m.lessons.length-1].no+' 课时 · '+m.hours+' 课时</span></a>';
+  }).join('');
+
+  // 练习题渲染
+  function qHtml(p){
+    if(p.type==='choice'){
+      const opts=p.opts.map(function(o,i){ return '<li>'+'ABCD'[i]+'. '+o+'</li>'; }).join('');
+      return '<div class="pq"><span class="pq-tag">单项选择题 · '+p.tag+'</span>'+
+        '<div class="pq-q">'+p.q+'</div>'+
+        '<ul class="pq-opts">'+opts+'</ul>'+
+        '<div class="pq-ans"><b>答案：'+'ABCD'[p.ans]+'</b> · '+p.exp+'</div></div>';
+    }
+    const req=(p.req||[]).map(function(r){return '<li>'+r+'</li>';}).join('');
+    const st=(p.steps||[]).map(function(s){return '<li>'+s+'</li>';}).join('');
+    return '<div class="pq oper"><span class="pq-tag">上机操作题 · '+p.tag+'</span>'+
+      '<div class="pq-q">'+p.q+'</div>'+
+      (req?'<div class="pq-req"><b>要求：</b><ul style="margin:4px 0 0;padding-left:20px">'+req+'</ul></div>':'')+
+      (st?'<div class="pq-steps"><b>操作步骤与要点：</b><ol>'+st+'</ol></div>':'')+
+      '</div>';
+  }
+
+  // 章节（含每次课课堂练习）
+  let outHtml='';
+  flat.forEach(function(x,i){
+    const m=x.m, ls=x.ls;
+    const prev=flat[i-1], next=flat[i+1];
+    const prose=(ls.prose||[]).map(function(p){return '<p>'+p+'</p>'}).join('');
+    outHtml+='<section class="chapter" id="ch'+ls.no+'" style="--mc:'+m.color+'">'+
+      '<div class="cnum" style="color:'+m.color+'">'+m.id+' · 第 '+ls.no+' 课时</div>'+
+      '<h1>'+ls.title+'</h1>'+
+      '<div class="cmod">'+m.name+' ｜ 建议课时：'+ls.hours+'</div>'+
+      '<div class="exambar">'+
+        '<span><b>对应考纲：</b>'+ls.syl+'</span>'+
+        '<span><b>题型分值：</b>'+ls.exam+' '+ls.score+'</span>'+
+        '<span><b>考频：</b><span class="fr">'+ls.freq+'</span></span>'+
+      '</div>'+
+      prose+
+      '<div class="kbox"><h4>◆ 核心知识点</h4><ul>'+ls.key.map(function(k){return '<li>'+k+'</li>'}).join('')+'</ul></div>'+
+      '<div class="kbox"><h4>◆ 学习目标</h4><ul>'+ls.obj.map(function(o){return '<li>'+o+'</li>'}).join('')+'</ul></div>'+
+      '<div class="kbox"><h4>◆ 易错与难点</h4><ul>'+ls.diff.map(function(d){return '<li>'+d+'</li>'}).join('')+'</ul></div>'+
+      '<div class="pager">'+
+        (prev?'<a href="#ch'+prev.ls.no+'">← 第 '+prev.ls.no+' 课时 · '+prev.ls.title+'</a>':'<span class="sp"></span>')+
+        (next?'<a href="#ch'+next.ls.no+'">第 '+next.ls.no+' 课时 · '+next.ls.title+' →</a>':'<a href="./考试模拟系统/index.html">进入模拟考试 →</a>')+
+      '</div>'+
+    '</section>';
+
+    // 本次课最后一个课时后，插入课堂练习
+    const se=sesOfLesson[ls.no];
+    if(se && se.lessons[se.lessons.length-1]===ls.no){
+      const ch=(se.practice||[]).filter(function(p){return p.type==='choice';});
+      const op=(se.practice||[]).filter(function(p){return p.type==='oper';});
+      const nxt=flat.find(function(y){return y.ls.no>ls.no;});
+      outHtml+='<section class="chapter practice-ch" id="pr'+se.no+'">'+
+        '<div class="cnum">课堂练习 · 第 '+se.no+' 次课</div>'+
+        '<h1>'+se.name+' · 随堂检测</h1>'+
+        '<div class="cmod">覆盖第 '+se.lessons[0]+'–'+se.lessons[se.lessons.length-1]+' 课时 ｜ 对应 '+se.examType+' · '+se.score+' ｜ 讲授 40% + 课堂练习 60%</div>'+
+        '<p><b>提分重点：</b>'+se.focus+'</p>'+
+        '<p>本组练习与考试题型完全一致，建议在课堂上限时完成，做完后对照答案与解析复盘。单项选择题考查概念与原理，上机操作题训练动手能力。</p>'+
+        '<div class="pcount"><span>共 '+(se.practice||[]).length+' 题</span><span>单项选择题 '+ch.length+' 题</span><span>上机操作题 '+op.length+' 题</span><span class="hi">建议用时约 108 分钟</span></div>'+
+        (se.practice||[]).map(qHtml).join('')+
+        '<div class="pager">'+
+          '<a href="#ch'+se.lessons[0]+'">← 回看第 '+se.lessons[0]+' 课时</a>'+
+          (nxt?'<a href="#ch'+nxt.ls.no+'">第 '+nxt.ls.no+' 课时 · '+nxt.ls.title+' →</a>':'<a href="./考试模拟系统/index.html">进入模拟考试 →</a>')+
+        '</div>'+
+      '</section>';
+    }
+  });
+  chaptersEl.innerHTML=outHtml;
+
+  // 高亮当前章节
+  const links=Array.from(sideNav.querySelectorAll('a'));
+  const obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        const no=en.target.id.replace('ch','');
+        links.forEach(function(a){a.classList.toggle('on',a.dataset.no===no)});
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('.chapter').forEach(function(el){obs.observe(el)});
+
+  // 顶部按钮
+  const tb=document.getElementById('topbtn');
+  window.addEventListener('scroll',function(){tb.style.display=window.scrollY>500?'block':'none'});
+  tb.onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};
+
+  // 移动端侧栏
+  const side=document.getElementById('side');
+  document.getElementById('sbT').onclick=function(){side.classList.toggle('on')};
+  sideNav.addEventListener('click',function(e){if(e.target.closest('a'))side.classList.remove('on')});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="description" content="全国计算机等级考试（NCRE）二级 WPS Office 高级应用与设计 上机考试模拟系统，纯静态单文件，无需联网。" />
+<title>NCRE 二级 WPS Office 高级应用与设计 · 考试模拟系统</title>
+<style>
+:root{
+  --navy:#16324F;
+  --navy2:#1f4468;
+  --navy3:#2b5c8a;
+  --accent:#E8503A;
+  --accent2:#c93f2b;
+  --bg:#f2f4f7;
+  --card:#ffffff;
+  --line:#e3e7ee;
+  --line2:#eef1f5;
+  --text:#1f2a37;
+  --muted:#6b7787;
+  --green:#16a34a;
+  --greenbg:#eaf7ef;
+  --red:#dc2626;
+  --redbg:#fdeceb;
+  --amber:#d97706;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);
+  --shadow2:0 10px 40px rgba(16,24,40,.14);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+[hidden]{display:none !important}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Source Han Sans SC",sans-serif;
+  background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.35}
+p{margin:0}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+input{font-family:inherit;font-size:inherit}
+a{color:var(--navy3)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:#c9d2de;border-radius:8px;border:2px solid transparent;background-clip:content-box}
+::-webkit-scrollbar-track{background:transparent}
+
+/* ---------- 通用 ---------- */
+.topbar{
+  background:linear-gradient(120deg,var(--navy) 0%,var(--navy2) 55%,#24507a 100%);
+  color:#fff;position:sticky;top:0;z-index:60;box-shadow:0 2px 14px rgba(22,50,79,.22);
+}
+.topbar-in{max-width:1180px;margin:0 auto;padding:11px 18px;display:flex;align-items:center;gap:14px;min-height:58px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand-logo{width:32px;height:32px;flex:0 0 auto;border-radius:9px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;letter-spacing:.5px;color:#fff;box-shadow:0 3px 10px rgba(232,80,58,.45)}
+.brand-txt{min-width:0}
+.brand-txt b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-txt span{display:block;font-size:11.5px;opacity:.72;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .spacer{flex:1}
+.tb-right{display:flex;align-items:center;gap:10px}
+.timer{
+  display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.22);padding:6px 13px;border-radius:11px;
+  font-variant-numeric:tabular-nums;font-weight:700;font-size:17px;letter-spacing:.5px;
+}
+.timer.warn{background:rgba(232,80,58,.25);border-color:rgba(232,80,58,.6);animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.timer small{font-size:11px;font-weight:500;opacity:.75;display:block;line-height:1}
+.page{max-width:1180px;margin:0 auto;padding:22px 18px 70px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  padding:10px 20px;border-radius:11px;border:1px solid var(--line);
+  background:#fff;color:var(--text);font-weight:600;transition:.16s;white-space:nowrap;
+}
+.btn:hover{border-color:#c3cddb;background:#f8fafc}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(232,80,58,.3)}
+.btn-primary:hover{background:var(--accent2);border-color:var(--accent2)}
+.btn-navy{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy2);border-color:var(--navy2)}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.6)}
+.btn-sm{padding:6px 13px;font-size:13.5px;border-radius:9px}
+.btn-lg{padding:14px 34px;font-size:16.5px;border-radius:13px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.icon-btn{background:transparent;border:0;font-size:17px;line-height:1;padding:6px 9px;border-radius:8px;color:inherit;opacity:.75}
+.icon-btn:hover{background:rgba(125,140,160,.14);opacity:1}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:12px;padding:2px 9px;border-radius:999px;background:#eef2f7;color:#4a5a70;font-weight:600;white-space:nowrap}
+.tag-public{background:#e7eef7;color:#1c4b7a}
+.tag-basic{background:#e3f2ef;color:#0f6f64}
+.tag-word{background:#e8eefc;color:#1d4ed8}
+.tag-excel{background:#e6f4ea;color:#15803d}
+.tag-ppt{background:#fdf0e3;color:#b45309}
+.tag-easy{background:#eaf7ef;color:#15803d}
+.tag-mid{background:#fdf5e3;color:#b45309}
+.tag-hard{background:#fdeceb;color:#b91c1c}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.tiny{font-size:12px}
+
+/* ---------- 首页 ---------- */
+.hero{
+  background:linear-gradient(120deg,var(--navy) 0%,var(--navy2) 60%,#2b5c8a 100%);
+  border-radius:20px;padding:38px 36px;color:#fff;position:relative;overflow:hidden;
+  box-shadow:0 16px 44px rgba(22,50,79,.26);
+}
+.hero::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(232,80,58,.5),transparent 66%)}
+.hero::before{content:"";position:absolute;right:70px;bottom:-120px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%)}
+.hero h1{font-size:29px;letter-spacing:.4px;position:relative}
+.hero .sub{margin-top:9px;opacity:.86;font-size:14.5px;position:relative;max-width:640px}
+.hero .kpis{display:flex;gap:26px;margin-top:24px;flex-wrap:wrap;position:relative}
+.kpi b{display:block;font-size:26px;font-variant-numeric:tabular-nums;line-height:1.2}
+.kpi span{font-size:12.5px;opacity:.78}
+.hero-actions{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;position:relative}
+.grid2{display:grid;grid-template-columns:1.35fr 1fr;gap:18px;margin-top:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.panel{padding:20px 22px}
+.panel h3{font-size:16.5px;display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.panel h3 .dot{width:8px;height:8px;border-radius:3px;background:var(--accent);display:inline-block}
+table.info{width:100%;border-collapse:collapse;font-size:14px}
+table.info th,table.info td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line2)}
+table.info th{color:var(--muted);font-weight:600;font-size:13px;background:#fafbfd}
+table.info tr:last-child td{border-bottom:0}
+table.info td.n{font-variant-numeric:tabular-nums;font-weight:700;color:var(--navy)}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;position:relative;padding-left:34px;margin-bottom:11px;font-size:14px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:23px;height:23px;border-radius:50%;background:#e7eef7;color:var(--navy);font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.modcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px}
+.modcard{border:1px solid var(--line);border-radius:12px;padding:15px 16px;background:#fff;transition:.16s;text-align:left;display:block;width:100%}
+.modcard:hover{border-color:var(--navy3);box-shadow:0 6px 20px rgba(22,50,79,.1);transform:translateY(-2px)}
+.modcard b{display:block;font-size:15px;margin-bottom:3px}
+.modcard .cnt{font-size:12.5px;color:var(--muted)}
+.bar{height:7px;border-radius:6px;background:#eef1f5;overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;border-radius:6px;background:var(--navy3)}
+.notice{margin-top:18px;padding:13px 16px;border-radius:12px;background:#fff8ec;border:1px solid #f6e2bd;font-size:13.5px;color:#8a5a12}
+
+/* ---------- 考试布局 ---------- */
+.exam-layout{max-width:1180px;margin:0 auto;padding:18px 18px 80px;display:grid;grid-template-columns:250px 1fr;gap:18px;align-items:start}
+.exam-side{position:sticky;top:76px}
+.side-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;max-height:calc(100vh - 100px);overflow:auto}
+.side-card h4{font-size:13.5px;color:var(--muted);text-transform:none;letter-spacing:.3px;margin:14px 0 8px;display:flex;justify-content:space-between;align-items:center}
+.side-card h4:first-child{margin-top:0}
+.cardgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.cardgrid button{
+  aspect-ratio:1/1;border-radius:9px;border:1px solid var(--line);background:#fff;color:#54637a;
+  font-weight:700;font-size:13.5px;font-variant-numeric:tabular-nums;transition:.14s;position:relative;padding:0;
+}
+.cardgrid button:hover{border-color:var(--navy3);color:var(--navy)}
+.cardgrid button.done{background:#e7eef7;border-color:#b9cde4;color:var(--navy)}
+.cardgrid button.cur{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 4px 12px rgba(22,50,79,.3)}
+.cardgrid button.cur.done{background:var(--navy)}
+.cardgrid.op{grid-template-columns:1fr;gap:8px}
+.cardgrid.op button{aspect-ratio:auto;padding:9px 11px;text-align:left;font-size:13px;display:flex;justify-content:space-between;gap:8px;align-items:center;font-weight:600}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin-top:12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px;border:1px solid var(--line)}
+.exam-main{min-width:0}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 26px;margin-bottom:16px}
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.qmeta{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.qno{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.5px}
+.qstem{font-size:16.5px;line-height:1.8;font-weight:600;margin-bottom:16px;white-space:pre-wrap}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{
+  display:flex;gap:12px;align-items:flex-start;padding:12px 15px;border:1px solid var(--line);
+  border-radius:11px;background:#fff;text-align:left;transition:.15s;width:100%;line-height:1.7;
+}
+.opt:hover{border-color:var(--navy3);background:#f9fbfd}
+.opt .k{
+  flex:0 0 auto;width:24px;height:24px;border-radius:50%;border:1.5px solid #c3cddb;color:#5b6b82;
+  font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;transition:.15s;
+}
+.opt .v{flex:1;min-width:0}
+.opt.sel{border-color:var(--navy);background:#eef4fa}
+.opt.sel .k{background:var(--navy);border-color:var(--navy);color:#fff}
+.opt.right{border-color:var(--green);background:var(--greenbg)}
+.opt.right .k{background:var(--green);border-color:var(--green);color:#fff}
+.opt.wrong{border-color:var(--red);background:var(--redbg)}
+.opt.wrong .k{background:var(--red);border-color:var(--red);color:#fff}
+.fillrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fillrow input{
+  flex:1;min-width:220px;padding:11px 14px;border:1px solid var(--line);border-radius:11px;
+  font-family:"Consolas","SFMono-Regular","Courier New",monospace;font-size:15px;outline:none;transition:.15s;
+}
+.fillrow input:focus{border-color:var(--navy3);box-shadow:0 0 0 3px rgba(43,92,138,.13)}
+.fillrow input.right{border-color:var(--green);background:var(--greenbg)}
+.fillrow input.wrong{border-color:var(--red);background:var(--redbg)}
+.qnav{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.qnav .mid{display:flex;gap:10px;flex-wrap:wrap}
+.opbox{border:1px solid var(--line);border-radius:12px;background:#fafbfd;padding:16px 18px;margin-bottom:16px}
+.opbox h4{font-size:14px;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.opbox ul{margin:0;padding-left:20px}
+.opbox li{margin-bottom:5px;font-size:14px}
+.subq{border-top:1px dashed var(--line);padding-top:18px;margin-top:18px}
+.subq:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.subhead{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.progress-strip{height:6px;background:#e9edf3;border-radius:6px;overflow:hidden;margin-bottom:16px}
+.progress-strip i{display:block;height:100%;background:linear-gradient(90deg,var(--navy3),var(--accent));transition:width .25s}
+.mobilebar{display:none}
+.explain{margin-top:14px;border-radius:11px;border:1px solid var(--line);overflow:hidden}
+.explain .eh{padding:8px 14px;background:#f5f7fa;font-size:13px;font-weight:700;color:var(--navy);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.explain .eb{padding:12px 14px;font-size:14px;background:#fff;white-space:pre-wrap}
+.explain.ok .eh{background:var(--greenbg);color:#15803d}
+.explain.no .eh{background:var(--redbg);color:#b91c1c}
+
+/* ---------- 结果 ---------- */
+.result-hero{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;padding:28px 30px}
+.ring{
+  width:158px;height:158px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;
+  background:conic-gradient(var(--green) 0deg,var(--green) var(--deg,0deg),#e9edf3 var(--deg,0deg));
+}
+.ring.no{background:conic-gradient(var(--accent) 0deg,var(--accent) var(--deg,0deg),#e9edf3 var(--deg,0deg))}
+.ring i{position:absolute;inset:13px;background:#fff;border-radius:50%}
+.ring .val{position:relative;text-align:center}
+.ring .val b{display:block;font-size:42px;line-height:1;font-variant-numeric:tabular-nums}
+.ring .val span{font-size:12px;color:var(--muted)}
+.scoregrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.scorebox{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fff}
+.scorebox .t{font-size:13px;color:var(--muted);margin-bottom:4px}
+.scorebox .v{font-size:23px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.2}
+.scorebox .v small{font-size:13px;font-weight:600;color:var(--muted)}
+.scorebox .bar{margin-top:9px}
+.verdict{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;font-weight:800;font-size:14px}
+.verdict.pass{background:var(--greenbg);color:#15803d}
+.verdict.fail{background:var(--redbg);color:#b91c1c}
+.review-item{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;background:#fff}
+.review-item.bad{border-left:4px solid var(--red)}
+.review-item.good{border-left:4px solid var(--green)}
+.sechead{display:flex;align-items:center;gap:12px;margin:26px 0 14px;flex-wrap:wrap}
+.sechead h2{font-size:19px}
+.sechead .line{flex:1;height:1px;background:var(--line);min-width:20px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.emptybox{text-align:center;padding:56px 20px;color:var(--muted)}
+.emptybox .big{font-size:40px;margin-bottom:10px;opacity:.4}
+
+/* ---------- 弹窗 ---------- */
+.modal-mask{
+  position:fixed;inset:0;background:rgba(16,26,40,.5);z-index:200;display:flex;align-items:center;justify-content:center;
+  padding:20px;backdrop-filter:blur(3px);
+}
+.modal-box{background:#fff;border-radius:16px;max-width:520px;width:100%;box-shadow:var(--shadow2);overflow:hidden;animation:pop .18s ease-out;max-height:88vh;display:flex;flex-direction:column}
+@keyframes pop{from{transform:scale(.95);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
+.modal-head h3{font-size:16.5px}
+.modal-body{padding:18px 20px;overflow:auto;font-size:14.5px}
+.modal-foot{padding:14px 20px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:10px;background:#fafbfd;flex-wrap:wrap}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:1000px){
+  .grid2{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .exam-layout{grid-template-columns:1fr;padding:12px 12px 90px}
+  .exam-side{position:fixed;left:0;top:0;bottom:0;width:290px;max-width:86vw;z-index:120;transform:translateX(-102%);transition:transform .24s ease;padding:12px}
+  .exam-side.open{transform:none;box-shadow:var(--shadow2)}
+  .side-card{max-height:calc(100vh - 24px);height:100%}
+  .mobilebar{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+  .side-scrim{position:fixed;inset:0;background:rgba(16,26,40,.45);z-index:110}
+  .hero{padding:26px 20px}
+  .hero h1{font-size:22px}
+  .result-hero{grid-template-columns:1fr;justify-items:center;text-align:center;gap:18px;padding:24px 18px}
+  .page{padding:16px 12px 70px}
+  .qcard{padding:18px 16px}
+  .qstem{font-size:15.5px}
+  .brand-txt span{display:none}
+  .timer{font-size:15px;padding:5px 10px}
+}
+@media (max-width:520px){
+  .cardgrid{grid-template-columns:repeat(6,1fr)}
+  .hero .kpis{gap:16px}
+  .kpi b{font-size:21px}
+  .modal-foot .btn{flex:1}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="modal" class="modal-mask" hidden></div>
+
+<script>
+/* =========================================================
+   NCRE 二级 WPS Office 高级应用与设计 —— 考试模拟系统
+   纯静态单文件，全部数据与逻辑内联，无任何外部依赖。
+   ========================================================= */
+
+/* ============ 一、单项选择题题库 ============
+   字段：id 唯一编号 / cat 模块 / topic 知识点标签 / diff 难度
+        q 题干 / opts 四个选项 / ans 正确项下标 / exp 解析
+*/
+const SINGLE = [
+/* ---- 公共基础：计算机系统 ---- */
+{ id:'pb001', cat:'public', topic:'计算机系统 · 存储容量单位', diff:'易', q:'在计算机存储容量单位中，1GB 等于（　）。', opts:['1000MB','1024MB','1024KB','1000KB'], ans:1, exp:'存储容量单位以 2 的幂次换算：1B=8bit，1KB=1024B，1MB=1024KB，1GB=1024MB，1TB=1024GB。因此 1GB=1024MB。' },
+{ id:'pb002', cat:'public', topic:'计算机系统 · CPU 组成', diff:'易', q:'计算机的运算器和控制器合称为（　）。', opts:['主机','中央处理器（CPU）','算术逻辑单元（ALU）','内存储器'], ans:1, exp:'运算器（ALU）负责算术与逻辑运算，控制器负责取指、译码、发出控制命令，两者合称中央处理器（CPU）。CPU 与内存储器合称主机。' },
+{ id:'pb003', cat:'public', topic:'计算机系统 · 存储器', diff:'易', q:'下列存储器中，断电后所存信息会全部丢失的是（　）。', opts:['ROM','RAM','硬盘','U 盘'], ans:1, exp:'RAM（随机存取存储器）是易失性存储器，断电后信息丢失；ROM、硬盘、U 盘均为非易失性存储介质，断电后信息可保留。' },
+{ id:'pb004', cat:'public', topic:'计算机系统 · 数制转换', diff:'易', q:'二进制数 1011 转换为十进制数是（　）。', opts:['9','11','13','15'], ans:1, exp:'按权展开：1×2³+0×2²+1×2¹+1×2⁰ = 8+0+2+1 = 11。' },
+{ id:'pb005', cat:'public', topic:'计算机系统 · 冯·诺依曼结构', diff:'中', q:'冯·诺依曼体系结构计算机的核心思想是（　）。', opts:['并行处理','存储程序与程序控制','分时操作','面向对象'], ans:1, exp:'冯·诺依曼体系结构的核心是“存储程序”与“程序控制”：程序和数据一样以二进制形式存放在存储器中，计算机按存储的程序顺序自动执行。' },
+{ id:'pb006', cat:'public', topic:'计算机系统 · 字符编码', diff:'易', q:'在计算机中，一个标准 ASCII 字符所占的存储空间是（　）。', opts:['1 个字节','2 个字节','4 个字节','8 个字节'], ans:0, exp:'标准 ASCII 码用 7 位二进制表示一个字符，存储时占 1 个字节（8 位）。而一个汉字在 GB2312 等编码下通常占 2 个字节。' },
+{ id:'pb007', cat:'public', topic:'计算机系统 · 输入输出设备', diff:'易', q:'下列设备中，属于输入设备的是（　）。', opts:['显示器','打印机','扫描仪','绘图仪'], ans:2, exp:'扫描仪把纸面信息转换为计算机可处理的数字信息，属于输入设备；显示器、打印机、绘图仪都是输出设备。' },
+{ id:'pb008', cat:'public', topic:'计算机系统 · 系统组成', diff:'易', q:'一个完整的计算机系统由（　）组成。', opts:['主机和显示器','硬件系统和软件系统','运算器和控制器','CPU 和内存'], ans:1, exp:'计算机系统由硬件系统（运算器、控制器、存储器、输入设备、输出设备）和软件系统（系统软件与应用软件）两大部分组成。' },
+{ id:'pb009', cat:'public', topic:'计算机系统 · 性能指标', diff:'中', q:'下列指标中，通常用来衡量 CPU 运算速度的是（　）。', opts:['主频','显示器分辨率','硬盘容量','打印机分辨率'], ans:0, exp:'主频（时钟频率）是衡量 CPU 运算速度的重要指标之一，单位有 Hz、MHz、GHz；此外字长、核心数、缓存容量等也影响 CPU 性能。' },
+
+/* ---- 公共基础：数据结构与算法 ---- */
+{ id:'pb010', cat:'public', topic:'算法 · 时间复杂度', diff:'中', q:'算法的时间复杂度是指（　）。', opts:['算法程序的运行时间（绝对秒数）','算法执行时所需基本运算次数随问题规模 n 增长的数量级','算法程序的长度','算法执行过程中所占用的存储空间'], ans:1, exp:'时间复杂度描述算法执行时间随问题规模 n 增长的趋势，用基本运算执行次数的数量级表示，如 O(n)、O(nlog₂n)、O(n²) 等，而不是具体的运行秒数。选项 D 描述的是空间复杂度。' },
+{ id:'pb011', cat:'public', topic:'数据结构 · 线性链表', diff:'中', q:'下列关于线性链表的叙述中，正确的是（　）。', opts:['线性链表的所有结点必须连续存放','线性链表的结点可以连续存放，也可以不连续存放','线性链表不能进行插入和删除操作','线性链表可以随机存取任意一个结点'], ans:1, exp:'链式存储通过指针域建立结点间的逻辑关系，结点物理位置可连续也可不连续；插入、删除只需修改指针、不需移动元素；但链表只能顺序访问，不能随机存取（随机存取是顺序存储的特点）。' },
+{ id:'pb012', cat:'public', topic:'数据结构 · 栈', diff:'易', q:'栈这种数据结构的主要特点是（　）。', opts:['先进先出','后进先出','可以随机存取','按优先级存取'], ans:1, exp:'栈只允许在同一端（栈顶）进行插入和删除，遵循“后进先出（LIFO，Last In First Out）”原则；队列遵循“先进先出（FIFO）”。' },
+{ id:'pb013', cat:'public', topic:'数据结构 · 队列', diff:'易', q:'队列的插入操作和删除操作分别在（　）进行。', opts:['同一端','两端','任意位置','都在队尾'], ans:1, exp:'队列只允许在队尾插入（入队）、在队头删除（出队），两端各司其职，因此具有先进先出的特点。' },
+{ id:'pb014', cat:'public', topic:'数据结构 · 二叉树性质', diff:'中', q:'深度为 h 的满二叉树最多含有（　）个结点。', opts:['2h-1','2 的 h 次方减 1','2 的 h 次方','2 的（h-1）次方'], ans:1, exp:'满二叉树每层结点数依次为 1、2、4、…、2^(h-1)，总和为 2^h − 1 个结点。' },
+{ id:'pb015', cat:'public', topic:'数据结构 · 二叉树性质', diff:'中', q:'一棵二叉树的第 i 层（根结点为第 1 层）最多有（　）个结点。', opts:['2 的（i-1）次方','2 的 i 次方','2i-1','i 个'], ans:0, exp:'二叉树第 i 层最多有 2^(i−1) 个结点；深度为 h 的二叉树最多有 2^h − 1 个结点。' },
+{ id:'pb016', cat:'public', topic:'数据结构 · 二叉树遍历', diff:'难', q:'已知某二叉树的前序遍历序列为 ABDECF，中序遍历序列为 DBEAFC，则其后序遍历序列为（　）。', opts:['DEBFCA','DEBCFA','DBEFCA','EDBCFA'], ans:0, exp:'前序首元素 A 为根，中序中 A 左侧 DB E 为左子树、右侧 FC 为右子树。左子树前序 BDE、中序 DBE，得 B 为根、D 为左孩子、E 为右孩子；右子树前序 CF、中序 FC，得 C 为根、F 为左孩子。后序为“左-右-根”：D E B F C A，即 DEBFCA。' },
+{ id:'pb017', cat:'public', topic:'算法 · 二分查找', diff:'中', q:'在长度为 n 的有序线性表中进行二分查找，最坏情况下需要比较的次数为（　）。', opts:['n','n/2','log₂n','n²'], ans:2, exp:'二分查找每次将查找区间缩小一半，最坏情况下比较次数为 ⌊log₂n⌋+1，数量级为 log₂n；顺序查找最坏为 n 次。' },
+{ id:'pb018', cat:'public', topic:'算法 · 冒泡排序', diff:'中', q:'对长度为 n 的线性表进行冒泡排序，最坏情况下需要比较的次数为（　）。', opts:['n','n-1','n(n-1)/2','n²'], ans:2, exp:'冒泡排序最坏情况（逆序）需进行 n−1 趟，第 i 趟比较 n−i 次，总比较次数为 (n−1)+(n−2)+…+1 = n(n−1)/2，时间复杂度为 O(n²)。' },
+{ id:'pb019', cat:'public', topic:'算法 · 顺序查找', diff:'易', q:'对长度为 n 的线性表进行顺序查找，最坏情况下需要比较的次数为（　）。', opts:['n','n/2','log₂n','n²'], ans:0, exp:'顺序查找从表的一端逐个比较，最坏情况（查找失败或目标在最后一个位置）需要比较 n 次，平均比较次数约为 (n+1)/2。' },
+{ id:'pb020', cat:'public', topic:'算法 · 基本特征', diff:'中', q:'下列选项中，不属于算法基本特征的是（　）。', opts:['有穷性','确定性','可行性','可读性'], ans:3, exp:'算法应具备 5 个基本特征：有穷性、确定性、可行性、有输入、有输出。可读性是评价算法优劣的参考指标，但不属于算法的基本特征。' },
+{ id:'pb021', cat:'public', topic:'数据结构 · 基本概念', diff:'中', q:'在数据结构中，数据的最小单位是（　）。', opts:['数据项','数据元素','数据对象','数据结构'], ans:0, exp:'数据项是数据不可分割的最小单位；数据元素是数据的基本单位，通常由若干数据项组成；性质相同的数据元素的集合称为数据对象。' },
+{ id:'pb022', cat:'public', topic:'数据结构 · 循环队列', diff:'难', q:'设循环队列的存储空间为 m，采用“少用一个元素空间”的方式区分队空与队满，则判断队列为空的条件是（　）。', opts:['front == rear','(rear+1) % m == front','front == 0','rear == 0'], ans:0, exp:'循环队列中 front==rear 表示队空；当 (rear+1)%m==front 时表示队满（牺牲一个存储单元以区分队空与队满）。' },
+{ id:'pb023', cat:'public', topic:'数据结构 · 二叉树性质', diff:'中', q:'一棵二叉树中共有 10 个度为 2 的结点，则该二叉树中叶子结点（度为 0 的结点）的个数为（　）。', opts:['9','10','11','12'], ans:2, exp:'由二叉树性质 n₀ = n₂ + 1（叶子结点数 = 度为 2 的结点数 + 1），故叶子结点数为 10+1 = 11 个。' },
+{ id:'pb024', cat:'public', topic:'算法 · 排序复杂度', diff:'中', q:'下列排序方法中，平均时间复杂度为 O(nlog₂n) 的是（　）。', opts:['冒泡排序','直接插入排序','快速排序','直接选择排序'], ans:2, exp:'快速排序平均时间复杂度为 O(nlog₂n)，最坏为 O(n²)；冒泡、直接插入、直接选择排序的平均时间复杂度均为 O(n²)。' },
+
+/* ---- 公共基础：程序设计基础 ---- */
+{ id:'pb025', cat:'public', topic:'程序设计 · 结构化', diff:'易', q:'结构化程序设计的三种基本控制结构是（　）。', opts:['顺序、选择、循环','顺序、跳转、循环','选择、循环、递归','模块、函数、过程'], ans:0, exp:'结构化程序设计规定任何程序都可由顺序结构、选择（分支）结构和循环结构三种基本结构组合而成，并限制使用 goto 语句。' },
+{ id:'pb026', cat:'public', topic:'程序设计 · 封装', diff:'易', q:'面向对象方法中，把对象的属性和操作组合在一起，并对外隐藏内部实现细节，这一特性称为（　）。', opts:['继承','多态','封装','重载'], ans:2, exp:'封装（信息隐蔽）把数据和操作数据的方法捆绑在一起，并隐藏对象的内部实现细节，只通过对外接口访问，从而提高安全性和可维护性。' },
+{ id:'pb027', cat:'public', topic:'程序设计 · 继承', diff:'易', q:'在面向对象方法中，子类自动共享父类的数据和方法，这一特性称为（　）。', opts:['封装','继承','多态','抽象'], ans:1, exp:'继承是子类自动获得父类属性和方法的机制，有利于代码复用和层次化建模；被继承的类称为基类（父类），新类称为派生类（子类）。' },
+{ id:'pb028', cat:'public', topic:'程序设计 · 多态', diff:'中', q:'在面向对象方法中，同一操作作用于不同的对象可以产生不同的执行结果，这一特性称为（　）。', opts:['封装','继承','多态','消息'], ans:2, exp:'多态是指同一消息（操作）被不同对象接收时产生不同行为，通常通过方法重写和动态绑定实现，是面向对象三大特征之一。' },
+{ id:'pb029', cat:'public', topic:'程序设计 · 结构化原则', diff:'中', q:'结构化程序设计强调的核心设计原则是（　）。', opts:['自顶向下、逐步求精、模块化','自底向上、一次成型','面向对象、继承复用','并行设计、负载均衡'], ans:0, exp:'结构化程序设计倡导“自顶向下、逐步求精、模块化”的设计原则，把复杂问题逐层分解为功能相对独立的模块，降低系统复杂度。' },
+{ id:'pb030', cat:'public', topic:'程序设计 · 类与对象', diff:'易', q:'在面向对象方法中，类的实例称为（　）。', opts:['方法','对象','属性','消息'], ans:1, exp:'类是对具有相同属性和操作的一组对象的抽象描述；对象是类的一个实例，是实际存在的实体。' },
+{ id:'pb031', cat:'public', topic:'程序设计 · 结构化', diff:'中', q:'下列关于结构化程序设计的叙述中，错误的是（　）。', opts:['限制使用 goto 语句','三种基本结构可组合实现任何算法','模块划分应尽量高内聚、低耦合','程序设计必须采用自底向上的方式'], ans:3, exp:'结构化程序设计强调“自顶向下、逐步求精”，而不是自底向上；同时限制 goto 语句、主张三种基本结构组合、追求模块高内聚低耦合。' },
+{ id:'pb032', cat:'public', topic:'程序设计 · 消息', diff:'中', q:'面向对象方法中，对象之间相互联系、协同工作所传递的信息称为（　）。', opts:['消息','数据流','属性','过程'], ans:0, exp:'对象之间通过消息进行通信，一个对象向另一个对象发送消息请求其执行某个操作，从而驱动整个系统的运行。' },
+{ id:'pb033', cat:'public', topic:'程序设计 · 类', diff:'易', q:'把具有相同属性和操作的一组对象抽象出来所形成的概念是（　）。', opts:['方法','类','消息','实例'], ans:1, exp:'类是具有相同属性和操作的对象的集合的抽象；实例（对象）则是类的具体化。' },
+{ id:'pb034', cat:'public', topic:'程序设计 · 结构化', diff:'易', q:'下列选项中，不属于结构化程序设计基本结构的是（　）。', opts:['顺序结构','选择结构','循环结构','递归结构'], ans:3, exp:'三种基本结构为顺序、选择、循环；递归是一种程序设计技术（算法思想），不是基本控制结构。' },
+
+/* ---- 公共基础：软件工程基础 ---- */
+{ id:'pb035', cat:'public', topic:'软件工程 · 软件生命周期', diff:'中', q:'在软件生命周期中，持续时间最长、投入成本最高的阶段是（　）。', opts:['需求分析','软件设计','编码实现','软件维护'], ans:3, exp:'软件维护阶段从软件交付使用一直持续到软件退役，时间跨度最长，通常占软件总成本的 60% 以上。' },
+{ id:'pb036', cat:'public', topic:'软件工程 · 需求分析', diff:'易', q:'软件需求分析阶段产生的主要文档是（　）。', opts:['软件需求规格说明书','概要设计说明书','详细设计说明书','项目开发计划'], ans:0, exp:'需求分析的任务是明确“做什么”，其成果是软件需求规格说明书（SRS），它是后续设计、编码和验收测试的依据。' },
+{ id:'pb037', cat:'public', topic:'软件工程 · 结构化分析', diff:'中', q:'结构化分析方法（SA）最常用的建模工具是（　）。', opts:['数据流图（DFD）','程序流程图','N-S 图','PAD 图'], ans:0, exp:'结构化分析（SA）以数据流图（DFD）和数据字典为核心工具，从数据流动的角度描述系统的功能；程序流程图、N-S 图、PAD 图属于详细设计的描述工具。' },
+{ id:'pb038', cat:'public', topic:'软件工程 · 模块独立性', diff:'中', q:'衡量模块独立性的两个定性标准是（　）。', opts:['耦合性与内聚性','正确性与可靠性','效率与成本','可读性与可移植性'], ans:0, exp:'模块独立性由内聚性和耦合性共同衡量：内聚性越高、耦合性越低，模块独立性越好，软件越易于维护和修改。' },
+{ id:'pb039', cat:'public', topic:'软件工程 · 白盒测试', diff:'中', q:'下列方法中，不属于白盒测试逻辑覆盖标准的是（　）。', opts:['语句覆盖','判定覆盖','条件覆盖','等价类划分'], ans:3, exp:'白盒测试依据程序内部逻辑结构设计用例，常见覆盖标准有语句覆盖、判定覆盖、条件覆盖、判定/条件覆盖、条件组合覆盖、路径覆盖等；等价类划分属于黑盒测试方法。' },
+{ id:'pb040', cat:'public', topic:'软件工程 · 黑盒测试', diff:'易', q:'下列选项中，属于黑盒测试常用方法的是（　）。', opts:['等价类划分和边界值分析','语句覆盖和判定覆盖','路径覆盖和条件覆盖','基本路径测试'], ans:0, exp:'黑盒测试不关心程序内部结构，常用方法包括等价类划分、边界值分析、错误推测法、因果图法等；其余选项均属于白盒测试方法。' },
+{ id:'pb041', cat:'public', topic:'软件工程 · 软件测试', diff:'易', q:'软件测试的根本目的是（　）。', opts:['证明程序中没有错误','尽可能多地发现程序中的错误','修改程序中的错误','评价程序运行速度'], ans:1, exp:'软件测试的目的是以最少的时间和人力，尽可能多地发现程序中存在的错误；测试只能证明错误存在，不能证明错误不存在，修改错误是调试（Debug）的任务。' },
+{ id:'pb042', cat:'public', topic:'软件工程 · 程序调试', diff:'中', q:'程序调试（Debug）的主要目的是（　）。', opts:['发现程序中的错误','诊断并改正程序中的错误','评价软件质量','设计测试用例'], ans:1, exp:'测试与调试是两个不同环节：测试用于发现错误，调试则是在测试发现错误后，进一步确定错误的位置和原因并加以改正。' },
+{ id:'pb043', cat:'public', topic:'软件工程 · 详细设计', diff:'中', q:'下列图形工具中，不能用于详细设计阶段描述算法的是（　）。', opts:['N-S 图（盒图）','PAD 图','程序流程图','数据流图（DFD）'], ans:3, exp:'数据流图（DFD）是结构化分析阶段描述系统数据加工与流动的工具；N-S 图、PAD 图、程序流程图均用于详细设计阶段描述模块的处理过程。' },
+{ id:'pb044', cat:'public', topic:'软件工程 · 软件设计', diff:'中', q:'在软件工程中，把软件需求转换为软件体系结构、模块划分和接口定义的工作属于（　）。', opts:['需求分析','软件设计','编码实现','软件测试'], ans:1, exp:'软件设计分为概要设计（体系结构设计、模块划分、接口设计）和详细设计（模块内部算法与数据结构设计），其任务是把“做什么”转换为“怎么做”。' },
+
+/* ---- 公共基础：数据库设计基础 ---- */
+{ id:'pb045', cat:'public', topic:'数据库 · 三级模式', diff:'中', q:'数据库系统的三级模式结构由（　）组成。', opts:['外模式、概念模式、内模式','逻辑模式、物理模式、存储模式','用户模式、视图、表','关系模式、层次模式、网状模式'], ans:0, exp:'数据库系统的三级模式为外模式（用户模式）、概念模式（模式）和内模式（存储模式）；两级映射为外模式/模式映射和模式/内模式映射，保证了数据独立性与安全性。' },
+{ id:'pb046', cat:'public', topic:'数据库 · E-R 图', diff:'易', q:'在 E-R 图中，用菱形表示（　）。', opts:['实体','属性','联系','主键'], ans:2, exp:'E-R 图（实体-联系图）中：矩形表示实体，椭圆表示属性，菱形表示联系，直线连接并标注联系的类型（1:1、1:n、m:n）。' },
+{ id:'pb047', cat:'public', topic:'数据库 · 关系模型', diff:'易', q:'在关系模型中，能唯一标识一个元组（记录）的属性或属性组称为（　）。', opts:['外键','主键（主码）','索引','视图'], ans:1, exp:'主键（主码）是能唯一标识关系中每个元组的属性或属性组，其值不能重复且不能为空，体现实体完整性约束。' },
+{ id:'pb048', cat:'public', topic:'数据库 · 规范化', diff:'中', q:'关系数据库规范化的主要目的是（　）。', opts:['提高查询速度','消除数据冗余，避免插入和删除异常','减少硬盘占用空间','方便程序设计'], ans:1, exp:'规范化的目的是通过分解关系模式，消除数据冗余和插入、删除、更新异常，使关系模式逐步满足 1NF、2NF、3NF 甚至 BCNF。' },
+{ id:'pb049', cat:'public', topic:'数据库 · 范式', diff:'中', q:'若一个关系模式中的每个属性都是不可再分的数据项，则该关系模式至少属于（　）。', opts:['第一范式（1NF）','第二范式（2NF）','第三范式（3NF）','BCNF'], ans:0, exp:'第一范式（1NF）要求关系中每个属性都不可再分；在此基础上消除非主属性对主键的部分函数依赖则达到 2NF，再消除传递函数依赖则达到 3NF。' },
+{ id:'pb050', cat:'public', topic:'数据库 · 关系代数', diff:'中', q:'关系代数的五种基本运算包括（　）。', opts:['并、差、笛卡尔积、选择、投影','加、减、乘、除、取余','排序、索引、分组、统计、汇总','插入、删除、修改、查询、更新'], ans:0, exp:'关系代数的基本运算为并、差、笛卡尔积、选择和投影，其余运算（交、连接、自然连接、除等）均可由这五种基本运算导出。' },
+/* ---- 计算机基础与 WPS 综合应用基础 ---- */
+{ id:'bx001', cat:'basic', topic:'WPS 综合 · 文件格式', diff:'易', q:'WPS 演示文稿默认保存的文件扩展名是（　）。', opts:['.ppt','.dps','.pps','.wpp'], ans:1, exp:'WPS 演示的默认文件格式为 .dps（演示文稿）；.ppt 是 Microsoft PowerPoint 的格式。WPS 文字默认为 .wps，WPS 表格默认为 .et。' },
+{ id:'bx002', cat:'basic', topic:'WPS 综合 · 文件格式', diff:'易', q:'WPS 表格工作簿默认保存的文件扩展名是（　）。', opts:['.xls','.et','.xlsx','.wks'], ans:1, exp:'WPS 表格的默认文件格式为 .et；.xls/.xlsx 为 Microsoft Excel 的格式，WPS 表格可兼容打开并另存为这些格式。' },
+{ id:'bx003', cat:'basic', topic:'WPS 综合 · 常用快捷键', diff:'易', q:'在 WPS Office 中，保存当前文档的快捷键是（　）。', opts:['Ctrl+S','Ctrl+V','Ctrl+X','Ctrl+Z'], ans:0, exp:'Ctrl+S 保存；Ctrl+V 粘贴；Ctrl+X 剪切；Ctrl+Z 撤销。建议养成随时按 Ctrl+S 保存的习惯。' },
+{ id:'bx004', cat:'basic', topic:'WPS 综合 · 常用快捷键', diff:'易', q:'在 WPS Office 中，撤销上一步操作的快捷键是（　）。', opts:['Ctrl+Y','Ctrl+Z','Ctrl+C','Ctrl+A'], ans:1, exp:'Ctrl+Z 撤销（可连续多次）；Ctrl+Y 恢复（重做）；Ctrl+C 复制；Ctrl+A 全选。' },
+{ id:'bx005', cat:'basic', topic:'WPS 综合 · 常用快捷键', diff:'易', q:'在 WPS 文字中，打开“查找和替换”对话框的快捷键是（　）。', opts:['Ctrl+H','Ctrl+F','Ctrl+G','Ctrl+P'], ans:1, exp:'Ctrl+F 打开查找（也可用 Ctrl+H 打开“查找和替换”对话框中的替换选项卡）；Ctrl+G 定位；Ctrl+P 打印。' },
+{ id:'bx006', cat:'basic', topic:'WPS 综合 · 常用快捷键', diff:'易', q:'在 WPS Office 中，执行打印操作的快捷键是（　）。', opts:['Ctrl+P','Ctrl+O','Ctrl+N','Ctrl+W'], ans:0, exp:'Ctrl+P 打印；Ctrl+O 打开文件；Ctrl+N 新建文件；Ctrl+W 关闭当前文档。' },
+{ id:'bx007', cat:'basic', topic:'WPS 综合 · 常用快捷键', diff:'易', q:'在 WPS Office 中，新建空白文档的快捷键是（　）。', opts:['Ctrl+N','Ctrl+M','Ctrl+D','Ctrl+L'], ans:0, exp:'Ctrl+N 新建文档；Ctrl+M 在 WPS 文字中可增大段落缩进；Ctrl+D 在 WPS 演示中可复制幻灯片。' },
+{ id:'bx008', cat:'basic', topic:'WPS 综合 · 常用快捷键', diff:'易', q:'在 WPS 文字中，将选中文字设置为加粗的快捷键是（　）。', opts:['Ctrl+B','Ctrl+I','Ctrl+U','Ctrl+K'], ans:0, exp:'Ctrl+B 加粗（Bold）；Ctrl+I 倾斜（Italic）；Ctrl+U 下划线（Underline）；Ctrl+K 在演示中用于插入超链接。' },
+{ id:'bx009', cat:'basic', topic:'WPS 综合 · 文档加密', diff:'中', q:'为 WPS 文档设置打开密码（防止他人打开文件），正确的操作路径是（　）。', opts:['文件 → 文档加密 → 密码加密','开始 → 字体 → 加密','插入 → 文本框 → 加密','视图 → 页面视图 → 加密'], ans:0, exp:'在 WPS 中通过「文件」选项卡 →「文档加密」→「密码加密」，可分别设置“打开权限密码”和“编辑权限密码”，保存后重新打开文档即生效。' },
+{ id:'bx010', cat:'basic', topic:'WPS 综合 · PDF', diff:'中', q:'关于 WPS 对 PDF 文档的支持，下列说法正确的是（　）。', opts:['只能阅读，不能做任何处理','可以阅读、添加批注、编辑内容并进行格式转换与加密保护','PDF 无法转换为其他格式','PDF 不能添加水印'], ans:1, exp:'WPS 内置 PDF 组件，支持阅读、批注、编辑文字与图片、拆分合并、格式转换（PDF 与 Word/Excel/PPT 互转）、加密与加水印保护等操作。' },
+{ id:'bx011', cat:'basic', topic:'WPS 综合 · 云文档协作', diff:'中', q:'将文档保存到 WPS 云文档后，最突出的优势是（　）。', opts:['文档体积自动变小','可在多设备间同步，并支持多人同时在线协作编辑','文档自动转为 PDF','文档不能被删除'], ans:1, exp:'WPS 云文档依托云存储，实现多端同步、版本管理与在线协作；多人可同时编辑同一文档，并可通过分享链接设置查看或编辑权限。' },
+{ id:'bx012', cat:'basic', topic:'WPS 综合 · 共享协作', diff:'中', q:'将 WPS 云文档分享给他人时，为保证对方只能阅读、不能修改，应将其权限设置为（　）。', opts:['可编辑','仅查看','可下载并编辑','可管理'], ans:1, exp:'分享时可设置权限：「仅查看」对方只能阅读，「可编辑」可修改内容，「可管理」还可调整权限。仅需阅读时选择「仅查看」最安全。' },
+{ id:'bx013', cat:'basic', topic:'WPS 综合 · 版本管理', diff:'中', q:'误删了云文档中的部分内容并已保存，希望恢复到之前的版本，应使用（　）。', opts:['文件 → 历史版本（版本记录）','文件 → 打印','开始 → 格式刷','视图 → 阅读版式'], ans:0, exp:'WPS 云文档会保存历史版本，通过「文件」→「历史版本」可查看不同时间点的版本并一键恢复，避免误操作造成的数据丢失。' },
+{ id:'bx014', cat:'basic', topic:'WPS 文字 · 视图', diff:'中', q:'在 WPS 文字中，用于查看和调整文档整体结构、快速设置标题层级的视图是（　）。', opts:['页面视图','阅读版式视图','大纲视图','Web 版式视图'], ans:2, exp:'大纲视图以层级方式显示文档结构，可方便地折叠/展开各级标题、调整标题级别和段落顺序，是长文档结构整理的高效视图。' },
+{ id:'bx015', cat:'basic', topic:'WPS 演示 · 视图', diff:'易', q:'在 WPS 演示中，要集中查看所有幻灯片并调整它们的先后顺序，最合适的视图是（　）。', opts:['普通视图','幻灯片浏览视图','备注页视图','幻灯片放映视图'], ans:1, exp:'幻灯片浏览视图以缩略图网格显示所有幻灯片，便于快速调整顺序、复制删除幻灯片和批量设置切换效果。' },
+{ id:'bx016', cat:'basic', topic:'WPS 综合 · 导出 PDF', diff:'中', q:'在 WPS 文字中把文档输出为 PDF 文件，应使用的功能是（　）。', opts:['文件 → 输出为 PDF','插入 → 图片','审阅 → 修订','视图 → 网格线'], ans:0, exp:'通过「文件」→「输出为 PDF」可将文档导出为 PDF，并可设置输出范围、是否嵌入字体、是否加密、是否生成书签等选项。' },
+{ id:'bx017', cat:'basic', topic:'WPS 综合 · 备份与恢复', diff:'中', q:'WPS 因意外关闭导致文档内容未保存，可通过（　）尝试找回。', opts:['文件 → 备份与恢复 → 备份中心','文件 → 文档加密','开始 → 样式','插入 → 页眉页脚'], ans:0, exp:'WPS 提供自动备份功能，通过「文件」→「备份与恢复」→「备份中心」可查看定时备份与临时备份文件，并将其恢复为文档。' },
+{ id:'bx018', cat:'basic', topic:'WPS 综合 · 兼容性', diff:'中', q:'下列关于 WPS Office 兼容性的说法中，正确的是（　）。', opts:['WPS 只能打开自身的 .wps/.et/.dps 格式','WPS 可以打开并编辑 .docx/.xlsx/.pptx 等 Microsoft Office 格式文件','WPS 无法打开 PDF 文件','WPS 不能将文档另存为 .docx'], ans:1, exp:'WPS Office 高度兼容 Microsoft Office 格式，可打开、编辑 .doc/.docx/.xls/.xlsx/.ppt/.pptx，也可将文档另存为这些格式，还支持 PDF 的打开与转换。' },
+{ id:'bx019', cat:'basic', topic:'WPS 综合 · 文件保存', diff:'中', q:'下列关于“保存”与“另存为”的说法，正确的是（　）。', opts:['两者完全等价','“保存”默认覆盖原文件，“另存为”可指定新位置或新文件名并生成副本','“另存为”会删除原文件','“保存”只能保存为 PDF'], ans:1, exp:'「保存」将修改写回当前文件；「另存为」可重新指定文件名、保存位置和文件类型，生成一个副本，原文件不受影响，适合保留不同版本。' },
+{ id:'bx020', cat:'basic', topic:'WPS 综合 · 在线办公', diff:'中', q:'WPS 在线办公（云办公）提供的能力不包括（　）。', opts:['多人在线协作编辑同一文档','文档跨设备同步与历史版本管理','在线分享链接并设置访问权限','自动修复计算机硬件故障'], ans:3, exp:'WPS 在线办公提供云存储同步、多人协作、权限分享、版本管理、在线表单与模板等能力；硬件故障修复不属于办公软件的功能范畴。' },
+
+/* ---- WPS 文字 ---- */
+{ id:'wd001', cat:'word', topic:'WPS 文字 · 段落缩进', diff:'易', q:'在 WPS 文字中，将正文各段落设置为“首行缩进 2 字符”，正确的操作是（　）。', opts:['选中段落后按两次空格键','选中段落 → 开始 → 段落对话框 → 缩进 → 特殊格式选“首行缩进”，度量值设为 2 字符','用制表符 Tab 逐个对齐','设置“左缩进”为 2 字符'], ans:1, exp:'首行缩进应在「段落」对话框的“缩进-特殊格式”中设置。用空格或制表符实现缩进属于不规范操作，在调整字号、行距或生成目录时会出现排版错乱。' },
+{ id:'wd002', cat:'word', topic:'WPS 文字 · 行距', diff:'易', q:'将某段文字的行距设置为 1.5 倍行距，应在（　）中设置。', opts:['字体对话框','段落对话框的“行距”项','页面设置对话框','样式库'], ans:1, exp:'行距属于段落格式，在「开始」→「段落」对话框中设置，可选单倍、1.5 倍、2 倍、最小值、固定值和多倍行距等。' },
+{ id:'wd003', cat:'word', topic:'WPS 文字 · 样式', diff:'中', q:'要使文档中所有应用“标题 1”样式的段落统一变为三号黑体，最高效的做法是（　）。', opts:['逐个选中段落修改字体','修改“标题 1”样式定义','用格式刷逐段刷','用查找替换逐个替换字体'], ans:1, exp:'样式是格式的集合，修改样式的定义后，所有应用该样式的段落会自动同步更新，既高效又便于后期统一维护，这是使用样式的核心价值。' },
+{ id:'wd004', cat:'word', topic:'WPS 文字 · 目录', diff:'中', q:'在 WPS 文字中自动生成目录的前提条件是（　）。', opts:['标题文字手动加粗并居中','各级标题段落应用了内置标题样式（或设置了大纲级别）','标题字号足够大','文档分栏排版'], ans:1, exp:'自动目录依据段落的大纲级别（标题 1、标题 2 等样式）提取条目。若标题只做了加粗、加大字号等直接格式设置，目录将无法自动提取。' },
+{ id:'wd005', cat:'word', topic:'WPS 文字 · 目录更新', diff:'中', q:'文档内容修改后，已生成的目录页码与实际页码不一致，正确的处理方法是（　）。', opts:['删除目录后手动重新输入','在目录上右击 → 更新域 → 更新整个目录','逐条手动修改页码','关闭并重新打开文档'], ans:1, exp:'目录本质是一个域，内容变化后通过“更新域”即可重新提取标题和页码，可选“只更新页码”或“更新整个目录”，避免手工修改产生新错误。' },
+{ id:'wd006', cat:'word', topic:'WPS 文字 · 分节', diff:'难', q:'要使文档前两页为纵向、从第三页起改为横向，正确的做法是（　）。', opts:['在第三页前插入分页符，再设置纸张方向','在第三页前插入“分节符（下一页）”，再单独设置该节的纸张方向','调整页边距','对第三页以后的内容分栏'], ans:1, exp:'纸张方向、页边距、纸张大小、页眉页脚、分栏等属于“节”属性。要实现同一文档中不同方向，必须先分节，再对目标节单独设置，分页符只能分页不能分节。' },
+{ id:'wd007', cat:'word', topic:'WPS 文字 · 页眉页脚', diff:'中', q:'要使文档奇数页与偶数页的页眉内容不同，应进行的设置是（　）。', opts:['勾选“首页不同”','勾选“奇偶页不同”','勾选“链接到前一条页眉”','设置页眉距边界距离'], ans:1, exp:'在页眉页脚编辑状态或「页面设置」→「版式」中勾选“奇偶页不同”，即可为奇数页和偶数页分别设置不同的页眉页脚；“首页不同”用于单独设置封面页。' },
+{ id:'wd008', cat:'word', topic:'WPS 文字 · 页眉分节', diff:'难', q:'分节后，若希望后续节的页眉不与前一节保持一致而独立设置，应（　）。', opts:['取消“链接到前一条页眉”','删除前一节的页眉','重新插入分页符','设置首页不同'], ans:0, exp:'默认情况下后续节的页眉会“链接到前一条页眉”而跟随前一节变化。只有先取消该链接，才能为当前节单独设置页眉页脚内容。' },
+{ id:'wd009', cat:'word', topic:'WPS 文字 · 邮件合并', diff:'中', q:'使用邮件合并批量生成录取通知书，需要准备的两类文件是（　）。', opts:['主文档和数据源（如 Excel 表格）','两个主文档','两个数据源','一个模板和一个样式库'], ans:0, exp:'邮件合并的基本结构是“主文档 + 数据源”：主文档包含固定内容与合并域（如《姓名》《专业》），数据源提供每个收件人的具体数据，合并后为每条记录生成一份文档。' },
+{ id:'wd010', cat:'word', topic:'WPS 文字 · 审阅修订', diff:'中', q:'同事开启了修订功能修改了你的文档，你希望逐条决定是否采纳这些修改，应（　）。', opts:['直接删除所有批注','在“审阅”选项卡中使用“接受/拒绝修订”','关闭修订功能后另存','将文档另存为 PDF'], ans:1, exp:'修订记录了插入、删除、格式更改等痕迹，在「审阅」选项卡中可逐条或一次性“接受”或“拒绝”修订；批注只是旁注，删除批注不等于处理修订。' },
+{ id:'wd011', cat:'word', topic:'WPS 文字 · 脚注尾注', diff:'中', q:'关于脚注与尾注，下列说法正确的是（　）。', opts:['脚注位于文档末尾，尾注位于页面底端','脚注位于页面底端，尾注位于文档（或节）末尾','两者的位置完全相同','一篇文档中最多只能插入一个尾注'], ans:1, exp:'脚注出现在引用所在页的页面底端，便于就近查看；尾注集中出现在文档或节的末尾。可通过「引用」→「插入脚注/尾注」插入，并设置编号格式与位置。' },
+{ id:'wd012', cat:'word', topic:'WPS 文字 · 表格操作', diff:'易', q:'在 WPS 文字中，将表格中相邻的两个单元格合并为一个单元格，正确的操作是（　）。', opts:['选中这两个单元格后右击 → 合并单元格','调整列宽使两列等宽','使用“拆分表格”命令','设置单元格垂直对齐方式'], ans:0, exp:'选中要合并的相邻单元格（可多行多列）后，使用右键菜单或「表格工具」中的“合并单元格”命令即可；反向操作是“拆分单元格”。' },
+{ id:'wd013', cat:'word', topic:'WPS 文字 · 表格公式', diff:'难', q:'在 WPS 文字的表格中，当前单元格位于某列数值的最下方，要对该列上方所有数值求和，公式应为（　）。', opts:['=SUM(LEFT)','=SUM(ABOVE)','=SUM(RIGHT)','=SUM(BELOW)'], ans:1, exp:'文字表格中的公式用方位参数表示数据范围：ABOVE 表示当前单元格上方、LEFT 表示左侧、RIGHT 表示右侧、BELOW 表示下方，因此对上方数据求和应使用 =SUM(ABOVE)。' },
+{ id:'wd014', cat:'word', topic:'WPS 文字 · 题注与交叉引用', diff:'难', q:'为文档中的图片添加“图 1-1”这样的编号，并在正文中引用该编号且能随图片顺序自动更新，应使用（　）。', opts:['手动输入编号','插入“题注”并使用“交叉引用”','把编号放在文本框中','把编号写入页眉'], ans:1, exp:'题注可为图片、表格自动编号（如“图 1-1”），交叉引用则引用该题注编号；当图片顺序调整或增删后，更新域即可自动刷新编号，避免手工编号错乱。' },
+{ id:'wd015', cat:'word', topic:'WPS 文字 · 查找替换', diff:'难', q:'要将文档中所有加粗的“WPS”替换为红色加粗的“WPS Office”，最高效的方法是（　）。', opts:['逐处手动替换','在“查找和替换”对话框中分别设置查找格式与替换格式','使用格式刷逐段刷','先全部替换文字，再逐处设置颜色'], ans:1, exp:'在「查找和替换」中展开“更多”，可为查找内容指定格式（加粗）并为替换内容指定格式（红色加粗），一次完成“按格式查找 + 带格式替换”，也可使用通配符实现复杂匹配。' },
+{ id:'wd016', cat:'word', topic:'WPS 文字 · 页面设置', diff:'易', q:'将文档纸张设置为 A4、上下页边距设置为 2.54 厘米，应使用（　）。', opts:['“页面布局（布局）”选项卡中的纸张大小与页边距（页面设置）','“开始”选项卡的字体对话框','“开始”选项卡的段落对话框','“审阅”选项卡的修订'], ans:0, exp:'页面级参数（纸张大小、方向、页边距、分栏、版式、页眉页脚距边界）统一在「页面布局」选项卡的“页面设置”组中配置，也可通过对话框一次性精确设置。' },
+{ id:'wd017', cat:'word', topic:'WPS 文字 · 多级列表', diff:'中', q:'要为文档的多级标题设置“第 1 章 / 1.1 / 1.1.1”样式的自动编号，应使用（　）。', opts:['项目符号','多级列表（与标题样式关联）','首行缩进','分栏'], ans:1, exp:'多级列表可定义各级编号的格式与层级关系，并与标题样式关联，使标题自动编号。这样增删章节时编号会自动重排，比手工输入编号可靠得多。' },
+{ id:'wd018', cat:'word', topic:'WPS 文字 · 文本框', diff:'难', q:'文档中两个文本框的内容需要连续排版（第一个文本框排满后自动续排到第二个），应使用（　）。', opts:['文本框链接（创建链接）','组合文本框','设置文本框对齐方式','设置文字环绕方式'], ans:0, exp:'对文本框使用“创建链接”，先选中起始文本框再单击目标文本框，即可建立链接关系，文字排满第一个文本框后自动流入下一个文本框，常用于宣传折页、报纸式排版。' },
+/* ---- WPS 表格 ---- */
+{ id:'ex001', cat:'excel', topic:'WPS 表格 · 单元格引用', diff:'中', q:'在公式中引用单元格 A1，若希望向下、向右填充公式时行列号都保持不变，应使用的引用形式是（　）。', opts:['A1','$A$1','A$1','$A1'], ans:1, exp:'$A$1 为绝对引用，行号与列标前都加 $，填充时都不变化；A$1 为行绝对、列相对；$A1 为列绝对、行相对；A1 为相对引用，填充时会随之改变。' },
+{ id:'ex002', cat:'excel', topic:'WPS 表格 · VLOOKUP', diff:'中', q:'在 VLOOKUP 函数中，第四个参数（range_lookup）设置为 FALSE 或 0 时表示（　）。', opts:['近似匹配','精确匹配','升序排列','返回错误值'], ans:1, exp:'VLOOKUP(查找值, 查找区域, 返回列序号, 匹配方式)：第四参数为 TRUE/1 表示近似匹配（要求首列升序），为 FALSE/0 表示精确匹配，实际工作中绝大多数场景使用精确匹配。' },
+{ id:'ex003', cat:'excel', topic:'WPS 表格 · SUMIF', diff:'中', q:'要按指定条件对某一区域的数值求和，应使用的函数是（　）。', opts:['SUM','SUMIF','COUNTIF','AVERAGE'], ans:1, exp:'SUMIF(条件区域, 条件, 求和区域) 用于单条件求和；SUM 为无条件求和；COUNTIF 用于条件计数；AVERAGE 用于求平均值。多条件求和则使用 SUMIFS。' },
+{ id:'ex004', cat:'excel', topic:'WPS 表格 · COUNTIF', diff:'中', q:'要统计某区域中数值大于等于 90 的单元格个数，正确的公式是（　）。', opts:['=COUNTIF(A1:A20,">=90")','=COUNT(A1:A20,">=90")','=SUMIF(A1:A20,">=90")','=COUNTIFS(A1:A20,">90")'], ans:0, exp:'COUNTIF(区域, 条件) 用于单条件计数，条件中的比较运算符需与数值一起用英文双引号括起。COUNT 只统计数值单元格个数，SUMIF 用于求和，COUNTIFS 为多条件计数且本例条件写法不完整。' },
+{ id:'ex005', cat:'excel', topic:'WPS 表格 · IFERROR', diff:'难', q:'公式 =IFERROR(A1/B1,"") 的作用是（　）。', opts:['判断 A1 是否等于 B1','当 A1/B1 的计算结果为错误值时返回空文本，否则返回计算结果','统计 A1 到 B1 的平均值','对 A1/B1 的结果四舍五入'], ans:1, exp:'IFERROR(值, 出错时返回的内容) 用于捕获 #DIV/0!、#N/A、#VALUE! 等错误并返回指定结果，常用于屏蔽除数为 0 或查找失败导致的错误显示，使表格更整洁。' },
+{ id:'ex006', cat:'excel', topic:'WPS 表格 · 混合引用', diff:'难', q:'单元格引用 A$1 属于（　）。', opts:['相对引用','绝对引用','混合引用（列相对、行绝对）','三维引用'], ans:2, exp:'A$1 中列标 A 前无 $、行号 1 前有 $，表示列相对、行绝对，属于混合引用；向右填充时列标变化，向下填充时行号不变。' },
+{ id:'ex007', cat:'excel', topic:'WPS 表格 · 分类汇总', diff:'中', q:'在 WPS 表格中使用“分类汇总”功能前，必须先进行的操作是（　）。', opts:['对分类字段进行排序，使同类记录集中在一起','为数据区域添加边框','将数据区域转换为图表','对数据进行筛选'], ans:0, exp:'分类汇总按分类字段对连续相同的记录分组统计，因此必须先用分类字段排序，把同类数据集中排列，否则同一分类会被拆分成多个汇总结果。' },
+{ id:'ex008', cat:'excel', topic:'WPS 表格 · 数据透视表', diff:'中', q:'面对一张包含数千条销售记录的数据表，要按“地区”和“季度”快速进行多角度汇总分析，最合适的工具是（　）。', opts:['数据透视表','条件格式','数据有效性','冻结窗格'], ans:0, exp:'数据透视表可通过对行、列、值、筛选字段的拖放，快速完成分组汇总、交叉分析和动态重排，是处理大量数据多维度统计的首选工具。' },
+{ id:'ex009', cat:'excel', topic:'WPS 表格 · 数据有效性', diff:'中', q:'要让某列单元格只能从“男、女”两个值中选择输入，应使用（　）。', opts:['数据 → 数据有效性（数据验证），设置序列来源','开始 → 条件格式','公式 → 定义名称','数据 → 分列'], ans:0, exp:'在「数据」选项卡中使用“数据有效性（数据验证）”，允许条件选择“序列”，来源填写“男,女”或引用一个区域，即可生成下拉列表并限制非法输入。' },
+{ id:'ex010', cat:'excel', topic:'WPS 表格 · 条件格式', diff:'中', q:'要让成绩表中低于 60 分的成绩自动显示为红色，应使用（　）。', opts:['条件格式中的“突出显示单元格规则”','手动逐个设置字体颜色','数据有效性','合并计算'], ans:0, exp:'条件格式可根据设定的规则自动改变单元格格式。使用“突出显示单元格规则-小于”并设置为 60 与红色，即可让不及格成绩自动标红，数据变化时格式自动更新。' },
+{ id:'ex011', cat:'excel', topic:'WPS 表格 · 合并计算', diff:'难', q:'需要把结构相同的 1 月、2 月、3 月三张工作表中的销售数据汇总到一张汇总表中，最合适的功能是（　）。', opts:['合并计算','分类汇总','数据透视表字段拖放','查找和替换'], ans:0, exp:'「数据」→「合并计算」可把多个区域或工作表中的数据按位置或按分类进行求和、计数等汇总运算，非常适合结构相同的多表数据汇总。' },
+{ id:'ex012', cat:'excel', topic:'WPS 表格 · 图表类型', diff:'中', q:'要反映某产品近 12 个月的销量变化趋势，最适合的图表类型是（　）。', opts:['饼图','折线图','散点图','雷达图'], ans:1, exp:'折线图以时间或类别为横轴，突出数据随时间变化的趋势；饼图适合表现各部分占整体的比例；散点图用于分析两变量的相关关系；雷达图适合多指标对比。' },
+{ id:'ex013', cat:'excel', topic:'WPS 表格 · 冻结窗格', diff:'中', q:'数据表很长，希望向下滚动时表头行始终可见，应使用（　）。', opts:['冻结首行（冻结窗格）','拆分窗口','隐藏行','设置打印标题'], ans:0, exp:'「视图」→「冻结窗格」→「冻结首行」可锁定第 1 行；若表头在前两行且需同时冻结首列，可先选中 C3 之类的单元格再执行“冻结至第 2 行第 B 列”。' },
+{ id:'ex014', cat:'excel', topic:'WPS 表格 · COUNTIFS', diff:'难', q:'要统计“部门”为“销售部”且“业绩”大于 10000 的记录条数，应使用的函数是（　）。', opts:['COUNTIF','COUNTIFS','SUMIFS','IF'], ans:1, exp:'COUNTIFS(区域1, 条件1, 区域2, 条件2, …) 支持多条件计数；COUNTIF 仅支持单条件；SUMIFS 是多条件求和；IF 是逻辑判断函数，不能直接计数。' },
+{ id:'ex015', cat:'excel', topic:'WPS 表格 · INDEX 与 MATCH', diff:'难', q:'与 VLOOKUP 相比，INDEX 与 MATCH 组合使用的主要优势是（　）。', opts:['计算速度一定更快','可以不受“查找列必须在返回列左侧”的限制，支持向左查找','不需要任何参数','可以自动求和'], ans:1, exp:'VLOOKUP 只能从查找区域首列向右返回数据；INDEX(返回区域, 行号, 列号) 与 MATCH(查找值, 查找区域, 0) 组合可任意指定查找方向和返回位置，实现反向查找且更灵活稳健。' },
+{ id:'ex016', cat:'excel', topic:'WPS 表格 · 跨表引用', diff:'中', q:'在工作表“汇总”中引用工作表“明细”的 B2 单元格，正确的引用写法是（　）。', opts:['明细!B2','明细.B2','明细:B2','[明细]B2'], ans:0, exp:'跨工作表引用使用“工作表名!单元格地址”的形式，如 明细!B2；若工作表名包含空格或特殊字符，需用单引号括起，如 1月 数据!B2。' },
+{ id:'ex017', cat:'excel', topic:'WPS 表格 · 数组公式', diff:'难', q:'在 WPS 表格中输入数组公式时，需要按（　）组合键结束输入。', opts:['Ctrl+Shift+Enter','Ctrl+Enter','Shift+Enter','Alt+Enter'], ans:0, exp:'传统数组公式需按 Ctrl+Shift+Enter 结束输入，公式两端会自动出现花括号 {}；Ctrl+Enter 用于在选中区域内批量填充相同内容，Alt+Enter 用于单元格内换行。' },
+{ id:'ex018', cat:'excel', topic:'WPS 表格 · RANK', diff:'中', q:'要根据全班同学的总分计算每位同学的排名，应使用的函数是（　）。', opts:['RANK','MAX','COUNT','VLOOKUP'], ans:0, exp:'RANK(数值, 引用区域, [排序方式]) 返回某数值在一组数据中的排名，第 3 参数为 0 或省略表示降序（成绩越高排名越靠前）；引用区域通常需要使用绝对引用。' },
+
+/* ---- WPS 演示 ---- */
+{ id:'pp001', cat:'ppt', topic:'WPS 演示 · 母版', diff:'中', q:'修改幻灯片母版的主要作用是（　）。', opts:['只修改当前一张幻灯片','统一控制应用该母版的幻灯片的字体、颜色、占位符位置等格式','改变幻灯片的放映顺序','压缩演示文稿体积'], ans:1, exp:'母版存储了幻灯片的统一版式信息（占位符位置与格式、字体、主题颜色、背景等），修改母版后所有基于该母版的幻灯片会同步变化，是批量统一风格的最高效方式。' },
+{ id:'pp002', cat:'ppt', topic:'WPS 演示 · 版式', diff:'中', q:'在 WPS 演示中，“版式”决定的是（　）。', opts:['幻灯片的背景颜色','幻灯片中占位符的种类与排列位置','幻灯片的切换速度','幻灯片的总数'], ans:1, exp:'版式规定了一张幻灯片中标题、内容、图片等占位符的数量和位置。新建幻灯片时应先选择合适的版式，再填入内容，这样结构清晰且便于统一调整。' },
+{ id:'pp003', cat:'ppt', topic:'WPS 演示 · 切换与动画', diff:'中', q:'关于切换效果与动画效果，下列说法正确的是（　）。', opts:['两者含义完全相同','切换效果作用于幻灯片之间的过渡，动画效果作用于幻灯片内对象的出现与变化','动画作用于幻灯片之间','切换作用于幻灯片内对象'], ans:1, exp:'切换效果是幻灯片与幻灯片之间的过渡方式（如淡出、推进）；动画效果是幻灯片内部对象（文字、图片、图表等）的进入、强调、退出和动作路径效果，二者作用对象不同。' },
+{ id:'pp004', cat:'ppt', topic:'WPS 演示 · 动画类型', diff:'中', q:'WPS 演示中的动画效果通常分为四类，下列不属于这四类的是（　）。', opts:['进入','强调','退出','过渡'], ans:3, exp:'动画效果分为进入、强调、退出、动作路径四类；“过渡”即幻灯片切换效果，属于幻灯片之间的效果，不属于对象动画的分类。' },
+{ id:'pp005', cat:'ppt', topic:'WPS 演示 · 动画开始方式', diff:'难', q:'要让某个对象的动画与前一个动画同时开始播放，应将其“开始”方式设置为（　）。', opts:['单击时','与上一动画同时','上一动画之后','自动'], ans:1, exp:'动画的开始方式有三种：单击时（需单击触发）、与上一动画同时（并行播放）、上一动画之后（顺序播放）。设置“与上一动画同时”可实现多个对象同时动作。' },
+{ id:'pp006', cat:'ppt', topic:'WPS 演示 · 动画窗格', diff:'中', q:'在 WPS 演示中调整多个动画的先后顺序、持续时间和延迟，应使用（　）。', opts:['动画窗格','幻灯片浏览视图','备注页视图','母版视图'], ans:0, exp:'「动画」→「动画窗格」以列表形式显示当前幻灯片的所有动画，可拖动调整顺序，并可精确设置开始方式、持续时间、延迟和触发条件。' },
+{ id:'pp007', cat:'ppt', topic:'WPS 演示 · 交互设置', diff:'中', q:'放映时单击某个按钮可以跳转到指定的第 5 张幻灯片，应使用（　）。', opts:['为该对象添加超链接或动作设置，目标指向“本文档中的位置-第 5 张幻灯片”','把按钮放在母版中','为该对象添加进入动画','将该幻灯片隐藏'], ans:0, exp:'选中对象后通过「插入」→「超链接」或「动作」设置，可将其链接到本文档中的指定幻灯片、其他文件或网址，从而实现非线性交互式放映。' },
+{ id:'pp008', cat:'ppt', topic:'WPS 演示 · 排练计时', diff:'中', q:'使用“排练计时”功能的主要目的是（　）。', opts:['记录每张幻灯片的放映时间，实现自动定时播放','统计幻灯片页数','检查拼写错误','压缩图片'], ans:0, exp:'排练计时在预演时记录每张幻灯片停留的时间，排练结束后可保存这些时间，放映时按记录自动切换幻灯片，适合演讲时间受控的汇报与展播场景。' },
+{ id:'pp009', cat:'ppt', topic:'WPS 演示 · 自定义放映', diff:'难', q:'需要从一份 30 页的演示文稿中挑选 12 页组成一个针对客户的放映方案，同时保留原文档，应使用（　）。', opts:['自定义放映','删除多余幻灯片','隐藏幻灯片后另存','复制文件后逐页删除'], ans:0, exp:'「幻灯片放映」→「自定义放映」可新建放映方案，从中挑选需要的幻灯片并调整顺序，原演示文稿保持不变，一份文稿可定义多套不同用途的放映方案。' },
+{ id:'pp010', cat:'ppt', topic:'WPS 演示 · 打包输出', diff:'中', q:'要把演示文稿拿到未安装 WPS 的电脑上正常放映，最稳妥的做法是（　）。', opts:['直接复制 .dps 文件','使用“打包”功能（打包成文件夹/CD），携带播放器或转为视频','只复制幻灯片截图','把文件改名为 .exe'], ans:1, exp:'打包功能可将演示文稿与所需的字体、链接文件及播放器一并打包，也可将演示文稿输出为视频或 PDF，确保在缺少 WPS 环境的电脑上仍能正常展示。' },
+{ id:'pp011', cat:'ppt', topic:'WPS 演示 · 主题', diff:'中', q:'在 WPS 演示中应用“主题”后，会统一改变（　）。', opts:['幻灯片的颜色、字体和效果方案','幻灯片的总页数','幻灯片中文字的具体内容','文件保存的格式'], ans:0, exp:'主题是一组协调的配色方案、字体方案和效果方案的集合，应用主题可快速统一整套演示文稿的视觉风格，且不改变幻灯片中的文字内容。' },
+{ id:'pp012', cat:'ppt', topic:'WPS 演示 · 智能图形', diff:'中', q:'要把一段条列式的文字快速转换为流程、层次结构等图形化图示，应使用（　）。', opts:['智能图形（SmartArt）','艺术字','文本框','图表'], ans:0, exp:'智能图形提供列表、流程、循环、层次结构、关系、矩阵等大量图示布局，可将文字直接转换为图形并在文本窗格中编辑，是制作结构化图示的快捷工具。' },
+{ id:'pp013', cat:'ppt', topic:'WPS 演示 · 音频设置', diff:'难', q:'要让插入的背景音乐在整个演示文稿放映过程中持续播放，应在音频工具的设置中勾选（　）。', opts:['跨幻灯片播放（播放时隐藏）','单击时播放','循环播放，直到停止','音量增大'], ans:0, exp:'选中音频后，在「音频工具」中勾选“跨幻灯片播放”，音乐即可在切换幻灯片时继续播放；配合“循环播放，直到停止”可实现整场循环的背景音乐。' },
+{ id:'pp014', cat:'ppt', topic:'WPS 演示 · 页眉页脚', diff:'中', q:'要在每张幻灯片的右下角显示页码，应使用（　）。', opts:['插入 → 幻灯片编号（页眉和页脚）','在每张幻灯片上手动输入数字','插入 → 文本框逐个添加','视图 → 母版中逐张输入'], ans:0, exp:'通过「插入」→「幻灯片编号」（或“页眉和页脚”对话框）勾选“幻灯片编号”，可自动为所有幻灯片添加页码，并可选择“标题幻灯片中不显示”。' },
+];
+
+/* ============ 二、操作题题库 ============
+   字段：id / type(word|excel|ppt) / title / desc 题目描述
+        material 素材说明 / reqs 操作要求数组
+        subs 小题：type(choice|fill) / q / opts / ans / accept / exp / point / topic
+*/
+const OPS = [
+/* ========== 文字操作题（一）30 分 ========== */
+{ id:'W1', type:'word', title:'WPS 文字操作题（一）· 毕业论文排版', desc:'打开考生文件夹下的 WPS 文字文档“毕业论文.wps”，按下列要求完成长文档排版，完成后以原文件名保存。', material:'文档结构：封面页 → 中英文摘要 → 目录页 → 正文（共 5 章，每章含若干节）→ 参考文献。\n文档中各级标题文字已录入但未设置任何格式；正文共 6 张插图（图片下方暂无编号）、3 个数据表格；正文各章之间尚未分节。', reqs:[
+  '为各章标题应用“标题 1”样式、各节标题应用“标题 2”样式；正文中文设置为宋体小四号、西文设置为 Times New Roman，行距为 1.5 倍，首行缩进 2 字符。',
+  '在摘要页之后插入“分节符（下一页）”，使正文从新的一节开始；为正文各节设置页眉“××大学毕业设计（论文）”，页脚插入页码，并要求正文页码从 1 开始重新编号。',
+  '为文档生成自动目录，目录单独占一页并插入在正文之前，要求目录中显示到 2 级标题，并随正文修改可更新。',
+  '为 6 张插图添加“图 1-1、图 1-2……”形式的题注，并在正文相应位置使用交叉引用引用这些图号。',
+  '页面设置：A4 纸张，上下页边距 2.54 厘米，左右页边距 3.17 厘米。'
+], subs:[
+  { id:'W1-1', type:'choice', point:6, topic:'样式与目录', q:'要快速统一各级标题的格式并能自动生成目录，最规范的做法是（　）。', opts:['逐段手动设置字体、字号','为各级标题分别应用内置的“标题 1”“标题 2”等样式','把标题文字加粗、放大即可','用格式刷逐段复制格式'], ans:1, exp:'“标题 1”“标题 2”等内置样式自带大纲级别，既统一了字体、字号、段前段后间距等格式，又为自动生成目录提供依据。直接加粗放大或格式刷都只是“直接格式”，无法被目录功能识别，也不便于后期统一修改。' },
+  { id:'W1-2', type:'choice', point:6, topic:'分节与页码', q:'要使正文部分的页码从 1 开始重新编号，正确的做法是（　）。', opts:['在页脚中直接手工输入数字 1、2、3……','先在正文前插入分节符，再在正文页脚插入页码域，并在“页码格式”中设置“起始页码”为 1，同时取消“链接到前一条页眉/页脚”','删除封面页和目录页的页脚','把页码统一放在页眉中'], ans:1, exp:'页码重新编号必须以“节”为单位：先分节，再取消与前一节的链接，然后在页脚插入页码域（插入→页码），并在“设置页码格式”中选择“起始页码”为 1。手工输入数字无法自动更新，删除页脚也不影响编号连续性。' },
+  { id:'W1-3', type:'choice', point:6, topic:'目录设置', q:'要求目录中只显示到 2 级标题，应在生成目录时（　）。', opts:['在“引用→目录”的目录设置中把“显示级别”设为 2','生成后手工删除 3 级及以下条目','只给 1、2 级标题加粗','调整目录的字体和字号'], ans:0, exp:'插入目录时可在“目录”对话框中设置“显示级别”为 2，系统即只提取 1、2 级标题；这样在正文修改后执行“更新目录”，结果仍保持正确的级别范围。手工删除条目在更新目录后会被还原。' },
+  { id:'W1-4', type:'choice', point:6, topic:'题注', q:'为 6 张插图自动编号为“图 1-1、图 1-2……”，应使用（　）。', opts:['在图片下方手工输入编号','选中图片后使用“引用→插入题注”，选择“图”标签并设置编号格式','在图片下方插入文本框并输入编号','把编号写在页眉中'], ans:1, exp:'题注功能可为图片、表格自动编号并支持“包含章节号”，配合交叉引用即可在正文中引用图号，图片增删或调整顺序后只需更新域即可自动重排编号。' },
+  { id:'W1-5', type:'choice', point:6, topic:'段落格式', q:'设置正文“行距 1.5 倍、首行缩进 2 字符”，应在（　）中完成。', opts:['字体对话框','段落对话框中的“行距”和“缩进→特殊格式→首行缩进”','页面设置对话框','样式库中的“清除格式”'], ans:1, exp:'行距、缩进、段前段后间距、对齐方式都属于段落格式，统一在“开始→段落”对话框中设置。用空格或 Tab 键实现缩进在调整字号、行距或生成目录时会导致排版错乱，属于不规范操作。' }
+] },
+
+/* ========== 文字操作题（二）30 分 ========== */
+{ id:'W2', type:'word', title:'WPS 文字操作题（二）· 邮件合并批量制作录取通知书', desc:'打开考生文件夹下的“录取通知书主文档.wps”和“新生名单.xlsx”，利用邮件合并功能为新生批量生成录取通知书。', material:'“录取通知书主文档.wps”中已录入通知书正文，其中用【姓名】【录取专业】【报到日期】标出了需要替换的位置。\n“新生名单.xlsx”的 Sheet1 为数据源，第 1 行为标题行（含“姓名”“性别”“录取专业”“报到日期”等列），共 201 行数据（200 名新生）。', reqs:[
+  '以“录取通知书主文档.wps”为主文档，以“新生名单.xlsx”的 Sheet1 为数据源建立邮件合并。',
+  '把主文档中的【姓名】【录取专业】【报到日期】替换为数据源中对应的合并域。',
+  '筛选出“录取专业”为“计算机科学与技术”的新生，只为他们生成通知书。',
+  '将“报到日期”的显示格式设置为“2026年9月1日”形式。',
+  '将合并结果一次性生成到一个新文档中，保存到考生文件夹。'
+], subs:[
+  { id:'W2-1', type:'choice', point:6, topic:'邮件合并流程', q:'建立邮件合并的正确操作顺序是（　）。', opts:['选择数据源（选择收件人）→ 插入合并域 → 完成并合并','完成并合并 → 选择数据源 → 插入合并域','插入合并域 → 完成并合并 → 选择数据源','先合并生成结果，再回头选择数据源'], ans:0, exp:'邮件合并的标准流程为：邮件→开始邮件合并（选择文档类型）→选择收件人（指定数据源）→插入合并域编排主文档→预览结果→完成并合并。先合并后选数据源在逻辑上不成立。' },
+  { id:'W2-2', type:'choice', point:6, topic:'合并域', q:'要把主文档中的【姓名】替换为数据源中的姓名，正确的做法是（　）。', opts:['手工输入每位新生的姓名','在“邮件”选项卡中点击“插入合并域”，选择“姓名”域','用查找和替换把【姓名】全部删除','从数据源中复制姓名逐个粘贴到主文档'], ans:1, exp:'合并域是一个占位标记（显示为《姓名》），合并时系统按每条记录自动填充对应数据。200 条记录若手工输入将极其低效且容易出错。' },
+  { id:'W2-3', type:'choice', point:6, topic:'收件人筛选', q:'只对录取专业为“计算机科学与技术”的新生生成通知书，应使用（　）。', opts:['“编辑收件人列表”中的筛选功能，设置筛选条件为“录取专业 等于 计算机科学与技术”','在 Excel 中删除其他专业的记录','在合并后手工删除多余的通知书','在“完成并合并”时选择“全部”'], ans:0, exp:'通过“邮件→编辑收件人列表→筛选”，可按字段设置筛选条件，仅保留符合条件的收件人参与合并，原始数据源不受影响，可随时清除筛选条件恢复全部记录。' },
+  { id:'W2-4', type:'choice', point:6, topic:'域格式', q:'合并后日期显示为“2026/9/1”，要改为“2026年9月1日”，正确的做法是（　）。', opts:['在 Excel 数据源中把日期全部改成文本','在合并域上右击→编辑域→设置日期格式（或为域添加 \\@ "yyyy年M月d日" 开关）','日期格式无法修改','把日期域改为手工输入'], ans:1, exp:'合并域本质是域代码，可通过“编辑域”为其添加格式开关，如 \\@ "yyyy年M月d日"，即可在不修改数据源的前提下改变日期的显示格式。' },
+  { id:'W2-5', type:'choice', point:6, topic:'完成合并', q:'要把 200 份通知书生成到一个新文档中以便统一打印，应在“完成并合并”中选择（　）。', opts:['编辑单个文档 → 全部','打印文档','发送电子邮件','直接保存主文档'], ans:0, exp:'“完成并合并→编辑单个文档→全部”会把所有记录合并生成一个新文档，每条记录一页（或一节），便于统一打印；“打印文档”是直接送打印机，“发送电子邮件”则按记录分别发送邮件。' }
+] },
+
+/* ========== 表格操作题（一）30 分 ========== */
+{ id:'E1', type:'excel', title:'WPS 表格操作题（一）· 学生成绩统计与分析', desc:'打开考生文件夹下的“学生成绩表.et”，对工作表 Sheet1 中的成绩数据进行统计与分析。', material:'数据区域为第 2 行至第 41 行（共 40 名学生）：\nA 列 学号，B 列 姓名，C 列 性别，D 列 平时成绩，E 列 期末成绩，F 列 总评，G 列 等级，H 列 排名。\n总评成绩 = 平时成绩 × 30% + 期末成绩 × 70%。', reqs:[
+  '用公式计算 F 列总评成绩（平时成绩占 30%、期末成绩占 70%），结果四舍五入保留 1 位小数。',
+  '用 IF 函数按总评成绩评定等级：≥90 为“优秀”，80~89 为“良好”，60~79 为“及格”，小于 60 为“不及格”。',
+  '用 RANK 函数计算 H 列排名（按总评成绩降序），并向下填充到 H41。',
+  '统计总评不及格的人数和全班总评平均分。',
+  '按“总评”降序排序，并使用条件格式把不及格的成绩自动标为红色。'
+], subs:[
+  { id:'E1-1', type:'fill', point:6, topic:'公式与函数', placeholder:'例如 =ROUND(D2*0.3+E2*0.7,1)', q:'请写出 F2 单元格中计算总评成绩并保留 1 位小数的公式（D2 为平时成绩，E2 为期末成绩）。', ans:'', accept:['=ROUND(D2*0.3+E2*0.7,1)','ROUND(D2*0.3+E2*0.7,1)','=ROUND(D2*30%+E2*70%,1)','ROUND(D2*30%+E2*70%,1)','=ROUND(0.3*D2+0.7*E2,1)','=ROUND(E2*0.7+D2*0.3,1)','=ROUND(D2*0.3+E2*0.7,1)'], exp:'加权计算写作 =D2*0.3+E2*0.7（或 =D2*30%+E2*70%），再用 ROUND(数值,1) 四舍五入保留 1 位小数，完整公式为 =ROUND(D2*0.3+E2*0.7,1)。注意 ROUND 的第二参数表示保留的小数位数。' },
+  { id:'E1-2', type:'fill', point:6, topic:'IF 嵌套', placeholder:'例如 =IF(F2>=90,"优秀",...)', q:'请写出 G2 单元格中按总评成绩评定等级的公式（≥90 优秀，≥80 良好，≥60 及格，否则不及格）。', ans:'', accept:['=IF(F2>=90,"优秀",IF(F2>=80,"良好",IF(F2>=60,"及格","不及格")))','IF(F2>=90,"优秀",IF(F2>=80,"良好",IF(F2>=60,"及格","不及格")))',"=IF(F2>=90,'优秀',IF(F2>=80,'良好',IF(F2>=60,'及格','不及格')))",'=IF(F2<60,"不及格",IF(F2<80,"及格",IF(F2<90,"良好","优秀")))','=IF(F2>=90,"优秀",IF(F2>=80,"良好",IF(F2>=60,"及格","不及格")))'], exp:'使用 IF 函数嵌套，按从高到低的顺序判断：=IF(F2>=90,"优秀",IF(F2>=80,"良好",IF(F2>=60,"及格","不及格")))。判断顺序必须从大到小，否则条件会被前一个分支提前拦截。文本结果需用英文双引号括起。' },
+  { id:'E1-3', type:'choice', point:6, topic:'RANK 与绝对引用', q:'H2 单元格计算排名并向下填充到 H41，正确的公式是（　）。', opts:['=RANK(F2,F2:F41)','=RANK(F2,$F$2:$F$41)','=RANK($F$2:$F$41,F2)','=RANK(F2:F41)'], ans:1, exp:'RANK(数值, 引用区域, [排序方式]) 中，数值用相对引用 F2 以便向下填充时自动变为 F3、F4……，而排名比较的引用区域必须使用绝对引用 $F$2:$F$41，否则填充后区域会不断下移导致结果错误。' },
+  { id:'E1-4', type:'choice', point:6, topic:'COUNTIF', q:'统计总评不及格（小于 60）的人数，正确的公式是（　）。', opts:['=COUNTIF(F2:F41,"<60")','=COUNT(F2:F41)','=SUMIF(F2:F41,"<60")','=COUNTIF(F2:F41,"<=60")'], ans:0, exp:'COUNTIF(区域, 条件) 用于按条件计数，条件“小于 60”需写成 "<60" 并用英文双引号括起。COUNT 只能统计数值单元格个数，SUMIF 用于条件求和，<=60 会把等于 60 分的学生也计入不及格。' },
+  { id:'E1-5', type:'choice', point:6, topic:'条件格式', q:'要让不及格的成绩自动显示为红色，最合适的做法是（　）。', opts:['使用条件格式设置“单元格值小于 60”时字体为红色','逐个手动把不及格成绩改成红色','使用数据有效性限制输入','使用分类汇总统计不及格人数'], ans:0, exp:'条件格式按规则自动套用格式：选中 F2:F41 后设置“突出显示单元格规则→小于 60→红色文字”，成绩变化时颜色自动更新，比手工标色可靠且高效。' }
+] },
+
+/* ========== 表格操作题（二）30 分 ========== */
+{ id:'E2', type:'excel', title:'WPS 表格操作题（二）· 销售数据汇总与透视分析', desc:'打开考生文件夹下的“销售数据.et”，完成销售金额计算、多表汇总、分类汇总与数据透视分析。', material:'Sheet1 名为“销售明细”，包含 500 条销售记录：\nA 列 日期，B 列 销售区域，C 列 产品，D 列 数量，E 列 单价，F 列 金额（待计算）。\nSheet2 名为“区域汇总”，A 列已填入各销售区域名称，B 列待计算金额合计。', reqs:[
+  '在“销售明细”表 F 列用公式计算金额（金额 = 数量 × 单价），并向下填充至最后一行。',
+  '在“区域汇总”表中，用 SUMIF 函数按区域名称统计各区域的销售金额合计。',
+  '对“销售明细”表按“销售区域”排序后进行分类汇总，统计各区域金额之和。',
+  '以“区域汇总”表的数据为数据源创建柱形图，并为图表添加标题。',
+  '使用数据透视表，按“销售区域”和“产品”交叉汇总销售金额。'
+], subs:[
+  { id:'E2-1', type:'fill', point:6, topic:'公式基础', placeholder:'例如 =D2*E2', q:'请写出“销售明细”表 F2 单元格中计算金额的公式（D2 为数量，E2 为单价）。', ans:'', accept:['=D2*E2','D2*E2','=E2*D2','E2*D2'], exp:'金额 = 数量 × 单价，即 =D2*E2。输入后双击填充柄或向下拖动即可自动填充到 F500，相对引用会自动调整为 D3*E3、D4*E4……' },
+  { id:'E2-2', type:'choice', point:6, topic:'SUMIF 跨表引用', q:'在“区域汇总”表 B2 单元格中统计 A2 所对应区域的金额合计（明细数据的区域在“销售明细”表的 B 列、金额在 F 列），正确的公式是（　）。', opts:['=SUMIF(销售明细!B:B,A2,销售明细!F:F)','=SUM(销售明细!F:F)','=COUNTIF(销售明细!B:B,A2)','=VLOOKUP(A2,销售明细!B:F,5,0)'], ans:0, exp:'SUMIF(条件区域, 条件, 求和区域) 中，条件区域为跨表的 销售明细!B:B，条件为当前行的区域名称 A2，求和区域为 销售明细!F:F。选项 B 无条件求和，C 是计数，D 用 VLOOKUP 只能返回首个匹配值而非合计。' },
+  { id:'E2-3', type:'choice', point:6, topic:'分类汇总', q:'使用“分类汇总”功能前，必须完成的操作是（　）。', opts:['按“销售区域”字段进行排序，使同一区域的记录集中排列','先对数据进行筛选','先创建图表','先冻结窗格'], ans:0, exp:'分类汇总以“分类字段值连续相同”为分组依据，因此必须先用分类字段排序，把同一区域的记录集中在一起；否则同一区域会被拆分成多组，得到多个汇总行。' },
+  { id:'E2-4', type:'choice', point:6, topic:'数据透视表', q:'创建数据透视表，要按“销售区域”分行、按“产品”分列、汇总“金额”，应把字段拖放到（　）。', opts:['“销售区域”拖到行标签，“产品”拖到列标签，“金额”拖到值区域','“金额”拖到行标签，“产品”拖到列标签，“销售区域”拖到值区域','“销售区域”拖到筛选器，“产品”拖到行标签，“金额”拖到列标签','把三个字段全部拖到值区域'], ans:0, exp:'数据透视表的四个区域各有分工：行标签决定纵向分组（销售区域），列标签决定横向分组（产品），值区域决定汇总的数值与方式（金额求和），筛选器用于整体过滤。' },
+  { id:'E2-5', type:'choice', point:6, topic:'图表设置', q:'要为已创建的柱形图添加标题“各区域销售金额对比”，正确的操作是（　）。', opts:['选中图表，在“图表工具”中使用“添加图表元素→图表标题”并输入文字','在图表上方插入一个文本框输入标题','修改工作表名称','图表标题无法添加'], ans:0, exp:'图表标题属于图表元素，通过“图表工具→添加图表元素→图表标题”添加，标题会随图表一起移动和打印；用文本框覆盖在图表上方只是视觉遮挡，图表移动时会错位。' }
+] },
+
+/* ========== 演示操作题（一）20 分 ========== */
+{ id:'P1', type:'ppt', title:'WPS 演示操作题（一）· 产品介绍演示文稿美化', desc:'打开考生文件夹下的“产品介绍.dps”，完成演示文稿的风格统一、动画与切换设置以及交互链接。', material:'演示文稿共 8 张幻灯片：\n第 1 张为标题幻灯片；第 2~7 张为产品功能与参数介绍，其中包含 3 张产品图片；第 8 张为联系方式页。\n全部文字内容已录入，尚未设置主题、动画和切换效果。', reqs:[
+  '为全部幻灯片应用统一的主题与背景，并在幻灯片母版中把所有标题文字的字体设置为“微软雅黑”。',
+  '为第 2~7 张幻灯片的内容占位符设置“擦除”进入动画，开始方式为“上一动画之后”。',
+  '为所有幻灯片设置“推进”切换效果，并设置自动换片时间为 5 秒。',
+  '在第 8 张幻灯片的“联系我们”文字上添加指向公司官网的超链接，并在第 1 张幻灯片上添加跳转到第 8 张幻灯片的动作按钮。'
+], subs:[
+  { id:'P1-1', type:'choice', point:5, topic:'幻灯片母版', q:'要使所有幻灯片的标题字体统一为“微软雅黑”，最高效的做法是（　）。', opts:['逐张选中标题修改字体','进入“视图→幻灯片母版”，修改标题占位符的字体','用格式刷逐张刷标题','把标题字号调大'], ans:1, exp:'母版保存了版式中各占位符的统一格式，修改母版中的标题占位符字体后，所有基于该母版的幻灯片标题会同步更新，是批量统一风格的标准做法。' },
+  { id:'P1-2', type:'choice', point:5, topic:'动画开始方式', q:'要让第 2~7 张幻灯片的内容依次自动播放而无需单击，应把动画的开始方式设置为（　）。', opts:['单击时','与上一动画同时','上一动画之后','手动触发'], ans:2, exp:'“上一动画之后”表示前一个动画播放结束后自动开始下一个动画，可实现连续自动演示；“与上一动画同时”用于让多个对象同时动作；“单击时”需要人工触发。' },
+  { id:'P1-3', type:'choice', point:5, topic:'切换效果', q:'为所有幻灯片统一设置“推进”切换效果，应在（　）中操作。', opts:['“切换”选项卡中选中“推进”后点击“全部应用”','动画窗格中逐页添加','幻灯片母版视图中设置','自定义放映中设置'], ans:0, exp:'切换效果作用于幻灯片之间，在“切换”选项卡中选择效果并设置“全部应用”，可一次性应用到所有幻灯片；动画窗格用于设置幻灯片内部对象的动画。' },
+  { id:'P1-4', type:'choice', point:5, topic:'超链接与动作', q:'为第 8 张幻灯片的“联系我们”文字添加指向公司官网的链接，正确的操作是（　）。', opts:['选中文字，使用“插入→超链接”，在地址栏填写公司网址','插入一张图片代替文字','为该文字添加“强调”动画','把该页设置为“隐藏幻灯片”'], ans:0, exp:'选中文字或对象后使用“插入→超链接”（或右键“超链接”），在地址栏输入完整网址即可；若要链接到本文档中的某张幻灯片，则在“本文档中的位置”中选择目标幻灯片。' }
+] },
+
+/* ========== 演示操作题（二）20 分 ========== */
+{ id:'P2', type:'ppt', title:'WPS 演示操作题（二）· 教学课件交互与放映设置', desc:'打开考生文件夹下的“教学课件.dps”，完成目录跳转、音频设置、排练计时与打包输出。', material:'课件共 12 张幻灯片：\n第 1 张封面，第 2 张目录（含各章标题文字），第 3~10 张知识点讲解，第 11 张课堂练习，第 12 张结束页。\n课件文件夹中已提供讲解音频文件 lecture.mp3，并已插入到第 1 张幻灯片中。', reqs:[
+  '在第 2 张目录幻灯片中，为各章标题添加超链接，分别跳转到对应的知识点幻灯片。',
+  '设置讲解音频跨幻灯片播放，并循环播放直到停止。',
+  '使用排练计时为课件设置自动放映时间，放映时按排练时间自动切换。',
+  '为幻灯片添加编号与页脚，并将演示文稿打包，使其在没有安装 WPS 的电脑上也能正常播放。'
+], subs:[
+  { id:'P2-1', type:'choice', point:5, topic:'超链接跳转', q:'为目录页的章节标题添加跳转到对应幻灯片的链接，应使用（　）。', opts:['“插入→超链接（或动作）”，目标选择“本文档中的位置”并指定幻灯片','复制目标幻灯片到目录页','为目标幻灯片设置切换效果','把目标幻灯片隐藏起来'], ans:0, exp:'超链接（或动作设置）的目标类型可选择“本文档中的位置”，从中指定具体幻灯片，实现目录页的快速跳转，是制作交互式课件的常用手法。' },
+  { id:'P2-2', type:'choice', point:5, topic:'音频设置', q:'要让讲解音频在切换幻灯片时继续播放，应在音频工具中勾选（　）。', opts:['跨幻灯片播放','单击时播放','音量提高','剪裁音频'], ans:0, exp:'在“音频工具”中勾选“跨幻灯片播放”，音频不会因切换幻灯片而中断；再配合“循环播放，直到停止”可让讲解或背景音乐贯穿整个演示过程。' },
+  { id:'P2-3', type:'choice', point:5, topic:'排练计时', q:'使用排练计时后，要使放映按记录的时间自动切换幻灯片，应把放映方式设置为（　）。', opts:['手动放映（演讲者控制）','如果存在排练时间，则使用它（自动放映）','循环放映，按 Esc 键终止','展台浏览'], ans:1, exp:'在“幻灯片放映→设置放映方式”中选择“如果存在排练时间，则使用它”，放映时即按排练记录的时间自动换片；排练计时可在“幻灯片放映→排练计时”中录制和重新录制。' },
+  { id:'P2-4', type:'choice', point:5, topic:'打包输出', q:'要使课件在没有安装 WPS 的电脑上也能正常播放，最稳妥的做法是（　）。', opts:['直接复制 .dps 文件到目标电脑','使用“打包”功能（或输出为视频/PDF），把所需字体与播放环境一并携带','把文件扩展名改为 .exe','只把幻灯片文字复制到文本文件中'], ans:1, exp:'“打包”可将演示文稿、链接文件、字体及播放器一并输出到文件夹或 CD，也可将演示文稿“输出为视频”或导出为 PDF，从而摆脱对目标电脑是否安装 WPS 的依赖。' }
+] }
+];
+
+/* ============ 三、常量与工具 ============ */
+const EXAM_MINUTES = 120;
+const PASS_SCORE = 60;
+const LS = {
+  exam: 'ncre_wps_exam_v2',
+  wrong: 'ncre_wps_wrong_v2',
+  lastOps: 'ncre_wps_lastops_v2'
+};
+const CATS = {
+  public: { name: '公共基础知识', short: '公共基础', cls: 'tag-public' },
+  basic:  { name: '计算机基础与 WPS 综合应用基础', short: '综合基础', cls: 'tag-basic' },
+  word:   { name: 'WPS 文字', short: 'WPS 文字', cls: 'tag-word' },
+  excel:  { name: 'WPS 表格', short: 'WPS 表格', cls: 'tag-excel' },
+  ppt:    { name: 'WPS 演示', short: 'WPS 演示', cls: 'tag-ppt' }
+};
+const OPT_KEYS = ['A', 'B', 'C', 'D'];
+const SINGLE_MAP = {};
+SINGLE.forEach(function (q) { SINGLE_MAP[q.id] = q; });
+const OPS_MAP = {};
+OPS.forEach(function (o) { OPS_MAP[o.id] = o; });
+
+function $(sel, root) { return (root || document).querySelector(sel); }
+function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+  });
+}
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+function lsGet(k, d) {
+  try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; }
+}
+function lsSet(k, v) {
+  try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { }
+}
+function fmtTime(sec) {
+  sec = Math.max(0, Math.round(sec));
+  var h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
+  return (h > 0 ? h + ':' + String(m).padStart(2, '0') : String(m)) + ':' + String(s).padStart(2, '0');
+}
+function catTag(cat) {
+  var c = CATS[cat] || { name: cat, short: cat, cls: '' };
+  return '<span class="tag ' + c.cls + '">' + esc(c.short) + '</span>';
+}
+function diffTag(d) {
+  var cls = d === '易' ? 'tag-easy' : (d === '难' ? 'tag-hard' : 'tag-mid');
+  return '<span class="tag ' + cls + '">难度 ' + esc(d || '中') + '</span>';
+}
+function normFill(s) {
+  return String(s == null ? '' : s)
+    .replace(/[\s\u3000]/g, '')
+    .replace(/[０-９Ａ-Ｚａ-ｚ]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); })
+    .replace(/[（]/g, '(').replace(/[）]/g, ')').replace(/[＝]/g, '=')
+    .replace(/[，]/g, ',').replace(/[；]/g, ';').replace(/[：]/g, ':')
+    .replace(/[＋]/g, '+').replace(/[－—]/g, '-').replace(/[＊]/g, '*').replace(/[／]/g, '/')
+    .replace(/[“”]/g, '"').replace(/[‘’]/g, "'")
+    .replace(/[。]/g, '.').replace(/[％]/g, '%')
+    .toUpperCase();
+}
+function subAnswerOk(sub, val) {
+  if (val == null || val === '') return false;
+  if (sub.type === 'fill') {
+    var n = normFill(val);
+    var list = (sub.accept || []).concat(sub.ans != null ? [sub.ans] : []);
+    return list.some(function (a) { return normFill(a) === n; });
+  }
+  return Number(val) === Number(sub.ans);
+}
+function opTotal(set) {
+  return (set.subs || []).reduce(function (a, s) { return a + (s.point || 0); }, 0);
+}
+
+/* ============ 四、全局状态 ============ */
+var EXAM = null;          // 当前考试
+var S = { view: 'home', page: 0, practice: null, reviewOnly: false };
+var timerId = null;
+
+/* ============ 五、弹窗 ============ */
+function showModal(opt) {
+  var root = $('#modal');
+  var buttons = opt.buttons || [{ label: '知道了', cls: 'btn-primary' }];
+  root.innerHTML =
+    '<div class="modal-box">' +
+      '<div class="modal-head"><h3>' + esc(opt.title || '提示') + '</h3>' +
+        '<button class="icon-btn" data-act="modal-close" aria-label="关闭">&#10005;</button></div>' +
+      '<div class="modal-body">' + (opt.html || '') + '</div>' +
+      '<div class="modal-foot">' + buttons.map(function (b, i) {
+        return '<button class="btn ' + (b.cls || '') + '" data-mbtn="' + i + '">' + esc(b.label) + '</button>';
+      }).join('') + '</div>' +
+    '</div>';
+  root.hidden = false;
+  $$('[data-mbtn]', root).forEach(function (btn) {
+    btn.onclick = function () {
+      var b = buttons[Number(btn.dataset.mbtn)];
+      closeModal();
+      if (b && b.onClick) b.onClick();
+    };
+  });
+}
+function closeModal() { var r = $('#modal'); r.hidden = true; r.innerHTML = ''; }
+
+/* ============ 六、组卷与考试控制 ============ */
+function buildPaper() {
+  var pub = shuffle(SINGLE.filter(function (q) { return q.cat === 'public'; })).slice(0, 10);
+  var oth = shuffle(SINGLE.filter(function (q) { return q.cat !== 'public'; })).slice(0, 10);
+  var single = shuffle(pub.concat(oth));
+  var lastOps = lsGet(LS.lastOps, {});
+  var ops = ['word', 'excel', 'ppt'].map(function (t) {
+    var pool = OPS.filter(function (o) { return o.type === t; });
+    if (!pool.length) return null;
+    var fresh = pool.filter(function (o) { return o.id !== lastOps[t]; });
+    var pick = shuffle(fresh.length ? fresh : pool)[0];
+    lastOps[t] = pick.id;
+    return pick;
+  }).filter(Boolean);
+  lsSet(LS.lastOps, lastOps);
+  return { singleIds: single.map(function (q) { return q.id; }), opIds: ops.map(function (o) { return o.id; }) };
+}
+function startExam(resumeData) {
+  if (resumeData) {
+    EXAM = resumeData;
+    EXAM.deadline = Date.now() + EXAM.remain * 1000;
+  } else {
+    var paper = buildPaper();
+    EXAM = {
+      singleIds: paper.singleIds,
+      opIds: paper.opIds,
+      answers: {},
+      remain: EXAM_MINUTES * 60,
+      startedAt: Date.now(),
+      deadline: Date.now() + EXAM_MINUTES * 60 * 1000,
+      submitted: false,
+      result: null
+    };
+  }
+  S.view = 'exam'; S.page = 0;
+  saveExam(); render(); startTimer();
+}
+function saveExam() { if (EXAM) lsSet(LS.exam, EXAM); }
+function startTimer() {
+  clearInterval(timerId);
+  timerId = setInterval(function () {
+    if (!EXAM || EXAM.submitted) { clearInterval(timerId); return; }
+    EXAM.remain = Math.max(0, Math.round((EXAM.deadline - Date.now()) / 1000));
+    paintTimer();
+    if (EXAM.remain <= 0) { submitExam(true); }
+  }, 500);
+}
+function paintTimer() {
+  var el = $('#timerVal'); if (!el) return;
+  el.textContent = fmtTime(EXAM ? EXAM.remain : EXAM_MINUTES * 60);
+  var box = $('#timerBox');
+  if (box) box.classList.toggle('warn', !!EXAM && EXAM.remain <= 300);
+}
+function examPages() {
+  if (!EXAM) return [];
+  var arr = EXAM.singleIds.map(function (id) { return { kind: 'single', q: SINGLE_MAP[id] }; })
+    .filter(function (p) { return p.q; });
+  EXAM.opIds.forEach(function (id) { if (OPS_MAP[id]) arr.push({ kind: 'op', set: OPS_MAP[id] }); });
+  return arr;
+}
+function isAnswered(kind, obj) {
+  if (!EXAM) return false;
+  if (kind === 'single') return EXAM.answers[obj.id] != null;
+  return (obj.subs || []).every(function (s) { return EXAM.answers[s.id] != null && EXAM.answers[s.id] !== ''; });
+}
+function answeredCount() {
+  var n = 0;
+  EXAM.singleIds.forEach(function (id) { if (EXAM.answers[id] != null) n++; });
+  EXAM.opIds.forEach(function (id) {
+    var st = OPS_MAP[id]; if (!st) return;
+    st.subs.forEach(function (s) { if (EXAM.answers[s.id] != null && EXAM.answers[s.id] !== '') n++; });
+  });
+  return n;
+}
+function gradeExam() {
+  var r = { single: 0, word: 0, excel: 0, ppt: 0, total: 0, pass: false, right: 0, wrong: 0, blank: 0, opMax: { word: 0, excel: 0, ppt: 0 } };
+  var wrongSnaps = [];
+  EXAM.singleIds.forEach(function (id) {
+    var q = SINGLE_MAP[id]; if (!q) return;
+    var a = EXAM.answers[id];
+    if (a === q.ans) { r.single += 1; r.right++; }
+    else if (a == null) { r.blank++; wrongSnaps.push(snapSingle(q, a)); }
+    else { r.wrong++; wrongSnaps.push(snapSingle(q, a)); }
+  });
+  EXAM.opIds.forEach(function (id) {
+    var set = OPS_MAP[id]; if (!set) return;
+    r.opMax[set.type] = opTotal(set);
+    set.subs.forEach(function (s) {
+      var a = EXAM.answers[s.id];
+      if (subAnswerOk(s, a)) { r[set.type] += (s.point || 0); r.right++; }
+      else { if (a == null || a === '') r.blank++; else r.wrong++; wrongSnaps.push(snapSub(set, s, a)); }
+    });
+  });
+  r.total = r.single + r.word + r.excel + r.ppt;
+  r.pass = r.total >= PASS_SCORE;
+  r.timeUsed = EXAM_MINUTES * 60 - EXAM.remain;
+  collectWrong(wrongSnaps);
+  return r;
+}
+function snapSingle(q, my) {
+  return { id: q.id, kind: 'single', cat: q.cat, topic: q.topic, diff: q.diff, q: q.q, opts: q.opts, ans: q.ans, exp: q.exp, my: my };
+}
+function snapSub(set, s, my) {
+  return { id: s.id, kind: 'sub', cat: set.type, topic: s.topic || set.title, diff: s.diff || '中', q: s.q, opts: s.opts || null, ans: s.type === 'fill' ? (s.accept ? s.accept[0] : s.ans) : s.ans, exp: s.exp, my: my, from: set.title };
+}
+function collectWrong(snaps) {
+  var book = lsGet(LS.wrong, []);
+  var map = {};
+  book.forEach(function (w) { map[w.id] = w; });
+  snaps.forEach(function (w) { map[w.id] = w; });
+  lsSet(LS.wrong, Object.keys(map).map(function (k) { return map[k]; }));
+}
+function submitExam(auto) {
+  if (!EXAM || EXAM.submitted) return;
+  EXAM.remain = Math.max(0, Math.round((EXAM.deadline - Date.now()) / 1000));
+  EXAM.submitted = true;
+  EXAM.result = gradeExam();
+  clearInterval(timerId);
+  saveExam();
+  S.view = 'result'; S.page = 0;
+  render();
+  window.scrollTo(0, 0);
+  if (auto) {
+    showModal({ title: '考试时间到', html: '<p>考试时长已用尽，系统已自动交卷并完成评分。</p>', buttons: [{ label: '查看成绩', cls: 'btn-primary' }] });
+  }
+}
+function resetExam() {
+  clearInterval(timerId);
+  EXAM = null;
+  try { localStorage.removeItem(LS.exam); } catch (e) { }
+}
+
+/* ============ 七、渲染入口 ============ */
+function render() {
+  var app = $('#app');
+  if (S.view === 'home') app.innerHTML = viewHome();
+  else if (S.view === 'practice') app.innerHTML = viewPractice();
+  else if (S.view === 'exam') app.innerHTML = viewExam();
+  else if (S.view === 'result') app.innerHTML = viewResult();
+  else if (S.view === 'wrong') app.innerHTML = viewWrong();
+  afterRender();
+}
+function afterRender() {
+  paintTimer();
+  if (S.view === 'exam') {
+    $$('input[data-subfill]').forEach(function (inp) {
+      inp.addEventListener('input', function () {
+        if (!EXAM || EXAM.submitted) return;
+        EXAM.answers[inp.dataset.subfill] = inp.value;
+        saveExam(); paintCardStates(); paintProgress();
+      });
+    });
+  }
+}
+function navBar(right) {
+  return '<div class="topbar"><div class="topbar-in">' +
+    '<div class="brand"><div class="brand-logo">WPS</div><div class="brand-txt">' +
+      '<b>NCRE 二级 · WPS Office 高级应用与设计</b><span>全国计算机等级考试 · 上机考试模拟系统</span></div></div>' +
+    '<div class="spacer"></div><div class="tb-right">' + (right || '') + '</div>' +
+  '</div></div>';
+}
+
+/* ============ 八、首页 ============ */
+function viewHome() {
+  var saved = lsGet(LS.exam, null);
+  var canResume = saved && !saved.submitted && saved.singleIds && saved.singleIds.length;
+  var canViewResult = saved && saved.submitted && saved.result;
+  var wrongBook = lsGet(LS.wrong, []);
+  var counts = { public: 0, basic: 0, word: 0, excel: 0, ppt: 0 };
+  SINGLE.forEach(function (q) { counts[q.cat] = (counts[q.cat] || 0) + 1; });
+  var opCounts = { word: 0, excel: 0, ppt: 0 };
+  OPS.forEach(function (o) { opCounts[o.type] = (opCounts[o.type] || 0) + 1; });
+
+  return navBar('<span class="tag" style="background:rgba(255,255,255,.16);color:#fff">题库 ' + SINGLE.length + ' 题 · 操作题 ' + OPS.length + ' 套</span>') +
+  '<div class="page">' +
+    '<div class="hero">' +
+      '<h1>NCRE 二级 WPS Office 高级应用与设计</h1>' +
+      '<div class="sub">上机考试全真模拟 · 严格对齐 2025 年版考试大纲。单选 20 题 20 分，文字 / 表格 / 演示操作题 30 / 30 / 20 分，满分 100 分，60 分合格。</div>' +
+      '<div class="kpis">' +
+        '<div class="kpi"><b>120</b><span>考试时长（分钟）</span></div>' +
+        '<div class="kpi"><b>100</b><span>试卷满分</span></div>' +
+        '<div class="kpi"><b>60</b><span>合格分数线</span></div>' +
+        '<div class="kpi"><b>' + SINGLE.length + '</b><span>单选题库总量</span></div>' +
+        '<div class="kpi"><b>' + OPS.length + '</b><span>操作题套数</span></div>' +
+      '</div>' +
+      '<div class="hero-actions">' +
+        '<button class="btn btn-primary btn-lg" data-act="start-exam">开始考试</button>' +
+        (canResume ? '<button class="btn btn-ghost btn-lg" data-act="resume-exam">继续上次考试（剩余 ' + fmtTime(saved.remain) + '）</button>' : '') +
+        (canViewResult ? '<button class="btn btn-ghost btn-lg" data-act="view-last-result">查看上次成绩（' + saved.result.total + ' 分）</button>' : '') +
+        '<button class="btn btn-ghost btn-lg" data-act="goto-practice">专项练习</button>' +
+        '<button class="btn btn-ghost btn-lg" data-act="goto-wrong">错题本（' + wrongBook.length + '）</button>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="grid2">' +
+      '<div class="card panel">' +
+        '<h3><span class="dot"></span>试卷结构与分值</h3>' +
+        '<table class="info"><thead><tr><th>题型</th><th>题量</th><th>分值</th><th>说明</th></tr></thead><tbody>' +
+          '<tr><td>单项选择题</td><td class="n">20 题</td><td class="n">20 分</td><td>公共基础 10 题 + 计算机基础与 WPS 综合应用基础 10 题，每题 1 分</td></tr>' +
+          '<tr><td>WPS 处理文字文档</td><td class="n">1 大题</td><td class="n">30 分</td><td>含 4~5 个小题，覆盖编辑、样式、页面、目录、邮件合并等</td></tr>' +
+          '<tr><td>WPS 处理电子表格</td><td class="n">1 大题</td><td class="n">30 分</td><td>含 4~5 个小题，覆盖公式函数、排序筛选、透视表、图表等</td></tr>' +
+          '<tr><td>WPS 处理演示文稿</td><td class="n">1 大题</td><td class="n">20 分</td><td>含 4 个小题，覆盖母版、动画、切换、放映与打包</td></tr>' +
+          '<tr><td colspan="2"><b>合计</b></td><td class="n">100 分</td><td>60 分及以上为合格</td></tr>' +
+        '</tbody></table>' +
+        '<div class="notice">本系统为静态模拟环境，无法真实操作 WPS 软件。操作题以「操作路径 / 参数选择 + 公式填写」的交互形式还原真考点，交卷后给出参考答案与详细操作步骤，用于检验操作思路是否准确。</div>' +
+      '</div>' +
+      '<div class="card panel">' +
+        '<h3><span class="dot"></span>考试须知</h3>' +
+        '<ol class="steps">' +
+          '<li>考试方式为上机考试，考试时长 <b>120 分钟</b>，满分 100 分。</li>' +
+          '<li>点击「开始考试」后倒计时立即启动，时间到系统<b>自动交卷</b>。</li>' +
+          '<li>每次组卷随机抽取 20 道单选（公共基础 10 + 其他 10），操作题文字 / 表格 / 演示各抽 1 套。</li>' +
+          '<li>作答进度实时保存到浏览器本地，刷新或关闭页面后可从首页「继续上次考试」恢复。</li>' +
+          '<li>交卷后显示总分、各题型得分、合格判定与逐题解析；错题自动进入错题本。</li>' +
+          '<li>建议使用最新版 Chrome / Edge / Firefox 浏览器，手机端亦可作答。</li>' +
+        '</ol>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="sechead"><h2>题库覆盖</h2><div class="line"></div>' +
+      '<span class="small muted">共 ' + SINGLE.length + ' 道单选 + ' + OPS.length + ' 套操作题</span></div>' +
+    '<div class="grid3">' +
+      modCard('public', '公共基础知识', counts.public, SINGLE.length) +
+      modCard('basic', '计算机基础与 WPS 综合应用基础', counts.basic, SINGLE.length) +
+      modCard('word', 'WPS 文字', counts.word, SINGLE.length) +
+      modCard('excel', 'WPS 表格', counts.excel, SINGLE.length) +
+      modCard('ppt', 'WPS 演示', counts.ppt, SINGLE.length) +
+      '<div class="card panel" style="padding:16px 18px">' +
+        '<h3 style="font-size:15px"><span class="dot"></span>操作题</h3>' +
+        '<div class="small muted">文字 ' + opCounts.word + ' 套 · 表格 ' + opCounts.excel + ' 套 · 演示 ' + opCounts.ppt + ' 套</div>' +
+        '<div class="bar"><i style="width:100%"></i></div>' +
+        '<button class="btn btn-sm" style="margin-top:12px;width:100%" data-act="goto-practice" data-cat="word">进入专项练习</button>' +
+      '</div>' +
+    '</div>' +
+
+    '<div style="margin-top:34px;text-align:center" class="tiny muted">' +
+      '本页面为单文件纯静态模拟系统，不联网、不采集数据，全部作答记录仅保存在本机浏览器 localStorage 中。' +
+    '</div>' +
+  '</div>';
+}
+function modCard(cat, name, n, total) {
+  var pct = total ? Math.round(n / total * 100) : 0;
+  return '<div class="card panel" style="padding:16px 18px">' +
+    '<h3 style="font-size:15px"><span class="dot"></span>' + esc(name) + '</h3>' +
+    '<div class="small muted">单选题 ' + n + ' 道</div>' +
+    '<div class="bar"><i style="width:' + pct + '%"></i></div>' +
+    '<button class="btn btn-sm" style="margin-top:12px;width:100%" data-act="goto-practice" data-cat="' + cat + '">进入专项练习</button>' +
+  '</div>';
+}
+
+/* ============ 九、考试视图 ============ */
+function viewExam() {
+  if (!EXAM) { S.view = 'home'; return viewHome(); }
+  var pages = examPages();
+  if (S.page >= pages.length) S.page = 0;
+  var p = pages[S.page];
+  var total = pages.length;
+  var done = answeredCount();
+  var totalItems = EXAM.singleIds.length + EXAM.opIds.reduce(function (a, id) { return a + (OPS_MAP[id] ? OPS_MAP[id].subs.length : 0); }, 0);
+
+  var right = '<div class="timer" id="timerBox"><span class="tiny" style="opacity:.8">剩余</span><span id="timerVal">' + fmtTime(EXAM.remain) + '</span></div>' +
+    '<button class="btn btn-sm btn-primary" data-act="ask-submit">交卷</button>';
+
+  return navBar(right) +
+  '<div class="exam-layout">' +
+    '<aside class="exam-side" id="examSide">' + answerCardHTML() + '</aside>' +
+    '<main class="exam-main">' +
+      '<div class="mobilebar">' +
+        '<button class="btn btn-sm btn-navy" data-act="toggle-card">答题卡</button>' +
+        '<span class="small muted">已作答 ' + done + ' / ' + totalItems + '</span>' +
+      '</div>' +
+      '<div class="progress-strip"><i id="progBar" style="width:' + Math.round(done / totalItems * 100) + '%"></i></div>' +
+      (p.kind === 'single' ? singleCardHTML(p.q) : opCardHTML(p.set)) +
+      '<div class="qnav">' +
+        '<button class="btn" data-act="exam-prev"' + (S.page === 0 ? ' disabled' : '') + '>上一题</button>' +
+        '<span class="small muted">第 ' + (S.page + 1) + ' / ' + total + ' 页</span>' +
+        '<div class="mid">' +
+          (S.page === total - 1
+            ? '<button class="btn btn-primary" data-act="ask-submit">交卷并评分</button>'
+            : '<button class="btn btn-navy" data-act="exam-next">下一题</button>') +
+        '</div>' +
+      '</div>' +
+    '</main>' +
+  '</div>';
+}
+function answerCardHTML() {
+  var h = '<div class="side-card">';
+  h += '<h4>单项选择题 <span class="tiny muted">' + EXAM.singleIds.length + ' 题 / 20 分</span></h4>';
+  h += '<div class="cardgrid" id="cardSingle">';
+  EXAM.singleIds.forEach(function (id, i) {
+    var q = SINGLE_MAP[id];
+    var cls = (EXAM.answers[id] != null ? 'done ' : '') + (S.page === i ? 'cur' : '');
+    h += '<button class="' + cls + '" data-act="exam-jump" data-page="' + i + '" title="' + esc(q ? q.topic : '') + '">' + (i + 1) + '</button>';
+  });
+  h += '</div>';
+  h += '<h4>操作题 <span class="tiny muted">80 分</span></h4>';
+  h += '<div class="cardgrid op">';
+  EXAM.opIds.forEach(function (id, k) {
+    var set = OPS_MAP[id]; if (!set) return;
+    var idx = EXAM.singleIds.length + k;
+    var ok = set.subs.filter(function (s) { return EXAM.answers[s.id] != null && EXAM.answers[s.id] !== ''; }).length;
+    var cls = (ok === set.subs.length ? 'done ' : '') + (S.page === idx ? 'cur' : '');
+    h += '<button class="' + cls + '" data-act="exam-jump" data-page="' + idx + '">' +
+      '<span>' + esc(set.title) + '</span><span class="tiny">' + ok + '/' + set.subs.length + '</span></button>';
+  });
+  h += '</div>';
+  h += '<div class="legend"><span><i style="background:#e7eef7;border-color:#b9cde4"></i>已作答</span>' +
+       '<span><i style="background:var(--navy);border-color:var(--navy)"></i>当前题</span>' +
+       '<span><i style="background:#fff"></i>未作答</span></div>';
+  h += '<button class="btn btn-primary" style="width:100%;margin-top:14px" data-act="ask-submit">交卷并评分</button>';
+  h += '</div>';
+  return h;
+}
+function singleCardHTML(q) {
+  if (!q) return '<div class="qcard">题目数据缺失</div>';
+  var cur = EXAM.answers[q.id];
+  var opts = q.opts.map(function (o, i) {
+    return '<button class="opt' + (cur === i ? ' sel' : '') + '" data-act="exam-option" data-qid="' + q.id + '" data-i="' + i + '">' +
+      '<span class="k">' + OPT_KEYS[i] + '</span><span class="v">' + esc(o) + '</span></button>';
+  }).join('');
+  return '<div class="qcard">' +
+    '<div class="qhead"><div class="qmeta">' + catTag(q.cat) + diffTag(q.diff) +
+      '<span class="tag">知识点：' + esc(q.topic) + '</span></div>' +
+      '<span class="qno">单项选择题 · 1 分</span></div>' +
+    '<div class="qstem">' + esc(q.q) + '</div>' +
+    '<div class="opts">' + opts + '</div>' +
+    '<div class="tiny muted" style="margin-top:12px">提示：点击选项即作答，进度自动保存。</div>' +
+  '</div>';
+}
+function opCardHTML(set) {
+  if (!set) return '<div class="qcard">题目数据缺失</div>';
+  var h = '<div class="qcard">' +
+    '<div class="qhead"><div class="qmeta">' + catTag(set.type) +
+      '<span class="tag">操作题 · ' + opTotal(set) + ' 分</span>' +
+      '<span class="tag">' + set.subs.length + ' 个小题</span></div>' +
+      '<span class="qno">' + esc(set.title) + '</span></div>' +
+    '<div class="qstem" style="font-size:16px">' + esc(set.title) + '</div>' +
+    '<div class="opbox"><h4>【题目描述】</h4><div style="font-size:14.5px;white-space:pre-wrap">' + esc(set.desc) + '</div></div>' +
+    '<div class="opbox"><h4>【素材说明】</h4><div style="font-size:14.5px;white-space:pre-wrap">' + esc(set.material) + '</div></div>' +
+    '<div class="opbox"><h4>【操作要求】</h4><ul>' +
+      set.reqs.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') +
+    '</ul></div>' +
+    '<div class="tiny muted" style="margin-bottom:6px">下面通过小题检验你的操作思路（选择正确操作路径，或填写正确公式）。</div>';
+
+  set.subs.forEach(function (s, i) {
+    var val = EXAM.answers[s.id];
+    h += '<div class="subq"><div class="subhead">' +
+      '<div class="qmeta"><span class="qno">第 ' + (i + 1) + ' 小题</span>' +
+      '<span class="tag">' + (s.point || 0) + ' 分</span>' +
+      (s.topic ? '<span class="tag">' + esc(s.topic) + '</span>' : '') + '</div>' +
+      (val != null && val !== '' ? '<span class="tag" style="background:var(--greenbg);color:#15803d">已作答</span>' : '<span class="tag">未作答</span>') +
+      '</div>';
+    h += '<div style="font-size:15.5px;font-weight:600;margin-bottom:12px;white-space:pre-wrap">' + esc(s.q) + '</div>';
+    if (s.type === 'fill') {
+      h += '<div class="fillrow"><input type="text" data-subfill="' + s.id + '" value="' + esc(val == null ? '' : val) + '" ' +
+        'placeholder="' + esc(s.placeholder || '请输入公式或答案，例如 =SUM(B2:B10)') + '" autocomplete="off" spellcheck="false" />' +
+        '<span class="tiny muted">输入后自动保存</span></div>';
+    } else {
+      h += '<div class="opts">' + (s.opts || []).map(function (o, k) {
+        return '<button class="opt' + (Number(val) === k ? ' sel' : '') + '" data-act="exam-option" data-qid="' + s.id + '" data-i="' + k + '">' +
+          '<span class="k">' + OPT_KEYS[k] + '</span><span class="v">' + esc(o) + '</span></button>';
+      }).join('') + '</div>';
+    }
+    h += '</div>';
+  });
+  h += '</div>';
+  return h;
+}
+function paintCardStates() {
+  if (S.view !== 'exam') return;
+  var side = $('#examSide'); if (!side) return;
+  side.innerHTML = answerCardHTML();
+}
+function paintProgress() {
+  var bar = $('#progBar'); if (!bar || !EXAM) return;
+  var totalItems = EXAM.singleIds.length + EXAM.opIds.reduce(function (a, id) { return a + (OPS_MAP[id] ? OPS_MAP[id].subs.length : 0); }, 0);
+  bar.style.width = Math.round(answeredCount() / totalItems * 100) + '%';
+}
+
+/* ============ 十、成绩与解析 ============ */
+function viewResult() {
+  if (!EXAM || !EXAM.submitted) { S.view = 'home'; return viewHome(); }
+  var r = EXAM.result || gradeExam();
+  var deg = Math.round(Math.max(0, Math.min(100, r.total)) * 3.6);
+  var h = navBar('<button class="btn btn-sm btn-ghost" data-act="goto-home">返回首页</button>' +
+    '<button class="btn btn-sm btn-primary" data-act="restart">再考一次</button>');
+  h += '<div class="page">';
+  h += '<div class="card result-hero">' +
+      '<div class="ring' + (r.pass ? '' : ' no') + '" style="--deg:' + deg + 'deg"><i></i>' +
+        '<div class="val"><b>' + r.total + '</b><span>总分 / 100</span></div></div>' +
+      '<div>' +
+        '<div class="sechead" style="margin:0 0 8px"><h2 style="font-size:22px">' + (r.pass ? '恭喜，成绩合格' : '本次未达合格线') + '</h2>' +
+          '<span class="verdict ' + (r.pass ? 'pass' : 'fail') + '">' + (r.pass ? '合格 ≥ 60 分' : '未合格 < 60 分') + '</span></div>' +
+        '<div class="small muted">用时 ' + fmtTime(r.timeUsed) + ' · 答对 ' + r.right + ' 项 · 答错 ' + r.wrong + ' 项 · 未作答 ' + r.blank + ' 项</div>' +
+        '<div class="scoregrid" style="margin-top:18px">' +
+          scoreBox('单项选择题', r.single, 20) +
+          scoreBox('WPS 处理文字文档', r.word, 30) +
+          scoreBox('WPS 处理电子表格', r.excel, 30) +
+          scoreBox('WPS 处理演示文稿', r.ppt, 20) +
+        '</div>' +
+        '<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">' +
+          '<button class="btn btn-navy" data-act="goto-wrong">查看错题本</button>' +
+          '<button class="btn" data-act="goto-practice">专项练习</button>' +
+          '<button class="btn" data-act="restart">重新组卷考试</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+  h += '<div class="sechead"><h2>逐题解析</h2><div class="line"></div><span class="small muted">正确项已用绿色标注，你的错误选择用红色标注</span></div>';
+  h += '<h3 style="font-size:15.5px;color:var(--navy);margin:0 0 10px">一、单项选择题（20 分）</h3>';
+  EXAM.singleIds.forEach(function (id, i) {
+    var q = SINGLE_MAP[id]; if (!q) return;
+    var my = EXAM.answers[id];
+    var ok = my === q.ans;
+    h += '<div class="review-item ' + (ok ? 'good' : 'bad') + '">' +
+      '<div class="qhead" style="margin-bottom:8px"><div class="qmeta">' +
+        '<span class="qno">第 ' + (i + 1) + ' 题</span>' + catTag(q.cat) + diffTag(q.diff) +
+        '<span class="tag">' + esc(q.topic) + '</span>' +
+        (ok ? '<span class="tag" style="background:var(--greenbg);color:#15803d">答对</span>'
+            : '<span class="tag" style="background:var(--redbg);color:#b91c1c">' + (my == null ? '未作答' : '答错') + '</span>') +
+      '</div><span class="tiny muted">1 分</span></div>' +
+      '<div style="font-weight:600;margin-bottom:10px;white-space:pre-wrap">' + esc(q.q) + '</div>' +
+      '<div class="opts">' + q.opts.map(function (o, k) {
+        var cls = '';
+        if (k === q.ans) cls = ' right';
+        else if (k === my) cls = ' wrong';
+        return '<div class="opt' + cls + '"><span class="k">' + OPT_KEYS[k] + '</span><span class="v">' + esc(o) +
+          (k === q.ans ? '　<b style="color:var(--green)">← 正确答案</b>' : (k === my ? '　<b style="color:var(--red)">← 你的选择</b>' : '')) + '</span></div>';
+      }).join('') + '</div>' +
+      explainBox(ok, '【参考答案】' + OPT_KEYS[q.ans] + '　|　解析', q.exp) +
+    '</div>';
+  });
+
+  ['word', 'excel', 'ppt'].forEach(function (type) {
+    var ids = EXAM.opIds.filter(function (id) { return OPS_MAP[id] && OPS_MAP[id].type === type; });
+    if (!ids.length) return;
+    var label = type === 'word' ? '二、WPS 处理文字文档操作题' : (type === 'excel' ? '三、WPS 处理电子表格操作题' : '四、WPS 处理演示文稿操作题');
+    h += '<h3 style="font-size:15.5px;color:var(--navy);margin:24px 0 10px">' + label + '（' + (type === 'word' ? 30 : type === 'excel' ? 30 : 20) + ' 分）</h3>';
+    ids.forEach(function (id) {
+      var set = OPS_MAP[id];
+      var got = r[type];
+      h += '<div class="card" style="padding:18px 20px;margin-bottom:14px">' +
+        '<div class="qhead"><div class="qmeta">' + catTag(type) +
+          '<span class="tag">得分 ' + got + ' / ' + opTotal(set) + '</span></div>' +
+          '<span class="qno">' + esc(set.title) + '</span></div>' +
+        '<div class="opbox"><h4>【题目描述】</h4><div style="font-size:14px;white-space:pre-wrap">' + esc(set.desc) + '</div></div>' +
+        '<div class="opbox"><h4>【操作要求】</h4><ul>' + set.reqs.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>';
+      set.subs.forEach(function (s, i) {
+        var my = EXAM.answers[s.id];
+        var ok = subAnswerOk(s, my);
+        var rightTxt;
+        if (s.type === 'fill') rightTxt = (s.accept && s.accept.length ? s.accept[0] : s.ans);
+        else rightTxt = OPT_KEYS[s.ans] + '. ' + (s.opts ? s.opts[s.ans] : '');
+        var myTxt;
+        if (my == null || my === '') myTxt = '未作答';
+        else if (s.type === 'fill') myTxt = my;
+        else myTxt = OPT_KEYS[my] + '. ' + (s.opts ? s.opts[my] : '');
+        h += '<div class="subq"><div class="qhead" style="margin-bottom:8px"><div class="qmeta">' +
+            '<span class="qno">第 ' + (i + 1) + ' 小题</span><span class="tag">' + (s.point || 0) + ' 分</span>' +
+            (ok ? '<span class="tag" style="background:var(--greenbg);color:#15803d">正确 +' + s.point + '</span>'
+                : '<span class="tag" style="background:var(--redbg);color:#b91c1c">错误 0 分</span>') +
+          '</div></div>' +
+          '<div style="font-weight:600;margin-bottom:8px;white-space:pre-wrap">' + esc(s.q) + '</div>';
+        if (s.type === 'choice') {
+          h += '<div class="opts">' + (s.opts || []).map(function (o, k) {
+            var cls = k === s.ans ? ' right' : (Number(my) === k ? ' wrong' : '');
+            return '<div class="opt' + cls + '"><span class="k">' + OPT_KEYS[k] + '</span><span class="v">' + esc(o) + '</span></div>';
+          }).join('') + '</div>';
+        }
+        h += '<div class="tiny" style="margin-top:8px">你的作答：<b>' + esc(myTxt) + '</b>　|　参考答案：<b style="color:var(--green)">' + esc(rightTxt) + '</b></div>';
+        h += explainBox(ok, '解析与操作步骤', s.exp) + '</div>';
+      });
+      h += '</div>';
+    });
+  });
+  h += '</div>';
+  return h;
+}
+function scoreBox(name, got, max) {
+  var pct = max ? Math.round(got / max * 100) : 0;
+  return '<div class="scorebox"><div class="t">' + esc(name) + '</div>' +
+    '<div class="v">' + got + ' <small>/ ' + max + ' 分</small></div>' +
+    '<div class="bar"><i style="width:' + pct + '%;background:' + (pct >= 60 ? 'var(--green)' : 'var(--accent)') + '"></i></div></div>';
+}
+function explainBox(ok, head, body) {
+  return '<div class="explain ' + (ok ? 'ok' : 'no') + '"><div class="eh"><span>' + esc(head) + '</span>' +
+    '<span>' + (ok ? '已掌握' : '需重点复习') + '</span></div>' +
+    '<div class="eb">' + esc(body) + '</div></div>';
+}
+
+/* ============ 十一、专项练习 ============ */
+function viewPractice() {
+  if (!S.practice) return viewPracticeSetup();
+  var list = S.practice.list;
+  var answered = 0, right = 0;
+  list.forEach(function (id) { var a = S.practice.pick[id]; if (a != null) { answered++; if (a === SINGLE_MAP[id].ans) right++; } });
+  var h = navBar('<button class="btn btn-sm btn-ghost" data-act="practice-back">返回题库</button>' +
+    '<button class="btn btn-sm btn-ghost" data-act="goto-home">首页</button>' +
+    '<button class="btn btn-sm btn-primary" data-act="goto-wrong">错题本</button>');
+  h += '<div class="page">' +
+    '<div class="sechead" style="margin-top:0"><h2>' + esc(S.practice.title) + ' · 专项练习</h2><div class="line"></div>' +
+      '<span class="tag">共 ' + list.length + ' 题</span>' +
+      '<span class="tag" style="background:var(--greenbg);color:#15803d">已答 ' + answered + '</span>' +
+      '<span class="tag" style="background:var(--navy);color:#fff">正确 ' + right + '</span>' +
+      (answered ? '<span class="tag">正确率 ' + Math.round(right / answered * 100) + '%</span>' : '') +
+    '</div>' +
+    '<div class="notice" style="margin:0 0 16px">练习模式：点击选项立即判定对错并显示解析，答错的题目会自动加入错题本。</div>';
+  list.forEach(function (id, i) {
+    h += practiceCard(SINGLE_MAP[id], i + 1);
+  });
+  h += '</div>';
+  return h;
+}
+function practiceCard(q, no) {
+  if (!q) return '';
+  var picked = S.practice.pick[q.id];
+  var revealed = picked != null;
+  var opts = q.opts.map(function (o, k) {
+    var cls = '';
+    if (revealed) { if (k === q.ans) cls = ' right'; else if (k === picked) cls = ' wrong'; }
+    return '<button class="opt' + cls + '" data-act="practice-pick" data-qid="' + q.id + '" data-i="' + k + '"' + (revealed ? ' disabled' : '') + '>' +
+      '<span class="k">' + OPT_KEYS[k] + '</span><span class="v">' + esc(o) +
+      (revealed && k === q.ans ? '　<b style="color:var(--green)">← 正确答案</b>' : '') + '</span></button>';
+  }).join('');
+  return '<div class="qcard">' +
+    '<div class="qhead"><div class="qmeta"><span class="qno">第 ' + no + ' 题</span>' + catTag(q.cat) + diffTag(q.diff) +
+      '<span class="tag">' + esc(q.topic) + '</span></div></div>' +
+    '<div class="qstem">' + esc(q.q) + '</div>' +
+    '<div class="opts">' + opts + '</div>' +
+    (revealed ? explainBox(picked === q.ans, (picked === q.ans ? '回答正确' : '回答错误') + '　|　参考答案 ' + OPT_KEYS[q.ans], q.exp) : '') +
+  '</div>';
+}
+function viewPracticeSetup() {
+  var counts = { public: 0, basic: 0, word: 0, excel: 0, ppt: 0 };
+  SINGLE.forEach(function (q) { counts[q.cat] = (counts[q.cat] || 0) + 1; });
+  var h = navBar('<button class="btn btn-sm btn-ghost" data-act="goto-home">返回首页</button>' +
+    '<button class="btn btn-sm btn-ghost" data-act="goto-wrong">错题本</button>');
+  h += '<div class="page"><div class="sechead" style="margin-top:0"><h2>专项练习</h2><div class="line"></div>' +
+    '<span class="small muted">选择模块后进入刷题，答错自动进入错题本</span></div>' +
+    '<div class="grid3">';
+  h += setupCard('public', '公共基础知识', counts.public, '计算机系统、数据结构与算法、程序设计、软件工程、数据库');
+  h += setupCard('basic', '计算机基础与 WPS 综合基础', counts.basic, 'WPS 界面视图、文件与加密、PDF、云文档与共享协作');
+  h += setupCard('word', 'WPS 文字', counts.word, '编辑与格式、样式主题、页面布局、目录题注、邮件合并');
+  h += setupCard('excel', 'WPS 表格', counts.excel, '公式函数、排序筛选、分类汇总、数据透视表、图表');
+  h += setupCard('ppt', 'WPS 演示', counts.ppt, '母版主题、动画切换、超链接、放映与打包输出');
+  h += setupCard('all', '综合全真模考', SINGLE.length, '全部模块随机抽取 30 题连续作答');
+  h += '</div></div>';
+  return h;
+}
+function setupCard(cat, name, n, desc) {
+  return '<button class="card panel modcard" data-act="practice-start" data-cat="' + cat + '" style="padding:20px 22px">' +
+    '<b style="font-size:16px">' + esc(name) + '</b>' +
+    '<div class="cnt" style="margin-bottom:6px">题库 ' + n + ' 题</div>' +
+    '<div class="small muted">' + esc(desc) + '</div>' +
+    '<div class="bar"><i style="width:100%"></i></div>' +
+  '</button>';
+}
+
+/* ============ 十二、错题本 ============ */
+function viewWrong() {
+  var book = lsGet(LS.wrong, []);
+  var h = navBar('<button class="btn btn-sm btn-ghost" data-act="goto-home">返回首页</button>' +
+    (book.length ? '<button class="btn btn-sm btn-ghost" data-act="wrong-clear">清空错题本</button>' : ''));
+  h += '<div class="page"><div class="sechead" style="margin-top:0"><h2>错题本</h2><div class="line"></div>' +
+    '<span class="tag">共 ' + book.length + ' 题</span></div>';
+  if (!book.length) {
+    h += '<div class="card emptybox"><div class="big">&#10003;</div><div>暂无错题记录，继续保持！</div>' +
+      '<div class="small" style="margin-top:14px"><button class="btn btn-primary" data-act="start-exam">开始一次考试</button></div></div>';
+  } else {
+    h += '<div class="notice" style="margin:0 0 16px">错题本会持续累积你在「考试模式」和「专项练习」中答错的题目，掌握后可逐条移除。</div>';
+    book.forEach(function (w) {
+      var q = SINGLE_MAP[w.id];
+      var opts = w.opts || (q ? q.opts : null);
+      var ans = q ? q.ans : w.ans;
+      var my = w.my;
+      h += '<div class="review-item bad">' +
+        '<div class="qhead" style="margin-bottom:8px"><div class="qmeta">' + catTag(w.cat) + diffTag(w.diff) +
+          '<span class="tag">' + esc(w.topic || '') + '</span>' +
+          (w.from ? '<span class="tag">' + esc(w.from) + '</span>' : '') + '</div>' +
+          '<button class="btn btn-sm" data-act="wrong-remove" data-id="' + esc(w.id) + '">移出错题本</button></div>' +
+        '<div style="font-weight:600;margin-bottom:10px;white-space:pre-wrap">' + esc(w.q) + '</div>';
+      if (opts && opts.length) {
+        h += '<div class="opts">' + opts.map(function (o, k) {
+          var cls = k === ans ? ' right' : (Number(my) === k ? ' wrong' : '');
+          return '<div class="opt' + cls + '"><span class="k">' + OPT_KEYS[k] + '</span><span class="v">' + esc(o) + '</span></div>';
+        }).join('') + '</div>';
+      } else {
+        h += '<div class="tiny">你的作答：<b style="color:var(--red)">' + esc(my == null || my === '' ? '未作答' : my) + '</b>' +
+          '　|　参考答案：<b style="color:var(--green)">' + esc(ans) + '</b></div>';
+      }
+      h += explainBox(false, '参考答案 ' + (opts && opts.length ? OPT_KEYS[ans] : esc(ans)) + '　|　解析', w.exp || '');
+      h += '</div>';
+    });
+  }
+  h += '</div>';
+  return h;
+}
+
+/* ============ 十三、事件委托 ============ */
+document.addEventListener('click', function (e) {
+  var el = e.target.closest ? e.target.closest('[data-act]') : null;
+  if (!el) return;
+  var act = el.dataset.act;
+
+  if (act === 'modal-close') { closeModal(); return; }
+  if (act === 'goto-home') { S.view = 'home'; S.practice = null; render(); window.scrollTo(0, 0); return; }
+  if (act === 'goto-practice') {
+    S.view = 'practice'; S.practice = null;
+    if (el.dataset.cat) { startPractice(el.dataset.cat); return; }
+    render(); window.scrollTo(0, 0); return;
+  }
+  if (act === 'goto-wrong') { S.view = 'wrong'; render(); window.scrollTo(0, 0); return; }
+  if (act === 'practice-back') { S.practice = null; render(); window.scrollTo(0, 0); return; }
+  if (act === 'start-exam') {
+    var saved = lsGet(LS.exam, null);
+    if (saved && !saved.submitted && saved.singleIds && saved.singleIds.length) {
+      showModal({
+        title: '发现未完成的考试',
+        html: '<p>检测到上一次考试尚未交卷，剩余时间 <b>' + fmtTime(saved.remain) + '</b>。</p><p style="margin-top:8px">你可以继续作答，或放弃该场考试重新组卷。</p>',
+        buttons: [
+          { label: '放弃并重新组卷', cls: 'btn', onClick: function () { resetExam(); startExam(); } },
+          { label: '继续上次考试', cls: 'btn-primary', onClick: function () { startExam(saved); } }
+        ]
+      });
+      return;
+    }
+    resetExam(); startExam(); window.scrollTo(0, 0); return;
+  }
+  if (act === 'resume-exam') {
+    var s2 = lsGet(LS.exam, null);
+    if (s2 && !s2.submitted) { startExam(s2); window.scrollTo(0, 0); }
+    else { showModal({ title: '无法恢复', html: '<p>没有找到可恢复的考试记录，请重新开始考试。</p>' }); }
+    return;
+  }
+  if (act === 'view-last-result') {
+    var s3 = lsGet(LS.exam, null);
+    if (s3 && s3.submitted && s3.result) { EXAM = s3; S.view = 'result'; S.page = 0; render(); window.scrollTo(0, 0); }
+    return;
+  }
+  if (act === 'restart') {
+    showModal({
+      title: '重新组卷',
+      html: '<p>将清空当前试卷记录并重新随机组卷，确定继续吗？</p>',
+      buttons: [
+        { label: '取消', cls: 'btn' },
+        { label: '确定重新组卷', cls: 'btn-primary', onClick: function () { resetExam(); startExam(); window.scrollTo(0, 0); } }
+      ]
+    });
+    return;
+  }
+  if (act === 'exam-jump') { S.page = Number(el.dataset.page); render(); closeDrawer(); window.scrollTo(0, 0); return; }
+  if (act === 'exam-prev') { if (S.page > 0) { S.page--; render(); window.scrollTo(0, 0); } return; }
+  if (act === 'exam-next') { var pg = examPages(); if (S.page < pg.length - 1) { S.page++; render(); window.scrollTo(0, 0); } return; }
+  if (act === 'exam-option') {
+    if (!EXAM || EXAM.submitted) return;
+    var qid = el.dataset.qid, idx = Number(el.dataset.i);
+    EXAM.answers[qid] = idx;
+    saveExam();
+    if (S.page < EXAM.singleIds.length) render(); else render();
+    return;
+  }
+  if (act === 'ask-submit') {
+    if (!EXAM) return;
+    var totalItems = EXAM.singleIds.length + EXAM.opIds.reduce(function (a, id) { return a + (OPS_MAP[id] ? OPS_MAP[id].subs.length : 0); }, 0);
+    var done = answeredCount();
+    var un = totalItems - done;
+    showModal({
+      title: '确认交卷',
+      html: '<p>本场考试共 <b>' + totalItems + '</b> 个作答项，你已完成 <b>' + done + '</b> 项' +
+        (un > 0 ? '，仍有 <b style="color:var(--red)">' + un + '</b> 项未作答。' : '，全部作答完毕。') +
+        '</p><p style="margin-top:8px" class="small muted">交卷后将立即评分并生成逐题解析，无法再修改答案。</p>',
+      buttons: [
+        { label: '继续作答', cls: 'btn' },
+        { label: '确认交卷', cls: 'btn-primary', onClick: function () { submitExam(false); } }
+      ]
+    });
+    return;
+  }
+  if (act === 'toggle-card') {
+    var side = $('#examSide');
+    if (!side) return;
+    var open = side.classList.toggle('open');
+    var scrim = $('#sideScrim');
+    if (open) {
+      if (!scrim) {
+        scrim = document.createElement('div');
+        scrim.className = 'side-scrim'; scrim.id = 'sideScrim';
+        scrim.onclick = function () { side.classList.remove('open'); scrim.remove(); };
+        document.body.appendChild(scrim);
+      }
+    } else if (scrim) scrim.remove();
+    return;
+  }
+  if (act === 'practice-start') { startPractice(el.dataset.cat); window.scrollTo(0, 0); return; }
+  if (act === 'practice-pick') {
+    var pid = el.dataset.qid, pi = Number(el.dataset.i);
+    if (!S.practice || S.practice.pick[pid] != null) return;
+    S.practice.pick[pid] = pi;
+    var q = SINGLE_MAP[pid];
+    if (q && pi !== q.ans) { collectWrong([snapSingle(q, pi)]); }
+    render();
+    return;
+  }
+  if (act === 'wrong-remove') {
+    var rid = el.dataset.id;
+    var book = lsGet(LS.wrong, []).filter(function (w) { return w.id !== rid; });
+    lsSet(LS.wrong, book);
+    render();
+    return;
+  }
+  if (act === 'wrong-clear') {
+    showModal({
+      title: '清空错题本',
+      html: '<p>将删除错题本中的全部记录，此操作不可撤销。</p>',
+      buttons: [
+        { label: '取消', cls: 'btn' },
+        { label: '确认清空', cls: 'btn-primary', onClick: function () { lsSet(LS.wrong, []); render(); } }
+      ]
+    });
+    return;
+  }
+});
+function closeDrawer() {
+  var side = $('#examSide'); if (side) side.classList.remove('open');
+  var scrim = $('#sideScrim'); if (scrim) scrim.remove();
+}
+function startPractice(cat) {
+  var title, list;
+  if (cat === 'all') {
+    title = '综合全真模考'; list = shuffle(SINGLE).slice(0, 30).map(function (q) { return q.id; });
+  } else if (cat) {
+    title = (CATS[cat] ? CATS[cat].name : '专项') + '专项练习';
+    list = shuffle(SINGLE.filter(function (q) { return q.cat === cat; })).map(function (q) { return q.id; });
+  } else {
+    S.practice = null; render(); return;
+  }
+  if (!list.length) { showModal({ title: '暂无题目', html: '<p>该模块题库为空。</p>' }); return; }
+  S.practice = { cat: cat, title: title, list: list, pick: {} };
+  S.view = 'practice';
+  render();
+}
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') { closeModal(); closeDrawer(); }
+  if (S.view === 'exam' && !$('#modal').hidden) return;
+  if (S.view === 'exam' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+    var tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input') return;
+    var pg = examPages();
+    if (e.key === 'ArrowLeft' && S.page > 0) { S.page--; render(); window.scrollTo(0, 0); }
+    if (e.key === 'ArrowRight' && S.page < pg.length - 1) { S.page++; render(); window.scrollTo(0, 0); }
+  }
+});
+
+/* ============ 十四、启动 ============ */
+(function init() {
+  var saved = lsGet(LS.exam, null);
+  if (saved && !saved.submitted && saved.singleIds && saved.singleIds.length) {
+    // 刷新后自动恢复未完成的考试，作答进度与剩余时间不丢失
+    startExam(saved);
+    showModal({
+      title: '已恢复上次考试',
+      html: '<p>检测到未交卷的考试记录，已自动恢复你的作答进度，剩余时间 <b>' + fmtTime(EXAM.remain) + '</b>。</p>' +
+        '<p class="small muted" style="margin-top:8px">若需放弃本场考试重新组卷，可返回首页重新开始。</p>',
+      buttons: [
+        { label: '返回首页', cls: 'btn', onClick: function () { S.view = 'home'; render(); window.scrollTo(0, 0); } },
+        { label: '继续作答', cls: 'btn-primary' }
+      ]
+    });
+    return;
+  }
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# 构建脚本与中间产物（不发布）
+_build/
+
+# 内部分享包（zip，不发布）
+.trae-html-share-packages/
+
+# 系统文件
+Thumbs.db
+desktop.ini
+.DS_Store

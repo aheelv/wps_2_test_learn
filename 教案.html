@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>教案 · 二级 WPS Office 11 次课 44 课时培训</title>
+<link rel="stylesheet" href="./assets/style.css">
+<style>
+  .filterbar{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 24px;position:sticky;top:60px;z-index:30;background:rgba(244,246,250,.92);backdrop-filter:blur(8px);padding:10px 0}
+  .fbtn{border:1px solid var(--line);background:#fff;border-radius:99px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer;color:var(--ink-2)}
+  .fbtn:hover{border-color:var(--brand)}
+  .fbtn.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .lp{border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);overflow:hidden;margin-bottom:24px;break-inside:avoid}
+  .lp-head{display:flex;align-items:center;gap:14px;padding:16px 22px;color:#fff}
+  .lp-head .no{font-size:15px;font-weight:900;background:rgba(255,255,255,.2);border-radius:8px;padding:6px 12px;flex:none}
+  .lp-head h3{color:#fff;margin:0;font-size:20px;flex:1}
+  .lp-head .tags{display:flex;gap:8px;flex-wrap:wrap}
+  .lp-head .tags span{background:rgba(255,255,255,.18);border-radius:99px;padding:4px 11px;font-size:12px;font-weight:700}
+  .lp-body{padding:20px 22px}
+  .lp-sec{margin-bottom:18px}
+  .lp-sec h4{font-size:14px;font-weight:900;letter-spacing:.04em;color:var(--brand);margin-bottom:9px;display:flex;align-items:center;gap:8px}
+  .lp-sec h4::before{content:"";width:5px;height:15px;border-radius:2px;background:var(--accent)}
+  .lp-sec ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .lp-sec li{position:relative;padding-left:19px;font-size:14.5px;color:var(--ink-2);line-height:1.6}
+  .lp-sec li::before{content:"";position:absolute;left:2px;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--brand-2)}
+  .steps{width:100%;border-collapse:collapse;font-size:14px}
+  .steps th,.steps td{padding:8px 12px;border-bottom:1px solid var(--line-2);text-align:left}
+  .steps th{background:var(--surface-2);font-size:12.5px;color:var(--ink-2);font-weight:800}
+  .steps td.tm{width:90px;font-variant-numeric:tabular-nums;color:var(--accent);font-weight:800}
+  .reflect{margin-top:6px;border:1px dashed var(--line);border-radius:9px;min-height:52px;background:repeating-linear-gradient(#fff,#fff 26px,var(--line-2) 26px,var(--line-2) 27px)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .ratio{display:flex;height:24px;border-radius:7px;overflow:hidden;margin:0 0 16px;font-size:11.5px;font-weight:800;color:#fff}
+  .ratio i{display:flex;align-items:center;justify-content:center;font-style:normal}
+  .ratio i.t{background:linear-gradient(135deg,#5b7cfa,#3f5ae0)}
+  .ratio i.p{background:linear-gradient(135deg,#34c77b,#1f9e5c)}
+  .lessonblock{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+  .lessonblock h5{margin:0 0 10px;font-size:14.5px;color:var(--brand);display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+  .lessonblock h5 em{font-style:normal;font-size:12px;font-weight:700;color:var(--muted)}
+  .pq{border:1px solid var(--line);border-left:4px solid var(--brand-2);border-radius:9px;padding:12px 14px;margin-bottom:12px;background:#fff}
+  .pq.oper{border-left-color:var(--accent)}
+  .pq-tag{display:inline-block;font-size:11.5px;font-weight:800;color:#fff;background:var(--brand-2);border-radius:99px;padding:2px 10px;margin-bottom:7px}
+  .pq.oper .pq-tag{background:var(--accent)}
+  .pq-q{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:8px}
+  .pq-opts{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin:0 0 9px;padding:0}
+  .pq-opts li{font-size:13.5px;color:var(--ink-2)}
+  .pq-ans{font-size:13px;color:#12703f;background:#e8f7ee;border-radius:7px;padding:8px 11px;line-height:1.7}
+  .pq-req,.pq-steps{font-size:13.5px;color:var(--ink-2);line-height:1.7;margin-bottom:7px}
+  .pq-steps ol{margin:5px 0 0;padding-left:20px}
+  .pq-steps ol li{margin-bottom:3px}
+  .pcount{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .pcount span{font-size:12px;font-weight:800;padding:4px 11px;border-radius:99px;background:var(--line-2);color:var(--muted)}
+  .pcount span.hi{background:#e8f7ee;color:#12703f}
+  .sylmeta{font-size:12.5px;color:var(--muted);line-height:1.7;background:var(--surface-2);border-radius:8px;padding:7px 11px;margin:-2px 0 10px}
+  .sylmeta b{color:var(--brand);font-weight:800}
+  .sylmeta .fr{color:var(--accent);font-weight:800}
+  .focusbox{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:9px;background:#fff7f5;padding:11px 14px;margin-bottom:16px}
+  .focusbox h5{margin:0 0 5px;font-size:13px;font-weight:900;color:var(--accent)}
+  .focusbox p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.7}
+  @media(max-width:760px){.two{grid-template-columns:1fr}.pq-opts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">WPS</span><span>二级 WPS 通关培训<small>NCRE · 科目 67</small></span></a>
+  <nav class="navlinks">
+    <a href="./index.html">学习中心</a>
+    <a href="./教学大纲.html">教学大纲</a>
+    <a href="./考纲对照表.html">考纲对照表</a>
+    <a href="./教学日历.html">教学日历</a>
+    <a class="on" href="./教案.html">教案</a>
+    <a href="./培训课件.html">培训课件</a>
+    <a href="./电子书.html">电子书</a>
+    <a href="./资料汇编.html">资料汇编</a>
+    <a href="./考试模拟系统/index.html">模拟考试</a>
+  </nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">教案 · Lesson Plans</div>
+  <h1>11 次课教案（每次 4 课时）</h1>
+  <p class="sub">全课程统筹为 11 次课 × 每次 4 课时，按 <b>5 大模块</b>、考试分值配置课时（文字、表格各 30 分各配 12 课时，单选、演示各 20 分各配 8 课时，最后 4 课时全真模拟）。每份教案含教学目标、<b>对应考纲条目与题型分值</b>、课时安排、教学过程（含时间分配）、课堂练习（题目 + 答案 + 解析）、作业布置与教学反思栏，并明确「讲授 40% + 课堂练习 60%」的讲练配比。<b>以帮助学生通过为第一原则。</b></p>
+  <div class="hero-stats">
+    <div class="hero-stat"><b>11</b><span>份教案</span></div>
+    <div class="hero-stat"><b>5</b><span>大模块</span></div>
+    <div class="hero-stat"><b>4</b><span>课时 / 次</span></div>
+    <div class="hero-stat"><b>60%</b><span>课堂练习</span></div>
+    <div class="hero-stat"><b>100%</b><span>覆盖大纲考点</span></div>
+  </div>
+</div></section>
+
+<main class="wrap">
+  <div class="filterbar" id="filterbar"></div>
+  <div id="plans"></div>
+</main>
+
+<footer class="footer"><div class="wrap"><div class="cols">
+  <div><h4>二级 WPS Office 11 次课 44 课时通关培训</h4><p class="small">教案依据官方考试大纲（2025 年版）与配套课件编写，与《教学日历》进度一致。</p></div>
+  <div><h4>快速导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教学日历.html">教学日历</a> · <a href="./培训课件.html">培训课件</a></p><p class="small"><a href="./电子书.html">电子书</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p></div>
+  <div><h4>说明</h4><p class="small">教学反思栏可用于课后记录，建议打印后手写或电子批注。</p></div>
+</div></div></footer>
+
+<script src="./assets/curriculum.js"></script>
+<script>
+(function(){
+  const C=window.CURRICULUM, S=C.sessions;
+  const bar=document.getElementById('filterbar');
+  const host=document.getElementById('plans');
+
+  // 课时 -> 模块 / 课时对象 映射
+  const modOf={}, lesOf={};
+  C.modules.forEach(function(m){ m.lessons.forEach(function(ls){ modOf[ls.no]=m; lesOf[ls.no]=ls; }); });
+
+  bar.innerHTML = '<button class="fbtn on" data-id="all">全部 11 次课</button>' +
+    S.map(function(se){ return '<button class="fbtn" data-id="S'+se.no+'">第 '+se.no+' 次课</button>'; }).join('');
+
+  function qHtml(p){
+    if(p.type==='choice'){
+      const opts=p.opts.map(function(o,i){ return '<li>'+'ABCD'[i]+'. '+o+'</li>'; }).join('');
+      return '<div class="pq"><span class="pq-tag">单项选择题 · '+p.tag+'</span>'+
+        '<div class="pq-q">'+p.q+'</div>'+
+        '<ul class="pq-opts">'+opts+'</ul>'+
+        '<div class="pq-ans"><b>答案：'+'ABCD'[p.ans]+'</b> · '+p.exp+'</div></div>';
+    }
+    const req=(p.req||[]).map(function(r){return '<li>'+r+'</li>';}).join('');
+    const st=(p.steps||[]).map(function(s){return '<li>'+s+'</li>';}).join('');
+    return '<div class="pq oper"><span class="pq-tag">上机操作题 · '+p.tag+'</span>'+
+      '<div class="pq-q">'+p.q+'</div>'+
+      (req?'<div class="pq-req"><b>要求：</b><ul style="margin:4px 0 0;padding-left:20px">'+req+'</ul></div>':'')+
+      (st?'<div class="pq-steps"><b>操作步骤与要点：</b><ol>'+st+'</ol></div>':'')+
+      '</div>';
+  }
+
+  function render(id){
+    const list = id==='all'? S : S.filter(function(x){return x.id===id;});
+    host.innerHTML = list.map(function(se){
+      const mods=[...new Set(se.lessons.map(function(n){return modOf[n].id;}))];
+      const color=modOf[se.lessons[0]].color;
+      const lo=se.lessons[0], hi=se.lessons[se.lessons.length-1];
+      const ch=(se.practice||[]).filter(function(p){return p.type==='choice';});
+      const op=(se.practice||[]).filter(function(p){return p.type==='oper';});
+      const teachPct=Math.round(se.teach/4*100), pracPct=100-teachPct;
+
+      const modTags=mods.map(function(mid){
+        const m=C.modules.find(function(x){return x.id===mid;});
+        return '<span>'+m.short+'</span>';
+      }).join('');
+
+      // 课时安排表（含考纲对接）
+      const lesTable = se.lessons.map(function(n){
+        const ls=lesOf[n];
+        return '<tr><td class="tm">第 '+n+' 课时</td><td><b>'+ls.title+'</b><div class="muted small">重点：'+(ls.key||[]).slice(0,3).join('；')+'</div></td>'+
+          '<td class="small">'+ls.syl+'<div style="margin-top:3px"><b style="color:var(--accent)">'+ls.exam+' '+ls.score+'</b> · <span style="color:var(--muted)">考频 '+ls.freq+'</span></div></td></tr>';
+      }).join('');
+
+      // 教学过程：每个课时的环节
+      const processBlocks = se.lessons.map(function(n){
+        const ls=lesOf[n];
+        const steps=(ls.plan.steps||[]).map(function(s){
+          return '<tr><td>'+s[0]+'</td><td class="tm">'+s[1]+' 分钟</td><td>'+s[2]+'</td></tr>';
+        }).join('');
+        return '<div class="lessonblock"><h5>第 '+n+' 课时 · '+ls.title+' <em>（导入与讲授约 '+Math.round(ls.hours*45*0.4)+' 分钟 · 随堂练习约 '+Math.round(ls.hours*45*0.6)+' 分钟）</em></h5>'+
+          '<div class="sylmeta"><b>对应考纲：</b>'+ls.syl+'　｜　<b>题型分值：</b>'+ls.exam+' '+ls.score+'　｜　<b>考频：</b><span class="fr">'+ls.freq+'</span></div>'+
+          '<table class="steps"><thead><tr><th>教学环节</th><th>时长</th><th>教学活动</th></tr></thead><tbody>'+steps+'</tbody></table></div>';
+      }).join('');
+
+      // 作业：汇总 4 课时的作业
+      const hw=[];
+      se.lessons.forEach(function(n){ (lesOf[n].plan.hw||[]).forEach(function(h){ hw.push('第 '+n+' 课时：'+h); }); });
+      const hwHtml=hw.map(function(t){return '<li>'+t+'</li>';}).join('');
+
+      const goals=(se.goals||[]).map(function(g){return '<li>'+g+'</li>';}).join('');
+
+      return '<article class="lp">'+
+        '<div class="lp-head" style="background:linear-gradient(120deg,'+color+',#0f2740)">'+
+          '<span class="no">第 '+se.no+' 次课</span>'+
+          '<h3>'+se.name+'</h3>'+
+          '<div class="tags"><span>4 课时 · 180 分钟</span><span>第 '+lo+'–'+hi+' 课时</span><span>'+se.examType+' · '+se.score+'</span>'+modTags+'</div>'+
+        '</div>'+
+        '<div class="lp-body">'+
+          '<div class="ratio"><i class="t" style="width:'+teachPct+'%">讲授 '+teachPct+'%（'+se.teach+' 课时）</i><i class="p" style="width:'+pracPct+'%">课堂练习 '+pracPct+'%（'+(4-se.teach)+' 课时）</i></div>'+
+
+          '<div class="focusbox"><h5>◆ 本次课提分重点（对应 '+se.examType+' · '+se.score+'）</h5><p>'+se.focus+'</p></div>'+
+
+          '<div class="lp-sec"><h4>一、教学目标</h4><ul>'+goals+'</ul></div>'+
+
+          '<div class="lp-sec"><h4>二、课时安排（含考纲对接）</h4>'+
+            '<table class="steps"><thead><tr><th style="width:90px">课时</th><th>内容与重点</th><th style="width:240px">对应考纲 · 题型分值 · 考频</th></tr></thead><tbody>'+lesTable+'</tbody></table>'+
+          '</div>'+
+
+          '<div class="lp-sec"><h4>三、教学过程（讲练结合）</h4>'+processBlocks+'</div>'+
+
+          '<div class="lp-sec"><h4>四、课堂练习（含答案与解析）</h4>'+
+            '<div class="pcount"><span>本次课练习共 '+(se.practice||[]).length+' 题</span><span>单项选择题 '+ch.length+' 题</span><span>上机操作题 '+op.length+' 题</span><span class="hi">建议用时约 108 分钟</span></div>'+
+            (se.practice||[]).map(qHtml).join('')+
+          '</div>'+
+
+          '<div class="lp-sec"><h4>五、作业布置</h4><ul>'+hwHtml+'</ul></div>'+
+
+          '<div class="lp-sec"><h4>六、教学反思</h4><div class="reflect"></div></div>'+
+        '</div>'+
+      '</article>';
+    }).join('');
+  }
+
+  bar.addEventListener('click',function(e){
+    const b=e.target.closest('.fbtn'); if(!b) return;
+    bar.querySelectorAll('.fbtn').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on'); render(b.dataset.id);
+  });
+  render('all');
+})();
+</script>
+</body>
+</html>

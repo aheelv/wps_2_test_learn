@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>考纲对照表 · 二级 WPS Office 44 课时 × 大纲条目</title>
+<link rel="stylesheet" href="./assets/style.css">
+<style>
+  .mhd{background:var(--surface-2);font-weight:800}
+  .mhd td{padding:9px 14px;border-top:2px solid var(--line);border-bottom:1px solid var(--line)}
+  .mhd .mid{display:inline-flex;align-items:center;gap:8px;font-size:14px}
+  .mhd .swatch{width:10px;height:10px;border-radius:3px;flex:none}
+  .mhd .meta{font-weight:600;font-size:12.5px;color:var(--muted)}
+  .fr-hi{color:#b8351f;font-weight:800}
+  .fr-md{color:#9a5b06;font-weight:800}
+  .fr-lo{color:var(--muted);font-weight:800}
+  .sylcode{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--brand-2);background:var(--line-2);border-radius:6px;padding:2px 7px;white-space:nowrap}
+  .statbar{display:flex;height:26px;border-radius:8px;overflow:hidden;margin:8px 0 14px;font-size:12px;font-weight:800;color:#fff}
+  .statbar i{display:flex;align-items:center;justify-content:center;font-style:normal}
+  .statbar i.hi{background:linear-gradient(135deg,#e8503a,#c93f28)}
+  .statbar i.md{background:linear-gradient(135deg,#f2a33c,#d98a1f)}
+  .statbar i.lo{background:linear-gradient(135deg,#94a3b8,#64748b)}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink-2);font-weight:600}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{width:10px;height:10px;border-radius:3px;font-style:normal}
+  @media print{.mhd td{border-top:1px solid #999}}
+</style>
+</head>
+<body>
+
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">WPS</span><span>二级 WPS 通关培训<small>NCRE · 科目 67</small></span></a>
+  <nav class="navlinks">
+    <a href="./index.html">学习中心</a>
+    <a href="./教学大纲.html">教学大纲</a>
+    <a class="on" href="./考纲对照表.html">考纲对照表</a>
+    <a href="./教学日历.html">教学日历</a>
+    <a href="./教案.html">教案</a>
+    <a href="./培训课件.html">培训课件</a>
+    <a href="./电子书.html">电子书</a>
+    <a href="./资料汇编.html">资料汇编</a>
+    <a href="./考试模拟系统/index.html">模拟考试</a>
+  </nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">考纲对照表 · Syllabus Mapping</div>
+  <h1>44 课时 × 官方大纲条目<br>逐条对照表</h1>
+  <p class="sub">依据《全国计算机等级考试(NCRE) 二级 WPS Office 高级应用与设计考试大纲(2025 年版）》与《二级公共基础知识考试大纲(2025 年版）》整理。<b>正向</b>列出每个课时对应的考纲条目、题型分值与考频，<b>反向</b>列出每条大纲条目落在哪些课时，确保<b>大纲条目无遗漏、每一条都排进了课时</b>，帮助学生把有限时间投到最能提分的地方。</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><b>5</b><span>大模块</span></div>
+    <div class="hero-stat"><b>44</b><span>课时</span></div>
+    <div class="hero-stat"><b id="stSyl">—</b><span>考纲条目</span></div>
+    <div class="hero-stat"><b>100%</b><span>大纲覆盖</span></div>
+    <div class="hero-stat"><b>100</b><span>满分 · 60 合格</span></div>
+  </div>
+</div></section>
+
+<main class="wrap">
+
+  <section class="section-sm">
+    <h2>一、正向对照：课时 → 考纲条目</h2>
+    <p class="lead">按模块顺序列出全部 44 个课时，逐课时标注「对应考纲条目 · 题型 · 分值 · 考频」。分值越高、考频越高的课时，越应优先投入练习时间。</p>
+    <div class="table-wrap mt2">
+      <table class="tbl">
+        <thead><tr>
+          <th class="num" style="width:74px">课时</th>
+          <th style="width:230px">课时标题</th>
+          <th>对应考纲条目</th>
+          <th class="num" style="width:150px">题型</th>
+          <th class="num" style="width:80px">分值</th>
+          <th class="num" style="width:76px">考频</th>
+        </tr></thead>
+        <tbody id="fwdTable"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <h2>二、反向对照：考纲条目 → 课时</h2>
+    <p class="lead">把官方大纲的每一部分拆开，标注它在课程中的落点。凡大纲列出的考试内容，均有对应课时承接。</p>
+    <div class="grid g2 mt2" id="revCards"></div>
+  </section>
+
+  <section class="section-sm">
+    <h2>三、考频分布与投入建议</h2>
+    <p class="lead">按「考频」统计课时分布。高频考点是历年反复出现的得分点，必须优先、反复训练。</p>
+    <div class="card mt2">
+      <div id="freqBar"></div>
+      <div class="legend" id="freqLegend"></div>
+      <div class="grid g3 mt3" id="freqCards"></div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <h2>四、配套资源</h2>
+    <div class="grid g3">
+      <div class="card hoverable"><h3>📋 教学大纲</h3><p class="muted small">课程定位、考试说明、能力目标、讲练配比与考核方式。</p><a class="btn ghost mt1" href="./教学大纲.html">查看大纲</a></div>
+      <div class="card hoverable"><h3>🗓️ 教学日历</h3><p class="muted small">11 次课排期，每次课主题、课时、讲练配比与提分重点。</p><a class="btn ghost mt1" href="./教学日历.html">查看日历</a></div>
+      <div class="card hoverable"><h3>🖥️ 考试模拟系统</h3><p class="muted small">120 分钟计时、自动评分、逐题解析的网页版模拟考试。</p><a class="btn ghost mt1" href="./考试模拟系统/index.html">进入模拟</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer"><div class="wrap"><div class="cols">
+  <div><h4>二级 WPS Office 11 次课 44 课时通关培训</h4><p class="small">本对照表依据官方考试大纲（2025 年版）整理，课时与考纲条目一一对应，供教师备课与考生定向复习使用。</p></div>
+  <div><h4>快速导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教学日历.html">教学日历</a> · <a href="./教案.html">教案</a></p><p class="small"><a href="./培训课件.html">培训课件</a> · <a href="./电子书.html">电子书</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p></div>
+  <div><h4>说明</h4><p class="small">考试政策以中国教育考试网（ncre.neea.edu.cn）当年公告为准。</p></div>
+</div></div></footer>
+
+<script src="./assets/curriculum.js"></script>
+<script>
+(function(){
+  const C=window.CURRICULUM;
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function freqCls(f){return f==='高频'?'fr-hi':(f==='中频'?'fr-md':'fr-lo');}
+
+  // 正向对照：课时 -> 考纲
+  let rows='';
+  C.modules.forEach(function(m){
+    rows+='<tr class="mhd"><td colspan="6"><span class="mid"><span class="swatch" style="background:'+m.color+'"></span>'+
+      '<b>'+esc(m.id)+' · '+esc(m.name)+'</b></span>'+
+      '<span class="meta">　｜　第 '+m.lessons[0].no+'–'+m.lessons[m.lessons.length-1].no+' 课时 · '+m.hours+' 课时 · '+esc(m.score)+'　｜　'+esc(m.syl)+'</span></td></tr>';
+    m.lessons.forEach(function(ls){
+      rows+='<tr>'+
+        '<td class="num lno">'+ls.no+'</td>'+
+        '<td><b>'+esc(ls.title)+'</b></td>'+
+        '<td class="small">'+esc(ls.syl)+'</td>'+
+        '<td class="num small">'+esc(ls.exam)+'</td>'+
+        '<td class="num"><b style="color:var(--accent)">'+esc(ls.score)+'</b></td>'+
+        '<td class="num"><span class="'+freqCls(ls.freq)+'">'+esc(ls.freq)+'</span></td>'+
+      '</tr>';
+    });
+  });
+  document.getElementById('fwdTable').innerHTML=rows;
+
+  // 反向对照：考纲 -> 课时
+  const pubItems=['计算机系统','基本数据结构与算法','程序设计基础','软件工程基础','数据库设计基础'];
+  const cards=[{code:'公共基础',name:'公共基础知识（不单独考试，并入单项选择 10 分）',items:pubItems,lessons:[1,2,3,4,5,6,7],color:'#2563eb'}]
+    .concat((C.meta.syllabus||[]).map(function(s){return {code:'考纲 '+s.code,name:s.name,items:s.items,lessons:s.lessons,color:'#16324f'};}));
+  cards.push({code:'冲刺',name:'全真模拟与考前冲刺（应试强化，非大纲新增内容）',items:['单项选择专项突破','文字文档操作题实战与评分点','电子表格操作题实战与评分点','演示文稿操作题实战与全真模拟'],lessons:[41,42,43,44],color:'#e8503a'});
+
+  document.getElementById('revCards').innerHTML=cards.map(function(c){
+    const ls=c.lessons||[];
+    const range=ls.length?('第 '+ls[0]+'–'+ls[ls.length-1]+' 课时（共 '+ls.length+' 课时）'):'—';
+    return '<div class="card" style="border-left:5px solid '+c.color+'">'+
+      '<div class="flex between" style="align-items:flex-start;gap:10px">'+
+        '<h3 style="margin:0;font-size:17px"><span class="sylcode">'+esc(c.code)+'</span> '+esc(c.name)+'</h3>'+
+      '</div>'+
+      '<div class="small" style="margin-top:10px;color:var(--muted);font-weight:700">'+esc(range)+'</div>'+
+      '<ul class="clean small tight" style="margin-top:10px">'+c.items.map(function(it){return '<li>'+esc(it)+'</li>';}).join('')+'</ul>'+
+    '</div>';
+  }).join('');
+
+  // 考频统计
+  const all=[];
+  C.modules.forEach(function(m){ m.lessons.forEach(function(ls){ all.push(ls); }); });
+  const order=['高频','中频','低频'];
+  const cnt={}; all.forEach(function(ls){ cnt[ls.freq]=(cnt[ls.freq]||0)+1; });
+  const total=all.length;
+  const colors={ '高频':'hi','中频':'md','低频':'lo' };
+  document.getElementById('freqBar').innerHTML=order.filter(function(k){return cnt[k];}).map(function(k){
+    const p=Math.round(cnt[k]/total*100);
+    return '<i class="'+colors[k]+'" style="width:'+p+'%">'+k+' '+cnt[k]+' 课时（'+p+'%）</i>';
+  }).join('');
+  const legendColor={ '高频':'#e8503a','中频':'#f2a33c','低频':'#94a3b8' };
+  document.getElementById('freqLegend').innerHTML=order.filter(function(k){return cnt[k];}).map(function(k){
+    return '<span><i style="background:'+legendColor[k]+'"></i>'+k+'：'+cnt[k]+' 课时</span>';
+  }).join('');
+
+  const advice={
+    '高频':'历年反复出现的核心得分点，必须在课堂上反复训练，并保证 100% 掌握。',
+    '中频':'较常出现，理解原理、掌握操作流程即可稳定拿分。',
+    '低频':'偶尔出现，掌握基本概念与操作，不投入过多时间。'
+  };
+  document.getElementById('freqCards').innerHTML=order.filter(function(k){return cnt[k];}).map(function(k){
+    return '<div class="card flat" style="border-left:5px solid '+legendColor[k]+'">'+
+      '<div class="kicker" style="color:'+legendColor[k]+'">'+k+'考点</div>'+
+      '<h3 style="margin:6px 0 6px">'+cnt[k]+' 课时</h3>'+
+      '<p class="small muted mb0">'+advice[k]+'</p></div>';
+  }).join('');
+
+  // 考纲条目总数
+  let itemTotal=pubItems.length;
+  (C.meta.syllabus||[]).forEach(function(s){ itemTotal+=(s.items||[]).length; });
+  document.getElementById('stSyl').textContent=itemTotal+' 条';
+})();
+</script>
+</body>
+</html>

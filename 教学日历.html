@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>教学日历 · 二级 WPS Office 11 次课 44 课时培训</title>
+<link rel="stylesheet" href="./assets/style.css">
+<style>
+  .weekbar{display:flex;gap:10px;align-items:center}
+  .wk{width:66px;flex:none;text-align:center;border-radius:10px;padding:8px 0;font-weight:800;font-size:13px;color:#fff}
+  .calrow{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:18px 0;border-bottom:1px dashed var(--line)}
+  .calrow:last-child{border-bottom:0}
+  .calbody .lessonline{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
+  .calbody .lessonline .no{flex:none;width:70px;font-weight:800;color:var(--brand);font-variant-numeric:tabular-nums;font-size:13px}
+  .calbody .lessonline .tt{flex:1}
+  .calbody .lessonline .tt b{font-weight:700}
+  .calbody .lessonline .mod{flex:none;font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:99px;color:#fff}
+  .sname{font-size:15.5px;font-weight:800;margin-bottom:2px}
+  .stheme{font-size:12.5px;color:var(--muted);margin-bottom:8px;line-height:1.6}
+  .smeta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+  .smeta span{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--line-2);color:var(--muted)}
+  .smeta span.hi{background:#eaf7ef;color:var(--ok)}
+  .sgoals{background:var(--bg-soft,#f7f9fc);border-left:3px solid var(--brand);border-radius:8px;padding:9px 12px;margin-bottom:10px}
+  .sgoals li{font-size:12.5px;line-height:1.75}
+  .ratio{display:flex;height:22px;border-radius:6px;overflow:hidden;margin:6px 0 12px;font-size:11px;font-weight:800;color:#fff}
+  .ratio i{display:flex;align-items:center;justify-content:center;font-style:normal}
+  .ratio i.t{background:linear-gradient(135deg,#5b7cfa,#3f5ae0)}
+  .ratio i.p{background:linear-gradient(135deg,#34c77b,#1f9e5c)}
+  .mile{margin-top:8px;font-size:12.5px;color:var(--ok);font-weight:700}
+  .gantt{display:grid;gap:6px}
+  .gantt .grow{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center}
+  .gantt .gbar{height:22px;border-radius:6px;position:relative;background:var(--line-2)}
+  .gantt .gbar i{position:absolute;top:0;bottom:0;border-radius:6px;opacity:.92}
+  .pbox{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+  .pbox .pc{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+  .pbox .pc h5{font-size:12.5px;margin:0 0 6px;color:var(--brand);font-weight:800}
+  .pbox .pc p{font-size:12.5px;margin:0;color:var(--muted);line-height:1.7}
+  @media(max-width:640px){.calrow{grid-template-columns:1fr}.wk{width:auto;flex:1}.pbox{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">WPS</span><span>二级 WPS 通关培训<small>NCRE · 科目 67</small></span></a>
+  <nav class="navlinks">
+    <a href="./index.html">学习中心</a>
+    <a href="./教学大纲.html">教学大纲</a>
+    <a href="./考纲对照表.html">考纲对照表</a>
+    <a class="on" href="./教学日历.html">教学日历</a>
+    <a href="./教案.html">教案</a>
+    <a href="./培训课件.html">培训课件</a>
+    <a href="./电子书.html">电子书</a>
+    <a href="./资料汇编.html">资料汇编</a>
+    <a href="./考试模拟系统/index.html">模拟考试</a>
+  </nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">教学日历 · Schedule</div>
+  <h1>11 次课 · 44 课时 教学日历</h1>
+  <p class="sub">依据 2025 年版官方大纲编排：全课程分 <b>5 大模块</b>，课时按考试分值配置——文字、表格操作题各 30 分各配 12 课时，单选、演示各 20 分各配 8 课时，最后 4 课时全真模拟冲刺。每次课 4 课时（180 分钟），讲授约 40%、课堂练习约 60%，练习题型与考试完全对应。<b>以帮助学生通过为第一原则。</b></p>
+  <div class="hero-stats">
+    <div class="hero-stat"><b>5</b><span>大模块</span></div>
+    <div class="hero-stat"><b>11</b><span>次课</span></div>
+    <div class="hero-stat"><b>4</b><span>课时 / 次</span></div>
+    <div class="hero-stat"><b>44</b><span>总课时</span></div>
+    <div class="hero-stat"><b>60%</b><span>课堂练习</span></div>
+  </div>
+</div></section>
+
+<main class="wrap">
+
+  <section class="section-sm">
+    <h2>一、总体节奏（5 大模块）</h2>
+    <p class="muted">模块划分与课时数量均按考试题型分值配置，先拿稳选择题，再集中攻克两道 30 分操作题，最后练演示并做全真模拟。</p>
+    <div class="grid g3 mt2">
+      <div class="card mcard mod-m1"><div class="modnum">第 1–2 次课 · M1 · 8 课时</div><h3>打基础（单选 20 分）</h3><p class="muted small">公共基础知识 + WPS 综合应用基础。以选择题考点为主线建立知识框架，配合真题单选与进制、容量等计算练习。</p></div>
+      <div class="card mcard mod-m3"><div class="modnum">第 3–5 次课 · M2 · 12 课时</div><h3>攻文字（文字 30 分）</h3><p class="muted small">WPS 处理文字文档。样式、页面布局、页眉页脚、引用、邮件合并逐一突破，完成文字操作题满分训练。</p></div>
+      <div class="card mcard mod-m4"><div class="modnum">第 6–8 次课 · M3 · 12 课时</div><h3>啃表格（表格 30 分）</h3><p class="muted small">WPS 处理电子表格。引用与函数、查找引用、排序筛选、分类汇总、图表与透视表逐一突破，分值同样最高。</p></div>
+      <div class="card mcard mod-m5"><div class="modnum">第 9–10 次课 · M4 · 8 课时</div><h3>练演示（演示 20 分）</h3><p class="muted small">WPS 设计演示文稿。母版与主题、对象、动画切换、放映与打包一气呵成，并做 20 分大题实战。</p></div>
+      <div class="card mcard mod-m6"><div class="modnum">第 11 次课 · M5 · 4 课时</div><h3>冲刺模拟</h3><p class="muted small">四大题型专项突破 + 限时全真模拟（120 分钟）+ 错题复盘与时间分配训练，稳定达到 60 分合格线。</p></div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <h2>二、模块课时占比</h2>
+    <p class="muted">课时分配与考试分值高度对应：文字、表格各 30 分、各 12 课时；单选、演示各 20 分、各 8 课时；最后 4 课时全真模拟冲刺。</p>
+    <div class="gantt card mt2" id="gantt"></div>
+  </section>
+
+  <section class="section-sm">
+    <h2>三、逐次课安排</h2>
+    <p class="muted">每次课 4 课时（180 分钟）。蓝色为讲授时间、绿色为课堂练习时间，练习覆盖单项选择题与上机操作题，均附答案与解析。每次课均标注对应题型、分值、考纲条目与提分重点。</p>
+    <div class="card" id="calendar"></div>
+  </section>
+
+  <section class="section-sm">
+    <h2>四、教学形式与课时标准</h2>
+    <div class="grid g3">
+      <div class="card"><h3>每次课结构（180 分钟）</h3><ul class="clean small tight">
+        <li><b>导入</b> 约 10 分钟：情境/真题引入</li>
+        <li><b>新授</b> 约 62 分钟：演示 + 讲解（40%）</li>
+        <li><b>课堂练习</b> 约 108 分钟：上机实操（60%）</li>
+        <li>练习按「讲一段、练一段」穿插进行</li></ul></div>
+      <div class="card"><h3>练习设计原则</h3><ul class="clean small tight">
+        <li>题型与考试完全一致（单选 + 操作）</li>
+        <li>每题附答案与解析，即时反馈</li>
+        <li>先「带做一遍」，再「独立一遍」</li>
+        <li>限时训练，模拟考试节奏</li></ul></div>
+      <div class="card"><h3>调整建议</h3><ul class="clean small tight">
+        <li>每周 2 次课 → 约 6 周完成</li>
+        <li>每周 1 次课 → 11 周完成</li>
+        <li>基础较好者可压缩第 1–2 次课（M1）</li>
+        <li>文字或表格薄弱者可在第 3–8 次课加练</li></ul></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer"><div class="wrap"><div class="cols">
+  <div><h4>二级 WPS Office 11 次课 44 课时通关培训</h4><p class="small">教学日历用于教学组织与进度管理，可按实际校历与课时频率灵活调整。</p></div>
+  <div><h4>快速导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教案.html">教案</a> · <a href="./培训课件.html">培训课件</a></p><p class="small"><a href="./电子书.html">电子书</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p></div>
+  <div><h4>说明</h4><p class="small">考试政策以中国教育考试网当年公告为准。</p></div>
+</div></div></footer>
+
+<script src="./assets/curriculum.js"></script>
+<script>
+(function(){
+  const C=window.CURRICULUM, S=C.sessions, TOTAL=44;
+
+  // 课时 -> 模块 映射
+  const modOf={}, lesOf={};
+  C.modules.forEach(function(m){
+    m.lessons.forEach(function(ls){ modOf[ls.no]=m; lesOf[ls.no]=ls; });
+  });
+
+  // 甘特
+  document.getElementById('gantt').innerHTML = C.modules.map(function(m){
+    const a=m.lessons[0].no-1, w=m.hours;
+    const left=(a/TOTAL*100), width=(w/TOTAL*100);
+    return '<div class="grow"><div class="small" style="font-weight:700">'+m.short+' · '+m.hours+'课时 · '+m.score+'</div>'+
+      '<div class="gbar"><i style="left:'+left+'%;width:'+width+'%;background:'+m.color+'"></i>'+
+      '<span style="position:absolute;left:8px;top:2px;font-size:11.5px;color:var(--muted)">第 '+m.lessons[0].no+'–'+m.lessons[m.lessons.length-1].no+' 课时 · '+m.syl+'</span></div></div>';
+  }).join('');
+
+  // 逐次课
+  let html='';
+  S.forEach(function(se){
+    const mods=[...new Set(se.lessons.map(function(n){return modOf[n].id;}))];
+    const color=modOf[se.lessons[0]].color;
+    const lo=se.lessons[0], hi=se.lessons[se.lessons.length-1];
+
+    const modBadges=mods.map(function(id){
+      const m=C.modules.find(function(x){return x.id===id;});
+      return '<span class="mod" style="background:'+m.color+'">'+m.short+'</span>';
+    }).join('');
+
+    const lessonLines=se.lessons.map(function(n){
+      const ls=lesOf[n], m=modOf[n];
+      return '<div class="lessonline"><div class="no">第 '+n+' 课时</div>'+
+        '<div class="tt"><b>'+ls.title+'</b><div class="small muted">'+ls.syl+'　·　'+ls.exam+' '+ls.score+'　·　考频 '+ls.freq+'</div></div>'+
+        '<span class="mod" style="background:'+m.color+'">'+m.short+'</span></div>';
+    }).join('');
+
+    const ch=(se.practice||[]).filter(function(p){return p.type==='choice';}).length;
+    const op=(se.practice||[]).filter(function(p){return p.type==='oper';}).length;
+
+    const goals=(se.goals||[]).map(function(g){return '<li>'+g+'</li>';}).join('');
+
+    const teachPct=Math.round(se.teach/4*100), pracPct=100-teachPct;
+
+    html+='<div class="calrow">'+
+      '<div><div class="wk" style="background:'+color+'">第 '+se.no+' 次课</div>'+
+      '<div class="muted small center" style="margin-top:6px">4 课时<br>180 分钟</div></div>'+
+      '<div class="calbody">'+
+        '<div class="sname">'+se.name+'</div>'+
+        '<div class="stheme">'+se.theme+'</div>'+
+        '<div class="smeta">'+
+          '<span>第 '+lo+'–'+hi+' 课时</span>'+
+          '<span>讲授 '+se.teach+' 课时 / 练习 '+(4-se.teach)+' 课时</span>'+
+          '<span class="hi">课堂练习占比 '+pracPct+'%</span>'+
+          '<span class="hi" style="background:#fff2ef;color:#b8351f">'+se.examType+' · '+se.score+'</span>'+
+          modBadges+
+        '</div>'+
+        '<div class="ratio"><i class="t" style="width:'+teachPct+'%">讲授 '+teachPct+'%</i><i class="p" style="width:'+pracPct+'%">练习 '+pracPct+'%</i></div>'+
+        '<div class="sgoals" style="border-left-color:var(--accent)"><ul class="clean tight"><li><b>提分重点：</b>'+se.focus+'</li></ul></div>'+
+        (goals?'<div class="sgoals"><ul class="clean tight">'+goals+'</ul></div>':'')+
+        '<div class="pbox">'+
+          '<div class="pc"><h5>课堂练习内容</h5><p>单项选择题 '+ch+' 题 + 上机操作题 '+op+' 题，均附答案与解析，覆盖本次课全部考点。</p></div>'+
+          '<div class="pc"><h5>本次课知识点</h5><p>'+se.lessons.length+' 个课时，依次讲授后随堂练习，做到「讲一段、练一段」。</p></div>'+
+        '</div>'+
+        lessonLines+
+      '</div></div>';
+  });
+
+  // 里程碑
+  html+='<div class="mile" style="padding:16px 0 4px">✔ 全真模拟考试（120 分钟限时）· 错题复盘 · 考前冲刺清单</div>';
+
+  document.getElementById('calendar').innerHTML=html;
+})();
+</script>
+</body>
+</html>
