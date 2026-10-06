@@ -181,6 +181,11 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
 #orgbar{position:fixed;left:14px;top:12px;z-index:60;font-size:12.5px;font-weight:700;color:#e8f1fa;
   background:rgba(15,39,64,.74);border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:5px 13px;
   backdrop-filter:blur(6px);pointer-events:none;max-width:70vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#decknav{position:fixed;right:14px;top:12px;z-index:60;display:flex;gap:8px;font-size:12.5px}
+#decknav a{background:rgba(15,39,64,.74);border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:5px 12px;
+  color:#e8f1fa;text-decoration:none;font-weight:700;backdrop-filter:blur(6px);white-space:nowrap}
+#decknav a:hover{background:rgba(232,80,58,.92);color:#fff}
+@media(max-width:720px){#decknav{display:none}}
 #overview{position:fixed;inset:0;background:#0b1a2b;z-index:70;display:none;overflow:auto;padding:28px}
 #overview.on{display:block}
 #overview .og-title{color:#fff;font-size:20px;font-weight:800;margin-bottom:16px}
@@ -249,6 +254,7 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
 </head>
 <body>
 <div id="orgbar">大连财经学院 · 计算机国家二级考试（WPS 类）校内教学辅助资料 ｜ 非官方考试网站</div>
+<div id="decknav"><a href="./index.html">学习中心</a><a href="./用户中心.html">用户中心</a><a href="./群管理.html">班级群</a></div>
 <div id="viewport"><deck-stage id="stage"></deck-stage></div>
 
 <div id="hud"><i></i></div>
@@ -598,5 +604,8 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
   window.__deck = {go:go,total:slides.length};
 })();
 </script>
+<script src="./assets/auth.js"></script>
+<script src="./assets/groups.js"></script>
+<script src="./assets/auth-ui.js"></script>
 </body>
 </html>

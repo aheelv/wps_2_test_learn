@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>班级群 · 大连财经学院 计算机国家二级考试（WPS 类）培训</title>
+<meta name="description" content="大连财经学院计算机国家二级考试（WPS 类）校内教学辅助资料：班级微信群登记与群二维码发布。教师与管理员可建群、上传群二维码并发布通知。本站为非官方考试网站。">
+<link rel="stylesheet" href="./assets/style.css">
+<style>
+  .gm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:1000px){.gm-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:680px){.gm-grid{grid-template-columns:1fr}}
+  .gcard{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .gcard.off{opacity:.62}
+  .gcard .qrh{position:relative;background:linear-gradient(150deg,#0f2740,#1d3f63);padding:18px;display:grid;place-items:center;min-height:212px}
+  .gcard .qrh img{width:176px;height:176px;object-fit:contain;background:#fff;border-radius:12px;padding:7px;display:block}
+  .gcard .noimg{width:176px;height:176px;border:2px dashed rgba(255,255,255,.32);border-radius:12px;display:grid;place-items:center;
+    color:#9fb6cd;font-size:13px;text-align:center;padding:16px;line-height:1.7}
+  .gcard .top{position:absolute;left:12px;top:12px;background:#f2a33c;color:#4a2f00;font-size:11.5px;font-weight:900;
+    border-radius:99px;padding:3px 10px}
+  .gcard .st{position:absolute;right:12px;top:12px;font-size:11.5px;font-weight:900;border-radius:99px;padding:3px 10px;color:#fff;background:#16a34a}
+  .gcard .st.off{background:#94a3b8}
+  .gcard .bd{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column}
+  .gcard h3{margin:0 0 4px;font-size:17.5px}
+  .gcard .meta{font-size:12.5px;color:var(--muted);line-height:1.85;margin-bottom:10px}
+  .gcard .meta b{color:var(--ink-2)}
+  .gcard .desc{font-size:13.5px;color:var(--ink-2);line-height:1.75;margin:0 0 12px;flex:1;white-space:pre-wrap}
+  .gcard .acts{display:flex;gap:8px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--line-2)}
+  .mbtn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:#fff;border-radius:9px;padding:6px 11px;
+    font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ink-2);cursor:pointer}
+  .mbtn:hover{border-color:var(--brand);color:var(--brand)}
+  .mbtn.pri{background:var(--brand);color:#fff;border-color:transparent}
+  .mbtn.pri:hover{background:var(--brand-2);color:#fff}
+  .mbtn.danger:hover{border-color:#dc2626;color:#dc2626}
+  .mbtn.ok:hover{border-color:#16a34a;color:#16a34a}
+  .mbtn:disabled{opacity:.45;cursor:not-allowed}
+  .card2{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow);margin-bottom:20px}
+  .card2 h3{margin:0 0 14px;font-size:18px;display:flex;align-items:center;gap:9px}
+  .card2 h3::before{content:"";width:5px;height:17px;border-radius:2px;background:var(--accent)}
+  .f2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+  .f2 .full{grid-column:1/-1}
+  @media(max-width:640px){.f2{grid-template-columns:1fr}}
+  .lbl{display:block;font-size:12.5px;font-weight:800;color:var(--ink-2);margin-bottom:5px}
+  .inp{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:14.5px;color:var(--ink);background:#fff}
+  .inp:focus{outline:2px solid rgba(31,74,117,.35);border-color:var(--brand-2)}
+  textarea.inp{min-height:88px;resize:vertical;line-height:1.7}
+  .btn3{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 20px;border-radius:11px;border:1px solid transparent;
+    background:var(--brand);color:#fff;font-family:inherit;font-size:14.5px;font-weight:800;cursor:pointer}
+  .btn3:hover{background:var(--brand-2)}
+  .btn3.ghost{background:#fff;color:var(--brand);border-color:var(--line)}
+  .btn3.ghost:hover{background:var(--line-2)}
+  .drop{border:2px dashed var(--line);border-radius:13px;padding:18px;text-align:center;background:var(--surface-2);cursor:pointer}
+  .drop:hover{border-color:var(--brand-2);background:#f2f6fb}
+  .drop img{max-width:180px;max-height:180px;border-radius:10px;background:#fff;padding:6px;border:1px solid var(--line)}
+  .drop .hint{font-size:12.5px;color:var(--muted);line-height:1.75;margin-top:8px}
+  .notices{display:flex;flex-direction:column;gap:12px}
+  .notice{background:#fff;border:1px solid var(--line);border-left:5px solid var(--brand-2);border-radius:12px;padding:14px 18px;box-shadow:var(--shadow)}
+  .notice.imp{border-left-color:var(--accent);background:#fffaf9}
+  .notice h4{margin:0 0 6px;font-size:15.5px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .notice h4 .tag{font-size:11px;font-weight:900;color:#fff;background:var(--accent);border-radius:99px;padding:2px 9px}
+  .notice p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.8;white-space:pre-wrap}
+  .notice .ft{margin-top:9px;font-size:12px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap}
+  .sec-title{font-size:24px;margin:32px 0 16px;display:flex;align-items:center;gap:10px}
+  .sec-title::before{content:"";width:6px;height:22px;border-radius:3px;background:var(--accent)}
+  .empty{color:var(--muted);font-size:14px;padding:26px 0;text-align:center}
+  .warnstrip{background:#fff8ec;border:1px solid #f0dcb4;border-left:5px solid #d99b2b;border-radius:12px;padding:13px 16px;
+    font-size:13.5px;line-height:1.8;color:#7a5310;margin-bottom:20px}
+  .viewer{position:fixed;inset:0;background:rgba(10,20,34,.82);z-index:900;display:grid;place-items:center;padding:24px;cursor:zoom-out}
+  .viewer img{max-width:min(92vw,560px);max-height:88vh;background:#fff;border-radius:14px;padding:12px}
+  .editor{display:none}
+  .editor.on{display:block}
+  .hintline{font-size:12.5px;color:var(--muted);line-height:1.75}
+</style>
+</head>
+<body>
+
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">WPS</span><span>大连财经学院 · 计算机国家二级（WPS 类）<small>校内教学辅助资料 · 非官方</small></span></a>
+  <nav class="navlinks">
+    <a href="./index.html">学习中心</a>
+    <a href="./教学大纲.html">教学大纲</a>
+    <a href="./考纲对照表.html">考纲对照表</a>
+    <a href="./教学日历.html">教学日历</a>
+    <a href="./教案.html">教案</a>
+    <a href="./培训课件.html">培训课件</a>
+    <a href="./电子书.html">电子书</a>
+    <a href="./资料汇编.html">资料汇编</a>
+    <a href="./考试模拟系统/index.html">模拟考试</a>
+  </nav>
+</div></header>
+
+<div class="noticebar"><div class="wrap">
+  <span class="nb-ic">ⓘ</span>
+  <span><b>大连财经学院</b> 计算机国家二级考试（WPS 类）校内教学辅助资料 · <b>本站为非官方考试网站</b>，不提供报名、缴费、查分服务，不收集任何个人信息。官方信息请以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 为准。</span>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">大连财经学院 · 计算机国家二级考试（WPS 类）· 班级群</div>
+  <h1>班级群与群二维码</h1>
+  <p class="sub">登记班级微信群信息、发布群二维码与班级通知。教师与管理员可建群、上传群二维码图片并管理群状态；学生扫码即可入群。</p>
+</div></section>
+
+<main class="wrap section-sm">
+  <div id="gmRoot"></div>
+</main>
+
+<footer class="footer"><div class="wrap"><div class="cols">
+  <div><h4>大连财经学院 · 计算机国家二级考试（WPS 类）</h4><p class="small"><span class="org">主办：大连财经学院计算机国家二级考试（WPS 类）课程组</span></p><p class="small">本站为<b>校内教学辅助资料</b>，依据《全国计算机等级考试(NCRE) 二级 WPS Office 高级应用与设计考试大纲(2025 年版)》与《二级公共基础知识考试大纲(2025 年版)》编写，供教学与备考使用。</p></div>
+  <div><h4>成果导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教学日历.html">教学日历</a> · <a href="./教案.html">教案</a></p><p class="small"><a href="./培训课件.html">培训课件</a> · <a href="./电子书.html">电子书</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p><p class="small"><a href="./用户中心.html">用户中心</a> · <a href="./群管理.html">班级群</a> · <a href="./关于本站.html">关于本站</a></p></div>
+  <div><h4>官方信息</h4><p class="small">本站为<b>非官方</b>网站，不提供报名、缴费、查分服务。考试政策与报名信息以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 当年公告为准。</p><p class="small">学校官网：<a href="https://www.dlufe.edu.cn/" target="_blank" rel="noopener">www.dlufe.edu.cn</a></p></div>
+  <div><h4>免责声明</h4><p class="small">本站不收集任何个人信息，无收费项目，不含广告与商业推广；内容仅供校内教学与备考参考，如与官方文件不一致，以官方文件为准。</p><p class="small"><a href="./关于本站.html">关于本站 / 免责声明 →</a></p></div>
+</div>
+<div class="disc">© 大连财经学院 · 计算机国家二级考试（WPS 类）课程组 ｜ 校内教学辅助资料，非官方考试网站 ｜ 考试政策以中国教育考试网公告为准</div>
+</div></footer>
+
+<script src="./assets/auth.js"></script>
+<script src="./assets/groups.js"></script>
+<script src="./assets/auth-ui.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Auth, G = window.Groups, UI = window.AuthUI;
+  var root = document.getElementById('gmRoot');
+  var e = UI.esc;
+  var editingId = '';
+  var pendingImg = '';       // 新选择的二维码（dataURL）
+  var removeImgFlag = false;
+
+  /* ================= 门禁 ================= */
+  if (!UI.allow('group.view')) {
+    UI.gateInto(root, 'group.view');
+    return;
+  }
+
+  var canManage = A.can('group.manage');
+  var canNotice = A.can('notice.publish');
+
+  function fmtDate(s) { return s ? e(s) : '长期有效'; }
+  function expired(g) {
+    if (!g.expireAt) return false;
+    return new Date(g.expireAt + 'T23:59:59').getTime() < Date.now();
+  }
+
+  /* ================= 渲染 ================= */
+  function render() {
+    var h = '';
+    h += '<div class="warnstrip">微信群需在<b>微信客户端</b>内创建（微信官方未开放个人微信建群接口），本页用于<b>登记群信息并发布群二维码</b>，学生扫码入群。所有群资料与二维码图片仅保存在<b>本机浏览器</b>，不会上传到任何服务器。</div>';
+
+    if (!A.persistent()) h += '<div class="warnstrip">当前浏览器环境（如 file:// 打开或隐私模式）无法持久化存储，数据仅在本次会话内有效，关闭页面即丢失。请通过站点地址访问。</div>';
+
+    /* 通知 */
+    var notices = G.notices();
+    h += '<h2 class="sec-title">班级通知</h2>';
+    if (canNotice) {
+      h += '<div class="card2"><h3>发布通知</h3><div id="ntMsg" class="aui-msg" style="display:none"></div>' +
+        '<div class="f2">' +
+          '<div><label class="lbl">标题</label><input class="inp" id="ntTitle" placeholder="如：第 3 次课上机安排"></div>' +
+          '<div><label class="lbl">级别</label><select class="inp" id="ntLevel"><option value="normal">普通</option><option value="important">重要</option></select></div>' +
+          '<div class="full"><label class="lbl">内容</label><textarea class="inp" id="ntBody" placeholder="通知正文…"></textarea></div>' +
+        '</div><div style="margin-top:13px"><button class="btn3" data-act="add-notice">发布通知</button></div></div>';
+    }
+    h += notices.length ? '<div class="notices">' + notices.map(function (n) {
+      return '<div class="notice' + (n.level === 'important' ? ' imp' : '') + '"><h4>' + e(n.title) +
+        (n.level === 'important' ? '<span class="tag">重要</span>' : '') + '</h4><p>' + e(n.body) + '</p>' +
+        '<div class="ft"><span>' + e(n.author || '') + '</span><span>' + e(A.fmt(n.createdAt)) + '</span>' +
+        (canNotice ? '<button class="mbtn danger" data-act="del-notice" data-id="' + n.id + '">删除</button>' : '') +
+        '</div></div>';
+    }).join('') + '</div>' : '<div class="empty">暂无通知</div>';
+
+    /* 群列表 */
+    var groups = G.visible();
+    h += '<h2 class="sec-title">班级群（' + groups.length + '）</h2>';
+    if (canManage) {
+      h += '<div style="margin-bottom:16px"><button class="btn3" data-act="new-group">＋ 新建班级群</button>' +
+        '<span class="hintline" style="margin-left:12px">建群后上传微信群二维码图片，学生端即可扫码入群</span></div>';
+    }
+    h += groups.length ? '<div class="gm-grid">' + groups.map(groupCard).join('') + '</div>'
+                       : '<div class="empty">暂无班级群。' + (canManage ? '点击上方「新建班级群」开始登记。' : '请联系教师或管理员发布。') + '</div>';
+
+    /* 编辑面板 */
+    if (canManage) h += editorHTML();
+
+    root.innerHTML = h;
+    if (editingId) {
+      var el = document.getElementById('gmEditor');
+      if (el) el.classList.add('on');
+    }
+  }
+
+  function groupCard(g) {
+    var img = G.image(g.imgKey);
+    var off = g.active === false;
+    var exp = expired(g);
+    return '<div class="gcard' + (off ? ' off' : '') + '">' +
+      '<div class="qrh">' +
+        (g.top ? '<span class="top">置顶</span>' : '') +
+        '<span class="st' + (off ? ' off' : '') + '">' + (off ? '已停用' : (exp ? '二维码已过期' : '开放中')) + '</span>' +
+        (img ? '<img src="' + img + '" alt="' + e(g.name) + ' 微信群二维码">'
+             : '<div class="noimg">尚未上传群二维码<br>请联系管理员</div>') +
+      '</div>' +
+      '<div class="bd">' +
+        '<h3>' + e(g.name) + '</h3>' +
+        '<div class="meta">' +
+          '<b>群主：</b>' + (g.owner ? e(g.owner) : '—') + '<br>' +
+          '<b>入群方式：</b>' + e(g.joinMode) + (g.groupNo ? '（群号 ' + e(g.groupNo) + '）' : '') + '<br>' +
+          (g.term ? '<b>适用学期：</b>' + e(g.term) + '<br>' : '') +
+          '<b>二维码有效期：</b>' + fmtDate(g.expireAt) +
+        '</div>' +
+        (g.desc ? '<p class="desc">' + e(g.desc) + '</p>' : '<p class="desc" style="color:var(--muted)">暂无群说明</p>') +
+        '<div class="acts">' +
+          (img ? '<button class="mbtn pri" data-act="view-img" data-id="' + g.id + '">查看二维码</button>' : '') +
+          '<button class="mbtn" data-act="copy-group" data-id="' + g.id + '">复制群信息</button>' +
+          (canManage ? '<button class="mbtn" data-act="edit-group" data-id="' + g.id + '">编辑</button>' +
+            '<button class="mbtn" data-act="top-group" data-id="' + g.id + '">' + (g.top ? '取消置顶' : '置顶') + '</button>' +
+            '<button class="mbtn ' + (off ? 'ok' : '') + '" data-act="toggle-group" data-id="' + g.id + '">' + (off ? '启用' : '停用') + '</button>' +
+            '<button class="mbtn danger" data-act="del-group" data-id="' + g.id + '">删除</button>' : '') +
+        '</div>' +
+      '</div></div>';
+  }
+
+  function editorHTML() {
+    var g = editingId ? (G.get(editingId) || {}) : {};
+    var img = pendingImg || (removeImgFlag ? '' : G.image(g.imgKey));
+    return '<div class="card2 editor" id="gmEditor"><h3>' + (editingId ? '编辑班级群' : '新建班级群') + '</h3>' +
+      '<div id="geMsg" class="aui-msg" style="display:none"></div>' +
+      '<div class="f2">' +
+        '<div><label class="lbl">群名称 *</label><input class="inp" id="geName" value="' + e(g.name || '') + '" placeholder="如：2025 级 1 班 · 二级 WPS 备考群"></div>' +
+        '<div><label class="lbl">群主 / 负责人</label><input class="inp" id="geOwner" value="' + e(g.owner || '') + '" placeholder="如：王老师"></div>' +
+        '<div><label class="lbl">入群方式</label><select class="inp" id="geMode">' +
+          G.JOIN_MODES.map(function (m) { return '<option value="' + m + '"' + ((g.joinMode || '扫码入群') === m ? ' selected' : '') + '>' + m + '</option>'; }).join('') +
+        '</select></div>' +
+        '<div><label class="lbl">群号（选填）</label><input class="inp" id="geNo" value="' + e(g.groupNo || '') + '" placeholder="如：12345678"></div>' +
+        '<div><label class="lbl">适用学期（选填）</label><input class="inp" id="geTerm" value="' + e(g.term || '') + '" placeholder="如：2025-2026 学年第一学期"></div>' +
+        '<div><label class="lbl">二维码有效期（选填）</label><input class="inp" type="date" id="geExpire" value="' + e(g.expireAt || '') + '"></div>' +
+        '<div class="full"><label class="lbl">群说明</label><textarea class="inp" id="geDesc" placeholder="入群要求、实名备注格式、群内纪律等…">' + e(g.desc || '') + '</textarea></div>' +
+      '</div>' +
+      '<div style="margin:16px 0 6px"><label class="lbl">微信群二维码图片</label>' +
+        '<div class="drop" data-act="pick-img">' +
+          (img ? '<img src="' + img + '" alt="群二维码预览">' : '<div style="font-size:34px;color:#b6c3d2">🖼</div>') +
+          '<div class="hint">点击选择图片（微信 → 群聊 → 右上角 → 群二维码 → 保存到相册）。<br>支持 png / jpg / webp，自动压缩后保存在本机浏览器。</div>' +
+        '</div>' +
+        '<input type="file" id="geFile" accept="image/*" hidden>' +
+        (img ? '<div style="margin-top:10px"><button class="mbtn danger" data-act="drop-img">移除二维码图片</button></div>' : '') +
+      '</div>' +
+      '<div class="f2" style="margin-top:16px">' +
+        '<label style="display:flex;gap:9px;align-items:center;cursor:pointer"><input type="checkbox" id="geActive" ' + (g.active === false ? '' : 'checked') + '> <span>启用（学生可见）</span></label>' +
+        '<label style="display:flex;gap:9px;align-items:center;cursor:pointer"><input type="checkbox" id="geTop" ' + (g.top ? 'checked' : '') + '> <span>置顶显示</span></label>' +
+      '</div>' +
+      '<div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">' +
+        '<button class="btn3" data-act="save-group">' + (editingId ? '保存修改' : '创建班级群') + '</button>' +
+        '<button class="btn3 ghost" data-act="cancel-edit">取消</button>' +
+      '</div>' +
+    '</div>';
+  }
+
+  /* ================= 事件 ================= */
+  root.addEventListener('click', function (ev) {
+    var t = ev.target.closest('[data-act]');
+    if (!t) return;
+    var act = t.dataset.act;
+    var id = t.dataset.id;
+    var g, r;
+
+    if (act === 'new-group') {
+      editingId = ''; pendingImg = ''; removeImgFlag = false; render();
+      setTimeout(function () { var el = document.getElementById('gmEditor'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 40);
+      return;
+    }
+    if (act === 'edit-group') {
+      editingId = id; pendingImg = ''; removeImgFlag = false; render();
+      setTimeout(function () { var el = document.getElementById('gmEditor'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 40);
+      return;
+    }
+    if (act === 'cancel-edit') { editingId = ''; pendingImg = ''; removeImgFlag = false; render(); return; }
+    if (act === 'pick-img') { document.getElementById('geFile').click(); return; }
+    if (act === 'drop-img') { pendingImg = ''; removeImgFlag = true; render(); return; }
+
+    if (act === 'save-group') {
+      r = G.save({
+        id: editingId || '',
+        name: document.getElementById('geName').value,
+        owner: document.getElementById('geOwner').value,
+        joinMode: document.getElementById('geMode').value,
+        groupNo: document.getElementById('geNo').value,
+        term: document.getElementById('geTerm').value,
+        expireAt: document.getElementById('geExpire').value,
+        desc: document.getElementById('geDesc').value,
+        active: document.getElementById('geActive').checked,
+        top: document.getElementById('geTop').checked,
+        imageData: pendingImg || '',
+        removeImage: removeImgFlag
+      });
+      if (r.ok) { editingId = ''; pendingImg = ''; removeImgFlag = false; UI.toast(r.msg); render(); }
+      else { var m = document.getElementById('geMsg'); m.className = 'aui-msg bad'; m.textContent = r.msg; }
+      return;
+    }
+    if (act === 'top-group') { r = G.toggleTop(id); UI.toast(r.msg, !r.ok); render(); return; }
+    if (act === 'toggle-group') { g = G.get(id); r = G.setStatus(id, g.active === false); UI.toast(r.msg, !r.ok); render(); return; }
+    if (act === 'del-group') {
+      g = G.get(id) || {};
+      if (!window.confirm('确定删除班级群「' + (g.name || '') + '」？该群二维码图片将一并删除。')) return;
+      r = G.remove(id); UI.toast(r.msg, !r.ok); render(); return;
+    }
+    if (act === 'view-img') {
+      g = G.get(id); var src = G.image(g.imgKey);
+      if (!src) return;
+      var v = document.createElement('div');
+      v.className = 'viewer';
+      v.innerHTML = '<img src="' + src + '" alt="群二维码大图">';
+      v.onclick = function () { v.remove(); };
+      document.body.appendChild(v);
+      return;
+    }
+    if (act === 'copy-group') {
+      g = G.get(id);
+      var txt = '【' + g.name + '】\n群主：' + (g.owner || '—') + '\n入群方式：' + g.joinMode +
+        (g.groupNo ? '（群号 ' + g.groupNo + '）' : '') + (g.term ? '\n适用学期：' + g.term : '') +
+        '\n二维码有效期：' + (g.expireAt || '长期有效') + (g.desc ? '\n说明：' + g.desc : '') +
+        '\n（大连财经学院 计算机国家二级考试 WPS 类 · 校内教学辅助资料）';
+      copyText(txt);
+      return;
+    }
+    if (act === 'add-notice') {
+      r = G.addNotice({
+        title: document.getElementById('ntTitle').value,
+        body: document.getElementById('ntBody').value,
+        level: document.getElementById('ntLevel').value
+      });
+      if (r.ok) { UI.toast(r.msg); render(); }
+      else { var nm = document.getElementById('ntMsg'); nm.className = 'aui-msg bad'; nm.textContent = r.msg; }
+      return;
+    }
+    if (act === 'del-notice') {
+      if (!window.confirm('确定删除该通知？')) return;
+      r = G.removeNotice(id); UI.toast(r.msg, !r.ok); render(); return;
+    }
+  });
+
+  root.addEventListener('change', function (ev) {
+    if (ev.target.id !== 'geFile') return;
+    var f = ev.target.files && ev.target.files[0];
+    ev.target.value = '';
+    if (!f) return;
+    G.readFile(f, function (err, res) {
+      if (err) return UI.toast(err, true);
+      pendingImg = res.dataUrl;
+      removeImgFlag = false;
+      render();
+      UI.toast('二维码已就绪（' + res.w + '×' + res.h + '，约 ' + Math.round(res.bytes / 1024) + ' KB）');
+    });
+  });
+
+  function copyText(txt) {
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); UI.toast('已复制群信息'); } catch (e2) { UI.toast('复制失败，请手动选择文本', true); }
+      ta.remove();
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(function () { UI.toast('已复制群信息'); }, fallback);
+    } else fallback();
+  }
+
+  window.addEventListener('auth:change', function () { render(); });
+  render();
+})();
+</script>
+</body>
+</html>

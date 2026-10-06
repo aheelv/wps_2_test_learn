@@ -92,10 +92,20 @@
     <li>本站不收集、不存储、不对外提供任何用户个人信息；站内模拟考试系统的作答记录仅保存在<b>访问者本人的浏览器本地</b>，不会上传至服务器。</li>
   </ul>
 
-  <h2>四、版权与使用</h2>
+  <h2>四、用户权限系统与数据存储说明</h2>
+  <p>本站提供用户权限系统（<a href="./用户中心.html">用户中心</a>）与班级群管理（<a href="./群管理.html">班级群</a>），用于校内教学组织：登记班级微信群信息、发布群二维码与班级通知，并按角色控制功能访问。</p>
+  <ul>
+    <li><b>纯前端实现：</b>本站托管于 GitHub Pages，为纯静态站点，<b>没有服务端</b>。账号、角色、权限、班级群资料与上传的群二维码图片，全部以浏览器<b>本地存储</b>的方式保存在<b>访问者本人的设备上</b>。</li>
+    <li><b>不上传、不收集：</b>上述数据<b>不会上传到任何服务器</b>，本站也无法读取其他设备上的数据；清除浏览器数据会一并清除这些内容。</li>
+    <li><b>安全强度说明：</b>本地模拟的账号与权限仅用于校内教学演示与轻量管控，<b>不等同于服务端级安全机制</b>，请勿在其中保存任何敏感信息，也不要复用重要密码。</li>
+    <li><b>跨设备同步：</b>教师或管理员可在用户中心<b>导出数据包（JSON）</b>，分发给学生导入，从而共享同一套用户与班级群配置。</li>
+    <li><b>微信群说明：</b>微信群需在微信客户端内创建，微信官方未开放个人微信建群接口；本站仅用于<b>登记群信息并发布群二维码</b>，不代建群、不介入微信账号体系。</li>
+  </ul>
+
+  <h2>五、版权与使用</h2>
   <p>本站原创内容（含讲义、练习、模拟试题、课件与页面设计）版权归<b>大连财经学院「计算机国家二级考试（WPS 类）」课程组</b>所有，仅用于校内教学与个人备考，<b>不得用于任何商业用途</b>。引用官方大纲、教材等内容时，相关权利归原作者与出版机构所有。</p>
 
-  <h2>五、官方信息渠道</h2>
+  <h2>六、官方信息渠道</h2>
   <p>请通过以下官方渠道获取权威考试信息：</p>
   <div class="offlink">
     <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">中国教育考试网 · NCRE 栏目 ↗</a>
@@ -107,12 +117,15 @@
 
 <footer class="footer"><div class="wrap"><div class="cols">
   <div><h4>大连财经学院 · 计算机国家二级考试（WPS 类）</h4><p class="small"><span class="org">主办：大连财经学院计算机国家二级考试（WPS 类）课程组</span></p><p class="small">本站为<b>校内教学辅助资料</b>，依据《全国计算机等级考试(NCRE) 二级 WPS Office 高级应用与设计考试大纲(2025 年版)》与《二级公共基础知识考试大纲(2025 年版)》编写，供教学与备考使用。</p></div>
-  <div><h4>成果导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教学日历.html">教学日历</a> · <a href="./教案.html">教案</a></p><p class="small"><a href="./培训课件.html">培训课件</a> · <a href="./电子书.html">电子书</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p></div>
+  <div><h4>成果导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教学日历.html">教学日历</a> · <a href="./教案.html">教案</a></p><p class="small"><a href="./培训课件.html">培训课件</a> · <a href="./电子书.html">电子书</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p><p class="small"><a href="./用户中心.html">用户中心</a> · <a href="./群管理.html">班级群</a> · <a href="./关于本站.html">关于本站</a></p></div>
   <div><h4>官方信息</h4><p class="small">本站为<b>非官方</b>网站，不提供报名、缴费、查分服务。考试政策与报名信息以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 当年公告为准。</p><p class="small">学校官网：<a href="https://www.dlufe.edu.cn/" target="_blank" rel="noopener">www.dlufe.edu.cn</a></p></div>
   <div><h4>免责声明</h4><p class="small">本站不收集任何个人信息，无收费项目，不含广告与商业推广；内容仅供校内教学与备考参考，如与官方文件不一致，以官方文件为准。</p><p class="small"><a href="./关于本站.html">关于本站 / 免责声明 →</a></p></div>
 </div>
 <div class="disc">© 大连财经学院 · 计算机国家二级考试（WPS 类）课程组 ｜ 校内教学辅助资料，非官方考试网站 ｜ 考试政策以中国教育考试网公告为准</div>
 </div></footer>
 
+<script src="./assets/auth.js"></script>
+<script src="./assets/groups.js"></script>
+<script src="./assets/auth-ui.js"></script>
 </body>
 </html>

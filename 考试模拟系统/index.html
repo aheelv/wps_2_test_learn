@@ -294,6 +294,9 @@ table.info td.n{font-variant-numeric:tabular-nums;font-weight:700;color:var(--na
 @media (max-width:760px){.sitefooter .cols{grid-template-columns:1fr}}
 @media print{.noticebar,.sitefooter{display:none!important}}
 </style>
+<script src="../assets/auth.js"></script>
+<script src="../assets/groups.js"></script>
+<script src="../assets/auth-ui.js"></script>
 </head>
 <body>
 <div class="noticebar"><div class="nb-in">
@@ -305,7 +308,7 @@ table.info td.n{font-variant-numeric:tabular-nums;font-weight:700;color:var(--na
 
 <footer class="sitefooter"><div class="ft-in"><div class="cols">
   <div><h4>大连财经学院 · 计算机国家二级考试（WPS 类）</h4><p><span class="org">主办：大连财经学院计算机国家二级考试（WPS 类）课程组</span></p><p>本站为<b>校内教学辅助资料</b>，依据《全国计算机等级考试(NCRE) 二级 WPS Office 高级应用与设计考试大纲(2025 年版)》与《二级公共基础知识考试大纲(2025 年版)》编写，供教学与备考使用。</p></div>
-  <div><h4>成果导航</h4><p><a href="../教学大纲.html">教学大纲</a> · <a href="../教学日历.html">教学日历</a> · <a href="../教案.html">教案</a></p><p><a href="../培训课件.html">培训课件</a> · <a href="../电子书.html">电子书</a> · <a href="../index.html">学习中心</a></p></div>
+  <div><h4>成果导航</h4><p><a href="../教学大纲.html">教学大纲</a> · <a href="../教学日历.html">教学日历</a> · <a href="../教案.html">教案</a></p><p><a href="../培训课件.html">培训课件</a> · <a href="../电子书.html">电子书</a> · <a href="../index.html">学习中心</a></p><p><a href="../用户中心.html">用户中心</a> · <a href="../群管理.html">班级群</a> · <a href="../关于本站.html">关于本站</a></p></div>
   <div><h4>官方信息</h4><p>本站为<b>非官方</b>网站，不提供报名、缴费、查分服务。考试政策与报名信息以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 当年公告为准。</p><p>学校官网：<a href="https://www.dlufe.edu.cn/" target="_blank" rel="noopener">www.dlufe.edu.cn</a></p></div>
   <div><h4>免责声明</h4><p>本站不收集任何个人信息，无收费项目，不含广告与商业推广；内容仅供校内教学与备考参考，如与官方文件不一致，以官方文件为准。</p><p><a href="../关于本站.html">关于本站 / 免责声明 →</a></p></div>
 </div>
@@ -804,6 +807,7 @@ function render() {
   afterRender();
 }
 function afterRender() {
+  if (window.AuthUI) window.AuthUI.mountChip();
   paintTimer();
   if (S.view === 'exam') {
     $$('input[data-subfill]').forEach(function (inp) {
@@ -1417,6 +1421,10 @@ document.addEventListener('keydown', function (e) {
 
 /* ============ 十四、启动 ============ */
 (function init() {
+  if (!window.AuthUI || !window.AuthUI.allow('exam.use')) {
+    if (window.AuthUI) window.AuthUI.gateInto(document.getElementById('app'), 'exam.use');
+    return;
+  }
   var saved = lsGet(LS.exam, null);
   if (saved && !saved.submitted && saved.singleIds && saved.singleIds.length) {
     // 刷新后自动恢复未完成的考试，作答进度与剩余时间不丢失
