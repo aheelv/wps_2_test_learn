@@ -34,6 +34,14 @@
   .modline .ml b{display:block;font-size:14px;margin-bottom:6px}
   .modline .ml .h{font-size:26px;font-weight:900;line-height:1}
   .modline .ml .s{font-size:11.5px;opacity:.85;margin-top:6px}
+  .exbanner{display:flex;align-items:center;gap:18px;background:linear-gradient(120deg,var(--brand),#123a5c);color:#fff;border-radius:16px;padding:22px 26px;box-shadow:var(--shadow);transition:.18s;border:0}
+  .exbanner:hover{transform:translateY(-3px);box-shadow:var(--shadow-l)}
+  .exbanner .exb-ic{font-size:34px;flex:none}
+  .exbanner .exb-tx{flex:1;min-width:0}
+  .exbanner h3{margin:0 0 6px;font-size:20px;color:#fff}
+  .exbanner p{margin:0;font-size:14px;color:rgba(255,255,255,.85)}
+  .exbanner .exb-go{flex:none;background:#fff;color:var(--brand);font-weight:800;font-size:14.5px;border-radius:11px;padding:11px 18px;white-space:nowrap}
+  @media(max-width:700px){.exbanner{flex-wrap:wrap;padding:18px;gap:12px}.exbanner .exb-ic{font-size:28px}.exbanner h3{font-size:17px}.exbanner .exb-go{width:100%;text-align:center}}
 </style>
 </head>
 <body>
@@ -42,6 +50,7 @@
   <a class="brand" href="./index.html"><span class="logo">WPS</span><span>大连财经学院 · 计算机国家二级（WPS 类）<small>校内教学辅助资料 · 非官方</small></span></a>
   <nav class="navlinks">
     <a class="on" href="./index.html">学习中心</a>
+    <a href="./考试介绍.html">考试介绍</a>
     <a href="./教学大纲.html">教学大纲</a>
     <a href="./考纲对照表.html">考纲对照表</a>
     <a href="./教学日历.html">教学日历</a>
@@ -84,6 +93,17 @@
   </section>
 
   <section class="section-sm">
+    <a class="exbanner" href="./考试介绍.html">
+      <div class="exb-ic">📖</div>
+      <div class="exb-tx">
+        <h3>考试介绍：报考 · 内容 · 形式 · 时间 · 成绩</h3>
+        <p>全国计算机等级考试（NCRE）二级 WPS Office 高级应用与设计（科目代码 67）全面介绍，涵盖报考方式、报名条件与时间、考试内容与大纲要求、考试形式与时长、题型分值、成绩与证书，信息依据中国教育考试网官方发布整理。</p>
+      </div>
+      <span class="exb-go">查看考试介绍 →</span>
+    </a>
+  </section>
+
+  <section class="section-sm">
     <h2>一、六份核心成果</h2>
     <p class="lead">从"教什么"到"怎么教"再到"怎么练"，形成完整闭环。</p>
     <div class="quick mt2">
@@ -115,6 +135,7 @@
 
   <section class="section-sm">
     <h2>四、考试信息速览</h2>
+    <p class="muted">下表为速览摘要；报考方式、报名时间、考试内容与大纲要求、考试形式、成绩与证书等完整信息，见 <a href="./考试介绍.html"><b>考试介绍 →</b></a></p>
     <div class="grid g2 mt2">
       <div class="card"><h3>题型与分值</h3>
         <div class="table-wrap" style="border:0"><table class="tbl" style="min-width:auto"><tbody id="scoreTable"></tbody></table></div>
