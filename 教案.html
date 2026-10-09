@@ -108,12 +108,12 @@
 <section class="hero"><div class="wrap">
   <div class="eyebrow">大连财经学院 · 计算机国家二级考试（WPS 类）· 教案</div>
   <h1>11 次课教案（每次 4 课时）</h1>
-  <p class="sub">全课程统筹为 11 次课 × 每次 4 课时，按 <b>5 大模块</b>、考试分值配置课时（文字、表格各 30 分各配 12 课时，单选、演示各 20 分各配 8 课时，最后 4 课时全真模拟）。每份教案含教学目标、<b>对应考纲条目与题型分值</b>、课时安排、教学过程（含时间分配）、课堂练习（题目 + 答案 + 解析）、作业布置与教学反思栏，并明确「讲授 40% + 课堂练习 60%」的讲练配比。<b>以帮助学生通过为第一原则。</b></p>
+  <p class="sub">全课程统筹为 11 次课 × 每次 4 课时，按 <b>5 大模块</b>、考试分值配置课时（文字、表格各 30 分各配 12 课时，单选、演示各 20 分各配 8 课时，最后 4 课时全真模拟）。每份教案含教学目标、<b>对应考纲条目与题型分值</b>、课时安排、教学过程（含时间分配）、课堂练习（题目 + 答案 + 解析）、作业布置与教学反思栏，并明确「<b>课堂练习占 70%~80%</b>」的讲练配比（公共基础理论课约 70%，操作与冲刺课约 80%）。<b>以帮助学生通过为第一原则。</b></p>
   <div class="hero-stats">
     <div class="hero-stat"><b>11</b><span>份教案</span></div>
     <div class="hero-stat"><b>5</b><span>大模块</span></div>
     <div class="hero-stat"><b>4</b><span>课时 / 次</span></div>
-    <div class="hero-stat"><b>60%</b><span>课堂练习</span></div>
+    <div class="hero-stat"><b>70%~80%</b><span>课堂练习</span></div>
     <div class="hero-stat"><b>100%</b><span>覆盖大纲考点</span></div>
   </div>
 </div></section>
@@ -191,7 +191,7 @@
         const steps=(ls.plan.steps||[]).map(function(s){
           return '<tr><td>'+s[0]+'</td><td class="tm">'+s[1]+' 分钟</td><td>'+s[2]+'</td></tr>';
         }).join('');
-        return '<div class="lessonblock"><h5>第 '+n+' 课时 · '+ls.title+' <em>（导入与讲授约 '+Math.round(ls.hours*45*0.4)+' 分钟 · 随堂练习约 '+Math.round(ls.hours*45*0.6)+' 分钟）</em></h5>'+
+        return '<div class="lessonblock"><h5>第 '+n+' 课时 · '+ls.title+' <em>（导入与讲授约 '+Math.round(45*se.teach/4)+' 分钟 · 随堂练习约 '+Math.round(45*(4-se.teach)/4)+' 分钟）</em></h5>'+
           '<div class="sylmeta"><b>对应考纲：</b>'+ls.syl+'　｜　<b>题型分值：</b>'+ls.exam+' '+ls.score+'　｜　<b>考频：</b><span class="fr">'+ls.freq+'</span></div>'+
           '<div class="tblx"><table class="steps"><thead><tr><th>教学环节</th><th>时长</th><th>教学活动</th></tr></thead><tbody>'+steps+'</tbody></table></div></div>';
       }).join('');
@@ -223,7 +223,7 @@
           '<div class="lp-sec"><h4>三、教学过程（讲练结合）</h4>'+processBlocks+'</div>'+
 
           '<div class="lp-sec"><h4>四、课堂练习（含答案与解析）</h4>'+
-            '<div class="pcount"><span>本次课练习共 '+(se.practice||[]).length+' 题</span><span>单项选择题 '+ch.length+' 题</span><span>上机操作题 '+op.length+' 题</span><span class="hi">建议用时约 108 分钟</span></div>'+
+            '<div class="pcount"><span>本次课练习共 '+(se.practice||[]).length+' 题</span><span>单项选择题 '+ch.length+' 题</span><span>上机操作题 '+op.length+' 题</span><span class="hi">建议用时约 '+Math.round(45*(4-se.teach))+' 分钟</span></div>'+
             (se.practice||[]).map(qHtml).join('')+
           '</div>'+
 

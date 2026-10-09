@@ -71,7 +71,7 @@
 <section class="hero"><div class="wrap">
   <div class="eyebrow">大连财经学院 · 计算机国家二级考试（WPS 类）· 学习中心</div>
   <h1>国家计算机二级<br>WPS Office 11 次课 44 课时通关培训</h1>
-  <p class="sub">一站式备考解决方案：教学大纲 · 教学日历 · 11 份教案 · 11 次课课件（HTML + PPTX）· 网页电子书 · 全真模拟考试系统。按 <b>5 大模块</b>组织、课时按考试分值配置，每次课 4 课时，课堂练习约占 60%，题型与考试完全一致，全部依据官方考试大纲（2025 年版）编写，<b>以帮助学生通过为第一原则</b>。</p>
+  <p class="sub">一站式备考解决方案：教学大纲 · 教学日历 · 11 份教案 · 11 次课课件（HTML + PPTX）· 网页电子书 · 全真模拟考试系统。按 <b>5 大模块</b>组织、课时按考试分值配置，每次课 4 课时，课堂练习占 <b>70%~80%</b>，题型与考试完全一致，全部依据官方考试大纲（2025 年版）编写，<b>以帮助学生通过为第一原则</b>。</p>
   <div class="flex mt2">
     <a class="btn accent" href="./培训课件.html">▶ 开始学习课件</a>
     <a class="btn ghost" href="./考试模拟系统/index.html">🖥 进入模拟考试</a>
@@ -80,7 +80,7 @@
   <div class="hero-stats">
     <div class="hero-stat"><b>11</b><span>次课 · 每次 4 课时</span></div>
     <div class="hero-stat"><b>44</b><span>总课时 · 5 模块</span></div>
-    <div class="hero-stat"><b>60%</b><span>课堂练习占比</span></div>
+    <div class="hero-stat"><b>70%~80%</b><span>课堂练习占比</span></div>
     <div class="hero-stat"><b>100</b><span>满分 · 60 合格</span></div>
     <div class="hero-stat"><b>2025</b><span>版官方大纲</span></div>
   </div>
@@ -118,7 +118,7 @@
 
   <section class="section-sm">
     <h2>二、课程结构（11 次课 44 课时 · 5 大模块）</h2>
-    <p class="muted">课时分配与考试分值高度对应：文字、表格操作题各 30 分、各配 12 课时；单选、演示各 20 分、各配 8 课时；最后 4 课时全真模拟冲刺。每次课 4 课时，课堂练习约占 60%。</p>
+    <p class="muted">课时分配与考试分值高度对应：文字、表格操作题各 30 分、各配 12 课时；单选、演示各 20 分、各配 8 课时；最后 4 课时全真模拟冲刺。每次课 4 课时，课堂练习占 70%~80%（公共基础理论课约 70%、操作与冲刺课约 80%）。</p>
     <div class="modline" id="modline"></div>
     <div class="table-wrap mt2">
       <table class="tbl">
@@ -149,7 +149,7 @@
           <li><b>软件环境：</b>WPS Office 教育考试专用版（Windows 10）</li>
           <li><b>编写依据：</b>官方考试大纲（2025 年版）</li>
         </ul>
-        <div class="callout key mt2"><h4>💡 备考提醒</h4><p>操作题占 80 分，务必上机实操；文字、表格操作题各 30 分、各配 12 课时，是课时与练习投入的重点。每次课的课堂练习约占 60%，练习题型与考试完全一致。</p></div>
+        <div class="callout key mt2"><h4>💡 备考提醒</h4><p>操作题占 80 分，务必上机实操；文字、表格操作题各 30 分、各配 12 课时，是课时与练习投入的重点。每次课的课堂练习占 70%~80%，练习题型与考试完全一致。</p></div>
       </div>
     </div>
   </section>
@@ -175,7 +175,7 @@
     '<div class="sb"><b>11</b><span>次课（每次 4 课时）</span></div>'+
     '<div class="sb"><b>44</b><span>总课时 · 5 模块</span></div>'+
     '<div class="sb"><b>'+totalLessons+'</b><span>知识点 / 教案</span></div>'+
-    '<div class="sb"><b>60%</b><span>课堂练习占比</span></div>';
+    '<div class="sb"><b>'+C.meta.practiceRatio+'</b><span>课堂练习占比</span></div>';
 
   document.getElementById('modline').innerHTML=C.modules.map(function(m){
     return '<a class="ml" style="background:linear-gradient(140deg,'+m.color+',#0f2740)" href="./电子书.html#ch'+m.lessons[0].no+'">'+

@@ -49,6 +49,32 @@ ul.b li::before{content:"";position:absolute;left:8px;top:.52em;width:13px;heigh
 ul.b li b{color:var(--ink);font-weight:800}
 ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.06em .4em;border-radius:6px;font-size:.86em}
 
+/* 概念讲解：核心要点 + 结合理论的示例（双栏） */
+.content .s-body{justify-content:flex-start}
+.content h2.s-title{font-size:38px;margin-bottom:6px}
+.content .s-sub{margin-bottom:14px}
+.content .rule{margin-bottom:16px}
+.ctwo{display:grid;grid-template-columns:1fr 1.14fr;gap:24px;flex:1;min-height:0}
+.cleft{min-width:0;display:flex;flex-direction:column}
+.cleft .lead{font-size:12.5px;font-weight:900;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;text-transform:uppercase}
+.content ul.b{gap:13px}
+.content ul.b li{font-size:20px;line-height:1.48;padding-left:30px}
+.content ul.b li::before{left:4px;top:.5em;width:11px;height:11px;border-radius:3px}
+.content ul.b li code{font-size:.85em}
+.eg{min-width:0;overflow:auto;border:1px solid #f0d9ae;border-radius:14px;background:linear-gradient(180deg,#fffdf7,#fff8ec);padding:15px 17px}
+.eg-h{display:flex;align-items:center;gap:10px;margin-bottom:9px;flex-wrap:wrap}
+.eg-tag{font-size:12.5px;font-weight:900;color:#fff;background:var(--gold);border-radius:99px;padding:3px 12px;white-space:nowrap}
+.eg-k{font-size:12.5px;font-weight:800;color:#a06a12}
+.eg-txt{font-size:15.5px;line-height:1.6;color:var(--ink);margin-bottom:9px;text-align:justify}
+.eg-formula{display:flex;flex-direction:column;gap:6px;margin:9px 0}
+.eg-formula code{display:block;font-family:var(--mono);font-size:14px;background:#fff;border:1px solid #f0d9ae;border-radius:8px;padding:6px 10px;color:#0d4d7a;line-height:1.45;overflow-wrap:anywhere}
+.eg-flow{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:9px 0}
+.eg-flow span{font-size:13.5px;font-weight:800;color:#7a4a09;background:#fff;border:1px solid #f0d9ae;border-radius:8px;padding:4px 10px;line-height:1.3}
+.eg-flow i{color:var(--gold);font-style:normal;font-weight:900}
+.eg-ascii{font-family:var(--mono);font-size:13px;line-height:1.5;background:#fff;border:1px solid #f0d9ae;border-radius:8px;padding:9px 12px;color:#0d4d7a;white-space:pre;overflow:auto;margin:9px 0}
+.eg-warn{font-size:14px;line-height:1.55;color:#8a3b12;background:#fdece4;border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:9px 12px;margin-top:9px}
+.eg-warn b{color:#c0392b}
+
 /* 封面 */
 .cover{background:linear-gradient(150deg,#0d2036 0%,#16324f 48%,#1d4368 100%);color:#fff;justify-content:center;align-items:flex-start;padding:0 96px}
 .cover::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
@@ -327,6 +353,12 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
   const lessonMap = {};
   C.modules.forEach(function(m){ m.lessons.forEach(function(ls){ lessonMap[ls.no] = {m:m, ls:ls}; }); });
 
+  // 讲练配比：按每次课 teach 课时数换算（每次课 4 课时 / 180 分钟）
+  function pracPct(se){ return Math.round((4 - se.teach) / 4 * 100); }
+  function teachPct(se){ return 100 - pracPct(se); }
+  function pracMin(se){ return Math.round(180 * (4 - se.teach) / 4); }
+  function teachMin(se){ return 180 - pracMin(se); }
+
   // 1. 封面
   S.push({type:'cover', label:'封面'});
 
@@ -386,15 +418,15 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
       el.innerHTML =
         '<div class="eyebrow">大连财经学院 · 计算机国家二级考试（WPS 类）</div>'+
         '<h1>大连财经学院<br>计算机国家二级考试（WPS 类）<br>11 次课 · 44 课时通关培训</h1>'+
-        '<div class="lead">依据《'+esc(C.meta.official)+'》编写 · 5 大模块按考试分值配置课时 · 每次课 4 课时，其中课堂练习占 60% · 覆盖单项选择题、文字文档、电子表格、演示文稿全部题型</div>'+
+        '<div class="lead">依据《'+esc(C.meta.official)+'》编写 · 5 大模块按考试分值配置课时 · 每次课 4 课时，其中课堂练习占 '+C.meta.practiceRatio+' · 覆盖单项选择题、文字文档、电子表格、演示文稿全部题型</div>'+
         '<div class="stats">'+
           '<div class="stat"><b>'+C.meta.code.replace('科目代码 ','')+'</b><span>科目代码</span></div>'+
           '<div class="stat"><b>5</b><span>大模块</span></div>'+
           '<div class="stat"><b>44</b><span>课时</span></div>'+
           '<div class="stat"><b>'+C.meta.duration.replace(' 分钟','')+'</b><span>分钟 / 场</span></div>'+
         '</div>'+
-        '<div class="badge-line">满分 '+C.meta.full+' · '+C.meta.pass+' · 上机考试 · 讲授 40% + 课堂练习 60% · 以帮助学生通过为第一原则<br><b style="color:#ffd79a">本站为大连财经学院校内教学辅助资料，非官方考试网站，不提供报名、缴费、查分服务，不收集个人信息</b></div>';
-      el._note = '开场说明课程节奏：11 次课、每次 4 课时，其中约 60% 时间用于课堂练习，强调"以练促会、当堂过关"。';
+        '<div class="badge-line">满分 '+C.meta.full+' · '+C.meta.pass+' · 上机考试 · 课堂练习占 '+C.meta.practiceRatio+' · 以帮助学生通过为第一原则<br><b style="color:#ffd79a">本站为大连财经学院校内教学辅助资料，非官方考试网站，不提供报名、缴费、查分服务，不收集个人信息</b></div>';
+      el._note = '开场说明课程节奏：11 次课、每次 4 课时，课堂练习占 '+C.meta.practiceRatio+'（公共基础理论课约 70%、操作与冲刺课约 80%），强调"以练促会、当堂过关"。';
     }
     else if(s.type==='overview'){
       let cards='';
@@ -411,7 +443,7 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
         '<div class="s-body"><h2 class="s-title" style="font-size:36px">课程总览与考试全景</h2><div class="rule" style="margin-bottom:16px"></div>'+
         '<div class="ov-grid s11">'+cards+'</div>'+
         '<div class="score-strip">'+strip+'</div></div>';
-      el._note = '按 11 次课推进，每次课覆盖 4 课时：先集中讲授（约 40%），再大量课堂练习（约 60%）。分值最高的是表格与文字操作题（各 30 分），练习时间要重点倾斜。';
+      el._note = '按 11 次课推进，每次课覆盖 4 课时：先集中讲授（约 20%~30%），再大量课堂练习（约 70%~80%）。分值最高的是表格与文字操作题（各 30 分），练习时间要重点倾斜。';
     }
     else if(s.type==='exam'){
       const pal=['#2563eb','#0891b2','#e8503a','#16a34a','#6b7a90'];
@@ -469,10 +501,10 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
         '<h2>'+esc(se.name)+'</h2>'+
         '<div class="theme">'+esc(se.theme)+'</div>'+
         '<div class="dmeta"><span>4 课时 · 180 分钟</span><span>第 '+se.lessons[0]+'–'+se.lessons[se.lessons.length-1]+' 课时</span><span>题型：'+esc(se.examType||'')+' · '+esc(se.score||'')+'</span></div>'+
-        '<div class="ratio"><i class="t">讲授 40%</i><i class="p">课堂练习 60%</i></div>'+
+        '<div class="ratio"><i class="t" style="width:'+teachPct(se)+'%">讲授 '+teachPct(se)+'%</i><i class="p" style="width:'+pracPct(se)+'%">课堂练习 '+pracPct(se)+'%</i></div>'+
         '<div class="focusline">提分重点：'+esc(se.focus||'')+'</div>'+
         '<div class="goals">'+se.goals.map(function(g){return '<div>'+esc(g)+'</div>'}).join('')+'</div>';
-      el._note = '本次课目标如上，对应题型为'+esc(se.examType||'')+'（'+esc(se.score||'')+'）。讲授环节控制在约 72 分钟，其余约 108 分钟全部用于课堂练习，务必让学生当堂动手。';
+      el._note = '本次课目标如上，对应题型为'+esc(se.examType||'')+'（'+esc(se.score||'')+'）。讲授环节控制在约 '+teachMin(se)+' 分钟，其余约 '+pracMin(se)+' 分钟全部用于课堂练习，务必让学生当堂动手。';
     }
     else if(s.type==='lesson'){
       const ls=s.ls,m=s.mod;
@@ -491,7 +523,21 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
       el._note = '本课时约 20 分钟讲授，讲完立即进入随堂练习，做到"讲一点、练一点"。';
     }
     else if(s.type==='content'){
-      const sl=s.sl,m=s.mod,ls=s.ls;
+      const sl=s.sl,m=s.mod,ls=s.ls,eg=sl.eg;
+      el.classList.add('content');
+      const bullets='<ul class="b">'+sl.b.map(function(x){return '<li>'+fmt(x)+'</li>'}).join('')+'</ul>';
+      let egHtml='';
+      if(eg){
+        let inner='';
+        if(eg.formula&&eg.formula.length){ inner+='<div class="eg-formula">'+eg.formula.map(function(f){return '<code>'+esc(f)+'</code>'}).join('')+'</div>'; }
+        if(eg.flow&&eg.flow.length){ inner+='<div class="eg-flow">'+eg.flow.map(function(f,i){return (i?'<i>→</i>':'')+'<span>'+esc(f)+'</span>'}).join('')+'</div>'; }
+        if(eg.ascii){ inner+='<pre class="eg-ascii">'+esc(eg.ascii)+'</pre>'; }
+        egHtml='<div class="eg">'+
+          '<div class="eg-h"><span class="eg-tag">'+esc(eg.k||'示例')+'</span><span class="eg-k">结合理论 · 实例讲解</span></div>'+
+          '<p class="eg-txt">'+esc(eg.text)+'</p>'+inner+
+          (eg.warn?'<div class="eg-warn"><b>易错点 · </b>'+esc(eg.warn)+'</div>':'')+
+        '</div>';
+      }
       el.innerHTML =
         '<div class="s-head"><span class="modtag">'+m.short+'</span><span class="lno">第 '+ls.no+' 课时 · '+esc(ls.title)+'</span><span class="exchip">'+esc(ls.exam||'')+' · '+esc(ls.score||'')+' · '+esc(ls.freq||'')+'</span></div>'+
         '<div class="s-body">'+
@@ -499,7 +545,7 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
           '<h2 class="s-title">'+esc(sl.t)+'</h2>'+
           (sl.sub?'<div class="s-sub">'+esc(sl.sub)+'</div>':'')+
           '<div class="rule"></div>'+
-          '<ul class="b">'+sl.b.map(function(x){return '<li>'+fmt(x)+'</li>'}).join('')+'</ul>'+
+          (eg?'<div class="ctwo"><div class="cleft"><div class="lead">核心要点</div>'+bullets+'</div>'+egHtml+'</div>':bullets)+
         '</div>'+
         '<div class="s-foot"><span>'+esc(m.name)+'</span><span>对应考纲：'+esc(ls.syl||'')+'</span></div>';
       el._note = sl.n||'';
@@ -511,19 +557,19 @@ ul.b li code{font-family:var(--mono);background:#eef3f9;color:#0d4d7a;padding:.0
       const tags=[]; se.practice.forEach(function(p){ if(tags.indexOf(p.tag)<0) tags.push(p.tag); });
       el.classList.add('pintro');
       el.innerHTML =
-        '<div class="s-head"><span class="modtag">课堂练习</span><span class="lno">第 '+se.no+' 次课 · 占总课时 60%</span></div>'+
+        '<div class="s-head"><span class="modtag">课堂练习</span><span class="lno">第 '+se.no+' 次课 · 占总课时 '+pracPct(se)+'%</span></div>'+
         '<div class="s-body"><h2 class="s-title" style="font-size:38px">课堂练习安排</h2>'+
-        '<div class="s-sub">每次课 4 课时（180 分钟）中，约 108 分钟用于课堂练习；练完即讲评，当堂消化。</div>'+
+        '<div class="s-sub">每次课 4 课时（180 分钟）中，约 '+pracMin(se)+' 分钟用于课堂练习；练完即讲评，当堂消化。</div>'+
         '<div class="rule"></div>'+
         '<div class="pgrid">'+
           '<div class="pc"><b>'+chN+'</b><span>单项选择题（与真题题型一致）</span></div>'+
           '<div class="pc"><b>'+opN+'</b><span>上机操作题（在 WPS 中真实完成）</span></div>'+
-          '<div class="pc"><b>108</b><span>练习分钟数（60%）</span></div>'+
+          '<div class="pc"><b>'+pracMin(se)+'</b><span>练习分钟数（'+pracPct(se)+'%）</span></div>'+
         '</div>'+
         '<div class="tags">'+tags.map(function(t){return '<span>'+esc(t)+'</span>'}).join('')+'</div>'+
         '<div class="note">推荐节奏：教师示范 1 题 → 学生独立完成 → 同桌互评 → 教师统一讲评。操作题必须在 WPS 中亲手做一遍，做完对照参考答案自查。</div>'+
         '</div>';
-      el._note = '练习是本次课的主体（60% 时间）。建议先练后讲，让学生先暴露问题，再针对性讲评，效率最高。';
+      el._note = '练习是本次课的主体（'+pracPct(se)+'% 时间）。建议先练后讲，让学生先暴露问题，再针对性讲评，效率最高。';
     }
     else if(s.type==='quiz'){
       const se=s.se;
