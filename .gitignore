@@ -8,3 +8,8 @@ _build/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# 发布校验留下的临时文件（.tmp_* / .t_* / .chk_*）
+.tmp_*
+.t_*
+.chk_*
