@@ -13,3 +13,6 @@ desktop.ini
 .tmp_*
 .t_*
 .chk_*
+
+# 本地记忆与工具缓存
+.workbuddy/
