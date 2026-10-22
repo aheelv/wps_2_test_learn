@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WPS 处理电子表格 · 第 4 次课（4 小节 8 题）| 大连财经学院 计算机国家二级（WPS 类）</title>
+<meta name="description" content="WPS 电子表格第 1 次课实操：4 小节 8 道例题，覆盖工作簿工作表管理、冻结窗格与打印输出、数据输入与单元格格式、条件格式、相对绝对混合引用、跨表与三维引用、名称、统计函数与 IF 逻辑函数。">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="stylesheet" href="./assets/practice.css">
+</head>
+<body>
+
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">WPS</span><span>大连财经学院 · 计算机国家二级（WPS 类）<small>校内教学辅助资料 · 非官方</small></span></a>
+  <nav class="navlinks">
+    <a href="./index.html">学习中心</a>
+    <a href="./考试介绍.html">考试介绍</a>
+    <a href="./教学大纲.html">教学大纲</a>
+    <a href="./考纲对照表.html">考纲对照表</a>
+    <a href="./教学日历.html">教学日历</a>
+    <a href="./教案.html">教案</a>
+    <a class="on" href="./实操训练.html">实操训练</a>
+    <a href="./培训课件.html">培训课件</a>
+    <a href="./电子书.html">电子书</a>
+    <a href="./资料汇编.html">资料汇编</a>
+    <a href="./考试模拟系统/index.html">模拟考试</a>
+  </nav>
+</div></header>
+
+<div class="noticebar"><div class="wrap">
+  <span class="nb-ic">ⓘ</span>
+  <span><b>大连财经学院</b> 计算机国家二级考试（WPS 类）校内教学辅助资料 · <b>本站为非官方考试网站</b>，不提供报名、缴费、查分服务，不收集任何个人信息。官方信息请以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 为准。</span>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">实操训练 · 第 4 次课 / 共 8 次 · WPS 处理电子表格</div>
+  <h1>工作簿与打印 · 单元格格式 · 引用与公式 · 统计逻辑函数</h1>
+  <p class="sub">电子表格 30 分，是从「会点鼠标」到「会写公式」的分界。这一次课只做四件事：把表建对、把格式设对、把引用写对、把最常用的 15 个函数用对——后面两次课的所有函数题，都建立在这四件事上。</p>
+  <div class="flex mt2">
+    <a class="btn accent" href="#s1">▶ 从第 1 小节开始</a>
+    <a class="btn ghost" href="#cover">知识点覆盖对照</a>
+    <a class="btn ghost" href="#check">交卷自查清单</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><b>4</b><span>小节 · 每节 45 分钟</span></div>
+    <div class="hero-stat"><b>8</b><span>道实操例题</span></div>
+    <div class="hero-stat"><b>30 分</b><span>电子表格操作题</span></div>
+    <div class="hero-stat"><b>80%</b><span>课堂时间用于动手</span></div>
+    <div class="hero-stat"><b>模块三</b><span>12 课时</span></div>
+  </div>
+</div></section>
+
+<main class="wrap">
+
+  <div class="crumbs">
+    <a href="./index.html">学习中心</a><span class="sep">/</span><a href="./实操训练.html">实操训练</a><span class="sep">/</span>第 4 次课 · WPS 处理电子表格
+  </div>
+
+  <section class="section-sm">
+    <h2>本次课定位与目标</h2>
+    <p class="lead">表格题与文字题最大的不同是：<b>结果可以被精确校验</b>。文字题错了还能靠排版观感拿点分，表格题只要一个引用写错，整列数字全错，评审点一个都不给。所以这一次课的重点不是「会做」，而是「每一步都能说出为什么」。</p>
+    <div class="grid g2 mt2">
+      <div class="card">
+        <h3>课程基本信息</h3>
+        <div class="table-wrap mt1" style="border:0">
+          <table class="tbl small-tbl" style="min-width:auto">
+            <tbody>
+              <tr><th style="width:110px">所属模块</th><td>模块三 · WPS 处理电子表格（12 课时）</td></tr>
+              <tr><th>本次课位置</th><td>第 4 次课 / 共 8 次 · 4 小节 8 题</td></tr>
+              <tr><th>对应考纲</th><td>考纲三·1（工作簿工作表基本操作、视图与打印输出）· 三·2（数据输入编辑与单元格格式化）· 三·4（单元格引用、公式、函数）</td></tr>
+              <tr><th>对应题型</th><td>电子表格操作题（30 分）</td></tr>
+              <tr><th>讲练配比</th><td>每小节讲授 8~10 分钟 ＋ 动手 35~37 分钟（练习占 <b>80%</b>）</td></tr>
+              <tr><th>前置要求</th><td>能熟练使用鼠标与键盘，会新建/保存文件；无需函数基础（本课从 = 号讲起）</td></tr>
+              <tr><th>结课标准</th><td>独立完成 8 题，能不看提示写出 SUM/AVERAGE/IF/COUNTIF/ROUND 五类公式，自评 ≥ 24/30 分</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card" style="border-left:5px solid var(--m4)">
+        <h3>学完这 4 小节，你要能做到</h3>
+        <ul class="clean mt1"><li><b>工作簿：</b>会增删改移工作表、设标签颜色、冻结窗格，能设打印区域、顶端标题行、缩放与页脚页码</li><li><b>格式：</b>会用自定义格式（¥#,##0.00、yyyy年m月d日）、会保留前导零、会用数据有效性做下拉、会用条件格式标出异常值</li><li><b>引用：</b>能分清相对/绝对/混合引用（$ 的位置决定一切），会跨表引用、三维引用、定义名称</li><li><b>函数：</b>会用 SUM/AVERAGE/MAX/MIN/COUNT/COUNTA/ROUND/INT/MOD/ABS 与 IF/IFS/AND/OR 嵌套</li></ul>
+        <div class="callout key mt2"><h4>💡 为什么这样排</h4><p class="small mb0">按「表的结构 → 表的样子 → 表的关系 → 表的计算」推进：先把工作簿和工作表管好（打印是考试必考的小分点），再让数据看得清（格式与条件格式），再理解引用这个核心机制，最后进入函数。引用没搞懂就学函数，是表格题失分的第一大原因。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm" id="cover">
+    <h2>知识点覆盖对照表</h2>
+    <p class="muted">本表逐小节列出「对应考纲条目 → 承载题目 → 覆盖的具体知识点」，用于核对<b>无遗漏</b>；考前可只看这一张表做最后清点。</p>
+    <div class="table-wrap mt2">
+      <table class="tbl cover-tbl">
+        <thead><tr><th class="num" style="width:56px">小节</th><th style="width:210px">小节主题</th><th style="width:190px">对应考纲条目</th><th class="num" style="width:110px">题目</th><th>覆盖知识点</th></tr></thead>
+        <tbody>
+<tr><td class="num"><b>1</b></td><td><b>工作簿、工作表与打印输出</b></td><td class="small">考纲三·1</td><td class="small nowrap">例 4-1、例 4-2</td><td><span class="pill">工作簿的新建、保存、另存为（.xlsx / .xls 区别）</span><span class="pill">工作表的重命名、插入、删除、移动或复制、标签颜色</span><span class="pill">工作组（按住 Ctrl/Shift 选多表）与批量操作</span><span class="pill">行高列宽的精确设置与自动调整</span><span class="pill">冻结窗格（冻结首行/首列/拆分）</span><span class="pill">打印区域、打印标题（顶端标题行 / 左端标题列）</span><span class="pill">页面设置：纸张、方向、页边距、缩放（调整为 1 页宽）</span><span class="pill">页眉页脚：页码、总页数、文件名域代码</span></td></tr>
+<tr><td class="num"><b>2</b></td><td><b>数据输入与单元格格式化</b></td><td class="small">考纲三·2</td><td class="small nowrap">例 4-3、例 4-4</td><td><span class="pill">序列填充（填充柄、填充序列对话框、自定义序列）</span><span class="pill">日期/时间的录入与显示格式（yyyy年m月d日）</span><span class="pill">文本型数字与前导零（先设文本格式或加单引号）</span><span class="pill">自定义数字格式：¥#,##0.00、0.00%、#,##0</span><span class="pill">数据有效性（序列/整数/小数/日期）与输入提示、出错警告</span><span class="pill">单元格格式：字体、对齐、边框、底纹、合并居中</span><span class="pill">条件格式：突出显示规则、数据条、色阶、图标集、新建规则</span><span class="pill">格式刷与选择性粘贴（格式/数值/转置）</span></td></tr>
+<tr><td class="num"><b>3</b></td><td><b>单元格引用与公式基础</b></td><td class="small">考纲三·4</td><td class="small nowrap">例 4-5、例 4-6</td><td><span class="pill">相对引用 A1、绝对引用 $A$1、混合引用 $A1 / A$1 的区别</span><span class="pill">填充/拖拽时引用如何变化（列变、行变、都不变）</span><span class="pill">跨工作表引用 <code>表名!单元格</code> 与带空格表名的引号写法</span><span class="pill">三维引用 <code>SUM(1月:3月!B2)</code></span><span class="pill">定义名称与在公式中使用名称</span><span class="pill">公式的运算符与优先级（: 空格 , 负号 % ^ * / + - &amp; 比较）</span><span class="pill">常见错误值：#DIV/0! #VALUE! #REF! #NAME? #N/A #NUM!</span><span class="pill">公式审核：追踪引用单元格/从属单元格、显示公式</span></td></tr>
+<tr><td class="num"><b>4</b></td><td><b>数学统计函数与逻辑函数</b></td><td class="small">考纲三·4</td><td class="small nowrap">例 4-7、例 4-8</td><td><span class="pill">SUM / AVERAGE / MAX / MIN / COUNT / COUNTA / COUNTBLANK</span><span class="pill">ROUND / ROUNDUP / ROUNDDOWN / INT / TRUNC 的差异</span><span class="pill">MOD 取余（判断奇偶、周期性）与 ABS 绝对值</span><span class="pill">IF 单条件、IF 嵌套多级、IFS 多条件（新版）</span><span class="pill">AND / OR / NOT 的组合与短路特性</span><span class="pill">SUMIF / COUNTIF / AVERAGEIF 单条件统计</span><span class="pill">函数嵌套的写法与括号配对技巧</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn mt2">
+      <h4>⚠️ 覆盖口径说明</h4>
+      <p class="mb0 small">表中知识点均来自《全国计算机等级考试（NCRE）二级 WPS Office 高级应用与设计考试大纲（2025 年版）》模块三对应条目，每一条都有具体题目承接。<b>同一知识点在不同题目中重复出现是有意设计</b>——考试评分看的是操作结果，只有练到"不看书也能做对"才算掌握。</p>
+    </div>
+  </section>
+
+  <nav class="lessonnav"><a href="#s1">第 1 小节 · 工作簿与打印</a><a href="#s2">第 2 小节 · 输入与格式</a><a href="#s3">第 3 小节 · 引用与公式</a><a href="#s4">第 4 小节 · 统计逻辑函数</a></nav>
+
+  <!-- ============ 第 1 小节 ============ -->
+  <section id="s1">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>小节</small>01</div>
+        <div class="ltx">
+          <h3>工作簿、工作表与打印输出</h3>
+          <p>工作表增删改移、标签颜色、冻结窗格、打印区域、顶端标题行、缩放与页脚页码。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>2 道实操题</span><span>考纲三·1</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本小节必须掌握的知识点</h4>
+          <ul class="clean small" style="margin-top:6px"><li>工作簿的新建、保存、另存为（.xlsx / .xls 区别）</li><li>工作表的重命名、插入、删除、移动或复制、标签颜色</li><li>工作组（按住 Ctrl/Shift 选多表）与批量操作</li><li>行高列宽的精确设置与自动调整</li><li>冻结窗格（冻结首行/首列/拆分）</li><li>打印区域、打印标题（顶端标题行 / 左端标题列）</li><li>页面设置：纸张、方向、页边距、缩放（调整为 1 页宽）</li><li>页眉页脚：页码、总页数、文件名域代码</li></ul>
+        </div>
+        <article class="ex" id="e4-1">
+          <header class="ex-h">
+            <span class="ex-no">例 4-1</span>
+            <h4>建工作簿：4 张工作表 + 标签颜色 + 列宽行高 + 冻结首行</h4>
+            <span class="badge info">工作表管理</span><span class="badge info">标签颜色</span><span class="badge info">冻结窗格</span>
+            <span class="badge">14 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li><b>新建</b>工作簿，保存为 <code>学号-姓名-练习4-1.xlsx</code>。</li><li>将 Sheet1 重命名为「<b>销售明细</b>」，再插入 2 张工作表，分别命名为「<b>汇总</b>」「<b>参数</b>」。</li><li>在「销售明细」中录入素材数据（<b>12 条</b>记录，含表头）。</li><li><b>列宽：</b>A 8、B 12、C 10、D 10、E 12；<b>行高：</b>第 1 行 24，其余 20。</li><li><b>冻结首行</b>（滚动时表头始终可见）。</li><li>把「汇总」移动到「参数」之前，并将「销售明细」标签设为<b>红色</b>。</li><li>在「参数」表 B1 输入「税率」、B2 输入 <b>0.13</b>。</li><li>保存。</li></ol>
+            </div>
+            <div class="src"><div class="kicker">录入素材</div><pre>表头：日期 | 产品 | 数量 | 单价 | 金额
+记录示例：2026-09-01 | 笔记本 | 12 | 4580 |
+共 12 条，日期从 2026-09-01 起按天递增，产品在笔记本/台式机/显示器/键盘中轮换。</pre></div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>新建并立即保存。</b><kbd>Ctrl</kbd>+<kbd>N</kbd> 新建 → <kbd>F12</kbd> 另存为 → 文件名 <code>学号-姓名-练习4-1.xlsx</code> → 文件类型选「<b>Excel 工作簿(*.xlsx)</b>」。<br><b>先存再填</b>，是防断电、防误关的第一习惯。</li><li><b>重命名 Sheet1。</b><b>双击</b>工作表标签「Sheet1」→ 标签变可编辑状态 → 输入「销售明细」→ <kbd>Enter</kbd>。</li><li><b>插入两张表。</b>点标签栏右侧的「<b>+</b>」号两次（或右键任意标签 →「插入工作表」）→ 分别双击改名为「汇总」「参数」。</li><li><b>录入数据。</b>点 A1 开始录入，<kbd>Tab</kbd> 向右、<kbd>Enter</kbd> 向下；<kbd>Alt</kbd>+<kbd>Enter</kbd> 可在单元格内换行。<br>日期直接输 <code>2026-9-1</code>，系统会自动识别为日期；<b>不要输 2026.9.1</b>（会变文本）。</li><li><b>设列宽。</b>选中 A 列列标 → 右键 →「<b>列宽</b>」→ 输入 <b>8</b> → 确定；B 列 12、C 列 10、D 列 10、E 列 12，逐列设置。<br>想快速自适应可双击列标右边界，但题目给数值就必须用「列宽」对话框。</li><li><b>设行高。</b>选中第 1 行行号 → 右键 →「<b>行高</b>」→ <b>24</b>；再选中第 2~13 行 → 行高 <b>20</b>。</li><li><b>冻结首行。</b>「<b>视图</b>」→「<b>冻结窗格</b>」→「<b>冻结首行</b>」。<br>验证：向下滚动，第 1 行不动即为成功。</li><li><b>移动工作表。</b>右键「汇总」标签 →「<b>移动或复制</b>」→ 在「下列选定工作表之前」选「<b>参数</b>」→ <b>不勾</b>「建立副本」→ 确定。<br>（拖动标签也能移，但跨位置远时容易拖错。）</li><li><b>设标签颜色。</b>右键「销售明细」标签 →「<b>工作表标签颜色</b>」→ 选红色。</li><li><b>填参数表。</b>切到「参数」表 → B1 输入「税率」→ B2 输入 <code>0.13</code>。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>4 张工作表名称完全一致 · 工作表顺序为 销售明细 / 汇总 / 参数 · 列宽 5 项与行高 2 项数值正确 · 已冻结首行 · 标签颜色为红色 · 参数表 B2 = 0.13 · 文件为 .xlsx</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>另存为时选了「.xls」：部分函数与格式不受支持，且题目要求 xlsx 时会判格式错。</li><li>「冻结首行」点成「冻结首列」：横着滚动没问题，竖着滚动表头就跑了。</li><li>移动工作表时勾了「建立副本」：多出一张重复表，表数量不对。</li><li>日期输成 2026.9.1 或 2026/9/1 文本：后续日期函数无法计算。</li><li>直接拖列标边界调宽度：数值不可能正好是 8/12/10/10/12。</li></ul>
+            </div>
+            <div class="callout tip"><h4>工作组的用法</h4><p class="small mb0">按住 <kbd>Ctrl</kbd> 点多个工作表标签，标签变白即形成「工作组」，此时在一个表里输入/设置格式，所有选中的表同步生效。适合批量建同样表头。用完记得右键 →「取消成组工作表」，否则会误改其他表。</p></div>
+          </div>
+        </article>
+        <article class="ex" id="e4-2">
+          <header class="ex-h">
+            <span class="ex-no">例 4-2</span>
+            <h4>打印设置：打印区域 + 顶端标题行 + 1 页宽 + 页脚「第 X 页 共 Y 页」</h4>
+            <span class="badge info">打印区域</span><span class="badge info">顶端标题行</span><span class="badge info">缩放</span><span class="badge info">页脚</span>
+            <span class="badge">14 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（<b>60 行</b>销售数据，A1:F60）。</li><li>设置<b>打印区域</b>为 <code>A1:F60</code>。</li><li>设置<b>顶端标题行</b>为第 1 行（使每页都有表头）。</li><li>缩放方式设为「<b>调整为 1 页宽</b>」（高度不限）。</li><li>纸张 <b>A4 横向</b>，页边距上下左右均 <b>1.5</b> 厘米。</li><li><b>页脚居中</b>显示「第 X 页 共 Y 页」，使用<b>页码与总页数域</b>。</li><li>进入打印预览确认共几页、每页是否都有表头。</li><li>保存为 <code>学号-姓名-练习4-2.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>打开素材</b>，确认数据范围为 A1:F60。</li><li><b>设打印区域。</b>选中 <code>A1:F60</code> →「<b>页面布局</b>」→「<b>打印区域</b>」→「<b>设置打印区域</b>」。设定后区域外会出现灰色虚线。</li><li><b>设顶端标题行。</b>「页面布局」→「<b>打印标题</b>」→ 在「顶端标题行」输入框里点右侧的<b>折叠按钮</b> → 用鼠标点第 1 行的<b>行号</b> → 框内显示 <code>$1:$1</code> → 确定。</li><li><b>设缩放。</b>同一「页面设置」对话框 →「<b>页面</b>」选项卡 → 缩放选「<b>调整为</b>」→ 宽 <b>1</b> 页、高留空（或填 0，表示自动）。</li><li><b>设纸张与方向。</b>同对话框 → 纸张大小「<b>A4</b>」→ 方向「<b>横向</b>」。</li><li><b>设页边距。</b>切到「<b>页边距</b>」选项卡 → 上、下、左、右均填 <b>1.5</b> → 勾选「水平居中」。</li><li><b>设页脚。</b>切到「<b>页眉/页脚</b>」选项卡 →「<b>自定义页脚</b>」→ 光标放进「<b>中</b>」框 → 输入「第 」→ 点「<b>插入页码</b>」按钮 → 输入「 页 共 」→ 点「<b>插入总页数</b>」按钮 → 输入「 页」→ 确定。<br>生成的代码是 <code>&amp;[页码]</code> 与 <code>&amp;[总页数]</code>，<b>不要手打数字</b>。</li><li><b>预览。</b>「文件」→「<b>打印</b>」（<kbd>Ctrl</kbd>+<kbd>P</kbd>）→ 右侧预览里翻页，确认：①每页顶部都有表头；②页脚显示「第 1 页 共 N 页」；③所有列都在一页宽内。</li><li><b>退出预览并保存。</b><kbd>Esc</kbd> 返回 → 保存为 <code>学号-姓名-练习4-2.xlsx</code>。</li></ol>
+            <div class="score"><b>采分点</b>打印区域为 A1:F60 · 顶端标题行为 $1:$1 · 缩放为 1 页宽 · 纸张 A4 横向 · 页边距四边 1.5 · 页脚为页码+总页数域且居中 · 预览中每页均有表头</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>顶端标题行手打「1:1」：部分版本不认，必须点行号让系统写入 $1:$1。</li><li>页脚用「第 1 页 共 8 页」手打：页数变化后不更新，评分按域判定。</li><li>只设了「打印区域」没设「打印标题」：第 2 页起没有表头，这条分值必丢。</li><li>缩放选了「调整为 1 页高」：60 行被压成一页，字小到看不清，方向也错。</li><li>忘记设「水平居中」：内容偏左，打印类评分点可能扣。</li></ul>
+            </div>
+            <div class="callout tip"><h4>打印前必看的三处</h4><p class="small mb0">① 灰色虚线（分页线）是否切在表格中间；② 预览页数是否合理；③ 页脚/页眉是否只在第一页出现（那说明没设顶端标题行）。三处都对，打印类 4~6 分基本稳拿。</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 2 小节 ============ -->
+  <section id="s2">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>小节</small>02</div>
+        <div class="ltx">
+          <h3>数据输入与单元格格式化</h3>
+          <p>序列填充、日期与金额的自定义格式、前导零、数据有效性下拉、条件格式与数据条。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>2 道实操题</span><span>考纲三·2</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本小节必须掌握的知识点</h4>
+          <ul class="clean small" style="margin-top:6px"><li>序列填充（填充柄、填充序列对话框、自定义序列）</li><li>日期/时间的录入与显示格式（yyyy年m月d日）</li><li>文本型数字与前导零（先设文本格式或加单引号）</li><li>自定义数字格式：¥#,##0.00、0.00%、#,##0</li><li>数据有效性（序列/整数/小数/日期）与输入提示、出错警告</li><li>单元格格式：字体、对齐、边框、底纹、合并居中</li><li>条件格式：突出显示规则、数据条、色阶、图标集、新建规则</li><li>格式刷与选择性粘贴（格式/数值/转置）</li></ul>
+        </div>
+        <article class="ex" id="e4-1">
+          <header class="ex-h">
+            <span class="ex-no">例 4-3</span>
+            <h4>录入 20 行：序列 + 日期格式 + 下拉列表 + 金额格式 + 前导零</h4>
+            <span class="badge info">序列填充</span><span class="badge info">自定义格式</span><span class="badge info">数据有效性</span>
+            <span class="badge">16 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li><b>新建</b>工作簿，A2:A21 填序号 <b>1~20</b>（用序列填充，不要手打）。</li><li>B2 起输入日期，从 <code>2026-09-01</code> 开始按<b>每天</b>递增到 B21；格式显示为「<b>2026年9月1日</b>」。</li><li>C 列用<b>数据有效性</b>做下拉列表：销售部 / 技术部 / 财务部 / 人事部。</li><li>D 列销售额设为自定义格式 <code>¥#,##0.00</code>。</li><li>E 列工号为 <b>001~020</b>，必须<b>保留前导零</b>。</li><li>在 G1 用 <code>COUNTIF</code> 统计「销售部」的人数，G2 用 <code>SUMIF</code> 统计销售部销售额合计。</li><li>保存为 <code>学号-姓名-练习4-3.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>新建保存。</b><kbd>Ctrl</kbd>+<kbd>N</kbd> → <kbd>F12</kbd> 存为 <code>学号-姓名-练习4-3.xlsx</code>。</li><li><b>序列填序号。</b>A2 输入 <code>1</code>、A3 输入 <code>2</code> → 同时选中 A2:A3 → 拖动右下角<b>填充柄</b>（小黑方块）到 A21。<br>或用「开始」→「填充」→「序列」→ 步长 1、终止值 20。</li><li><b>填日期。</b>B2 输入 <code>2026-9-1</code> → 拖填充柄到 B21（默认按天递增）。<br>若变成按年递增，松手后点右下角「<b>自动填充选项</b>」→ 选「<b>以天数填充</b>」。</li><li><b>设日期格式。</b>选中 B2:B21 → <kbd>Ctrl</kbd>+<kbd>1</kbd>（设置单元格格式）→「<b>数字</b>」→ 分类选「<b>自定义</b>」→ 类型框输入 <code>yyyy&quot;年&quot;m&quot;月&quot;d&quot;日&quot;</code> → 确定。<br>年月日三个字必须加英文双引号，否则会被识别成代码。</li><li><b>做下拉列表。</b>选中 C2:C21 →「<b>数据</b>」→「<b>有效性</b>」（部分版本叫「数据验证」）→「设置」→ 允许选「<b>序列</b>」→ 来源框输入 <code>销售部,技术部,财务部,人事部</code>（<b>英文逗号</b>分隔）→ 确定。</li><li><b>设金额格式。</b>选中 D2:D21 → <kbd>Ctrl</kbd>+<kbd>1</kbd> →「自定义」→ 类型输入 <code>¥#,##0.00</code> → 确定。</li><li><b>保留前导零。</b>先选中 E2:E21 → <kbd>Ctrl</kbd>+<kbd>1</kbd> → 分类选「<b>文本</b>」→ 确定 → 再输入 <code>001</code>、<code>002</code>…<br>（也可以输入时先打英文单引号 <code>'001</code>，效果相同。）<b>顺序不能反</b>：先输数字再改文本，零已经丢了。</li><li><b>统计人数。</b>G1 输入 <span class="fx">=COUNTIF(C2:C21,&quot;销售部&quot;)</span> → <kbd>Enter</kbd>。</li><li><b>统计销售额。</b>G2 输入 <span class="fx">=SUMIF(C2:C21,&quot;销售部&quot;,D2:D21)</span> → <kbd>Enter</kbd>。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>序号 1~20 为序列填充（非手打） · 日期 20 条且格式为「2026年9月1日」 · C 列为序列有效性下拉（点单元格出现箭头） · 金额格式为 ¥#,##0.00（显示两位小数） · 工号保留前导零（001） · COUNTIF 与 SUMIF 结果正确</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>先输 001 再改成文本格式：零已经丢了，改格式也回不来。</li><li>有效性来源用中文逗号：整串变成一个选项，下拉里只有一条。</li><li>自定义格式里写了 yyyy年m月d日 但没加引号：年月日被当成代码，显示异常。</li><li>日期用填充柄拖出 2026-9-1、2026-9-1…（全同）：要拖两个单元格形成规律再拖。</li><li>COUNTIF 的区域写成 C2:C20：少算最后一行。</li></ul>
+            </div>
+            <div class="callout tip"><h4>自定义格式速记</h4><p class="small mb0"><code>0</code> 强制占位（不补零）；<code>#</code> 有则显示、无则不显示；<code>,</code> 千分位；<code>¥</code> 前缀；<code>0.00</code> 固定两位小数；<code>[红色]</code> 加颜色；<code>@</code> 代表文本本身。</p></div>
+          </div>
+        </article>
+        <article class="ex" id="e4-2">
+          <header class="ex-h">
+            <span class="ex-no">例 4-4</span>
+            <h4>条件格式：三色分级 + 数据条 + 表头格式刷 + 批注</h4>
+            <span class="badge info">条件格式</span><span class="badge info">数据条</span><span class="badge info">格式刷</span><span class="badge info">批注</span>
+            <span class="badge">15 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（成绩表 A1:F21，F 列为总分）。</li><li><b>表头 A1:F1：</b>加粗、水平垂直居中、底纹 RGB(217,226,243)、行高 <b>28</b>。</li><li>对 F2:F21 设置条件格式：<b>≥90 绿色填充</b>；<b>60~89 黄色填充</b>；<b>&lt;60 红色加粗字体</b>。</li><li>对 F2:F21 添加<b>数据条</b>（渐变填充）。</li><li>用<b>格式刷</b>把表头格式复制到 H1:M1。</li><li>在第一个不及格的单元格（F 列）上添加<b>批注</b>「需补考」。</li><li>保存为 <code>学号-姓名-练习4-4.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>打开素材</b>，确认总分在 F 列、数据到第 21 行。</li><li><b>设表头格式。</b>选中 A1:F1 → <kbd>Ctrl</kbd>+<kbd>B</kbd> 加粗 → 开始选项卡「居中」+「垂直居中」→「填充颜色」→「<b>其他颜色</b>」→「自定义」→ 输入 R <b>217</b>、G <b>226</b>、B <b>243</b> → 确定。</li><li><b>设表头行高。</b>选中第 1 行行号 → 右键 →「行高」→ <b>28</b>。</li><li><b>条件格式①≥90。</b>选中 F2:F21 →「<b>开始</b>」→「<b>条件格式</b>」→「<b>突出显示单元格规则</b>」→「<b>大于</b>」→ 输入 <b>90</b> → 格式选「绿填充色深绿色文本」→ 确定。</li><li><b>条件格式②60~89。</b>「条件格式」→「<b>新建规则</b>」→「只为包含以下内容的单元格设置格式」→ 条件设为「<b>单元格值 介于 60 和 89</b>」→ 格式 →「填充」选黄色 → 确定。<br><b>顺序很重要</b>：先设 ≥90，再设 60~89，最后设 &lt;60，否则区间会互相覆盖。</li><li><b>条件格式③&lt;60。</b>「条件格式」→「突出显示单元格规则」→「<b>小于</b>」→ <b>60</b> → 格式选「<b>自定义格式</b>」→ 字体设为<b>红色、加粗</b> → 确定。</li><li><b>加数据条。</b>选中 F2:F21 →「条件格式」→「<b>数据条</b>」→「<b>渐变填充</b>」→ 选一种颜色。数据条会按数值大小自动伸缩。</li><li><b>用格式刷。</b>选中 A1:F1 → <b>双击</b>「格式刷」（双击可连续使用）→ 拖过 H1:M1 → 按 <kbd>Esc</kbd> 结束。</li><li><b>加批注。</b>找到第一个总分小于 60 的单元格 → 右键 →「<b>插入批注</b>」→ 输入「需补考」→ 点空白处。单元格右上角出现红色小三角。</li><li><b>检查三条规则。</b>「条件格式」→「<b>管理规则</b>」→ 应能看到 3 条规则，且应用区域都是 <code>$F$2:$F$21</code>。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>表头加粗居中且底纹 RGB(217,226,243)、行高 28 · ≥90 绿色填充 · 60~89 黄色填充 · &lt;60 红色加粗 · 数据条已添加（渐变） · 格式刷已复制到 H1:M1 · 不及格单元格有「需补考」批注</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>条件格式只选中 F2 就设规则：只有一格生效，其余不变色。</li><li>先设 60~89 再设 ≥90：90 以上可能被中间段规则先命中，颜色错。</li><li>用「单元格值 大于 60」代替「介于」：70 和 95 都变黄，分级失效。</li><li>格式刷单击一次就刷多格：只能刷一个区域，要刷多处必须<b>双击</b>。</li><li>底纹挑了主题色里的浅蓝：RGB 值不是 217/226/243，格式分可能不认。</li></ul>
+            </div>
+            <div class="callout tip"><h4>条件格式的优先级</h4><p class="small mb0">同一区域多条规则按「管理规则」里的顺序从上到下判断，勾选「如果为真则停止」的规则命中后不再往下判。所以分等级时，<b>范围窄、条件严的放上面</b>。</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 3 小节 ============ -->
+  <section id="s3">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>小节</small>03</div>
+        <div class="ltx">
+          <h3>单元格引用与公式基础</h3>
+          <p>相对/绝对/混合引用的 $ 位置、跨表与三维引用、定义名称、常见错误值排查。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>2 道实操题</span><span>考纲三·4</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本小节必须掌握的知识点</h4>
+          <ul class="clean small" style="margin-top:6px"><li>相对引用 A1、绝对引用 $A$1、混合引用 $A1 / A$1 的区别</li><li>填充/拖拽时引用如何变化（列变、行变、都不变）</li><li>跨工作表引用 <code>表名!单元格</code> 与带空格表名的引号写法</li><li>三维引用 <code>SUM(1月:3月!B2)</code></li><li>定义名称与在公式中使用名称</li><li>公式的运算符与优先级（: 空格 , 负号 % ^ * / + - &amp; 比较）</li><li>常见错误值：#DIV/0! #VALUE! #REF! #NAME? #N/A #NUM!</li><li>公式审核：追踪引用单元格/从属单元格、显示公式</li></ul>
+        </div>
+        <article class="ex" id="e4-1">
+          <header class="ex-h">
+            <span class="ex-no">例 4-5</span>
+            <h4>三种引用：跨表算金额、$B$10 算占比、$A2*E$1 做乘法表、名称算税额</h4>
+            <span class="badge info">绝对引用</span><span class="badge info">混合引用</span><span class="badge info">跨表</span><span class="badge info">名称</span>
+            <span class="badge">18 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（含「金额」「单价」「数量」「参数」四张表，参数!B2 = 0.13）。</li><li>在「金额」表 <b>B2:B9</b> 用<b>相对引用</b>计算 = 单价 × 数量（引用其他工作表）。</li><li>在 <b>C2:C9</b> 计算各产品金额<b>占总额的比例</b>，总额在 <code>B10</code>，要求下拉时总额不变（用<b>绝对引用</b>）。</li><li>在 <b>E1:I9</b> 用<b>混合引用</b>生成九九乘法表（第 1 行为 1~9，A 列也为 1~9）。</li><li>定义名称「<b>税率</b>」指向 <code>参数!$B$2</code>，在 <b>D2:D9</b> 用 <code>=B2*税率</code> 计算税额。</li><li>在 <b>F12</b> 用<b>三维引用</b>汇总 1 月、2 月、3 月三张表 B2 单元格之和。</li><li>保存为 <code>学号-姓名-练习4-5.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>打开素材</b>，先看清四张表的名称与结构。<b>表名有空格或数字开头时，引用要加单引号</b>（如 <code>'1月'!B2</code>）。</li><li><b>相对引用。</b>在「金额」表 B2 输入 <span class="fx">=单价!B2*数量!B2</span> → <kbd>Enter</kbd> → 选中 B2 拖填充柄到 B9。<br>下拉后 B3 会自动变成 <code>单价!B3*数量!B3</code>——这就是相对引用的「跟着走」。</li><li><b>算占比（关键）。</b>C2 输入 <span class="fx">=B2/$B$10</span> → 下拉到 C9。<br><code>$B$10</code> 的行和列都被锁定，下拉时始终指向总额；写成 <code>B10</code> 就会变成 B11、B12（空白），结果显示 #DIV/0!。</li><li><b>设百分比格式。</b>选中 C2:C9 → <kbd>Ctrl</kbd>+<kbd>1</kbd> → 分类「百分比」→ 小数位数 <b>1</b> → 确定。</li><li><b>铺乘法表的表头。</b>E1 输入 <code>1</code>、F1 输入 <code>2</code> → 选中 E1:F1 → 拖到 I1（得到 1~9）；<br>A2 输入 <code>1</code>、A3 输入 <code>2</code> → 选中拖到 A10（得到 1~9）。</li><li><b>写混合引用。</b>E2 输入 <span class="fx">=$A2*E$1</span> → <kbd>Enter</kbd> → 选中 E2 向右拖到 I2，再向下拖到 E10。<br>理解方式：<code>$A2</code> 锁列不锁行（右拉时始终取 A 列），<code>E$1</code> 锁行不锁列（下拉时始终取第 1 行）。</li><li><b>验证乘法表。</b>抽查 E3（=3×1=3）与 I9（=9×9=81），数值正确说明引用方向对。</li><li><b>定义名称。</b>「<b>公式</b>」→「<b>定义名称</b>」→ 名称输入「<b>税率</b>」→ 引用位置输入 <code>=参数!$B$2</code> → 确定。</li><li><b>用名称计算。</b>D2 输入 <span class="fx">=B2*税率</span> → 下拉到 D9。名称相当于给单元格取了个「外号」，公式里可直接用。</li><li><b>三维引用。</b>F12 输入 <span class="fx">=SUM('1月:3月'!B2)</span> → <kbd>Enter</kbd>。<br>若表名是「1月」「2月」「3月」，跨表区域写法为 <code>'1月:3月'!B2</code>；也可写成 <code>=SUM('1月'!B2,'2月'!B2,'3月'!B2)</code>。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>B2:B9 为跨表相对引用且结果正确 · C2:C9 使用 <b>$B$10</b> 绝对引用（下拉不错位） · E1:I9 用 <b>$A2*E$1</b> 混合引用生成完整乘法表 · 已定义名称「税率」并指向 参数!$B$2 · D 列用名称计算 · F12 三维引用求和正确</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>占比写成 <code>=B2/B10</code>：下拉到 C9 时分母变成 B17，全是 #DIV/0!。</li><li>乘法表写成 <code>=A2*E1</code>：右下角会引用到表格之外，数字全错。</li><li>跨表引用漏了工作表名：只算当前表的 B2，结果明显偏小。</li><li>表名以数字开头（1月）却不加单引号：公式报错或无法识别。</li><li>定义名称时引用位置写相对引用：换表后指向错位。</li></ul>
+            </div>
+            <div class="callout tip"><h4>$ 的一句话口诀</h4><p class="small mb0"><b>$ 在谁前面，谁就不动。</b><code>$A$1</code> 行列都不动（绝对）；<code>$A1</code> 列不动、行动；<code>A$1</code> 行不动、列动；<code>A1</code> 都动（相对）。不确定时按 <kbd>F4</kbd> 循环切换这四种。</p></div>
+          </div>
+        </article>
+        <article class="ex" id="e4-2">
+          <header class="ex-h">
+            <span class="ex-no">例 4-6</span>
+            <h4>公式基础：IFERROR 兜底、文本连接、比较运算与错误值排查</h4>
+            <span class="badge info">IFERROR</span><span class="badge info">文本连接</span><span class="badge info">错误值</span><span class="badge info">公式审核</span>
+            <span class="badge">14 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（B2:B9 有 2 个空白单元格，直接求平均会出错）。</li><li>在 B10 计算平均分，用 <b>IFERROR</b> 包裹，出错时返回 <b>0</b>。</li><li>在 C2 用 <b>&amp;</b> 连接姓名与「同学」，下拉到 C9。</li><li>在 D2 用 <b>IF</b> 判断：成绩 ≥60 显示「及格」，否则「不及格」，下拉到 D9。</li><li>在 E2 用 <b>AND</b> 判断「语文、数学均 ≥60」是否成立，下拉到 E9。</li><li>在 G1:G6 列出 6 种常见错误值及含义（<b>文字说明</b>）。</li><li>在 H2 用「公式审核」查看 B10 的<b>引用单元格</b>。</li><li>保存为 <code>学号-姓名-练习4-6.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>打开素材</b>，选中 B2:B9 看状态栏计数——若「计数」小于「数值计数」，说明有空单元格。</li><li><b>IFERROR 兜底。</b>B10 输入 <span class="fx">=IFERROR(AVERAGE(B2:B9),0)</span> → <kbd>Enter</kbd>。<br>IFERROR 的作用：公式正常就返回结果，报错就返回你指定的值（这里是 0）。</li><li><b>文本连接。</b>C2 输入 <span class="fx">=A2&amp;&quot;同学&quot;</span> → 下拉到 C9。<br>若姓名在 A 列、学号在 B 列，也可 <code>=A2&amp;&quot;（&quot;&amp;B2&amp;&quot;）&quot;</code> 组合多段文本。</li><li><b>IF 判断。</b>D2 输入 <span class="fx">=IF(B2&gt;=60,&quot;及格&quot;,&quot;不及格&quot;)</span> → 下拉到 D9。<br>注意三个参数用<b>英文逗号</b>分隔，文本参数必须加<b>英文双引号</b>。</li><li><b>AND 判断。</b>E2 输入 <span class="fx">=IF(AND(B2&gt;=60,C2&gt;=60),&quot;是&quot;,&quot;否&quot;)</span>（若素材只有一列成绩，可改为 <code>=AND(B2&gt;=60,TRUE)</code> 演示语法）→ 下拉。</li><li><b>认识错误值。</b>在 G 列逐条写入：<br><code>#DIV/0!</code> 除数为零或空<br><code>#VALUE!</code> 参数类型不对（文本参与四则运算）<br><code>#REF!</code> 引用的单元格被删除<br><code>#NAME?</code> 函数名拼错或未定义名称<br><code>#N/A</code> 查找函数找不到匹配值<br><code>#NUM!</code> 数值参数超出范围（如负数开平方）</li><li><b>公式审核。</b>选中 B10 →「<b>公式</b>」→「<b>追踪引用单元格</b>」→ 出现蓝色箭头指向 B2:B9 → 说明公式确实引用了这些格。<br>「移去箭头」可清除。</li><li><b>显示公式。</b>按 <kbd>Ctrl</kbd>+<kbd>`</kbd>（反引号）可切换「显示公式/显示结果」，用于批量检查整表公式。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>B10 使用 IFERROR 包裹且不报错 · C 列为 &amp; 连接结果（如「王雨桐同学」） · D 列 IF 判断正确 · E 列 AND 语法正确 · 6 种错误值含义写全 · 已演示追踪引用单元格</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>IF 的参数用中文逗号：公式直接报错，WPS 不会自动纠正。</li><li>文本参数忘记加双引号：返回 #NAME?。</li><li>用 IFERROR 掩盖真实错误：考试若要求「找出错误原因」，不能只靠兜底。</li><li>把 0 写成 &quot;0&quot;：返回的是文本，后续参与计算会出错。</li><li>认为空单元格等于 0：AVERAGE 会忽略空白，但 COUNTA 会计入，两者差异是常考点。</li></ul>
+            </div>
+            <div class="callout tip"><h4>IFERROR 与 ISERROR 的区别</h4><p class="small mb0"><code>IFERROR(公式, 出错时的值)</code> 一行搞定兜底；<code>IF(ISERROR(公式), 值, 公式)</code> 是旧写法，公式要写两遍。新版本一律用 IFERROR，WPS 与 Excel 都支持。</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 4 小节 ============ -->
+  <section id="s4">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>小节</small>04</div>
+        <div class="ltx">
+          <h3>数学统计函数与逻辑函数</h3>
+          <p>SUM/AVERAGE/MAX/MIN/COUNT/COUNTA/ROUND/INT/MOD/ABS 与 IF/IFS/AND/OR 嵌套。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>2 道实操题</span><span>考纲三·4</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本小节必须掌握的知识点</h4>
+          <ul class="clean small" style="margin-top:6px"><li>SUM / AVERAGE / MAX / MIN / COUNT / COUNTA / COUNTBLANK</li><li>ROUND / ROUNDUP / ROUNDDOWN / INT / TRUNC 的差异</li><li>MOD 取余（判断奇偶、周期性）与 ABS 绝对值</li><li>IF 单条件、IF 嵌套多级、IFS 多条件（新版）</li><li>AND / OR / NOT 的组合与短路特性</li><li>SUMIF / COUNTIF / AVERAGEIF 单条件统计</li><li>函数嵌套的写法与括号配对技巧</li></ul>
+        </div>
+        <article class="ex" id="e4-1">
+          <header class="ex-h">
+            <span class="ex-no">例 4-7</span>
+            <h4>统计 6 件套 + 4 种取整 + MOD 判奇偶 + ABS 算偏差</h4>
+            <span class="badge info">统计函数</span><span class="badge info">取整</span><span class="badge info">MOD</span><span class="badge info">ABS</span>
+            <span class="badge">16 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（20 名学生，B 列语文、C 列数学、D 列英语）。</li><li>在 F2 计算<b>总分</b>（SUM），下拉到 F21。</li><li>在 G2 计算<b>平均分</b>，用 ROUND 保留 <b>1 位小数</b>，下拉。</li><li>在 B23:B27 分别用 <b>MAX / MIN / AVERAGE / COUNT / COUNTA</b> 计算最高分、最低分、全体平均、数值个数、非空个数。</li><li>在 H2:H4 分别用 <b>ROUND / ROUNDUP / ROUNDDOWN</b> 对 <code>85.678</code> 保留 1 位，对比结果。</li><li>在 I2 用 <b>INT</b> 取整、J2 用 <b>MOD</b> 判断行号奇偶（偶数返回「双」、奇数返回「单」）。</li><li>在 K2 用 <b>ABS</b> 计算该生总分与全体平均总分的偏差绝对值。</li><li>保存为 <code>学号-姓名-练习4-7.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>打开素材</b>，确认数据行为 2~21。</li><li><b>总分。</b>F2 输入 <span class="fx">=SUM(B2:D2)</span> → <kbd>Enter</kbd> → 拖填充柄到 F21。<br><code>B2:D2</code> 是区域写法（冒号表示「到」），等价于 <code>B2+C2+D2</code>。</li><li><b>平均分并取整。</b>G2 输入 <span class="fx">=ROUND(AVERAGE(B2:D2),1)</span> → 下拉到 G21。<br>ROUND 的第二个参数是「保留几位小数」，1 表示四舍五入到 0.1。</li><li><b>五个统计值。</b>B23 <code>=MAX(F2:F21)</code>；B24 <code>=MIN(F2:F21)</code>；B25 <code>=AVERAGE(F2:F21)</code>；B26 <code>=COUNT(F2:F21)</code>（只数数值）；B27 <code>=COUNTA(A2:A21)</code>（数非空，含文本）。</li><li><b>三种取整对比。</b>H2 <code>=ROUND(85.678,1)</code> → 85.7；H3 <code>=ROUNDUP(85.678,1)</code> → 85.7（向上进位，若为 85.61 则得 85.7）；H4 <code>=ROUNDDOWN(85.678,1)</code> → 85.6（截断）。<br>再试 <code>=ROUNDUP(85.601,1)</code> 与 <code>=ROUNDDOWN(85.699,1)</code> 才能看出三者差别。</li><li><b>INT 取整。</b>I2 输入 <span class="fx">=INT(G2)</span> → 结果为整数部分（向下取整，负数时与 TRUNC 不同）。</li><li><b>MOD 判奇偶。</b>J2 输入 <span class="fx">=IF(MOD(ROW(),2)=0,&quot;双&quot;,&quot;单&quot;)</span> → 下拉。<br><code>ROW()</code> 取当前行号，<code>MOD(行号,2)</code> 为 0 即偶数行。</li><li><b>ABS 偏差。</b>K2 输入 <span class="fx">=ABS(F2-$B$25)</span> → 下拉到 K21。<br>这里用 <code>$B$25</code> 锁定全体平均，下拉时才不会跑偏。</li><li><b>检查。</b>选中 F 列看状态栏「求和/平均值」，与 F23/F25 对照是否一致。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>总分与平均分公式正确且下拉到 21 行 · 平均分用 ROUND 保留 1 位 · 5 个统计值（MAX/MIN/AVERAGE/COUNT/COUNTA）分别正确 · 三种取整结果可区分 · INT 与 MOD 用法正确 · ABS 偏差使用绝对引用</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>COUNT 与 COUNTA 混用：COUNT 只数数字，学号是文本时结果会小于人数。</li><li>ROUND 的第二参数写成 0.1：表示保留 0.1 位，结果异常。</li><li>MOD 的第二个参数为 0：返回 #DIV/0!。</li><li>ABS 里用了相对引用 B25：下拉后区域整体下移，偏差全错。</li><li>用 INT 处理负数：INT(-2.5) = -3（向下取整），与直觉不同。</li></ul>
+            </div>
+            <div class="callout tip"><h4>什么时候用 ROUND，什么时候用格式</h4><p class="small mb0"><b>格式</b>只改「显示」，单元格里仍是原值，求和时会按原值算；<b>ROUND</b> 改的是「值」本身，后续计算用取整后的数。题目写「保留 1 位小数」通常指 ROUND；写「显示为 1 位小数」才是格式。</p></div>
+          </div>
+        </article>
+        <article class="ex" id="e4-2">
+          <header class="ex-h">
+            <span class="ex-no">例 4-8</span>
+            <h4>IF 三级跳：单条件 → 嵌套五级 → IFS + AND/OR 组合</h4>
+            <span class="badge info">IF</span><span class="badge info">嵌套</span><span class="badge info">IFS</span><span class="badge info">AND/OR</span>
+            <span class="badge">17 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（A 列姓名，B 列总分）。</li><li>在 C2 用 <b>IF</b> 判断及格（≥60 及格），下拉到 C21。</li><li>在 D2 用<b>嵌套 IF</b> 给出五级等级：≥90 优、≥80 良、≥70 中、≥60 及格、其余不及格，下拉。</li><li>在 E2 用 <b>IFS</b> 重写同一逻辑，下拉。</li><li>在 F2 用 <b>AND</b> 判断「语文、数学、英语三科均 ≥60」，返回「全科合格/有挂科」，下拉。</li><li>在 G2 用 <b>OR</b> 判断「三科中任一门 ≥90」，返回「有单科优秀/无」，下拉。</li><li>在 H2 用 <b>IFERROR</b> 包裹一个会出错的除法，验证兜底效果。</li><li>保存为 <code>学号-姓名-练习4-8.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>单条件 IF。</b>C2 输入 <span class="fx">=IF(B2&gt;=60,&quot;及格&quot;,&quot;不及格&quot;)</span> → 下拉到 C21。</li><li><b>嵌套 IF 的思路。</b>从高到低判断，一旦命中就不再往下：<br>D2 输入 <span class="fx">=IF(B2&gt;=90,&quot;优&quot;,IF(B2&gt;=80,&quot;良&quot;,IF(B2&gt;=70,&quot;中&quot;,IF(B2&gt;=60,&quot;及格&quot;,&quot;不及格&quot;))))</span> → 下拉。</li><li><b>嵌套的括号数。</b>4 层 IF 就有 4 组括号，写完后数一遍左右括号数量是否相等；WPS 输入时会自动提示当前处于第几层。</li><li><b>IFS 重写。</b>E2 输入 <span class="fx">=IFS(B2&gt;=90,&quot;优&quot;,B2&gt;=80,&quot;良&quot;,B2&gt;=70,&quot;中&quot;,B2&gt;=60,&quot;及格&quot;,TRUE,&quot;不及格&quot;)</span> → 下拉。<br>IFS 的写法是「条件1,结果1,条件2,结果2…」，最后用 <code>TRUE</code> 兜底。</li><li><b>核对两种写法。</b>把 D 列与 E 列逐行对照，应完全一致；不一致说明条件顺序或边界值错。</li><li><b>AND 组合。</b>F2 输入 <span class="fx">=IF(AND(B2&gt;=60,C2&gt;=60,D2&gt;=60),&quot;全科合格&quot;,&quot;有挂科&quot;)</span>（按素材实际列位置调整）→ 下拉。</li><li><b>OR 组合。</b>G2 输入 <span class="fx">=IF(OR(B2&gt;=90,C2&gt;=90,D2&gt;=90),&quot;有单科优秀&quot;,&quot;无&quot;)</span> → 下拉。</li><li><b>IFERROR 演示。</b>H2 输入 <span class="fx">=IFERROR(B2/0,&quot;除数为零&quot;)</span> → 显示「除数为零」而不是 #DIV/0!。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>C 列 IF 及格判断正确 · D 列嵌套 IF 五级等级正确（边界 90/80/70/60 无重叠无遗漏） · E 列 IFS 与 D 列结果完全一致 · F 列 AND、G 列 OR 逻辑正确 · H 列 IFERROR 生效</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>嵌套 IF 的条件顺序写反（先判 ≥60）：所有分数都被判成「及格」。</li><li>边界值重复（≥90 与 ≥80 都写 ≥90）：90 分可能落到错误等级。</li><li>IFS 最后没有兜底条件：低于 60 的行显示 #N/A。</li><li>AND 与 OR 混用不加括号：运算顺序不确定，结果不可预期。</li><li>用中文引号包文本：公式报错，必须英文双引号。</li></ul>
+            </div>
+            <div class="callout tip"><h4>嵌套 IF 超过 3 层怎么办</h4><p class="small mb0">优先改用 IFS（清晰、不易错）；其次用 <code>LOOKUP</code> 或 <code>VLOOKUP</code> 近似匹配查等级表——这也是下一次课要练的内容。考场上写嵌套 IF 容易漏括号，<b>建议先把模板写在草稿上</b>。</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section-sm" id="check">
+    <h2>本次课小结与交卷自查</h2>
+    <p class="lead">做完 8 道题，用下面两张表各花 3 分钟过一遍——<b>自查过的题，考场上才敢交卷</b>。</p>
+    <div class="grid g2 mt2">
+      <div class="card">
+        <h3>✅ 交卷自查清单（做完逐项打勾）</h3>
+        <ol class="checklist mt1"><li>工作表名称、标签颜色、顺序是否与题目一致</li><li>行高列宽是否为<b>数值设定</b>（不是拖出来的大概值）</li><li>冻结的是<b>首行</b>还是首列？拖动滚动条验证一次</li><li>打印区域是否包含全部数据、顶端标题行是否为 $1:$1</li><li>日期、金额、工号是否用了<b>正确的格式代码</b>（不是纯文本）</li><li>下拉列表是否用「序列」有效性做的（不是复制粘贴）</li><li>公式里的 <b>$</b> 位置是否与「下拉/右拉」的方向匹配</li><li>跨表引用是否带了工作表名与感叹号（如 <code>单价!B2</code>）</li><li>所有公式是否<b>复制到整列</b>，而不是只算了第一行</li><li>文件名是否为 .xlsx，保存位置是否正确</li></ol>
+      </div>
+      <div class="card" style="border-left:5px solid var(--accent)">
+        <h3>🔻 本次课最容易丢分的 5 处</h3>
+        <ul class="clean mt1"><li><b>引用没加 $</b>——下拉后区域整体偏移，统计结果全错，这是表格题最致命的一处。</li><li><b>工号丢了前导零</b>——001 变 1，整个编号体系错位，且无法靠后期补。</li><li><b>用空格冒充缩进/对齐</b>——数据变成文本，后续函数算不出来。</li><li><b>打印没设顶端标题行</b>——第 2 页开始没有表头，打印类评分点全丢。</li><li><b>条件格式只设了第一格</b>——必须选中整列区域再设规则，否则只有一格变色。</li></ul>
+        <div class="callout key mt2"><h4>考场时间提示</h4><p class="small mb0">表格题建议 <b>40 分钟</b>：建表与格式 10 分钟 → 公式与函数 20 分钟 → 条件格式/打印 6 分钟 → 核对与保存 4 分钟。函数题卡住超过 3 分钟就先写「能算对的部分」，最后再回来补——表格题按点给分，空白比写错更亏。</p></div>
+      </div>
+    </div>
+<div class="pager"><a class="prev" href="./实操-文字3.html"><div class="dir">← 上一次课</div><div class="tt">文字 3 · 目录题注、审阅修订、邮件合并</div><div class="dd">4 小节 8 题</div></a><a class="next" href="./实操-表格2.html"><div class="dir">下一次课 →</div><div class="tt">表格 2 · 查找引用、文本日期、数组、排序筛选</div><div class="dd">4 小节 8 题</div></a></div>
+  </section>
+
+</main>
+
+<div class="bar">
+  <button type="button" id="btnAll">收起全部步骤</button>
+  <button type="button" class="clock" id="btnClock">⏱ 45:00 课时计时</button>
+</div>
+
+<footer class="footer"><div class="wrap"><div class="cols">
+  <div><h4>大连财经学院 · 计算机国家二级考试（WPS 类）</h4><p class="small"><span class="org">主办：大连财经学院计算机国家二级考试（WPS 类）课程组</span></p><p class="small">本站为<b>校内教学辅助资料</b>，依据《全国计算机等级考试(NCRE) 二级 WPS Office 高级应用与设计考试大纲(2025 年版)》与《二级公共基础知识考试大纲(2025 年版)》编写，供教学与备考使用。</p></div>
+  <div><h4>实操训练导航</h4><p class="small"><a href="./实操训练.html">实操训练总览</a> · <a href="./入门实操课.html">文字 1</a> · <a href="./实操-文字2.html">文字 2</a> · <a href="./实操-文字3.html">文字 3</a></p><p class="small"><a href="./实操-表格1.html">表格 1</a> · <a href="./实操-表格2.html">表格 2</a> · <a href="./实操-表格3.html">表格 3</a></p><p class="small"><a href="./实操-演示1.html">演示 1</a> · <a href="./实操-演示2.html">演示 2</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p></div>
+  <div><h4>官方信息</h4><p class="small">本站为<b>非官方</b>网站，不提供报名、缴费、查分服务。考试政策与报名信息以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 当年公告为准。</p><p class="small">学校官网：<a href="https://www.dlufe.edu.cn/" target="_blank" rel="noopener">www.dlufe.edu.cn</a></p></div>
+  <div><h4>免责声明</h4><p class="small">本站不收集任何个人信息，无收费项目，不含广告与商业推广；内容仅供校内教学与备考参考，如与官方文件不一致，以官方文件为准。</p><p class="small"><a href="./关于本站.html">关于本站 / 免责声明 →</a></p></div>
+</div>
+<div class="disc">© 大连财经学院 · 计算机国家二级考试（WPS 类）课程组 ｜ 校内教学辅助资料，非官方考试网站 ｜ 考试政策以中国教育考试网公告为准</div>
+</div></footer>
+
+<script>
+(function(){
+  document.querySelectorAll('[data-fold]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var card = btn.closest('.ex');
+      var body = card.querySelector('.ex-b');
+      var hidden = body.classList.toggle('hide');
+      btn.textContent = hidden ? '展开步骤' : '收起步骤';
+    });
+  });
+
+  var allBtn = document.getElementById('btnAll');
+  var expanded = true;
+  allBtn.addEventListener('click', function(){
+    expanded = !expanded;
+    document.querySelectorAll('.ex-b').forEach(function(b){ b.classList.toggle('hide', !expanded); });
+    document.querySelectorAll('[data-fold]').forEach(function(b){ b.textContent = expanded ? '收起步骤' : '展开步骤'; });
+    allBtn.textContent = expanded ? '收起全部步骤' : '展开全部步骤';
+  });
+
+  var clock = document.getElementById('btnClock');
+  var left = 45 * 60, timer = null;
+  function fmt(s){
+    var m = Math.floor(s / 60), ss = s % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  clock.addEventListener('click', function(){
+    if (timer) { clearInterval(timer); timer = null; clock.textContent = '⏱ ' + fmt(left) + ' 已暂停'; return; }
+    if (left <= 0) { left = 45 * 60; }
+    timer = setInterval(function(){
+      left--;
+      if (left <= 0) { clearInterval(timer); timer = null; clock.textContent = '⏱ 时间到！'; left = 0; return; }
+      clock.textContent = '⏱ ' + fmt(left);
+    }, 1000);
+    clock.textContent = '⏱ ' + fmt(left);
+  });
+})();
+</script>
+<script src="./assets/auth.js"></script>
+<script src="./assets/groups.js"></script>
+<script src="./assets/auth-ui.js"></script>
+</body>
+</html>

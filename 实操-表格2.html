@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WPS 处理电子表格 · 第 5 次课（4 小节 8 题）| 大连财经学院 计算机国家二级（WPS 类）</title>
+<meta name="description" content="WPS 电子表格第 2 次课实操：4 小节 8 道例题，覆盖 VLOOKUP/IFERROR 精确与近似匹配、INDEX+MATCH 反向查找、HLOOKUP/INDIRECT/OFFSET、文本函数提取身份证信息、日期函数算工龄与到期日、SUMPRODUCT 与 SUMIFS 多条件统计、RANK 排名、排序与高级筛选。">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="stylesheet" href="./assets/practice.css">
+</head>
+<body>
+
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">WPS</span><span>大连财经学院 · 计算机国家二级（WPS 类）<small>校内教学辅助资料 · 非官方</small></span></a>
+  <nav class="navlinks">
+    <a href="./index.html">学习中心</a>
+    <a href="./考试介绍.html">考试介绍</a>
+    <a href="./教学大纲.html">教学大纲</a>
+    <a href="./考纲对照表.html">考纲对照表</a>
+    <a href="./教学日历.html">教学日历</a>
+    <a href="./教案.html">教案</a>
+    <a class="on" href="./实操训练.html">实操训练</a>
+    <a href="./培训课件.html">培训课件</a>
+    <a href="./电子书.html">电子书</a>
+    <a href="./资料汇编.html">资料汇编</a>
+    <a href="./考试模拟系统/index.html">模拟考试</a>
+  </nav>
+</div></header>
+
+<div class="noticebar"><div class="wrap">
+  <span class="nb-ic">ⓘ</span>
+  <span><b>大连财经学院</b> 计算机国家二级考试（WPS 类）校内教学辅助资料 · <b>本站为非官方考试网站</b>，不提供报名、缴费、查分服务，不收集任何个人信息。官方信息请以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 为准。</span>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">实操训练 · 第 5 次课 / 共 8 次 · WPS 处理电子表格</div>
+  <h1>查找引用 · 文本与日期 · 数组与条件统计 · 排序筛选</h1>
+  <p class="sub">这一次课是表格 30 分里「最容易拿满分」也「最容易全错」的一段：VLOOKUP 的第 4 个参数、$ 的位置、条件区域的写法，三个细节决定 20 分的去向。练完这 8 题，函数题应该形成肌肉记忆。</p>
+  <div class="flex mt2">
+    <a class="btn accent" href="#s1">▶ 从第 1 小节开始</a>
+    <a class="btn ghost" href="#cover">知识点覆盖对照</a>
+    <a class="btn ghost" href="#check">交卷自查清单</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><b>4</b><span>小节 · 每节 45 分钟</span></div>
+    <div class="hero-stat"><b>8</b><span>道实操例题</span></div>
+    <div class="hero-stat"><b>30 分</b><span>电子表格操作题</span></div>
+    <div class="hero-stat"><b>80%</b><span>课堂时间用于动手</span></div>
+    <div class="hero-stat"><b>模块三</b><span>12 课时</span></div>
+  </div>
+</div></section>
+
+<main class="wrap">
+
+  <div class="crumbs">
+    <a href="./index.html">学习中心</a><span class="sep">/</span><a href="./实操训练.html">实操训练</a><span class="sep">/</span>第 5 次课 · WPS 处理电子表格
+  </div>
+
+  <section class="section-sm">
+    <h2>本次课定位与目标</h2>
+    <p class="lead">函数题的分值不是均匀分布的：<b>VLOOKUP 与 SUMIFS 两类几乎每年必考</b>，占函数分的一半以上；文本与日期函数常以「从身份证/工号里提取信息」的形式出现；排序与高级筛选则是操作题里少见的「一步一做、对错立现」的题型。所以本课把 60% 的练习时间放在前两类上。</p>
+    <div class="grid g2 mt2">
+      <div class="card">
+        <h3>课程基本信息</h3>
+        <div class="table-wrap mt1" style="border:0">
+          <table class="tbl small-tbl" style="min-width:auto">
+            <tbody>
+              <tr><th style="width:110px">所属模块</th><td>模块三 · WPS 处理电子表格（12 课时）</td></tr>
+              <tr><th>本次课位置</th><td>第 5 次课 / 共 8 次 · 4 小节 8 题</td></tr>
+              <tr><th>对应考纲</th><td>考纲三·3（排序、筛选、对比、分类汇总）· 三·4（单元格引用、公式、函数、数组）</td></tr>
+              <tr><th>对应题型</th><td>电子表格操作题（30 分）</td></tr>
+              <tr><th>讲练配比</th><td>每小节讲授 8~10 分钟 ＋ 动手 35~37 分钟（练习占 <b>80%</b>）</td></tr>
+              <tr><th>前置要求</th><td>已完成表格第 1 次课；理解相对/绝对引用，会写 SUM/AVERAGE/IF 与 IFERROR</td></tr>
+              <tr><th>结课标准</th><td>独立完成 8 题；能在 3 分钟内写出一个带 $ 的三参数 VLOOKUP，自评 ≥ 24/30 分</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card" style="border-left:5px solid var(--m4)">
+        <h3>学完这 4 小节，你要能做到</h3>
+        <ul class="clean mt1"><li><b>查找引用：</b>能写出四参数完整的 VLOOKUP，知道第 4 参数 0/1 的区别与对照表必须升序，会用 INDEX+MATCH 做反向查找</li><li><b>文本处理：</b>能从 18 位身份证号提取出生日期与性别，会用 LEFT/RIGHT/MID/LEN/FIND/SUBSTITUTE/TEXT/TEXTJOIN</li><li><b>日期计算：</b>会用 TODAY/DATEDIF/EDATE/EOMONTH/WORKDAY/NETWORKDAYS 算年龄、工龄、到期日、工作日</li><li><b>多条件统计：</b>会写 SUMIFS/COUNTIFS/AVERAGEIFS 与 SUMPRODUCT，理解数组公式的 Ctrl+Shift+Enter</li><li><b>排序筛选：</b>会多关键字排序、自定义序列排序、自动筛选与高级筛选（条件区域的与/或）</li></ul>
+        <div class="callout key mt2"><h4>💡 为什么这样排</h4><p class="small mb0">「查找 → 提取 → 统计 → 重排」是数据处理的标准链路：先按关键字把信息取过来（查找引用），再从字符串/日期里拆出可用字段（文本日期），再做多条件汇总（数组与条件统计），最后按业务需要重排与筛选（排序筛选）。这也正是考试综合题的操作顺序。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm" id="cover">
+    <h2>知识点覆盖对照表</h2>
+    <p class="muted">本表逐小节列出「对应考纲条目 → 承载题目 → 覆盖的具体知识点」，用于核对<b>无遗漏</b>；考前可只看这一张表做最后清点。</p>
+    <div class="table-wrap mt2">
+      <table class="tbl cover-tbl">
+        <thead><tr><th class="num" style="width:56px">小节</th><th style="width:210px">小节主题</th><th style="width:190px">对应考纲条目</th><th class="num" style="width:110px">题目</th><th>覆盖知识点</th></tr></thead>
+        <tbody>
+<tr><td class="num"><b>1</b></td><td><b>查找与引用函数</b></td><td class="small">考纲三·4</td><td class="small nowrap">例 5-1、例 5-2</td><td><span class="pill">VLOOKUP(查找值, 查找区域, 返回列号, 匹配方式) 四参数含义</span><span class="pill">精确匹配 0/FALSE 与近似匹配 1/TRUE 的区别与前提</span><span class="pill">查找区域绝对引用（$）与返回列号的数法</span><span class="pill">IFERROR 包裹查找，处理查不到的情况</span><span class="pill">INDEX + MATCH 实现反向查找与多条件查找</span><span class="pill">HLOOKUP 横向查找</span><span class="pill">INDIRECT 用文本构造引用（动态表名）</span><span class="pill">OFFSET 以基准点偏移构造动态区域</span></td></tr>
+<tr><td class="num"><b>2</b></td><td><b>文本函数与日期时间函数</b></td><td class="small">考纲三·4</td><td class="small nowrap">例 5-3、例 5-4</td><td><span class="pill">LEFT / RIGHT / MID 截取，LEN 取长度</span><span class="pill">FIND / SEARCH 定位字符位置（区分/不区分大小写）</span><span class="pill">SUBSTITUTE / REPLACE 替换</span><span class="pill">TEXT 数值转指定格式文本（0000-00-00）</span><span class="pill">CONCAT / TEXTJOIN / &amp; 合并文本</span><span class="pill">TODAY / NOW / YEAR / MONTH / DAY</span><span class="pill">DATEDIF（"y" / "m" / "d" / "ym" / "md"）</span><span class="pill">EDATE / EOMONTH / WORKDAY / NETWORKDAYS</span></td></tr>
+<tr><td class="num"><b>3</b></td><td><b>数组公式与多条件统计</b></td><td class="small">考纲三·4</td><td class="small nowrap">例 5-5、例 5-6</td><td><span class="pill">SUMIFS(求和区域, 条件区域1, 条件1, …) 的参数顺序</span><span class="pill">COUNTIFS / AVERAGEIFS 的成对参数写法</span><span class="pill">SUMPRODUCT 的数组相乘原理（不用辅助列做多条件）</span><span class="pill">数组公式与 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd></span><span class="pill">SUMPRODUCT(1/COUNTIF(...)) 去重计数</span><span class="pill">RANK.EQ / LARGE / SMALL / MEDIAN / PERCENTILE</span><span class="pill">分段统计（COUNTIFS 区间不重叠）</span></td></tr>
+<tr><td class="num"><b>4</b></td><td><b>数据排序与筛选</b></td><td class="small">考纲三·3</td><td class="small nowrap">例 5-7、例 5-8</td><td><span class="pill">单关键字与多关键字排序（主要/次要关键字）</span><span class="pill">自定义序列排序（按指定部门顺序）</span><span class="pill">按单元格颜色/字体颜色排序</span><span class="pill">自动筛选：文本/数字/日期/颜色筛选、前 N 项</span><span class="pill">高级筛选：条件区域的「与」（同行）与「或」（不同行）</span><span class="pill">高级筛选：结果复制到其他位置、筛选不重复记录</span><span class="pill">排序与筛选对公式引用的影响</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn mt2">
+      <h4>⚠️ 覆盖口径说明</h4>
+      <p class="mb0 small">表中知识点均来自《全国计算机等级考试（NCRE）二级 WPS Office 高级应用与设计考试大纲（2025 年版）》模块三对应条目，每一条都有具体题目承接。<b>同一知识点在不同题目中重复出现是有意设计</b>——考试评分看的是操作结果，只有练到"不看书也能做对"才算掌握。</p>
+    </div>
+  </section>
+
+  <nav class="lessonnav"><a href="#s1">第 1 小节 · 查找引用</a><a href="#s2">第 2 小节 · 文本日期</a><a href="#s3">第 3 小节 · 数组与条件统计</a><a href="#s4">第 4 小节 · 排序筛选</a></nav>
+
+  <!-- ============ 第 1 小节 ============ -->
+  <section id="s1">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>小节</small>01</div>
+        <div class="ltx">
+          <h3>查找与引用函数</h3>
+          <p>VLOOKUP 四参数、IFERROR 兜底、近似匹配查等级、INDEX+MATCH 反向查找、INDIRECT 与 OFFSET。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>2 道实操题</span><span>考纲三·4</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本小节必须掌握的知识点</h4>
+          <ul class="clean small" style="margin-top:6px"><li>VLOOKUP(查找值, 查找区域, 返回列号, 匹配方式) 四参数含义</li><li>精确匹配 0/FALSE 与近似匹配 1/TRUE 的区别与前提</li><li>查找区域绝对引用（$）与返回列号的数法</li><li>IFERROR 包裹查找，处理查不到的情况</li><li>INDEX + MATCH 实现反向查找与多条件查找</li><li>HLOOKUP 横向查找</li><li>INDIRECT 用文本构造引用（动态表名）</li><li>OFFSET 以基准点偏移构造动态区域</li></ul>
+        </div>
+        <article class="ex" id="e5-1">
+          <header class="ex-h">
+            <span class="ex-no">例 5-1</span>
+            <h4>VLOOKUP 精确查姓名专业 + IFERROR 兜底 + 近似匹配算绩点</h4>
+            <span class="badge info">VLOOKUP</span><span class="badge info">IFERROR</span><span class="badge info">近似匹配</span>
+            <span class="badge">17 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（「成绩」表 A 列学号、B 列姓名（空）、C 列专业（空）、D 列总分；「学生信息」表 A 学号、B 姓名、C 专业）。</li><li>在「成绩」表 <b>B2</b> 用 <b>VLOOKUP 精确匹配</b>按学号查姓名，下拉到 <b>B21</b>。</li><li>在 <b>C2</b> 用同样方法查专业，下拉到 C21。<b>查找区域必须绝对引用。</b></li><li>用 <b>IFERROR</b> 包裹，使查不到的学号显示「<b>未找到</b>」。</li><li>在 J1:K6 建立绩点对照表（0→0、60→1.0、70→2.0、80→3.0、90→4.0），在 <b>F2</b> 用<b>近似匹配</b>按总分返回绩点，下拉到 F21。</li><li>抽查 85 分的绩点应为 <b>2.0</b>（80 ≤ 85 &lt; 90）。</li><li>保存为 <code>学号-姓名-练习5-1.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>打开素材，先看方向。</b>VLOOKUP 只能<b>从左往右</b>查：查找值必须位于查找区域的<b>第 1 列</b>。这里学号在两表都是 A 列，方向正确。</li><li><b>写姓名公式。</b>B2 输入 <span class="fx">=VLOOKUP($A2,学生信息!$A$2:$C$21,2,0)</span> → <kbd>Enter</kbd>。</li><li><b>逐个参数确认。</b>① 查找值 <code>$A2</code>：锁列不锁行，右拉时仍取学号列；② 区域 <code>学生信息!$A$2:$C$21</code>：跨表 + 全绝对，下拉不会漂移；③ 返回列号 <b>2</b>：从区域第 1 列（A 学号）数起，姓名是第 2 列；④ 匹配方式 <b>0</b>：精确匹配。</li><li><b>下拉。</b>选中 B2 → 双击填充柄（或拖到 B21）。逐行检查是否有 #N/A。</li><li><b>查专业。</b>C2 输入 <span class="fx">=VLOOKUP($A2,学生信息!$A$2:$C$21,3,0)</span> → 下拉。<b>只有返回列号从 2 变成 3</b>，其余不动。</li><li><b>加兜底。</b>把 B2 改为 <span class="fx">=IFERROR(VLOOKUP($A2,学生信息!$A$2:$C$21,2,0),&quot;未找到&quot;)</span> → 下拉。C2 同样处理。</li><li><b>建对照表。</b>J1 输入「分数」、K1 输入「绩点」；J2:J6 依次 0、60、70、80、90；K2:K6 依次 0、1.0、2.0、3.0、4.0。<br><b>首列必须升序</b>，这是近似匹配的硬性前提。</li><li><b>近似匹配。</b>F2 输入 <span class="fx">=VLOOKUP(D2,$J$2:$K$6,2,1)</span> → 下拉。<br>第 4 参数 <b>1</b>（或 TRUE）表示「找不到精确值就取不超过它的最大值」。</li><li><b>验证边界。</b>85 → 取 80 对应 2.0；90 → 取 90 对应 4.0；59 → 小于最小值，返回 #N/A（可用 IFERROR 兜成 0）。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>B2:B21 姓名查找正确且区域绝对引用 · C2:C21 专业正确（返回列号 3） · 两列均有 IFERROR 兜底 · 近似匹配第 4 参数为 1 且对照表升序 · 85 分绩点为 2.0</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>区域写成 <code>A2:C21</code> 没加 $：下拉到第 10 行时区域已下移到 A12，前半段数据查不到。</li><li>第 4 参数省略：默认按近似匹配，姓名会取到「最接近的」错误值，且不报错——最难发现。</li><li>返回列号从 A 列开始数成 1：取回来的是学号。</li><li>对照表没升序：近似匹配返回的结果毫无规律。</li><li>把 IFERROR 写在 VLOOKUP 外面但少一个括号：整列报错。</li></ul>
+            </div>
+            <div class="callout tip"><h4>VLOOKUP 四参数口诀</h4><p class="small mb0"><b>找谁、在哪找、取第几列、要不要精确。</b>前两个决定成败，第三个决定拿到什么，第四个决定「找不到时怎么办」。考试里第 4 个参数写 0 永远比省略安全。</p></div>
+          </div>
+        </article>
+        <article class="ex" id="e5-2">
+          <header class="ex-h">
+            <span class="ex-no">例 5-2</span>
+            <h4>INDEX+MATCH 反向查学号 + HLOOKUP + INDIRECT 动态表名 + OFFSET</h4>
+            <span class="badge info">INDEX+MATCH</span><span class="badge info">HLOOKUP</span><span class="badge info">INDIRECT</span><span class="badge info">OFFSET</span>
+            <span class="badge">17 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（「学生信息」表 A 学号、B 姓名、C 专业；「季度销售」表首行为季度、第 2 行为金额）。</li><li>在 <b>H2</b> 用 <b>INDEX+MATCH</b> 按 I2 输入的姓名查<b>学号</b>（反向查找，VLOOKUP 做不到）。</li><li>在 <b>H3</b> 用 <b>HLOOKUP</b> 查「第三季度」的销售额。</li><li>在 <b>H4</b> 用 <b>INDIRECT</b>：根据 I4 中输入的表名（如「1月」），引用该表的 B2 单元格。</li><li>在 <b>H5</b> 用 <b>OFFSET</b> 求以 B2 为起点、<b>5 行 3 列</b>区域的总和。</li><li>保存为 <code>学号-姓名-练习5-2.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>理解为什么用 INDEX+MATCH。</b>VLOOKUP 只能「查找值在左、返回值在右」；按姓名查学号是「返回值在左」，必须换组合。</li><li><b>先写 MATCH。</b>MATCH 的作用是「找位置」：<code>MATCH(I2,学生信息!$B$2:$B$21,0)</code> 返回姓名在 B 列中的第几个（相对位置）。</li><li><b>再套 INDEX。</b>H2 输入 <span class="fx">=INDEX(学生信息!$A$2:$A$21,MATCH(I2,学生信息!$B$2:$B$21,0))</span> → <kbd>Enter</kbd>。<br>读法：在 A 列里，取「姓名所在的那个位置」的值。</li><li><b>HLOOKUP。</b>H3 输入 <span class="fx">=HLOOKUP(&quot;第三季度&quot;,$B$1:$E$2,2,0)</span> → <kbd>Enter</kbd>。<br>HLOOKUP 与 VLOOKUP 只差一个方向：它在<b>首行</b>横向找，返回指定<b>行号</b>的值。</li><li><b>INDIRECT。</b>H4 输入 <span class="fx">=INDIRECT(&quot;'&quot;&amp;I4&amp;&quot;'!B2&quot;)</span> → <kbd>Enter</kbd>。在 I4 输入「1月」，公式就去取 <code>'1月'!B2</code>。<br>单引号是为了兼容以数字开头或含空格的工作表名。</li><li><b>验证 INDIRECT。</b>把 I4 改成「2月」，H4 的值应立即变为 2 月表的 B2——这就是「动态表名」。</li><li><b>OFFSET。</b>H5 输入 <span class="fx">=SUM(OFFSET(B2,0,0,5,3))</span> → <kbd>Enter</kbd>。<br>五个参数：基准点 B2、向下偏移 0 行、向右偏移 0 列、高度 5 行、宽度 3 列。</li><li><b>核对 OFFSET 区域。</b>选中公式中的 OFFSET 部分按 <kbd>F9</kbd> 可临时看到它引用的区域内容，按 <kbd>Esc</kbd> 退出不改变公式。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>H2 为 INDEX+MATCH 组合且按姓名查到正确学号 · H3 为 HLOOKUP 且第 3 参数为 2、第 4 参数为 0 · H4 用 INDIRECT 拼接表名（含单引号） · H5 用 OFFSET 构造 5 行 3 列区域并求和</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>INDEX 与 MATCH 的区域长度不一致：MATCH 返回 15，INDEX 只到第 12 行，报 #REF!。</li><li>MATCH 第 3 参数写成 1：近似匹配，姓名会取到字母顺序最接近的错误值。</li><li>INDIRECT 拼接时漏了单引号：表名为「1月」时报错。</li><li>OFFSET 的高度宽度写反（3 行 5 列）：求出来的和不对，但不会报错。</li><li>把 INDIRECT 用于跨工作簿引用：源文件关闭后返回 #REF!。</li></ul>
+            </div>
+            <div class="callout tip"><h4>三种查找怎么选</h4><p class="small mb0"><b>VLOOKUP</b>：查找值在左、返回值在右，最常用；<b>HLOOKUP</b>：表是横着排的；<b>INDEX+MATCH</b>：要反向查、或查找列经常增删（不受列号变化影响）。</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 2 小节 ============ -->
+  <section id="s2">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>小节</small>02</div>
+        <div class="ltx">
+          <h3>文本函数与日期时间函数</h3>
+          <p>身份证号提取生日与性别、文本拆分与替换、DATEDIF 算年龄工龄、EDATE/EOMONTH 算到期日。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>2 道实操题</span><span>考纲三·4</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本小节必须掌握的知识点</h4>
+          <ul class="clean small" style="margin-top:6px"><li>LEFT / RIGHT / MID 截取，LEN 取长度</li><li>FIND / SEARCH 定位字符位置（区分/不区分大小写）</li><li>SUBSTITUTE / REPLACE 替换</li><li>TEXT 数值转指定格式文本（0000-00-00）</li><li>CONCAT / TEXTJOIN / &amp; 合并文本</li><li>TODAY / NOW / YEAR / MONTH / DAY</li><li>DATEDIF（"y" / "m" / "d" / "ym" / "md"）</li><li>EDATE / EOMONTH / WORKDAY / NETWORKDAYS</li></ul>
+        </div>
+        <article class="ex" id="e5-1">
+          <header class="ex-h">
+            <span class="ex-no">例 5-3</span>
+            <h4>18 位身份证提取：生日 + 性别 + 年龄 + 电话拆分 + 文本格式化</h4>
+            <span class="badge info">MID</span><span class="badge info">MOD</span><span class="badge info">DATEDIF</span><span class="badge info">SUBSTITUTE</span><span class="badge info">TEXT</span>
+            <span class="badge">18 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（A 列姓名、B 列 18 位身份证号、C 列联系电话，如 0411-84711234）。</li><li>在 <b>D2</b> 用 MID 提取出生日期，显示为「<b>1998-05-12</b>」，下拉。</li><li>在 <b>E2</b> 用第 17 位判断性别（奇数为男），下拉。</li><li>在 <b>F2</b> 用 <b>DATEDIF</b> 计算年龄（周岁），下拉。</li><li>在 <b>G2</b> 用 RIGHT 取电话后 4 位，下拉。</li><li>在 <b>H2</b> 用 <b>SUBSTITUTE</b> 去掉电话中的「-」，下拉。</li><li>在 <b>I2</b> 用 <b>TEXT</b> 把 D2 显示为「1998年5月12日」。</li><li>在 <b>J2</b> 用 <b>TEXTJOIN</b> 把姓名与电话合并为「姓名：电话」。</li><li>保存为 <code>学号-姓名-练习5-3.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>看清位置。</b>18 位身份证：第 1~6 位地区码，<b>第 7~14 位出生日期</b>，第 15~17 位顺序码（<b>第 17 位奇男偶女</b>），第 18 位校验码。</li><li><b>取生日。</b>D2 输入 <span class="fx">=MID(B2,7,8)</span> → 得到 <code>19980512</code>（文本）。</li><li><b>转成日期样式。</b>把 D2 改为 <span class="fx">=TEXT(MID(B2,7,8),&quot;0000-00-00&quot;)</span> → 得到 <code>1998-05-12</code>。<br><code>0000-00-00</code> 是「四位-两位-两位」的占位模板。</li><li><b>判断性别。</b>E2 输入 <span class="fx">=IF(MOD(MID(B2,17,1),2)=1,&quot;男&quot;,&quot;女&quot;)</span> → 下拉。<br>读法：取第 17 位 → 除以 2 取余 → 余 1 为男。</li><li><b>算年龄。</b>F2 输入 <span class="fx">=DATEDIF(TEXT(MID(B2,7,8),&quot;0000-00-00&quot;),TODAY(),&quot;y&quot;)</span> → 下拉。<br>DATEDIF 三个参数：起始日期、结束日期、单位（"y" 整年数）。</li><li><b>取电话后 4 位。</b>G2 输入 <span class="fx">=RIGHT(C2,4)</span> → 下拉。</li><li><b>去掉连字符。</b>H2 输入 <span class="fx">=SUBSTITUTE(C2,&quot;-&quot;,&quot;&quot;)</span> → 下拉（得到 041184711234，前导 0 会丢，若需保留可外套 TEXT）。</li><li><b>格式化显示。</b>I2 输入 <span class="fx">=TEXT(D2,&quot;yyyy年m月d日&quot;)</span> → 显示「1998年5月12日」。<br>注意 D2 已是文本日期，TEXT 会先识别再格式化；若 D2 是真正日期序列值，效果相同。</li><li><b>合并文本。</b>J2 输入 <span class="fx">=TEXTJOIN(&quot;：&quot;,TRUE,A2,C2)</span> → 得到「王雨桐：0411-84711234」。<br>TEXTJOIN 的第一参数是分隔符，第二参数 TRUE 表示忽略空单元格。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>D 列 MID 起始位 7、长度 8 且显示为 1998-05-12 · E 列性别判断取第 17 位且奇男偶女 · F 列 DATEDIF 用 "y" 且结果正确 · G 列 RIGHT 取 4 位 · H 列 SUBSTITUTE 去掉全部「-」 · I 列 TEXT 格式正确 · J 列 TEXTJOIN 分隔符与忽略空值正确</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>MID 起始位写成 6 或长度写成 6：生日错位（取到 619980 之类）。</li><li>性别取第 18 位（校验码）：男女全错。</li><li>DATEDIF 起始日期是文本而非日期：返回 #NUM! 或 #VALUE!。</li><li>TEXTJOIN 第二参数写 FALSE：空单元格会多出分隔符。</li><li>SUBSTITUTE 只替换第一处：需确认是否有多个「-」（第三参数省略时默认全部替换）。</li></ul>
+            </div>
+            <div class="callout tip"><h4>DATEDIF 的单位</h4><p class="small mb0"><code>"y"</code> 整年数、<code>"m"</code> 整月数、<code>"d"</code> 天数、<code>"ym"</code> 除年外的月数、<code>"md"</code> 除月外的天数、<code>"yd"</code> 除年外的天数。算工龄用 "y"，算「几年几个月」用 "y" 与 "ym" 拼接。</p></div>
+          </div>
+        </article>
+        <article class="ex" id="e5-2">
+          <header class="ex-h">
+            <span class="ex-no">例 5-4</span>
+            <h4>日期函数：工龄、合同到期（EDATE）、月末（EOMONTH）、工作日</h4>
+            <span class="badge info">DATEDIF</span><span class="badge info">EDATE</span><span class="badge info">EOMONTH</span><span class="badge info">WORKDAY</span>
+            <span class="badge">16 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（A 姓名、B 入职日期、C 合同年限（年））。</li><li>在 <b>D2</b> 计算工龄（整年）：用 today 与 DATEDIF，下拉。</li><li>在 <b>E2</b> 计算「入职满几年几个月」的月数部分（"ym"），下拉。</li><li>在 <b>F2</b> 用 <b>EDATE</b> 计算合同到期日 = 入职日期 + 合同年限×12 个月。</li><li>在 <b>G2</b> 用 <b>EOMONTH</b> 计算入职当月的最后一天。</li><li>在 <b>H2</b> 用 <b>WORKDAY</b> 计算入职后第 15 个工作日（跳过周末）。</li><li>在 <b>I2</b> 用 <b>NETWORKDAYS</b> 计算入职到今天的有效工作日数。</li><li>在 <b>J2</b> 用 YEAR / <b>K2</b> 用 MONTH 提取入职年份与月份。</li><li>保存为 <code>学号-姓名-练习5-4.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>算工龄。</b>D2 输入 <span class="fx">=DATEDIF(B2,TODAY(),&quot;y&quot;)</span> → 下拉。<br>TODAY() 不带参数，返回当天日期，每次打开文件自动更新。</li><li><b>算零头月数。</b>E2 输入 <span class="fx">=DATEDIF(B2,TODAY(),&quot;ym&quot;)</span> → 下拉。结果为「除去整年之后剩下的月数」。</li><li><b>算到期日。</b>F2 输入 <span class="fx">=EDATE(B2,C2*12)</span> → 下拉。<br>EDATE 的作用是「在指定日期上加/减若干个月」，自动处理大小月与闰年。</li><li><b>设日期格式。</b>选中 F2:F21 → <kbd>Ctrl</kbd>+<kbd>1</kbd> → 日期 → 选「yyyy-mm-dd」或自定义 <code>yyyy&quot;年&quot;m&quot;月&quot;d&quot;日&quot;</code>。</li><li><b>算月末。</b>G2 输入 <span class="fx">=EOMONTH(B2,0)</span> → 返回入职当月的最后一天。第二参数 0 表示当月，1 表示下月月末，-1 表示上月月末。</li><li><b>第 15 个工作日。</b>H2 输入 <span class="fx">=WORKDAY(B2,15)</span> → 从入职日起往后数 15 个工作日（自动跳过周六周日）。<br>若需排除法定节假日，用第四参数（节假日区域）。</li><li><b>工作日天数。</b>I2 输入 <span class="fx">=NETWORKDAYS(B2,TODAY())</span> → 返回两日期之间的工作日数（含首尾）。</li><li><b>提取年月。</b>J2 输入 <span class="fx">=YEAR(B2)</span>；K2 输入 <span class="fx">=MONTH(B2)</span> → 下拉。</li><li><b>核对。</b>抽查一人：入职 2019-03-15、合同 3 年，到期日应为 2022-03-15。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>D 列 DATEDIF 用 "y" · E 列用 "ym" 且结果 &lt; 12 · F 列 EDATE 参数为 C2*12 且到期日正确 · G 列 EOMONTH 第二参数为 0 · H 列 WORKDAY、I 列 NETWORKDAYS 用法正确 · J/K 列年月提取正确</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>EDATE 写成 DATE：DATE 需要年月日三个参数，会报错。</li><li>EDATE 第二参数直接用合同年限（3）：只加 3 个月，不是 3 年。</li><li>DATEDIF 的起始日期晚于结束日期：返回 #NUM!。</li><li>WORKDAY 与 NETWORKDAYS 用反：一个返回日期，一个返回天数。</li><li>把 TODAY() 写成 TODAY：返回的是文本「TODAY」，报 #NAME?。</li></ul>
+            </div>
+            <div class="callout tip"><h4>TODAY 与 NOW 的刷新</h4><p class="small mb0">两者都是易失性函数，每次重算/打开都会变。若题目要求「截至 2026-09-01 的天数」，不要用 TODAY()，直接写日期常量 <code>DATE(2026,9,1)</code>，否则过几天数字就变了。</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 3 小节 ============ -->
+  <section id="s3">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>小节</small>03</div>
+        <div class="ltx">
+          <h3>数组公式与多条件统计</h3>
+          <p>SUMPRODUCT 多条件、SUMIFS/COUNTIFS/AVERAGEIFS、数组公式三键、去重计数、排名与分段。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>2 道实操题</span><span>考纲三·4</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本小节必须掌握的知识点</h4>
+          <ul class="clean small" style="margin-top:6px"><li>SUMIFS(求和区域, 条件区域1, 条件1, …) 的参数顺序</li><li>COUNTIFS / AVERAGEIFS 的成对参数写法</li><li>SUMPRODUCT 的数组相乘原理（不用辅助列做多条件）</li><li>数组公式与 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd></li><li>SUMPRODUCT(1/COUNTIF(...)) 去重计数</li><li>RANK.EQ / LARGE / SMALL / MEDIAN / PERCENTILE</li><li>分段统计（COUNTIFS 区间不重叠）</li></ul>
+        </div>
+        <article class="ex" id="e5-1">
+          <header class="ex-h">
+            <span class="ex-no">例 5-5</span>
+            <h4>多条件求和三种写法：SUMPRODUCT / SUMIFS / 数组公式 + 去重计数</h4>
+            <span class="badge info">SUMPRODUCT</span><span class="badge info">SUMIFS</span><span class="badge info">数组公式</span>
+            <span class="badge">18 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（销售明细：A 日期、B 部门、C 产品、D 数量、E 单价、F 金额，共 30 行）。</li><li>在 <b>H2</b> 用 <b>SUMPRODUCT</b> 求「销售部」且「笔记本」的金额合计。</li><li>在 <b>H3</b> 用 <b>SUMIFS</b> 求同一结果，验证两法一致。</li><li>在 <b>H4</b> 用 <b>COUNTIFS</b> 统计「技术部」且金额 &gt; 5000 的记录数。</li><li>在 <b>H5</b> 用 <b>AVERAGEIFS</b> 求「财务部」的平均金额。</li><li>在 <b>H6</b> 用<b>数组公式</b>求「笔记本」的最高金额（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>）。</li><li>在 <b>H7</b> 用 <b>SUMPRODUCT(1/COUNTIF(...))</b> 统计不同部门的个数。</li><li>保存为 <code>学号-姓名-练习5-5.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>SUMPRODUCT 思路。</b>把每个条件写成「真/假」数组，再与金额数组相乘：真=1、假=0，乘起来就把不符合的项清零了。</li><li><b>H2 公式。</b><span class="fx">=SUMPRODUCT((B2:B31=&quot;销售部&quot;)*(C2:C31=&quot;笔记本&quot;)*F2:F31)</span> → <kbd>Enter</kbd>（普通回车即可）。<br>注意三层括号：两个条件各一层，最外层是 SUMPRODUCT。</li><li><b>H3 用 SUMIFS 验证。</b><span class="fx">=SUMIFS(F2:F31,B2:B31,&quot;销售部&quot;,C2:C31,&quot;笔记本&quot;)</span> → <kbd>Enter</kbd>。<b>求和区域在最前</b>，之后是「条件区域, 条件」成对出现。</li><li><b>比较两值。</b>H2 与 H3 必须完全相等；不等说明条件拼写或区域范围不一致。</li><li><b>H4 多条件计数。</b><span class="fx">=COUNTIFS(B2:B31,&quot;技术部&quot;,F2:F31,&quot;&gt;5000&quot;)</span> → <kbd>Enter</kbd>。<br>条件里的 <code>&gt;5000</code> 必须整体加英文双引号。</li><li><b>H5 条件平均。</b><span class="fx">=AVERAGEIFS(F2:F31,B2:B31,&quot;财务部&quot;)</span> → <kbd>Enter</kbd>。</li><li><b>H6 数组公式。</b>输入 <span class="fx">=MAX(IF(C2:C31=&quot;笔记本&quot;,F2:F31))</span> → <b>按 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd></b>（不是普通回车）。<br>成功后编辑栏会显示 <code>{=MAX(IF(...))}</code>，<b>大括号是自动加的，不能手打</b>。</li><li><b>H7 去重计数。</b><span class="fx">=SUMPRODUCT(1/COUNTIF(B2:B31,B2:B31))</span> → <kbd>Enter</kbd>。<br>原理：每个部门出现 n 次就贡献 1/n，合计正好 1；把全部加起来就是「有多少个不同的部门」。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>H2 SUMPRODUCT 多条件结果正确 · H3 SUMIFS 求和区域在最前且结果与 H2 一致 · H4 COUNTIFS 条件 ">5000" 写法正确 · H5 AVERAGEIFS 正确 · H6 数组公式有大括号（三键输入） · H7 去重计数结果等于实际部门数</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>SUMIFS 把求和区域写在中间：参数顺序与 SUMIF 相反，直接报错或算错。</li><li>条件里的 &gt;5000 没加引号：公式报错。</li><li>数组公式按普通回车：只对第一行生效，结果偏小。</li><li>手动输入 {} 想冒充数组公式：WPS 会当成文本。</li><li>SUMPRODUCT 条件区域长度不一致（B2:B31 与 F2:F30）：返回 #VALUE!。</li></ul>
+            </div>
+            <div class="callout tip"><h4>什么时候必须用数组公式</h4><p class="small mb0">需要在「条件筛选后的子集」上做<b>不只是求和/计数</b>的运算时（如 MAX、MIN、MEDIAN、AVERAGE 的条件版），就得用 IF 数组公式或 <code>MAXIFS</code>（新版函数）。求和多条件优先用 SUMIFS，最简单。</p></div>
+          </div>
+        </article>
+        <article class="ex" id="e5-2">
+          <header class="ex-h">
+            <span class="ex-no">例 5-6</span>
+            <h4>排名与分段：RANK.EQ + LARGE/SMALL + MEDIAN + PERCENTILE + 五段统计</h4>
+            <span class="badge info">RANK.EQ</span><span class="badge info">LARGE</span><span class="badge info">MEDIAN</span><span class="badge info">分段统计</span>
+            <span class="badge">15 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（A 姓名、B 总分，20 人）。</li><li>在 <b>C2</b> 用 <b>RANK.EQ</b> 计算名次（降序），下拉到 C21。</li><li>在 <b>D2</b> 用 <b>LARGE</b> 取第 3 名分数，在 <b>D3</b> 用 <b>SMALL</b> 取倒数第 2 名。</li><li>在 <b>D4</b> 用 <b>MEDIAN</b> 求中位数，<b>D5</b> 用 <b>PERCENTILE</b> 求第 90 百分位。</li><li>在 <b>F2:F6</b> 用 <b>COUNTIFS</b> 分段统计人数：≥90、80~89、70~79、60~69、&lt;60。</li><li>在 <b>G2:G6</b> 计算各段人数占比（用 <b>$F$7</b> 总数做分母）。</li><li>保存为 <code>学号-姓名-练习5-6.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>排名。</b>C2 输入 <span class="fx">=RANK.EQ(B2,$B$2:$B$21,0)</span> → 下拉。<br>第三参数 <b>0</b> 表示降序（分数越高名次越靠前）；写 1 表示升序。</li><li><b>验证排名。</b>最高分那行的名次应为 1；两人同分时会出现并列名次（如两个第 3），这是 RANK.EQ 的正常行为。</li><li><b>取第 N 名。</b>D2 输入 <span class="fx">=LARGE($B$2:$B$21,3)</span> → 第 3 大的分数；D3 输入 <span class="fx">=SMALL($B$2:$B$21,2)</span> → 第 2 小的分数。</li><li><b>中位数。</b>D4 输入 <span class="fx">=MEDIAN($B$2:$B$21)</span>。中位数与平均数的差，能看出分数是否偏斜。</li><li><b>百分位。</b>D5 输入 <span class="fx">=PERCENTILE($B$2:$B$21,0.9)</span> → 第 90 百分位，意思是「90% 的人低于这个分数」。</li><li><b>分段①≥90。</b>F2 输入 <span class="fx">=COUNTIFS($B$2:$B$21,&quot;&gt;=90&quot;)</span>。</li><li><b>分段②80~89。</b>F3 输入 <span class="fx">=COUNTIFS($B$2:$B$21,&quot;&gt;=80&quot;,$B$2:$B$21,&quot;&lt;=89&quot;)</span>。<br>区间必须<b>首尾相接、不重叠</b>，否则会有分数被算两次或一次不算。</li><li><b>其余三段。</b>F4 <code>&gt;=70 且 &lt;=79</code>；F5 <code>&gt;=60 且 &lt;=69</code>；F6 <code>&lt;60</code>。</li><li><b>核对总数。</b>F7 输入 <span class="fx">=SUM(F2:F6)</span>，应等于 20；不等说明区间有重叠或遗漏。</li><li><b>算占比。</b>G2 输入 <span class="fx">=F2/$F$7</span> → 下拉到 G6 → 设为百分比格式 1 位小数。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>C 列 RANK.EQ 降序且引用区域绝对 · D2/D3 LARGE 与 SMALL 的 N 值正确 · D4 MEDIAN、D5 PERCENTILE 正确 · 五段人数之和等于 20（区间不重叠） · 占比用 $F$7 绝对引用</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>RANK.EQ 的区域没锁 $：下拉后区域下移，排名全乱。</li><li>分段区间写成 ≥80 与 &lt;80 之外又写 ≥70：80 分被算两次。</li><li>PERCENTILE 第二参数写成 90：应填 0.9（百分位是用小数表示的）。</li><li>LARGE 写成 LARGE(B:B,3)：整列引用会把表头文本算进去，结果可能偏。</li><li>占比用相对引用 F7：下拉后分母逐行下移，最后几行变 #DIV/0!。</li></ul>
+            </div>
+            <div class="callout tip"><h4>RANK 与 RANK.EQ 的区别</h4><p class="small mb0">旧函数 <code>RANK</code> 仍可用，<code>RANK.EQ</code> 是等价的新写法（并列时给相同名次）。另一个 <code>RANK.AVG</code> 在并列时取平均名次。考试写 RANK.EQ 或 RANK 都能得分。</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 4 小节 ============ -->
+  <section id="s4">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>小节</small>04</div>
+        <div class="ltx">
+          <h3>数据排序与筛选</h3>
+          <p>多关键字排序、自定义序列排序、按颜色排序、自动筛选与高级筛选条件区域。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>2 道实操题</span><span>考纲三·3</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本小节必须掌握的知识点</h4>
+          <ul class="clean small" style="margin-top:6px"><li>单关键字与多关键字排序（主要/次要关键字）</li><li>自定义序列排序（按指定部门顺序）</li><li>按单元格颜色/字体颜色排序</li><li>自动筛选：文本/数字/日期/颜色筛选、前 N 项</li><li>高级筛选：条件区域的「与」（同行）与「或」（不同行）</li><li>高级筛选：结果复制到其他位置、筛选不重复记录</li><li>排序与筛选对公式引用的影响</li></ul>
+        </div>
+        <article class="ex" id="e5-1">
+          <header class="ex-h">
+            <span class="ex-no">例 5-7</span>
+            <h4>双关键字排序 + 自定义序列 + 按颜色排序 + 自动筛选</h4>
+            <span class="badge info">多关键字排序</span><span class="badge info">自定义序列</span><span class="badge info">自动筛选</span>
+            <span class="badge">15 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（A 部门、B 姓名、C 产品、D 金额，30 行）。</li><li>先按「<b>部门</b>」升序、再按「<b>金额</b>」降序做<b>双关键字排序</b>。</li><li>撤销排序，改为按<b>自定义序列</b>排序：销售部 → 技术部 → 财务部 → 人事部。</li><li>给「金额」列最大的 3 个单元格填充<b>红色</b>，然后按<b>单元格颜色</b>排序（红色在前）。</li><li>用<b>自动筛选</b>筛选出「金额」<b>前 10 项</b>。</li><li>再改为筛选「产品」<b>包含「笔记本」</b>的记录。</li><li>保存为 <code>学号-姓名-练习5-7.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>排序的正确选法。</b>点数据区<b>任意一个单元格</b>（不要全选整列）→「<b>数据</b>」→「<b>排序</b>」。WPS 会自动识别整张表。<br>若手动选区域，务必包含表头并勾选「数据包含标题」。</li><li><b>双关键字。</b>「排序」对话框 → 主要关键字「<b>部门</b>」、次序「升序」→ 点「<b>添加条件</b>」→ 次要关键字「<b>金额</b>」、次序「<b>降序</b>」→ 确定。</li><li><b>自定义序列。</b>再次打开「排序」→ 主要关键字「部门」→ 次序下拉选「<b>自定义序列</b>」→ 在右侧列表里找「销售部, 技术部, 财务部, 人事部」；若没有，在「输入序列」框里逐行输入（每行一个）→「添加」→ 选中它 → 确定。</li><li><b>标红前三。</b>先按金额降序排一次，把前 3 行的金额单元格填充红色 → 再按原有顺序恢复（或不恢复，题目只要求能排序）。</li><li><b>按颜色排序。</b>「数据」→「排序」→ 主要关键字选「金额」→ 次序选「<b>单元格颜色</b>」→ 在颜色下拉里选红色、位置「<b>在顶端</b>」→ 确定。</li><li><b>开自动筛选。</b>点数据区任一单元格 →「数据」→「<b>筛选</b>」（或 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>）→ 表头出现下拉箭头。</li><li><b>前 10 项。</b>点「金额」列的下拉箭头 →「<b>数字筛选</b>」→「<b>前 10 项</b>」→ 对话框里确认「最大 10 项」→ 确定。</li><li><b>文本包含。</b>先清除上一步筛选（「数据」→「清除」）→ 点「产品」下拉箭头 →「<b>文本筛选</b>」→「<b>包含</b>」→ 输入「笔记本」→ 确定。</li><li><b>观察行号。</b>筛选后左侧行号会跳号（如 1、3、7…），说明是「隐藏」而非「删除」，这一点常被考到。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>双关键字排序顺序正确（部门升序 + 金额降序） · 自定义序列排序结果符合指定部门顺序 · 按单元格颜色排序红色在顶端 · 自动筛选前 10 项正确 · 文本包含筛选正确</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>排序前手动选中了部分列：只有选中区域被重排，整行数据错位——这是最严重的一种错。</li><li>自定义序列输入时用了中文逗号：变成一个长序列项，排序无效。</li><li>按颜色排序时选了「字体颜色」：填充色不会生效。</li><li>把筛选当成删除：筛选只是隐藏，取消筛选数据会回来；若误删需立即撤销。</li><li>筛选状态下做排序：只在可见行内排，隐藏行不动，结果错乱。</li></ul>
+            </div>
+            <div class="callout tip"><h4>排序前的一句提醒</h4><p class="small mb0">如果表里有公式引用了「行位置」，排序后引用会跟着行走，结果可能变化。所以<b>先排序、后写公式</b>，或者公式里用绝对引用/整列引用，避免被排序打乱。</p></div>
+          </div>
+        </article>
+        <article class="ex" id="e5-2">
+          <header class="ex-h">
+            <span class="ex-no">例 5-8</span>
+            <h4>高级筛选：条件区域的「与/或」+ 结果复制到指定位置 + 不重复记录</h4>
+            <span class="badge info">高级筛选</span><span class="badge info">条件区域</span><span class="badge info">不重复记录</span>
+            <span class="badge">16 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（A1:F31 销售明细）。</li><li>在 <b>H1:I2</b> 建立条件区域：部门 = 销售部 <b>且</b> 金额 &gt; 5000（<b>同一行</b>）。</li><li>用<b>高级筛选</b>把结果<b>复制到 A35</b> 开始的区域。</li><li>在 <b>H5:I6</b> 建立「<b>或</b>」条件：部门 = 销售部 或 部门 = 技术部（<b>不同行</b>）。</li><li>用高级筛选筛选出这两类记录，结果复制到 <b>H10</b>。</li><li>用高级筛选的「<b>选择不重复的记录</b>」提取所有不同的部门（复制到 <b>H30</b>）。</li><li>保存为 <code>学号-姓名-练习5-8.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>理解条件区域规则。</b>条件区域的第一行必须是<b>与原表完全一致的字段名</b>；<b>同一行</b>的多个条件是「<b>与</b>」，<b>不同行</b>是「<b>或</b>」。</li><li><b>建「与」条件。</b>H1 输入「部门」、I1 输入「金额」；H2 输入「销售部」、I2 输入 <code>&gt;5000</code>。<br>字段名可以从原表直接复制，避免多空格。</li><li><b>启动高级筛选。</b>点数据区任一单元格 →「数据」→「<b>高级筛选</b>」。</li><li><b>设三个区域。</b>「方式」选「<b>将筛选结果复制到其他位置</b>」→ 列表区域 <code>$A$1:$F$31</code> → 条件区域 <code>$H$1:$I$2</code> → 复制到 <code>$A$35</code> → 确定。</li><li><b>检查结果。</b>A35 起应有表头 + 符合条件的记录，且每行金额都 &gt; 5000、部门都是销售部。</li><li><b>建「或」条件。</b>H5 输入「部门」；H6 输入「销售部」；<b>H7</b> 输入「技术部」（同一列、不同行）。<br>注意此处不需要第二列字段名，只写一列即可表达「或」。</li><li><b>再筛选。</b>「数据」→「高级筛选」→ 列表区域 <code>$A$1:$F$31</code> → 条件区域 <code>$H$5:$H$7</code> → 复制到 <code>$H$10</code> → 确定。</li><li><b>不重复记录。</b>「数据」→「高级筛选」→ 列表区域 <code>$A$1:$F$31</code> → <b>不设条件区域</b> → 勾选「<b>选择不重复的记录</b>」→ 复制到 <code>$H$30</code> → 确定。<br>若只想提取部门列，可先单独选中 B 列再操作。</li><li><b>核对条数。</b>用 <code>COUNTA</code> 数一下结果行数，与手工筛选的结果比对。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>「与」条件区域同一行且字段名与原表一致 · 高级筛选结果复制到 A35 且记录全部符合 · 「或」条件在不同行 · 结果复制到 H10 · 不重复记录提取成功 · 三次筛选的列表区域均为绝对引用</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>条件区域字段名与表头差一个空格：筛选结果为空，且几乎看不出原因。</li><li>「与」条件写在不同行：变成「或」，结果条数明显变多。</li><li>复制到的位置与条件区域重叠：结果覆盖掉条件，第二次筛选就错。</li><li>条件写 <code>5000</code> 而不是 <code>&gt;5000</code>：变成「精确等于 5000」。</li><li>「不重复的记录」勾了但同时设了条件区域：先去重再筛选，结果不符合预期。</li></ul>
+            </div>
+            <div class="callout tip"><h4>高级筛选三句话</h4><p class="small mb0">① 字段名必须一字不差；② 同行是与、异行是或；③ 复制到的位置必须留足空行，且不能与条件区重叠。记住这三句，这题基本不会错。</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section-sm" id="check">
+    <h2>本次课小结与交卷自查</h2>
+    <p class="lead">做完 8 道题，用下面两张表各花 3 分钟过一遍——<b>自查过的题，考场上才敢交卷</b>。</p>
+    <div class="grid g2 mt2">
+      <div class="card">
+        <h3>✅ 交卷自查清单（做完逐项打勾）</h3>
+        <ol class="checklist mt1"><li>VLOOKUP 的<b>查找区域是否绝对引用</b>（$A$2:$C$21），下拉后有没有整体漂移</li><li>VLOOKUP 的<b>第 4 参数</b>是否明确写了 0（精确）或 1（近似）</li><li>近似匹配的<b>对照表首列是否升序</b></li><li>返回列号是否<b>从查找区域第 1 列开始数</b>（不是从 A 列数）</li><li>身份证提取的<b>起始位置</b>是否为第 7 位、长度是否为 8</li><li>DATEDIF 的第三参数（"y"/"m"/"d"/"ym"）是否选对</li><li>SUMIFS 的<b>求和区域在最前</b>，条件区域与条件成对出现</li><li>数组公式是否用 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd> 输入（有 {} 才算）</li><li>高级筛选的<b>条件区域字段名</b>是否与原表完全一致（含空格）</li><li>排序前是否只选中了<b>一个单元格</b>（让系统自动扩展区域）</li></ol>
+      </div>
+      <div class="card" style="border-left:5px solid var(--accent)">
+        <h3>🔻 本次课最容易丢分的 5 处</h3>
+        <ul class="clean mt1"><li><b>VLOOKUP 区域没锁 $</b>——下拉后区域整体下移，后半段全查不到。这是表格题第一大丢分点。</li><li><b>第 4 参数漏写</b>——默认近似匹配，姓名/专业全部张冠李戴，比报错更可怕。</li><li><b>SUMIFS 把求和区域写在后面</b>——参数顺序与 SUMIF 相反，写错直接报错。</li><li><b>数组公式直接按 Enter</b>——只算出第一行结果，且不会有 {} 包裹。</li><li><b>高级筛选条件区域字段名多一个空格</b>——筛选结果为空，且很难看出原因。</li></ul>
+        <div class="callout key mt2"><h4>考场时间提示</h4><p class="small mb0">本课对应考试中「表格综合题」，建议 <b>40 分钟</b>：查找引用 12 分钟 → 文本日期 10 分钟 → 多条件统计 10 分钟 → 排序筛选 5 分钟 → 核对 3 分钟。凡是标注「用两种方法验证」的题，第二种方法只写公式不必美化，验证一致即可。</p></div>
+      </div>
+    </div>
+<div class="pager"><a class="prev" href="./实操-表格1.html"><div class="dir">← 上一次课</div><div class="tt">表格 1 · 工作簿、格式、引用与基础函数</div><div class="dd">4 小节 8 题</div></a><a class="next" href="./实操-表格3.html"><div class="dir">下一次课 →</div><div class="tt">表格 3 · 分类汇总、图表、透视表、模拟分析</div><div class="dd">4 小节 8 题</div></a></div>
+  </section>
+
+</main>
+
+<div class="bar">
+  <button type="button" id="btnAll">收起全部步骤</button>
+  <button type="button" class="clock" id="btnClock">⏱ 45:00 课时计时</button>
+</div>
+
+<footer class="footer"><div class="wrap"><div class="cols">
+  <div><h4>大连财经学院 · 计算机国家二级考试（WPS 类）</h4><p class="small"><span class="org">主办：大连财经学院计算机国家二级考试（WPS 类）课程组</span></p><p class="small">本站为<b>校内教学辅助资料</b>，依据《全国计算机等级考试(NCRE) 二级 WPS Office 高级应用与设计考试大纲(2025 年版)》与《二级公共基础知识考试大纲(2025 年版)》编写，供教学与备考使用。</p></div>
+  <div><h4>实操训练导航</h4><p class="small"><a href="./实操训练.html">实操训练总览</a> · <a href="./入门实操课.html">文字 1</a> · <a href="./实操-文字2.html">文字 2</a> · <a href="./实操-文字3.html">文字 3</a></p><p class="small"><a href="./实操-表格1.html">表格 1</a> · <a href="./实操-表格2.html">表格 2</a> · <a href="./实操-表格3.html">表格 3</a></p><p class="small"><a href="./实操-演示1.html">演示 1</a> · <a href="./实操-演示2.html">演示 2</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p></div>
+  <div><h4>官方信息</h4><p class="small">本站为<b>非官方</b>网站，不提供报名、缴费、查分服务。考试政策与报名信息以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 当年公告为准。</p><p class="small">学校官网：<a href="https://www.dlufe.edu.cn/" target="_blank" rel="noopener">www.dlufe.edu.cn</a></p></div>
+  <div><h4>免责声明</h4><p class="small">本站不收集任何个人信息，无收费项目，不含广告与商业推广；内容仅供校内教学与备考参考，如与官方文件不一致，以官方文件为准。</p><p class="small"><a href="./关于本站.html">关于本站 / 免责声明 →</a></p></div>
+</div>
+<div class="disc">© 大连财经学院 · 计算机国家二级考试（WPS 类）课程组 ｜ 校内教学辅助资料，非官方考试网站 ｜ 考试政策以中国教育考试网公告为准</div>
+</div></footer>
+
+<script>
+(function(){
+  document.querySelectorAll('[data-fold]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var card = btn.closest('.ex');
+      var body = card.querySelector('.ex-b');
+      var hidden = body.classList.toggle('hide');
+      btn.textContent = hidden ? '展开步骤' : '收起步骤';
+    });
+  });
+
+  var allBtn = document.getElementById('btnAll');
+  var expanded = true;
+  allBtn.addEventListener('click', function(){
+    expanded = !expanded;
+    document.querySelectorAll('.ex-b').forEach(function(b){ b.classList.toggle('hide', !expanded); });
+    document.querySelectorAll('[data-fold]').forEach(function(b){ b.textContent = expanded ? '收起步骤' : '展开步骤'; });
+    allBtn.textContent = expanded ? '收起全部步骤' : '展开全部步骤';
+  });
+
+  var clock = document.getElementById('btnClock');
+  var left = 45 * 60, timer = null;
+  function fmt(s){
+    var m = Math.floor(s / 60), ss = s % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  clock.addEventListener('click', function(){
+    if (timer) { clearInterval(timer); timer = null; clock.textContent = '⏱ ' + fmt(left) + ' 已暂停'; return; }
+    if (left <= 0) { left = 45 * 60; }
+    timer = setInterval(function(){
+      left--;
+      if (left <= 0) { clearInterval(timer); timer = null; clock.textContent = '⏱ 时间到！'; left = 0; return; }
+      clock.textContent = '⏱ ' + fmt(left);
+    }, 1000);
+    clock.textContent = '⏱ ' + fmt(left);
+  });
+})();
+</script>
+<script src="./assets/auth.js"></script>
+<script src="./assets/groups.js"></script>
+<script src="./assets/auth-ui.js"></script>
+</body>
+</html>

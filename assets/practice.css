@@ -1,0 +1,248 @@
+/* ==========================================================================
+   实操训练课 · 共享样式
+   配合 assets/style.css 使用；样式与 入门实操课.html 完全一致，保证 8 次课统一观感
+   适用范围：实操-文字2/3、实操-表格1/2/3、实操-演示1/2、实操训练.html
+   ========================================================================== */
+
+/* ---------- 防止窄屏横向溢出 ---------- */
+.grid > * { min-width: 0 }
+.table-wrap { max-width: 100%; min-width: 0 }
+.lesson, .lesson-b, .ex, .ex-b, .card { min-width: 0 }
+
+/* ---------- 长英文串（函数名、公式）不撑破卡片 ---------- */
+.card, .lesson, .ex, .kpi, .mc, .rh { overflow-wrap: anywhere }
+.card ul.clean li, .card p, ol.steps > li, .req li, .score, .callout p { overflow-wrap: anywhere }
+
+/* ---------- 小标题标签 ---------- */
+.kicker {
+  font-size: 12px; font-weight: 800; letter-spacing: .10em;
+  color: var(--muted); text-transform: uppercase;
+}
+
+/* ---------- 深色 Hero 上的描边按钮（避免与背景同色看不见） ---------- */
+.hero .btn.ghost {
+  color: #e8f1fa; border-color: rgba(255,255,255,.42); background: rgba(255,255,255,.06);
+}
+.hero .btn.ghost:hover { color: #fff; border-color: #fff; background: rgba(255,255,255,.16) }
+
+/* ---------- 顶部导航：允许折行且不被裁切，并略收紧以容纳 11 项 ---------- */
+@media (min-width: 821px) {
+  .topbar .wrap { height: auto; min-height: 60px; flex-wrap: wrap; row-gap: 2px; padding-top: 6px; padding-bottom: 6px }
+  .navlinks a { padding: 6px 10px; font-size: 13.6px }
+  .brand { font-size: 15px }
+}
+
+/* ---------- 课时（小节）容器 ---------- */
+.lesson {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); overflow: hidden; margin-top: 26px;
+}
+.lesson-h {
+  display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap;
+  padding: 22px 24px; background: linear-gradient(135deg, #16324f, #1f4a75); color: #fff;
+}
+.lesson-h .lnum {
+  flex: none; width: 58px; height: 58px; border-radius: 14px; background: var(--accent);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-size: 21px; font-weight: 900; line-height: 1; letter-spacing: .02em;
+  box-shadow: 0 8px 20px -8px rgba(232, 80, 58, .8);
+}
+.lesson-h .lnum small { display: block; font-size: 9.5px; font-weight: 700; letter-spacing: .14em; opacity: .9; margin-bottom: 3px }
+.lesson-h .ltx { flex: 1; min-width: 220px }
+.lesson-h h3 { color: #fff; margin: 0 0 6px; font-size: 21px }
+.lesson-h p { margin: 0; color: #c2d6ea; font-size: 13.5px }
+.lesson-h .lmeta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px }
+.lesson-h .lmeta span {
+  font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 99px;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); color: #e6f0fa;
+}
+.lesson-b { padding: 8px 24px 26px }
+@media (max-width: 640px) {
+  .lesson-h { padding: 16px }
+  .lesson-b { padding: 4px 15px 20px }
+}
+
+/* ---------- 例题卡片 ---------- */
+.ex {
+  border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 12px;
+  margin-top: 20px; background: #fff; break-inside: avoid;
+}
+.ex-h {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 14px 16px; background: var(--surface-2); border-bottom: 1px solid var(--line-2);
+  border-radius: 0 12px 0 0;
+}
+.ex-no {
+  flex: none; font-size: 12.5px; font-weight: 900; letter-spacing: .04em; color: #fff;
+  background: var(--accent); padding: 4px 10px; border-radius: 7px; font-variant-numeric: tabular-nums;
+}
+.ex-h h4 { margin: 0; font-size: 16.5px; flex: 1; min-width: 180px }
+.ex-b { padding: 16px }
+.ex-b.hide { display: none }
+.fold {
+  font: inherit; font-size: 12.5px; font-weight: 700; color: var(--ink-2); background: #fff;
+  border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px; cursor: pointer;
+}
+.fold:hover { border-color: var(--accent); color: var(--accent) }
+
+/* ---------- 题目要求 ---------- */
+.req {
+  background: #f3f8ff; border: 1px solid #d8e6fb; border-radius: 10px;
+  padding: 13px 15px; margin-bottom: 14px;
+}
+.req ol { margin: 8px 0 0; padding-left: 22px }
+.req li { margin-bottom: 5px; font-size: 14.5px }
+.req li:last-child { margin-bottom: 0 }
+
+/* ---------- 素材 ---------- */
+.src {
+  background: #fffdf6; border: 1px dashed #e8d9a8; border-radius: 10px;
+  padding: 12px 14px; margin-bottom: 14px;
+}
+.src pre {
+  background: transparent; color: var(--ink); padding: 6px 0 0; margin: 0;
+  font-family: var(--sans); font-size: 14px; line-height: 1.85;
+  white-space: pre-wrap; word-break: break-word;
+}
+
+/* ---------- 步骤 ---------- */
+ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 10px 0 0 }
+ol.steps > li {
+  counter-increment: s; position: relative; padding-left: 36px;
+  margin-bottom: 11px; font-size: 14.5px; line-height: 1.75;
+}
+ol.steps > li::before {
+  content: counter(s); position: absolute; left: 0; top: 2px; width: 23px; height: 23px;
+  border-radius: 7px; background: var(--brand); color: #fff; font-size: 12px; font-weight: 800;
+  display: grid; place-items: center; font-variant-numeric: tabular-nums;
+}
+ol.steps > li b { color: var(--brand) }
+ol.steps ul { margin: 6px 0 0; padding-left: 20px }
+ol.steps ul li { margin-bottom: 3px; font-size: 14px; color: var(--ink-2) }
+ol.steps .fx {
+  display: block; margin: 5px 0 2px; padding: 6px 10px; background: #f4f7fb;
+  border-left: 3px solid var(--brand-2); border-radius: 6px;
+  font-family: var(--mono); font-size: 13px; color: #0f3d63; overflow-wrap: anywhere;
+}
+
+/* ---------- 采分点 ---------- */
+.score {
+  margin-top: 14px; background: #f2fbf6; border: 1px solid #c9e9d6; border-radius: 10px;
+  padding: 11px 14px; font-size: 14px; line-height: 1.7;
+}
+.score > b {
+  display: inline-block; font-size: 12px; font-weight: 900; color: #12703f; letter-spacing: .06em;
+  background: #d8f0e2; border-radius: 6px; padding: 2px 8px; margin-right: 8px;
+}
+.ex .callout { margin-top: 12px; font-size: 14px }
+.ex .callout h4 { font-size: 14px }
+.ex .callout ul { margin: 4px 0 0; padding-left: 20px }
+.ex .callout li { margin-bottom: 4px }
+
+/* ---------- 界面示意图（沿用入门课） ---------- */
+.shotblock { margin-top: 16px }
+.shotblock > .kicker { display: flex; align-items: center; gap: 8px; margin-bottom: 8px }
+.shotgrid { display: grid; grid-template-columns: 1fr; gap: 14px }
+.shot {
+  margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  overflow: hidden; box-shadow: var(--shadow); break-inside: avoid;
+}
+.shot a { display: block; line-height: 0 }
+.shot img { display: block; width: 100%; height: auto; background: #F3F5F8 }
+.shot blockquote { margin: 0; padding: 10px 13px; border: 0 }
+.shot figcaption { padding: 10px 13px; font-size: 13px; line-height: 1.75; color: var(--ink-2); border-top: 1px solid var(--line-2) }
+.shot figcaption .tag-step,
+.shot figcaption .tag-eff {
+  display: inline-block; font-size: 11px; font-weight: 800; color: #fff;
+  border-radius: 6px; padding: 2px 8px; margin-right: 6px; white-space: nowrap;
+}
+.shot figcaption .tag-step { background: var(--brand) }
+.shot figcaption .tag-eff { background: var(--accent) }
+.shot figcaption code { font-size: 12px }
+.shot.result { max-width: 760px; margin: 0 auto }
+
+/* ---------- 课时导航 / 面包屑 ---------- */
+.crumbs { font-size: 13px; color: var(--muted); margin: 22px 0 0; font-weight: 600 }
+.crumbs a { color: var(--ink-2) }
+.crumbs a:hover { color: var(--accent) }
+.crumbs .sep { margin: 0 7px; color: #b9c6d6 }
+
+.lessonnav { display: flex; gap: 10px; flex-wrap: wrap; margin: 22px 0 4px }
+.lessonnav a {
+  font-size: 14px; font-weight: 700; background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; padding: 9px 15px; color: var(--ink-2);
+}
+.lessonnav a:hover { border-color: var(--accent); color: var(--accent); background: #fff8f6 }
+
+/* 上一课 / 下一课 */
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 26px }
+@media (max-width: 640px) { .pager { grid-template-columns: 1fr } }
+.pager a {
+  display: block; background: #fff; border: 1px solid var(--line); border-radius: 13px;
+  padding: 16px 18px; box-shadow: var(--shadow); transition: .18s;
+}
+.pager a:hover { transform: translateY(-2px); box-shadow: var(--shadow-l); border-color: var(--accent) }
+.pager .dir { font-size: 12px; font-weight: 800; letter-spacing: .08em; color: var(--muted) }
+.pager .tt { font-size: 15.5px; font-weight: 800; color: var(--ink); margin-top: 4px }
+.pager .dd { font-size: 12.5px; color: var(--muted); margin-top: 3px }
+.pager a.next { text-align: right }
+
+/* ---------- 覆盖度表格 ---------- */
+table.cover-tbl { font-size: 13.5px }
+table.cover-tbl td.mono-cell { font-family: var(--mono); font-size: 12.5px; color: #0f3d63 }
+.pill {
+  display: inline-block; font-size: 11.5px; font-weight: 800; border-radius: 99px;
+  padding: 2px 9px; margin: 2px 3px 2px 0; background: var(--line-2); color: var(--ink-2);
+  border: 1px solid var(--line); white-space: nowrap;
+}
+.pill.hi { background: #fdece9; color: #b8351f; border-color: #f7cfc8 }
+.pill.md { background: #fef3e2; color: #9a5b06; border-color: #f7dfb5 }
+.pill.ok { background: #e8f7ee; color: #12703f; border-color: #c5ead6 }
+
+/* ---------- 迷你指标 ---------- */
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px }
+@media (max-width: 760px) { .kpis { grid-template-columns: repeat(2, 1fr) } }
+.kpi { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; box-shadow: var(--shadow) }
+.kpi b { display: block; font-size: 25px; font-weight: 900; color: var(--brand); line-height: 1.15 }
+.kpi span { font-size: 12.5px; color: var(--muted); font-weight: 600 }
+
+/* ---------- 自查清单 ---------- */
+.checklist { list-style: none; padding: 0; margin: 0; counter-reset: ck }
+.checklist li {
+  position: relative; padding: 9px 12px 9px 44px; border-bottom: 1px dashed var(--line);
+  font-size: 14.3px;
+}
+.checklist li:last-child { border-bottom: 0 }
+.checklist li::before {
+  counter-increment: ck; content: "☐"; position: absolute; left: 14px; top: 8px;
+  font-size: 15px; color: var(--brand-2); font-weight: 700;
+}
+
+/* ---------- 浮动工具条 ---------- */
+.bar {
+  position: fixed; right: 18px; bottom: 18px; z-index: 80;
+  display: flex; flex-direction: column; gap: 8px; align-items: flex-end;
+}
+.bar button {
+  font: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+  background: #16324f; color: #fff; border: 0; border-radius: 11px; padding: 10px 14px;
+  box-shadow: 0 10px 26px -10px rgba(18,33,58,.6); display: inline-flex; gap: 8px; align-items: center;
+}
+.bar button:hover { background: #1f4a75 }
+.bar .clock { background: #fff; color: var(--brand); border: 1px solid var(--line); font-variant-numeric: tabular-nums }
+@media print { .bar { display: none !important } }
+
+/* ---------- 表格微调 ---------- */
+table.small-tbl { font-size: 13.5px }
+
+/* ---------- 打印 ---------- */
+@media print {
+  .ex-b { display: block !important }
+  .fold, .lessonnav, .bar { display: none !important }
+  .lesson { box-shadow: none; break-before: auto }
+  .lesson-h { background: #f2f2f2 !important; color: #12213a !important }
+  .lesson-h h3, .lesson-h p { color: #12213a !important }
+  .lesson-h .lmeta span { background: #fff !important; border-color: #bbb !important; color: #12213a !important }
+  ol.steps > li::before { background: #ddd !important; color: #12213a !important }
+  .pager, .crumbs { display: none !important }
+}

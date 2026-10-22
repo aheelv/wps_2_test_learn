@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WPS 文字入门实操 4 课时 · 大一新生零基础起步 | 大连财经学院 计算机国家二级（WPS 类）</title>
+<meta name="description" content="面向大一新生的国家计算机二级 WPS Office 文字处理入门实操课程，4 课时 16 道例题，全部从新建文件开始，逐步覆盖输入、编辑、格式设置、页面布局、页眉页脚、表格图文与保存输出，每题附详细操作步骤、采分点与易错提醒。">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="stylesheet" href="./assets/practice.css">
+<style>
+  /* ===== 本页专用：防止窄屏横向溢出 ===== */
+  .grid>*{min-width:0}
+  .table-wrap{max-width:100%;min-width:0}
+  .lesson,.lesson-b,.ex,.ex-b,.card{min-width:0}
+  @media(max-width:520px){
+    .ex-h{padding:12px}
+    .ex-h h4{font-size:15.5px;min-width:100%}
+    .ex-b{padding:13px}
+    .req,.src{padding:11px 12px}
+    ol.steps>li{padding-left:31px}
+  }
+
+
+  /* ===== 界面示意图 ===== */
+  .shotblock{margin-top:16px}
+  .shotblock>.kicker{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .shotgrid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(max-width:760px){.shotgrid{grid-template-columns:1fr}}
+  .shot{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);break-inside:avoid}
+  .shot a{display:block;line-height:0}
+  .shot img{display:block;width:100%;height:auto;background:#F3F5F8}
+  .shot a:hover img{opacity:.92}
+  .shotblock .kicker .hint{font-weight:600;color:var(--muted);text-transform:none;letter-spacing:0;font-size:11.5px}
+  .shot figcaption{padding:10px 13px;font-size:13px;line-height:1.75;color:var(--ink-2);border-top:1px solid var(--line-2)}
+  .shot figcaption .tag-step{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--brand);border-radius:6px;padding:2px 8px;margin-right:6px;white-space:nowrap}
+  .shot figcaption .tag-eff{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--accent);border-radius:6px;padding:2px 8px;margin-right:6px;white-space:nowrap}
+  .shot figcaption code{font-size:12px}
+  .shot.result{max-width:760px;margin:0 auto}
+  .shot.result img{background:#EEF1F5}
+  .shotblock .tipimg{font-size:12px;color:var(--muted);margin-top:8px}
+  @media print{
+    .shot{box-shadow:none}
+    .shotblock{break-inside:avoid}
+  }
+
+  /* ===== 本页专用：例题卡片 ===== */
+  .kicker{font-size:12px;font-weight:800;letter-spacing:.10em;color:var(--muted);text-transform:uppercase}
+  .lesson{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;margin-top:26px;
+  }
+  .lesson-h{
+    display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;
+    padding:22px 24px;background:linear-gradient(135deg,#16324f,#1f4a75);color:#fff;
+  }
+  .lesson-h .lnum{
+    flex:none;width:58px;height:58px;border-radius:14px;background:var(--accent);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-size:21px;font-weight:900;line-height:1;letter-spacing:.02em;
+    box-shadow:0 8px 20px -8px rgba(232,80,58,.8);
+  }
+  .lesson-h .lnum small{display:block;font-size:9.5px;font-weight:700;letter-spacing:.14em;opacity:.9;margin-bottom:3px}
+  .lesson-h .ltx{flex:1;min-width:220px}
+  .lesson-h h3{color:#fff;margin:0 0 6px;font-size:21px}
+  .lesson-h p{margin:0;color:#c2d6ea;font-size:13.5px}
+  .lesson-h .lmeta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .lesson-h .lmeta span{
+    font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#e6f0fa;
+  }
+  .lesson-b{padding:8px 24px 26px}
+  @media(max-width:640px){.lesson-h{padding:16px}.lesson-b{padding:4px 15px 20px}}
+
+  .ex{
+    border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;
+    margin-top:20px;background:#fff;break-inside:avoid;
+  }
+  .ex-h{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    padding:14px 16px;background:var(--surface-2);border-bottom:1px solid var(--line-2);
+    border-radius:0 12px 0 0;
+  }
+  .ex-no{
+    flex:none;font-size:12.5px;font-weight:900;letter-spacing:.04em;color:#fff;
+    background:var(--accent);padding:4px 10px;border-radius:7px;font-variant-numeric:tabular-nums;
+  }
+  .ex-h h4{margin:0;font-size:16.5px;flex:1;min-width:180px}
+  .ex-b{padding:16px}
+  .ex-b.hide{display:none}
+  .fold{
+    font:inherit;font-size:12.5px;font-weight:700;color:var(--ink-2);background:#fff;
+    border:1px solid var(--line);border-radius:8px;padding:4px 10px;cursor:pointer;
+  }
+  .fold:hover{border-color:var(--accent);color:var(--accent)}
+
+  .req{background:#f3f8ff;border:1px solid #d8e6fb;border-radius:10px;padding:13px 15px;margin-bottom:14px}
+  .req ol{margin:8px 0 0;padding-left:22px}
+  .req li{margin-bottom:5px;font-size:14.5px}
+  .req li:last-child{margin-bottom:0}
+
+  .src{background:#fffdf6;border:1px dashed #e8d9a8;border-radius:10px;padding:12px 14px;margin-bottom:14px}
+  .src pre{
+    background:transparent;color:var(--ink);padding:6px 0 0;margin:0;font-family:var(--sans);
+    font-size:14px;line-height:1.85;white-space:pre-wrap;word-break:break-word;
+  }
+
+  ol.steps{counter-reset:s;list-style:none;padding:0;margin:10px 0 0}
+  ol.steps>li{counter-increment:s;position:relative;padding-left:36px;margin-bottom:11px;font-size:14.5px;line-height:1.75}
+  ol.steps>li::before{
+    content:counter(s);position:absolute;left:0;top:2px;width:23px;height:23px;border-radius:7px;
+    background:var(--brand);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center;
+    font-variant-numeric:tabular-nums;
+  }
+  ol.steps>li b{color:var(--brand)}
+  ol.steps ul{margin:6px 0 0;padding-left:20px}
+  ol.steps ul li{margin-bottom:3px;font-size:14px;color:var(--ink-2)}
+
+  .score{
+    margin-top:14px;background:#f2fbf6;border:1px solid #c9e9d6;border-radius:10px;padding:11px 14px;
+    font-size:14px;line-height:1.7;
+  }
+  .score>b{
+    display:inline-block;font-size:12px;font-weight:900;color:#12703f;letter-spacing:.06em;
+    background:#d8f0e2;border-radius:6px;padding:2px 8px;margin-right:8px;
+  }
+  .ex .callout{margin-top:12px;font-size:14px}
+  .ex .callout h4{font-size:14px}
+  .ex .callout ul{margin:4px 0 0;padding-left:20px}
+  .ex .callout li{margin-bottom:4px}
+
+  .path-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+  @media(max-width:900px){.path-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.path-grid{grid-template-columns:1fr}}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px;box-shadow:var(--shadow);border-top:4px solid var(--mc,var(--accent))}
+  .pcard .pn{font-size:12px;font-weight:900;color:var(--mc,var(--accent));letter-spacing:.06em}
+  .pcard h4{margin:6px 0 8px;font-size:16px}
+  .pcard p{font-size:13.5px;color:var(--muted);margin:0}
+
+  .lessonnav{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 4px}
+  .lessonnav a{
+    font-size:14px;font-weight:700;background:#fff;border:1px solid var(--line);
+    border-radius:10px;padding:9px 15px;color:var(--ink-2);
+  }
+  .lessonnav a:hover{border-color:var(--accent);color:var(--accent);background:#fff8f6}
+
+  /* ===== 浮动工具条 ===== */
+  .bar{
+    position:fixed;right:18px;bottom:18px;z-index:80;display:flex;flex-direction:column;gap:8px;align-items:flex-end;
+  }
+  .bar button{
+    font:inherit;font-size:13px;font-weight:700;cursor:pointer;
+    background:#16324f;color:#fff;border:0;border-radius:11px;padding:10px 14px;
+    box-shadow:0 10px 26px -10px rgba(18,33,58,.6);display:inline-flex;gap:8px;align-items:center;
+  }
+  .bar button:hover{background:#1f4a75}
+  .bar .clock{background:#fff;color:var(--brand);border:1px solid var(--line);font-variant-numeric:tabular-nums}
+  @media print{.bar{display:none!important}}
+
+  table.small-tbl{font-size:13.5px}
+  @media print{
+    .ex-b{display:block!important}
+    .fold,.lessonnav,.bar{display:none!important}
+    .lesson{box-shadow:none;break-before:auto}
+    .lesson-h{background:#f2f2f2!important;color:#12213a!important}
+    .lesson-h h3,.lesson-h p{color:#12213a!important}
+    .lesson-h .lmeta span{background:#fff!important;border-color:#bbb!important;color:#12213a!important}
+    ol.steps>li::before{background:#ddd!important;color:#12213a!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">WPS</span><span>大连财经学院 · 计算机国家二级（WPS 类）<small>校内教学辅助资料 · 非官方</small></span></a>
+  <nav class="navlinks">
+    <a href="./index.html">学习中心</a>
+    <a href="./考试介绍.html">考试介绍</a>
+    <a href="./教学大纲.html">教学大纲</a>
+    <a href="./考纲对照表.html">考纲对照表</a>
+    <a href="./教学日历.html">教学日历</a>
+    <a href="./教案.html">教案</a>
+    <a href="./实操训练.html">实操训练</a>
+    <a href="./培训课件.html">培训课件</a>
+    <a href="./电子书.html">电子书</a>
+    <a href="./资料汇编.html">资料汇编</a>
+    <a href="./考试模拟系统/index.html">模拟考试</a>
+  </nav>
+</div></header>
+
+<div class="noticebar"><div class="wrap">
+  <span class="nb-ic">ⓘ</span>
+  <span><b>大连财经学院</b> 计算机国家二级考试（WPS 类）校内教学辅助资料 · <b>本站为非官方考试网站</b>，不提供报名、缴费、查分服务，不收集任何个人信息。官方信息请以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 为准。</span>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">实操训练 · 第 1 次课 / 共 8 次 · WPS 处理文字文档</div>
+  <h1>WPS 文字入门实操 4 课时<br><span style="font-size:.62em;font-weight:700;color:#ffd9a1">16 道例题 · 每道都从「新建文件」开始</span></h1>
+  <p class="sub">专为大一新生设计：把二级 WPS 文字操作题拆成 16 个可以当堂做完的小任务。第 1 课时从"新建一个空白文档"教起，第 4 课时结束时，你已经能独立完成一份带样式、表格、图片、页码与目录的完整文档。每个例题都给出<b>逐条操作步骤、采分点、易错提醒</b>——课堂跟着点一遍，考场上手就有记忆。</p>
+  <div class="flex mt2">
+    <a class="btn accent" href="#l1">▶ 从第 1 课时开始</a>
+    <a class="btn ghost" href="./实操训练.html">← 返回实操训练总览</a>
+    <a class="btn ghost" href="#design">查看课程设计</a>
+    <a class="btn ghost" href="#appendix">快捷键与自查清单</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><b>4</b><span>课时 · 每课时 45 分钟</span></div>
+    <div class="hero-stat"><b>16</b><span>道实操例题</span></div>
+    <div class="hero-stat"><b>80%</b><span>课堂时间用于动手</span></div>
+    <div class="hero-stat"><b>30</b><span>分 · 文字操作题分值</span></div>
+    <div class="hero-stat"><b>0</b><span>先修要求</span></div>
+  </div>
+</div></section>
+
+<main class="wrap">
+
+  <div class="crumbs">
+    <a href="./index.html">学习中心</a><span class="sep">/</span><a href="./实操训练.html">实操训练</a><span class="sep">/</span>第 1 次课 · 文字处理（4 小节 16 题）
+  </div>
+
+  <div class="callout warn mt2">
+    <h4>📌 关于本页的界面示意图</h4>
+    <p class="mb0">下方所有界面图为<b>依据 WPS Office 文字 12.x 界面绘制的教学示意图</b>（非软件实机截图），图中按钮位置、对话框字段与参数值均与对应例题的步骤一一对应，红色虚线框与序号标注即为操作点；带「完成效果」标签的图为按题目要求排版后的文档效果。教学演示时，请以本机实际界面为准，按功能名称定位按钮。</p>
+  </div>
+  <section class="section-sm" id="design">
+    <h2>一、这套课解决什么问题</h2>
+    <p class="lead">大一新生的真实起点不是"不会排版"，而是<b>不敢下手</b>：不知道从哪里新建文件、不知道存到哪个文件夹、改错了不敢动。所以这 4 课时的第一原则是——<b>每道题都从"文件 → 新建 → 空白文档"开始，做完必须保存</b>，让"建—做—存"成为肌肉记忆。</p>
+
+    <div class="grid g2 mt2">
+      <div class="card">
+        <h3>课程基本信息</h3>
+        <div class="table-wrap mt1" style="border:0">
+          <table class="tbl small-tbl" style="min-width:auto">
+            <tbody>
+              <tr><th style="width:110px">课程名称</th><td>WPS 文字处理入门实操（4 课时）</td></tr>
+              <tr><th>授课对象</th><td>大一新生，零基础或基础薄弱；无需先修</td></tr>
+              <tr><th>总课时</th><td>4 课时 × 45 分钟 = 180 分钟</td></tr>
+              <tr><th>讲练配比</th><td>每课时：讲授演示 8~10 分钟 ＋ 动手练习 35~37 分钟（练习占 <b>80%</b>）</td></tr>
+              <tr><th>软件环境</th><td>WPS Office 教育考试专用版（Windows 10/11）；个人版操作路径基本一致</td></tr>
+              <tr><th>对应考纲</th><td>大纲一·1、一·2；大纲二·1~二·5</td></tr>
+              <tr><th>对应题型</th><td>WPS 处理文字文档操作题（30 分）</td></tr>
+              <tr><th>结课标准</th><td>独立完成第 4 课时综合题，按 10 项采分点自评 ≥ 24 分（满分 30）</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card" style="border-left:5px solid var(--accent)">
+        <h3>四课时能力递进</h3>
+        <ul class="clean mt1">
+          <li><b>第 1 课时 · 会建会存</b><br><span class="small muted">新建文档、录入文字与符号、选定与移动、撤销重做、保存与另存为、页面设置、输出 PDF</span></li>
+          <li><b>第 2 课时 · 会改格式</b><br><span class="small muted">字体字号字形颜色、字符间距、对齐缩进行距段距、格式刷、编号与项目符号、段落边框底纹</span></li>
+          <li><b>第 3 课时 · 改得快</b><br><span class="small muted">样式应用与修改、导航窗格、查找替换进阶（格式替换 / 特殊字符 / 通配符）、分栏与首字下沉、水印页面边框</span></li>
+          <li><b>第 4 课时 · 做得完整</b><br><span class="small muted">分节与页眉页脚页码、表格制作、图片文本框、自动目录、综合大题与交卷自查</span></li>
+        </ul>
+        <div class="callout key mt2"><h4>💡 一句话设计逻辑</h4><p>先让文件"存在"（第 1 课），再让文字"好看"（第 2 课），再让修改"省力"（第 3 课），最后让整篇"完整"（第 4 课）。四步正好对应考试操作题的四个评分层次。</p></div>
+      </div>
+    </div>
+
+    <h3 class="mt3">课时安排一览</h3>
+    <div class="table-wrap mt1">
+      <table class="tbl">
+        <thead><tr><th class="num">课时</th><th>主题</th><th class="num">例题</th><th class="num">讲 / 练</th><th>核心能力</th><th>对应考纲条目</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num"><b>第 1 课时</b></td>
+            <td><b>从新建到保存：文档的出生与落盘</b><div class="muted small">新建 · 输入 · 编辑 · 保存 · 页面设置</div></td>
+            <td class="num">4 题 + 1 挑战</td><td class="num">10 / 35</td>
+            <td class="small">文件级操作不丢分，输入不出错，存对地方</td>
+            <td class="small muted">大纲一·1、一·2；二·1</td>
+          </tr>
+          <tr>
+            <td class="num"><b>第 2 课时</b></td>
+            <td><b>字符与段落：让文档"长得对"</b><div class="muted small">字体 · 段落 · 格式刷 · 编号 · 边框底纹</div></td>
+            <td class="num">4 题</td><td class="num">10 / 35</td>
+            <td class="small">格式参数精确落地，拒绝空格凑格式</td>
+            <td class="small muted">大纲二·2</td>
+          </tr>
+          <tr>
+            <td class="num"><b>第 3 课时</b></td>
+            <td><b>样式与批量处理：从"会改"到"改得快"</b><div class="muted small">样式 · 查找替换 · 分栏 · 页面装饰</div></td>
+            <td class="num">4 题</td><td class="num">10 / 35</td>
+            <td class="small">用样式与批量操作代替逐段手工调整</td>
+            <td class="small muted">大纲二·2；二·1；二·5</td>
+          </tr>
+          <tr>
+            <td class="num"><b>第 4 课时</b></td>
+            <td><b>长文档与综合：页眉页码 · 表格 · 图文 · 目录</b><div class="muted small">分节 · 页眉页脚 · 表格 · 图片 · 目录 · 综合</div></td>
+            <td class="num">4 题（含综合大题）</td><td class="num">10 / 35</td>
+            <td class="small">独立完成一份可交的完整文档</td>
+            <td class="small muted">大纲二·3、二·4、二·5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn mt2">
+      <h4>⚠️ 上课前 3 件事（教师与同学都请确认）</h4>
+      <ul class="clean small" style="margin-top:6px">
+        <li>在<b>桌面</b>建好统一文件夹：<code>二级WPS练习</code>，里面按课时建 <code>课时1</code>、<code>课时2</code>……<b>所有练习一律存这里</b>——考场同样要求存到指定文件夹，平时就养成习惯。</li>
+        <li>把输入法切换到中文，确认能打出<b>中文全角标点</b>（，。；：""）。评卷常看标点与空格。</li>
+        <li>打开 <b>开始 → 显示/隐藏段落标记</b>（¶ 按钮），让回车、空格看得见。这是新手最快建立"段落感"的办法。</li>
+      </ul>
+    </div>
+
+    <div class="callout mt2">
+      <h4>关于版本差异（很重要，别被界面名字绕住）</h4>
+      <p>WPS 教育考试专用版、个人版、较新版本之间，选项卡名称偶有差别：<b>「页面布局」</b>在部分版本叫<b>「页面」</b>；<b>「输出为 PDF」</b>在部分版本叫<b>「另存为 PDF」</b>；页眉页脚工具里的<b>「同前节」</b>有的版本写作<b>「链接到前一条页眉」</b>。功能位置完全对应，<b>考试时以本机界面为准</b>，按功能找按钮，不要死记名字。</p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <h2>二、开课前 5 分钟：认识界面 + 三个"保命"操作</h2>
+    <p class="lead">这四个课时里，你会反复用到下面三组操作。先花 5 分钟认熟，后面 16 道题都会轻松。</p>
+    <div class="grid g3 mt2">
+      <div class="card" style="border-top:4px solid var(--m3)">
+        <h3>① 界面四块区</h3>
+        <ul class="clean small">
+          <li><b>选项卡</b>：文件 / 开始 / 插入 / 页面布局 / 引用 / 审阅 / 视图</li>
+          <li><b>功能区</b>：每个选项卡下的按钮分组（字体组、段落组、样式组……）</li>
+          <li><b>编辑区</b>：中间白色页面，闪烁竖线叫<b>插入点</b></li>
+          <li><b>状态栏</b>：左下角显示页数、字数；右下角可切视图与显示比例</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:4px solid var(--m3)">
+        <h3>② 三个必背快捷键</h3>
+        <ul class="clean small">
+          <li><kbd>Ctrl</kbd>+<kbd>N</kbd> 新建空白文档</li>
+          <li><kbd>Ctrl</kbd>+<kbd>S</kbd> 保存（覆盖保存）<br><kbd>F12</kbd> 另存为（改名字/换位置必须用它）</li>
+          <li><kbd>Ctrl</kbd>+<kbd>Z</kbd> 撤销 ／ <kbd>Ctrl</kbd>+<kbd>Y</kbd> 恢复</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:4px solid var(--m3)">
+        <h3>③ 段落标记的三种"换行"</h3>
+        <ul class="clean small">
+          <li><kbd>Enter</kbd> = <b>硬回车</b>，产生段落标记 ¶，<b>分段用它</b></li>
+          <li><kbd>Shift</kbd>+<kbd>Enter</kbd> = <b>软回车</b>（↓），换行但不分段</li>
+          <li>以为换行就是分段 → 段落格式（首行缩进、行距）会乱，这是新手第一大坑</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 1 课时 ============ -->
+  <section id="l1">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>课时</small>01</div>
+        <div class="ltx">
+          <h3>从新建到保存：文档的出生与落盘</h3>
+          <p>这一课时不追求"好看"，只追求"做对、存对"。考场上因为文件名、保存位置错了而零分的同学，每年都有。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>4 道例题 + 1 个限时挑战</span><span>考纲一·1、一·2；二·1</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本课时学完，你要能做到</h4>
+          <ul class="clean small" style="margin-top:6px">
+            <li>3 秒内新建一个空白文档，并在 10 秒内以指定文件名存到指定文件夹</li>
+            <li>输入中英文混排文字，正确插入 ℃ ² © 等符号，不靠"改字号"伪造上下标</li>
+            <li>用双击 / 三击 / Shift+单击 / Ctrl+A 精准选中，用剪切粘贴移动整段</li>
+            <li>把页面设成 A4、页边距上下 2.54 / 左右 3.17 厘米，并输出 PDF、设置打开密码</li>
+          </ul>
+        </div>
+        <div class="shotblock"><div class="kicker">课前导览</div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/l1-file.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/l1-file.svg" alt="WPS「文件」菜单：新建、另存为、输出为PDF、文档加密四个入口，是考试中最常用的操作。" loading="lazy"></a><figcaption><span class="tag-step">课前导览</span>WPS「文件」菜单：新建、另存为、输出为PDF、文档加密四个入口，是考试中最常用的操作。</figcaption></figure></div></div>
+
+        <!-- 例 1-1 -->
+        <article class="ex" id="e1-1">
+          <header class="ex-h">
+            <span class="ex-no">例 1-1</span>
+            <h4>从零新建并保存第一个文档</h4>
+            <span class="badge info">新建 · 输入 · 保存</span>
+            <span class="badge">8 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li>在桌面新建文件夹 <code>二级WPS练习</code>，并在其中新建子文件夹 <code>课时1</code>。</li>
+                <li>启动 WPS Office，新建一个<b>空白文字文档</b>。</li>
+                <li>按素材录入标题与正文，标题与正文之间<b>按一次 Enter 分段</b>。</li>
+                <li>以文件名 <code>学号-姓名-练习1-1.docx</code> 保存到 <code>课时1</code> 文件夹。</li>
+              </ol>
+            </div>
+            <div class="src">
+              <div class="kicker">录入素材（全部照打，标点用中文全角）</div>
+              <pre>我的第一个WPS文档
+国家计算机二级考试（WPS Office）由上机操作题和单项选择题组成。其中，文字处理操作题占30分，是本课程训练的重点。今天我们从新建文档开始。</pre>
+            </div>
+            <div class="kicker">解题步骤（考场照这个顺序点）</div>
+            <ol class="steps">
+              <li><b>建文件夹。</b>回到桌面，空白处右键 →「新建」→「文件夹」，输入 <code>二级WPS练习</code> 后按 Enter；双击进入，再右键新建一个 <code>课时1</code> 文件夹。<span class="muted">（考场同理：先在指定位置把文件夹建好，后面所有保存都往这里存。）</span></li>
+              <li><b>启动并新建。</b>双击桌面 WPS Office 图标 → 首页点「新建」→ 选「文字」→「空白文档」；若已有文档窗口打开，直接按 <kbd>Ctrl</kbd>+<kbd>N</kbd>。</li>
+              <li><b>确认插入点。</b>新页面左上角有一条闪烁竖线，就是插入点。切换输入法到中文（<kbd>Ctrl</kbd>+<kbd>空格</kbd> 或 <kbd>Shift</kbd>），确认任务栏输入法图标显示"中"。</li>
+              <li><b>输入标题。</b>打「我的第一个WPS文档」，注意 <code>WPS</code> 三个字母要在英文状态下输入（按 <kbd>Shift</kbd> 临时切换），<b>字母之间不要加空格</b>。</li>
+              <li><b>分段。</b>按一次 <kbd>Enter</kbd>，屏幕上出现一个 ¶ 段落标记，光标跳到下一段行首。然后输入正文，句末用中文句号「。」，括号用全角「（）」。</li>
+              <li><b>保存（关键一步）。</b>按 <kbd>Ctrl</kbd>+<kbd>S</kbd>，首次保存会弹出「另存为」对话框 →
+                <ul>
+                  <li>左侧选「桌面」→ 双击 <code>二级WPS练习</code> → 双击 <code>课时1</code>；</li>
+                  <li>「文件名」输入 <code>学号-姓名-练习1-1</code>（<b>不要自己再打 .docx</b>）；</li>
+                  <li>「文件类型」选 <b>Word 文件(*.docx)</b> → 点「保存」。</li>
+                </ul>
+              </li>
+              <li><b>验证。</b>看窗口标题栏是否变成 <code>学号-姓名-练习1-1.docx</code>，标题栏没有"*"或"未保存"字样即成功。再打开文件夹确认文件真的在里面。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/l1-new.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/l1-new.svg" alt="新建空白文档后的编辑区：闪烁竖线是插入点，¶ 段落标记能显示 Enter 与 Shift+Enter 的区别。" loading="lazy"></a><figcaption><span class="tag-step">步骤 2–3</span>新建空白文档后的编辑区：闪烁竖线是插入点，¶ 段落标记能显示 Enter 与 Shift+Enter 的区别。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e1-1-save.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e1-1-save.svg" alt="「另存为」对话框：文件名填 <code>学号-姓名-练习1-1</code>，保存类型选 <b>Word 文件(*.docx)</b>，左侧位置定位到 <code>二级WPS练习 \ 课时1</code>。" loading="lazy"></a><figcaption><span class="tag-step">步骤 6</span>「另存为」对话框：文件名填 <code>学号-姓名-练习1-1</code>，保存类型选 <b>Word 文件(*.docx)</b>，左侧位置定位到 <code>二级WPS练习 \ 课时1</code>。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>文件名与扩展名完全一致 · 保存位置正确 · 标题与正文是两个独立段落（用 Enter，不是空格顶下来） · 中文全角标点</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>直接点右上角关闭再选「保存」，文件常落到「我的文档」——<b>考试中存错位置等于白做</b>。</li>
+                <li>文件名打成 <code>练习1-1.docx.docx</code>：类型已带扩展名，文件名里不用再写。</li>
+                <li>用 <kbd>Shift</kbd>+<kbd>Enter</kbd> 换行：看起来换行了，但标题和正文仍在同一段，后面设"段后间距"会失效。</li>
+              </ul>
+            </div>
+            <div class="callout tip">
+              <h4>考场加速键</h4>
+              <p>改文件名或换保存位置，一律用 <kbd>F12</kbd>（另存为），比在「文件」里翻菜单快；<kbd>Ctrl</kbd>+<kbd>S</kbd> 只覆盖保存，不会问你存哪里。</p>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e1-1-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e1-1-result.svg" alt="保存后的文档：标题独占一段，正文另起一段（注意两处段落标记）" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>保存后的文档：标题独占一段，正文另起一段（注意两处段落标记）</figcaption></figure></div></div>
+            </article>
+
+        <!-- 例 1-2 -->
+        <article class="ex" id="e1-2">
+          <header class="ex-h">
+            <span class="ex-no">例 1-2</span>
+            <h4>输入符号、上下标与中英文混排</h4>
+            <span class="badge info">符号 · 上下标 · 全半角</span>
+            <span class="badge">8 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li><b>新建</b>一个空白文档（不关闭上一个文档），录入素材 4 行。</li>
+                <li>温度、面积中的数字 2 与化学式中的 2，必须用<b>真正的上标 / 下标</b>格式。</li>
+                <li>符号 © ® § ¥ 通过「插入 → 符号」插入，不得用形状或图片代替。</li>
+                <li>保存为 <code>学号-姓名-练习1-2.docx</code> 到 <code>课时1</code>。</li>
+              </ol>
+            </div>
+            <div class="src">
+              <div class="kicker">录入素材</div>
+              <pre>温度为25℃，湿度60%，面积120m²，水的化学式H₂O。
+版权符号©，注册商标®，章节符号§，人民币¥1000。
+英文句子：WPS Office is easy to use.
+全角括号（示例）与半角括号(示例)的区别。</pre>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>新建。</b>在当前窗口按 <kbd>Ctrl</kbd>+<kbd>N</kbd>，WPS 会新开一个文档标签，原文档不丢。<span class="muted">（标签栏可来回切换，考试中建议每道小题一个文件，避免互相覆盖。）</span></li>
+              <li><b>输入第一行文字。</b>先照常打「温度为25，湿度60，面积120m2，水的化学式H2O。」整句，<b>上下标最后统一设置</b>，边打边设容易乱。</li>
+              <li><b>插入 ℃。</b>光标定位到 25 后面 →「插入」选项卡 →「符号」→「其他符号」→ 字体选「普通文本」，在字符表里找到 <b>℃</b> 双击插入（也可在"子集"里选"类似字母的符号"快速定位）。</li>
+              <li><b>设置上标 m²。</b>选中 <code>120m2</code> 中的数字 <b>2</b> →「开始」选项卡 → 点 <b>X²</b>（上标）按钮，快捷键 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>=</kbd>。设置后数字会变小并上移，<b>不是手动改字号</b>。</li>
+              <li><b>设置下标 H₂O。</b>选中 <code>H2O</code> 中的 <b>2</b> → 点 <b>X₂</b>（下标）按钮，快捷键 <kbd>Ctrl</kbd>+<kbd>=</kbd>。</li>
+              <li><b>插入第二行符号。</b>再点「插入 → 符号 → 其他符号」，字体「普通文本」、子集「拉丁语-1 增补」，依次找到并插入 <b>© ® § ¥</b>（¥ 也可在"货币符号"子集中找到）。</li>
+              <li><b>第三行英文。</b>按 <kbd>Shift</kbd> 切到英文状态输入；单词之间<b>只留一个半角空格</b>，句末用半角句点「.」。</li>
+              <li><b>第四行对比全角/半角。</b>中文状态下打「（」得到全角括号，英文状态下打「(」得到半角括号——肉眼能看出全角括号占一个字宽、半角更窄。</li>
+              <li><b>保存。</b>按 <kbd>F12</kbd> → 选 <code>课时1</code> → 文件名 <code>学号-姓名-练习1-2</code> → 类型 docx → 保存。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e1-2-symbol.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e1-2-symbol.svg" alt="「插入 → 符号 → 其他符号」：字体选普通文本，子集选类似字母的符号，在字符表中双击 <b>℃</b> 即可插入。" loading="lazy"></a><figcaption><span class="tag-step">步骤 3</span>「插入 → 符号 → 其他符号」：字体选普通文本，子集选类似字母的符号，在字符表中双击 <b>℃</b> 即可插入。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e1-2-supsub.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e1-2-supsub.svg" alt="「开始」选项卡字体组末位的 <b>X²</b>（上标）与 <b>X₂</b>（下标）：选中文本后点按钮，不能用改字号代替。" loading="lazy"></a><figcaption><span class="tag-step">步骤 4–5</span>「开始」选项卡字体组末位的 <b>X²</b>（上标）与 <b>X₂</b>（下标）：选中文本后点按钮，不能用改字号代替。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>上下标使用"上标/下标"格式（不是缩小字号） · 符号插入正确 · 英文单词间仅一个半角空格 · 文件名与位置正确</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>把字号改小再往上挪，冒充上标：屏幕上看着像，<b>但格式检查判为错误</b>，且改字号会破坏其他格式。</li>
+                <li>中英文之间、汉字与数字之间加了空格「温度 为 25 ℃」：考试文本要按素材原样录入，多余空格会被判错。</li>
+                <li>℃ 打成「度」+ 字母 C：不是符号，属于录入错误。</li>
+              </ul>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e1-2-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e1-2-result.svg" alt="录入结果：符号用「插入」取得，上下标用真实格式设置" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>录入结果：符号用「插入」取得，上下标用真实格式设置</figcaption></figure></div></div>
+            </article>
+
+        <!-- 例 1-3 -->
+        <article class="ex" id="e1-3">
+          <header class="ex-h">
+            <span class="ex-no">例 1-3</span>
+            <h4>选定、移动、删除与撤销重做</h4>
+            <span class="badge info">编辑基本功</span>
+            <span class="badge">10 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li>新建文档，录入素材三段（每段按 <kbd>Enter</kbd> 分段）。</li>
+                <li>把<b>第 3 段「成绩查询…」整段移到第 1 段之前</b>，移动后三段仍是三个独立段落。</li>
+                <li>在第 2 段后插入 2 个空行，再用删除键清除，最后用 <kbd>Ctrl</kbd>+<kbd>Z</kbd> 撤销、<kbd>Ctrl</kbd>+<kbd>Y</kbd> 恢复，观察变化。</li>
+                <li>分别用"双击"和"三击"选中一个词与一整段，看清两者差别后按一下方向键取消选择。</li>
+                <li>保存为 <code>学号-姓名-练习1-3.docx</code>。</li>
+              </ol>
+            </div>
+            <div class="src">
+              <div class="kicker">录入素材（原顺序）</div>
+              <pre>报名时间：2026年9月1日至9月15日。
+考试时间：2026年9月26日至9月28日。
+成绩查询：考试结束后约30个工作日公布。</pre>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>新建并录入。</b><kbd>Ctrl</kbd>+<kbd>N</kbd> 新建，按素材逐行录入，<b>每行末尾按一次 Enter</b>，屏幕上应看到 3 个 ¶。</li>
+              <li><b>认识三种选中方式。</b>把光标放到第 3 段文字中：
+                <ul>
+                  <li><b>双击</b>某个词 → 选中该词（中文为连续的汉字串，如「成绩查询」）；</li>
+                  <li><b>三击</b>段内任意位置 → 选中<b>整段（含段末的 ¶）</b>；</li>
+                  <li>光标点段首，按住 <kbd>Shift</kbd> 再点段尾 → 选中两点之间全部内容。</li>
+                </ul>
+              </li>
+              <li><b>移动整段。</b>在第 3 段内三击选中整段 → <kbd>Ctrl</kbd>+<kbd>X</kbd> 剪切（段落消失）→ 把光标点到第 1 段最前面（「报」字之前）→ <kbd>Ctrl</kbd>+<kbd>V</kbd> 粘贴。</li>
+              <li><b>检查段落完整性。</b>打开段落标记显示（「开始」选项卡的 ¶ 按钮），确认「成绩查询…」后面有独立的 ¶，且与「报名时间…」分属两段。<span class="muted">若粘成了一整段，说明剪切时没选中段末 ¶，撤销重做一次。</span></li>
+              <li><b>插入空行再删除。</b>光标放到第 2 段末尾按 2 次 <kbd>Enter</kbd>，出现 2 个空段；再把光标放在空行行首按 <kbd>Delete</kbd> 逐个删除（或选中空行按 <kbd>Backspace</kbd>）。</li>
+              <li><b>撤销与恢复。</b>按 <kbd>Ctrl</kbd>+<kbd>Z</kbd> 一次，刚才删掉的空行回来了；再按 <kbd>Ctrl</kbd>+<kbd>Y</kbd>，又消失。<b>撤销可连按多次</b>，逐步回退。</li>
+              <li><b>取消选择。</b>选中后按一下 <kbd>→</kbd> 或 <kbd>←</kbd>，光标本复原位、文字不受影响——比用鼠标乱点安全。</li>
+              <li><b>保存。</b><kbd>F12</kbd> 另存为 <code>学号-姓名-练习1-3.docx</code>。顺序应为：成绩查询 / 报名时间 / 考试时间。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e1-3-select.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e1-3-select.svg" alt="三种选定方式：双击选一个词、三击选整段（含段末 ¶）、Shift+单击框选两点之间的内容。" loading="lazy"></a><figcaption><span class="tag-step">步骤 2</span>三种选定方式：双击选一个词、三击选整段（含段末 ¶）、Shift+单击框选两点之间的内容。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>三段顺序正确且仍是三段（3 个 ¶） · 未误删文字 · 空行清除干净 · 撤销后已重新保存</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>只选了文字没选 ¶，粘贴后与上一段"粘"成一段——这是文字操作题最常见的丢分点之一。</li>
+                <li>撤销之后忘记再按 <kbd>Ctrl</kbd>+<kbd>S</kbd>：屏幕上是对的，磁盘里还是错的，考场上会被判错。</li>
+                <li>用鼠标拖动文字来移动段落：容易拖错位置，也容易把文字拖成"剪贴"效果，建议一律用剪切粘贴。</li>
+              </ul>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e1-3-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e1-3-result.svg" alt="第 3 段整体移到最前：顺序变为 成绩查询 → 报名时间 → 考试时间，三段仍是三个独立段落" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>第 3 段整体移到最前：顺序变为 成绩查询 → 报名时间 → 考试时间，三段仍是三个独立段落</figcaption></figure></div></div>
+            </article>
+
+        <!-- 例 1-4 -->
+        <article class="ex" id="e1-4">
+          <header class="ex-h">
+            <span class="ex-no">例 1-4</span>
+            <h4>页面设置、输出 PDF 与文档加密</h4>
+            <span class="badge info">页面布局 · 输出 · 加密</span>
+            <span class="badge">9 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li>打开 <code>练习1-3.docx</code>，把纸张设为 <b>A4、纵向</b>。</li>
+                <li>页边距设为 <b>上 2.54、下 2.54、左 3.17、右 3.17 厘米</b>，应用于<b>整篇文档</b>。</li>
+                <li>把文档<b>输出为 PDF</b>，保存到同一文件夹，文件名与文档同名。</li>
+                <li>给 docx 文档设置<b>打开密码 123456</b>，关闭后重新打开验证，再取消密码。</li>
+              </ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>打开文档。</b><kbd>Ctrl</kbd>+<kbd>O</kbd> → 定位 <code>课时1</code> → 选 <code>练习1-3.docx</code> → 打开。（也可直接双击文件。）</li>
+              <li><b>设纸张。</b>「页面布局」选项卡（部分版本叫「页面」）→「纸张大小」→ 选 <b>A4</b>；「纸张方向」→ <b>纵向</b>。</li>
+              <li><b>设页边距。</b>「页边距」→「自定义页边距」→ 在弹出的「页面设置」对话框中依次填入：上 <b>2.54</b>、下 <b>2.54</b>、左 <b>3.17</b>、右 <b>3.17</b>（单位：厘米）→ 下方「应用于」选 <b>整篇文档</b> → 确定。</li>
+              <li><b>核对单位。</b>如果数字框显示的是"磅"或"字符"，先把单位下拉框改成<b>厘米</b>再输入，否则数值会被换算错。</li>
+              <li><b>输出 PDF。</b>「文件」→「输出为PDF」（部分版本为「另存为PDF」）→ 保存位置选 <code>课时1</code> → 文件名保持 <code>学号-姓名-练习1-3</code> → 确定/开始输出。</li>
+              <li><b>加密码。</b>「文件」→「文档加密」→「密码加密」→ 在「打开权限密码」框输入 <code>123456</code> → 确认框再输一次 → 确定 → 按 <kbd>Ctrl</kbd>+<kbd>S</kbd> 保存。</li>
+              <li><b>验证并取消。</b>关闭文档再打开，弹出密码框即成功；输入 123456 进入后，用同一路径把密码清空 → 保存，交卷前务必取消密码。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e1-4-layout.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e1-4-layout.svg" alt="「页面布局」选项卡：纸张大小、页边距、分栏、分隔符、水印、页面边框、页面颜色都在这一组。" loading="lazy"></a><figcaption><span class="tag-step">步骤 2</span>「页面布局」选项卡：纸张大小、页边距、分栏、分隔符、水印、页面边框、页面颜色都在这一组。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e1-4-page.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e1-4-page.svg" alt="「页面设置 → 页边距」：上下填 2.54 厘米、左右填 3.17 厘米，「应用于」必须选 <b>整篇文档</b>。" loading="lazy"></a><figcaption><span class="tag-step">步骤 3</span>「页面设置 → 页边距」：上下填 2.54 厘米、左右填 3.17 厘米，「应用于」必须选 <b>整篇文档</b>。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e1-4-encrypt.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e1-4-encrypt.svg" alt="「文件 → 文档加密 → 密码加密」：在「打开权限密码」中输入密码，确认后保存才生效。" loading="lazy"></a><figcaption><span class="tag-step">步骤 6</span>「文件 → 文档加密 → 密码加密」：在「打开权限密码」中输入密码，确认后保存才生效。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>纸张 A4 + 纵向 · 四个页边距数值全对 · "应用于"为整篇文档 · PDF 与 docx 同名同目录 · 密码设置与清除</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>页边距只改了「本节」：文档里若有分节符，其余节不变，评卷抽检会判错。</li>
+                <li>把 3.17 输成 3.17 磅：数值对、单位错，页边距几乎为零，整页文字挤成一团。</li>
+                <li>输出 PDF 时改了文件名，导致与 docx 不同名，评分时找不到对应文件。</li>
+              </ul>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e1-4-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e1-4-result.svg" alt="A4 纵向 + 上下 2.54 / 左右 3.17 厘米，红色虚线为页边距位置" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>A4 纵向 + 上下 2.54 / 左右 3.17 厘米，红色虚线为页边距位置</figcaption></figure></div></div>
+            </article>
+
+        <div class="callout key" style="margin-top:22px">
+          <h4>⏱ 课堂限时挑战（5 分钟，同桌互评）</h4>
+          <p><b>任务：</b>从「新建空白文档」开始，3 分钟内录入下面这句话并保存为 <code>学号-姓名-挑战1.docx</code>，存到 <code>课时1</code>：</p>
+          <p class="mono small" style="background:#fff;border:1px dashed #f0c9c1;padding:10px 12px;border-radius:8px">国家计算机等级考试每年举行两次，分别在3月和9月，考生须提前在官网完成报名。</p>
+          <p class="mb0"><b>评分（10 分）：</b>新建正确 2 分 · 文字与标点无误 4 分 · 文件名正确 2 分 · 位置正确 2 分。<b>3-2-1 检查法：</b>存完看 3 处——标题栏文件名、文件夹里的文件、正文有无红波浪线（拼写提示）。</p>
+        </div>
+
+        <div class="callout" style="margin-top:14px">
+          <h4>课后作业（约 15 分钟）</h4>
+          <ul class="clean small" style="margin-top:6px">
+            <li>不看讲义，独立重做例 1-1 与例 1-4 各一遍，记录用时（目标：例 1-1 ≤ 2 分钟，例 1-4 ≤ 4 分钟）。</li>
+            <li>新建一个文档，录入 100 字自我介绍，要求含 1 个上标、1 个符号、1 段英文，另存为 <code>自我介绍.docx</code>。</li>
+            <li>把该文档页边距改为上下 2 厘米、左右 2.5 厘米，输出同名 PDF，两个文件都交。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 2 课时 ============ -->
+  <section id="l2">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>课时</small>02</div>
+        <div class="ltx">
+          <h3>字符与段落：让文档"长得对"</h3>
+          <p>文字操作题 30 分里，字体与段落格式几乎年年考。评分看的是<b>对话框里的参数</b>，不是"看起来差不多"。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>4 道例题</span><span>考纲二·2</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本课时学完，你要能做到</h4>
+          <ul class="clean small" style="margin-top:6px">
+            <li>准确设置字体、字号、字形、颜色、字符间距，并说清"二号"和"小二"差多少</li>
+            <li>用「段落」对话框一次设好对齐、首行缩进 2 字符、1.5 倍行距、段前段后间距</li>
+            <li>用格式刷把一段的格式复制给多段（双击连续刷）</li>
+            <li>用自动编号 / 项目符号 / 段落边框底纹做出规范的"注意事项"块</li>
+          </ul>
+        </div>
+        <div class="shotblock"><div class="kicker">课前导览</div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/l2-begin.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/l2-begin.svg" alt="「开始」选项卡的字体组与段落组：所有字符格式与段落格式都从这里设置。" loading="lazy"></a><figcaption><span class="tag-step">课前导览</span>「开始」选项卡的字体组与段落组：所有字符格式与段落格式都从这里设置。</figcaption></figure></div></div>
+
+        <div class="callout warn">
+          <h4>先记住这条铁律</h4>
+          <p><b>一切"对齐"和"缩进"都用格式设置，绝不用空格凑。</b>用空格顶出来的居中、用空格凑出来的首行缩进，在评卷系统里一律判为格式错误；而且文字一改就全乱。</p>
+        </div>
+
+        <!-- 例 2-1 -->
+        <article class="ex" id="e2-1">
+          <header class="ex-h">
+            <span class="ex-no">例 2-1</span>
+            <h4>通知类文档的标题格式</h4>
+            <span class="badge info">字体 · 字号 · 居中 · 段间距</span>
+            <span class="badge">10 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li><b>新建</b>文档，录入素材全文（标题、称谓、两段正文、落款）。</li>
+                <li><b>标题</b>：黑体、二号、加粗、居中、段前 0.5 行、段后 0.5 行、字符间距加宽 2 磅。</li>
+                <li><b>称谓</b>：宋体、小四、左对齐、段前 0.5 行。</li>
+                <li><b>落款</b>：宋体、小四、右对齐（不许用空格顶到右边）。</li>
+                <li>保存为 <code>学号-姓名-练习2-1.docx</code>。</li>
+              </ol>
+            </div>
+            <div class="src">
+              <div class="kicker">录入素材</div>
+              <pre>关于2026年秋季学期计算机等级考试报名的通知
+各二级学院、全体在校学生：
+根据教育部教育考试院安排，2026年下半年全国计算机等级考试将于9月26日至28日举行。本次考试我校考点设在实训楼A座三楼机房，共设6个考场。
+报名采用网上报名方式，考生须登录中国教育考试网完成注册、填报与缴费。报名成功后请在规定时间内自行打印准考证。
+教务处
+2026年9月1日</pre>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>新建录入。</b><kbd>Ctrl</kbd>+<kbd>N</kbd> 新建，按素材逐段录入，每段末尾按一次 <kbd>Enter</kbd>。落款两行建议合成一段、中间用 <kbd>Shift</kbd>+<kbd>Enter</kbd>，便于整体右对齐。</li>
+              <li><b>定位标题。</b>把光标点在标题行任意位置（<b>不必选中整行</b>，段落格式对整段生效）。</li>
+              <li><b>设字体字号。</b>「开始」选项卡 → 字体框下拉找不到「黑体」时，<b>直接在框里输入"黑体"两字后按 Enter</b>；字号框输入 <b>二号</b> 按 Enter（二号 = 22 磅）。</li>
+              <li><b>加粗居中。</b>点 <b>B</b>（<kbd>Ctrl</kbd>+<kbd>B</kbd>）；点「居中」（<kbd>Ctrl</kbd>+<kbd>E</kbd>）。</li>
+              <li><b>设段前段后。</b>「开始」→ 段落组右下角的小箭头（或右键 →「段落」）→ 打开「段落」对话框 →「间距」区：段前 <b>0.5 行</b>、段后 <b>0.5 行</b> → 确定。</li>
+              <li><b>设字符间距。</b>「开始」→ 字体组右下角小箭头 →「字体」对话框 → 切到「字符间距」选项卡 →「间距」选 <b>加宽</b>、「磅值」输 <b>2 磅</b> → 确定。</li>
+              <li><b>设称谓。</b>光标点到"各二级学院…"这一行 → 宋体、小四 → 左对齐（<kbd>Ctrl</kbd>+<kbd>L</kbd>）→ 段落对话框设段前 <b>0.5 行</b>。</li>
+              <li><b>设落款。</b>选中落款段 → 宋体、小四 → 点「右对齐」（<kbd>Ctrl</kbd>+<kbd>R</kbd>）。<b>不要敲空格</b>。</li>
+              <li><b>保存。</b><kbd>F12</kbd> 另存为 <code>学号-姓名-练习2-1.docx</code>；顺手按 <kbd>Ctrl</kbd>+<kbd>S</kbd> 再存一次。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e2-1-font.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e2-1-font.svg" alt="「字体」对话框 →「字符间距」选项卡：间距选 <b>加宽</b>，磅值填 <b>2 磅</b>。" loading="lazy"></a><figcaption><span class="tag-step">步骤 6</span>「字体」对话框 →「字符间距」选项卡：间距选 <b>加宽</b>，磅值填 <b>2 磅</b>。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e2-1-para.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e2-1-para.svg" alt="「段落」对话框：段前、段后各填 <b>0.5 行</b>，对齐方式按标题 / 正文 / 落底分别选择。" loading="lazy"></a><figcaption><span class="tag-step">步骤 5</span>「段落」对话框：段前、段后各填 <b>0.5 行</b>，对齐方式按标题 / 正文 / 落底分别选择。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>黑体 + 二号 + 加粗 + 居中（4 项） · 段前段后各 0.5 行 · 字符间距加宽 2 磅 · 落款为右对齐而非空格</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>先 <kbd>Ctrl</kbd>+<kbd>A</kbd> 全选再设标题格式：正文跟着变成黑体二号，整篇报废。</li>
+                <li>把「二号」选成「小二」：二号 = 22 磅，小二 = 18 磅，肉眼差一圈，评分差一分。</li>
+                <li>用连打空格把落款推到右边：换台电脑或改字号就错位，格式检查也不给分。</li>
+              </ul>
+            </div>
+            <div class="callout tip">
+              <h4>字号速查（考试常考，背下来更稳）</h4>
+              <p class="small mb0">初号 42 · 小初 36 · 一号 26 · 小一 24 · <b>二号 22</b> · <b>小二 18</b> · 三号 16 · 小三 15 · 四号 14 · <b>小四 12</b> · 五号 10.5 · 小五 9（单位：磅）</p>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e2-1-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e2-1-result.svg" alt="通知成品：黑体二号居中标题、称谓、正文、右对齐落款四级格式齐备" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>通知成品：黑体二号居中标题、称谓、正文、右对齐落款四级格式齐备</figcaption></figure></div></div>
+            </article>
+
+        <!-- 例 2-2 -->
+        <article class="ex" id="e2-2">
+          <header class="ex-h">
+            <span class="ex-no">例 2-2</span>
+            <h4>正文段落格式：首行缩进与 1.5 倍行距</h4>
+            <span class="badge info">对齐 · 缩进 · 行距</span>
+            <span class="badge">8 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li>在 <code>练习2-1.docx</code> 基础上（或新建录入素材三段），把<b>两段正文</b>设为：宋体、小四、<b>两端对齐</b>、<b>首行缩进 2 字符</b>、<b>1.5 倍行距</b>、段前段后 0。</li>
+                <li>打开段落标记，确认每段开头<b>没有空格</b>、段末只有 1 个 ¶。</li>
+                <li>另存为 <code>学号-姓名-练习2-2.docx</code>。</li>
+              </ol>
+            </div>
+            <div class="src">
+              <div class="kicker">素材（若新建请录入）</div>
+              <pre>根据教育部教育考试院安排，2026年下半年全国计算机等级考试将于9月26日至28日举行。本次考试我校考点设在实训楼A座三楼机房，共设6个考场。
+报名采用网上报名方式，考生须登录中国教育考试网完成注册、填报与缴费。报名成功后请在规定时间内自行打印准考证。</pre>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>选中两段正文。</b>光标点第 1 段开头，按住 <kbd>Shift</kbd> 点第 2 段末尾——只选正文，<b>不要把标题和落款框进来</b>。</li>
+              <li><b>设字体。</b>「开始」→ 字体 <b>宋体</b>、字号 <b>小四</b>（小四 = 12 磅）。</li>
+              <li><b>开段落对话框。</b>「开始」→ 段落组右下角小箭头，或在选中区域上右键 →「段落」。</li>
+              <li><b>设对齐与缩进。</b>「对齐方式」选 <b>两端对齐</b>；「缩进」区「特殊格式」选 <b>首行缩进</b>，「度量值」输 <b>2 字符</b>。</li>
+              <li><b>设行距。</b>「间距」区「行距」选 <b>1.5 倍行距</b>；段前 <b>0 行</b>、段后 <b>0 行</b> → 点「确定」。</li>
+              <li><b>检查。</b>打开 ¶ 显示：每段首字前面应是"空两格"的缩进标记（不是空格点），段末 1 个 ¶。再按 <kbd>F12</kbd> 另存为 <code>学号-姓名-练习2-2.docx</code>。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e2-2-para.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e2-2-para.svg" alt="「段落」对话框一次设好：两端对齐、1.5 倍行距、段前段后 0 行、特殊格式「首行缩进」度量值 <b>2 字符</b>。" loading="lazy"></a><figcaption><span class="tag-step">步骤 3–5</span>「段落」对话框一次设好：两端对齐、1.5 倍行距、段前段后 0 行、特殊格式「首行缩进」度量值 <b>2 字符</b>。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>宋体 + 小四 · 两端对齐 · 首行缩进 2 字符（用"特殊格式"，不是空格） · 1.5 倍行距 · 段前段后为 0</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>度量值单位显示为"厘米"时直接输 2：变成缩进 2 厘米（约 5 个字符）。正确做法是输 <b>2 字符</b>（WPS 会自动换算），或先在「文件 → 选项」把度量单位改为"字符"。</li>
+                <li>用空格缩进：¶ 前会出现一串小圆点，一眼就能被看出来。</li>
+                <li>行距选成"固定值 20 磅"：遇到大字号或图片会被裁切，考试要求"1.5 倍"时必须选倍数。</li>
+              </ul>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e2-2-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e2-2-result.svg" alt="正文效果：首行缩进两格（缩进标记，不是空格）、两端对齐、1.5 倍行距" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>正文效果：首行缩进两格（缩进标记，不是空格）、两端对齐、1.5 倍行距</figcaption></figure></div></div>
+            </article>
+
+        <!-- 例 2-3 -->
+        <article class="ex" id="e2-3">
+          <header class="ex-h">
+            <span class="ex-no">例 2-3</span>
+            <h4>字符修饰与格式刷</h4>
+            <span class="badge info">底纹 · 颜色 · 格式刷</span>
+            <span class="badge">9 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li>新建文档录入素材（4 段），保存为 <code>学号-姓名-练习2-3.docx</code>。</li>
+                <li>给「重点提示」四个字加<b>字符底纹</b>和<b>字符边框</b>。</li>
+                <li>把第 2 段中的「注意」设为<b>红色 + 加粗</b>。</li>
+                <li>第 1 段设为：楷体、小四、<b>加粗</b>、段前段后各 0.5 行；再用<b>格式刷双击</b>把该段格式复制到第 3、4 段。</li>
+              </ol>
+            </div>
+            <div class="src">
+              <div class="kicker">录入素材</div>
+              <pre>重点提示：报名信息一经提交，姓名与身份证号不可修改。
+注意：缴费成功后才算报名完成，未缴费的报名记录将在24小时后自动失效。
+请考生在考前一周登录系统打印准考证，并核对考试时间与考场位置。
+考试当天须携带准考证和有效身份证件，提前30分钟到达考场。</pre>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>新建录入保存。</b><kbd>Ctrl</kbd>+<kbd>N</kbd> → 录入 4 段（每段 Enter）→ <kbd>F12</kbd> 另存为 <code>学号-姓名-练习2-3.docx</code>。</li>
+              <li><b>加字符底纹。</b>选中「重点提示」四字 →「开始」→ 字体组里的 <b>A 带底色</b>图标（字符底纹）→ 点下拉箭头可选颜色。</li>
+              <li><b>加字符边框。</b>保持选中 → 点旁边的<b>方框 A</b> 图标（字符边框）。此时四个字外有一圈细框。</li>
+              <li><b>设红色加粗。</b>选中第 2 段的「注意」→ 字体颜色 → 标准色 <b>红</b>；按 <kbd>Ctrl</kbd>+<kbd>B</kbd> 加粗。</li>
+              <li><b>做"样板段"。</b>光标点在第 1 段内 → 设 <b>楷体</b>、<b>小四</b>、<b>加粗</b>；段落对话框设段前 0.5 行、段后 0.5 行。</li>
+              <li><b>单击格式刷。</b>保持光标在第 1 段 → 点「开始」→「格式刷」→ 光标变成小刷子 → 在第 3 段内拖选一次 → 格式套用后刷子自动消失（只刷一次）。</li>
+              <li><b>双击格式刷。</b>再回到第 1 段点格式刷，这次<b>双击</b>图标 → 依次刷第 4 段 → 按 <kbd>Esc</kbd> 或再点一次格式刷退出，可连续刷多段。</li>
+              <li><b>保存并核对。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>；逐段检查字体是否统一为楷体、段前段后是否一致。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e2-3-char.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e2-3-char.svg" alt="字体组中的 <b>A 带底色</b>（字符底纹）与 <b>方框 A</b>（字符边框）：只包住被选中的文字。" loading="lazy"></a><figcaption><span class="tag-step">步骤 2–3</span>字体组中的 <b>A 带底色</b>（字符底纹）与 <b>方框 A</b>（字符边框）：只包住被选中的文字。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e2-3-paint.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e2-3-paint.svg" alt="「格式刷」在「开始 → 剪贴板」组：单击刷一次，双击连续刷多段，按 Esc 退出。" loading="lazy"></a><figcaption><span class="tag-step">步骤 6–7</span>「格式刷」在「开始 → 剪贴板」组：单击刷一次，双击连续刷多段，按 Esc 退出。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>字符底纹与字符边框是"字符级"格式（不是段落底纹） · 「注意」红色加粗 · 第 3、4 段与第 1 段格式完全一致</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>字符底纹（只包住文字）与段落底纹（整行通栏）不是一回事，题目说"字符"就必须选字符底纹。</li>
+                <li>格式刷只复制<b>格式</b>不复制文字；但若把目标段落连 ¶ 一起拖选，段落格式（段前段后、对齐）也会一并刷过去，容易出现多出空行的情况——只刷文字即可。</li>
+                <li>刷完不退出格式刷，接着输入的文字会带上怪格式。</li>
+              </ul>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e2-3-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e2-3-result.svg" alt="字符底纹 + 字符边框 + 红色加粗 + 格式刷统一后的段落格式" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>字符底纹 + 字符边框 + 红色加粗 + 格式刷统一后的段落格式</figcaption></figure></div></div>
+            </article>
+
+        <!-- 例 2-4 -->
+        <article class="ex" id="e2-4">
+          <header class="ex-h">
+            <span class="ex-no">例 2-4</span>
+            <h4>自动编号、项目符号与段落边框底纹</h4>
+            <span class="badge info">编号 · 项目符号 · 段落框线</span>
+            <span class="badge">8 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li>新建文档录入素材：小标题「报名流程」+ 4 条步骤，小标题「注意事项」+ 3 条说明。</li>
+                <li>「报名流程」4 条改为<b>自动编号 1. 2. 3. 4.</b>（不许手动打数字）。</li>
+                <li>「注意事项」3 条改为<b>• 项目符号</b>。</li>
+                <li>给「注意事项」这 4 段（含小标题）加 <b>1.5 磅实线方框</b> + <b>浅黄色底纹 RGB(255,255,204)</b>，距正文左右各 0.2 厘米。</li>
+                <li>保存为 <code>学号-姓名-练习2-4.docx</code>。</li>
+              </ol>
+            </div>
+            <div class="src">
+              <div class="kicker">录入素材</div>
+              <pre>报名流程
+登录中国教育考试网注册账号
+选择考点与考试科目
+上传照片并在线缴费
+打印准考证
+注意事项
+照片须为近期免冠证件照，背景为白色或浅蓝色
+缴费后请保留支付凭证截图
+报名截止后不再接受补报</pre>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>新建录入。</b>每行一段，共 9 段。编号、符号先不输入，交给 WPS 自动生成。</li>
+              <li><b>套用自动编号。</b>选中「登录…」到「打印准考证」4 段 →「开始」→「编号」下拉 → 选 <b>1. 2. 3.</b> 样式。段落前出现 1~4，删除其中一条后其余会自动重排。</li>
+              <li><b>套用项目符号。</b>选中「照片须为…」到「报名截止后…」3 段 →「项目符号」下拉 → 选 <b>•</b>（圆点）。</li>
+              <li><b>加段落边框。</b>选中「注意事项」及其下 3 段 →「开始」→「边框」下拉 →「边框和底纹」→「边框」选项卡：设置选 <b>方框</b>、线型 <b>实线</b>、宽度 <b>1.5 磅</b>、「应用于」选 <b>段落</b>。</li>
+              <li><b>加段落底纹。</b>切到「底纹」选项卡 →「填充」选「其他颜色」→「自定义」→ 输入 <b>R=255、G=255、B=204</b> → 确定；「应用于」选 <b>段落</b> → 确定。</li>
+              <li><b>调内边距。</b>在「边框和底纹」对话框点「选项」→「距正文」左/右均设 <b>0.2 厘米</b> → 确定。</li>
+              <li><b>保存。</b><kbd>F12</kbd> 另存为 <code>学号-姓名-练习2-4.docx</code>，检查方框是否完整包住 4 段。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e2-4-list.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e2-4-list.svg" alt="「编号」下拉选 1. 2. 3.、「项目符号」下拉选圆点：自动编号可随内容增减自动重排。" loading="lazy"></a><figcaption><span class="tag-step">步骤 2–3</span>「编号」下拉选 1. 2. 3.、「项目符号」下拉选圆点：自动编号可随内容增减自动重排。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e2-4-border.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e2-4-border.svg" alt="「边框和底纹」：边框选方框、实线、<b>1.5 磅</b>；底纹用自定义 RGB(255,255,204)；「应用于」选 <b>段落</b>，「选项」中距正文左右 0.2 厘米。" loading="lazy"></a><figcaption><span class="tag-step">步骤 4–6</span>「边框和底纹」：边框选方框、实线、<b>1.5 磅</b>；底纹用自定义 RGB(255,255,204)；「应用于」选 <b>段落</b>，「选项」中距正文左右 0.2 厘米。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>自动编号（不是手打数字） · 项目符号样式正确 · 边框宽度 1.5 磅且"应用于段落" · 底纹 RGB 值准确</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>「应用于」选了"文字"：底纹只包住文字，行与行之间露白，与题目要求的整块底纹不符。</li>
+                <li>手动输入 1. 2. 3.：中间插入一条时不会自动重排，评卷按"是否使用编号功能"判分。</li>
+                <li>只选中 3 条说明没选小标题，方框会把标题漏在外面，版面被切成两半。</li>
+              </ul>
+            </div>
+            <div class="callout tip">
+              <h4>一个小技巧</h4>
+              <p>选中 4 段后先设边框、再设底纹，最后调边距——顺序反了容易把已设的框线清掉。调完若框线消失，回到「边框」选项卡重新点一次「方框」即可。</p>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e2-4-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e2-4-result.svg" alt="自动编号 + 项目符号 + 1.5 磅方框浅黄底纹的「注意事项」块" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>自动编号 + 项目符号 + 1.5 磅方框浅黄底纹的「注意事项」块</figcaption></figure></div></div>
+            </article>
+
+        <div class="callout" style="margin-top:20px">
+          <h4>课后作业（约 20 分钟）</h4>
+          <ul class="clean small" style="margin-top:6px">
+            <li>把例 2-1 到例 2-4 的四个文件合成一份"格式练习汇编"：一个文档里 4 页，每页放一题结果，统一页边距。</li>
+            <li>默写：二号 = ？磅，小四 = ？磅，1.5 倍行距在哪设置，首行缩进 2 字符在哪设置。</li>
+            <li>找一份学校发的通知，照着把它排成"标题黑体二号居中 + 正文宋体小四首行缩进 2 字符 + 1.5 倍行距"。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 3 课时 ============ -->
+  <section id="l3">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>课时</small>03</div>
+        <div class="ltx">
+          <h3>样式与批量处理：从"会改"到"改得快"</h3>
+          <p>考场上时间紧，逐段手工改格式是最慢的路。这一课时教你两把"快刀"：<b>样式</b>与<b>查找替换</b>。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>4 道例题</span><span>考纲二·2；二·1；二·5</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本课时学完，你要能做到</h4>
+          <ul class="clean small" style="margin-top:6px">
+            <li>给标题套用「标题1 / 标题2」样式，并一次性修改样式定义（全文同步变）</li>
+            <li>用导航窗格检查文档结构，为第 4 课时的自动目录打地基</li>
+            <li>用查找替换完成文本替换、格式替换、删除多余空行与【】批注</li>
+            <li>做出两栏带分隔线的版面、首字下沉、文字水印与页面边框</li>
+          </ul>
+        </div>
+        <div class="shotblock"><div class="kicker">课前导览</div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/l3-style.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/l3-style.svg" alt="「开始 → 样式」决定文档结构，「引用 → 目录 / 题注」决定目录与编号，二者配合才能一键生成。" loading="lazy"></a><figcaption><span class="tag-step">课前导览</span>「开始 → 样式」决定文档结构，「引用 → 目录 / 题注」决定目录与编号，二者配合才能一键生成。</figcaption></figure></div></div>
+
+        <!-- 例 3-1 -->
+        <article class="ex" id="e3-1">
+          <header class="ex-h">
+            <span class="ex-no">例 3-1</span>
+            <h4>套用并修改样式（全文统一的最快办法）</h4>
+            <span class="badge info">样式 · 导航窗格</span>
+            <span class="badge">12 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li><b>新建</b>文档，录入素材（1 个大标题 + 3 个二级标题 + 若干正文段）。</li>
+                <li>大标题套用<b>「标题1」</b>样式，三个二级标题套用<b>「标题2」</b>样式，正文套用<b>「正文」</b>样式。</li>
+                <li>修改「标题1」样式为：黑体、小二、居中、段前段后各 0.5 行；修改「正文」样式为：宋体、小四、首行缩进 2 字符、1.5 倍行距。</li>
+                <li>打开导航窗格，确认能看到 4 个标题层级。</li>
+                <li>保存为 <code>学号-姓名-练习3-1.docx</code>。</li>
+              </ol>
+            </div>
+            <div class="src">
+              <div class="kicker">录入素材（节选，可只录前两节）</div>
+              <pre>计算机等级考试实训报告
+一、实训目的
+本次实训旨在熟悉WPS文字的基本操作，掌握文档排版的规范方法，为参加国家计算机等级二级考试做好准备。
+通过实训，学生应能独立完成通知、报告等常用文档的排版工作。
+二、实训内容
+实训内容包括文档新建与保存、字符与段落格式设置、样式应用、表格制作以及图文混排等内容。
+每一项内容均配有课堂练习，练习结束后由教师逐台检查并当场点评。
+三、实训总结
+实训过程中发现，格式不统一是最常见的问题，主要原因是逐段手工设置而忽略了样式功能。
+建议后续练习先套用样式，再按需微调，以提升排版效率。</pre>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>新建录入。</b><kbd>Ctrl</kbd>+<kbd>N</kbd> 新建并录入素材，注意每个标题<b>独立成段</b>。</li>
+              <li><b>套用标题1。</b>光标点在「计算机等级考试实训报告」行内 →「开始」→ 样式组点 <b>标题1</b>（快捷键 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>1</kbd>）。文字会自动变成预设的大字。</li>
+              <li><b>套用标题2。</b>依次把光标放进「一、实训目的」「二、实训内容」「三、实训总结」→ 点 <b>标题2</b>（<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>2</kbd>）。</li>
+              <li><b>套用正文。</b>选中所有正文段 → 点样式组 <b>正文</b>，清除之前的手工格式，回到统一样式。</li>
+              <li><b>改样式定义。</b>在样式组「标题1」上<b>右键 →「修改」</b>→ 在对话框中设字体 <b>黑体</b>、字号 <b>小二</b>、对齐 <b>居中</b> →「格式」按钮 →「段落」→ 段前 0.5 行、段后 0.5 行 → 确定。<span class="muted">（一次修改，全文所有"标题1"同步变化——这就是样式的威力。）</span></li>
+              <li><b>改正文样式。</b>右键「正文」→「修改」→ 宋体、小四 → 格式 → 段落 → 首行缩进 <b>2 字符</b>、行距 <b>1.5 倍</b> → 确定。</li>
+              <li><b>查结构。</b>「视图」→ 勾选 <b>导航窗格</b>，左侧出现标题树，依次列出 1 个一级、3 个二级标题；点任一标题可跳转。最后 <kbd>F12</kbd> 另存为 <code>学号-姓名-练习3-1.docx</code>。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e3-1-style.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e3-1-style.svg" alt="在样式上右键 →「修改…」：改一次样式，全文使用该样式的段落同步改变。" loading="lazy"></a><figcaption><span class="tag-step">步骤 5</span>在样式上右键 →「修改…」：改一次样式，全文使用该样式的段落同步改变。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e3-1-modify.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e3-1-modify.svg" alt="「修改样式」对话框：字体选项卡设黑体、小二；「格式」按钮进入段落设居中与段前段后 0.5 行。" loading="lazy"></a><figcaption><span class="tag-step">步骤 5–6</span>「修改样式」对话框：字体选项卡设黑体、小二；「格式」按钮进入段落设居中与段前段后 0.5 行。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>标题<b>套用了样式</b>（而非手工设字体） · 样式修改后全文同步 · 导航窗格可显示层级 · 正文样式含首行缩进与 1.5 倍行距</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>直接给标题设"黑体 + 加大 + 加粗"而不套样式：看着一样，但<b>第 4 课时生成不了目录</b>，这是连环丢分点。</li>
+                <li>在样式上右键选「修改」时勾了"添加到模板"：会影响以后所有新文档，考试时选默认即可。</li>
+                <li>只改了个别段落的字体，没改样式定义：同一样式出现两种外观，评卷抽检必错。</li>
+              </ul>
+            </div>
+            <div class="callout tip">
+              <h4>为什么大纲要求"样式主题"</h4>
+              <p>大纲二·2 明确包含「样式、主题」。考试常这样问：<b>"将文中所有一级标题设置为…（要求使用样式）"</b>——看到"使用样式"四个字，就别手工设格式。</p>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e3-1-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e3-1-result.svg" alt="套用样式后的报告页，右侧「导航窗格」可显示标题层级" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>套用样式后的报告页，右侧「导航窗格」可显示标题层级</figcaption></figure></div></div>
+            </article>
+
+        <!-- 例 3-2 -->
+        <article class="ex" id="e3-2">
+          <header class="ex-h">
+            <span class="ex-no">例 3-2</span>
+            <h4>查找替换三连：文本、格式、特殊字符</h4>
+            <span class="badge accent">高频考点</span>
+            <span class="badge">12 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li><b>任务 A：</b>把全文的「电子商务」替换为「跨境电子商务」，要求不出现「跨境跨境电子商务」。</li>
+                <li><b>任务 B：</b>把全文所有<b>红色且加粗</b>的文字，统一改为<b>蓝色（标准蓝）、不加粗</b>。</li>
+                <li><b>任务 C：</b>删除全文<b>多余空行</b>（连续两个段落标记变成一个）。</li>
+                <li><b>任务 D：</b>删除全文所有用【】括起来的批注（如【此处待补数据】）。</li>
+                <li>完成后保存为 <code>学号-姓名-练习3-2.docx</code>。</li>
+              </ol>
+            </div>
+            <div class="src">
+              <div class="kicker">练习素材（新建后录入，注意保留空行与【】）</div>
+              <pre>电子商务专业实训方案
+
+一、实训背景
+近年来，电子商务行业保持较快增长。【此处待补统计数据】
+
+电子商务已成为区域经济的重要增长点，跨境电商业务量逐年上升。
+
+二、实训目标
+使学生掌握电子商务平台的基本运营流程，理解网络营销的核心方法。
+【此处待补案例】
+
+三、实训安排
+实训周期为四周，每周安排两个专题。【待补充】
+
+
+四、考核方式
+以过程性考核为主，结合实训报告评定成绩。</pre>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>打开替换对话框。</b>按 <kbd>Ctrl</kbd>+<kbd>H</kbd>（或在「开始」→「查找」下拉 →「替换」）。对话框含「查找内容」「替换为」两栏，点「更多」可展开格式与通配符选项。</li>
+              <li><b>任务 A（避开重复替换的坑）。</b>直接替换会出错：原文中本来就写着"跨境电子商务"的地方，会被替换成"跨境<b>跨境电子商务</b>"。可靠做法是<b>占位符两遍替换</b>：
+                <ul>
+                  <li>第一步：查找 <code>跨境电子商务</code>，替换为 <code>@@</code>，全部替换（先把已经正确的词"藏起来"）；</li>
+                  <li>第二步：查找 <code>电子商务</code>，替换为 <code>跨境电子商务</code>，全部替换；</li>
+                  <li>第三步：查找 <code>@@</code>，替换为 <code>跨境电子商务</code>，全部替换。</li>
+                </ul>
+                <span class="muted">注意：不要指望「全字匹配」来解决——它按英文单词边界判断，对连续汉字基本不起作用。</span>
+              </li>
+              <li><b>任务 B（格式替换）。</b>清空两个输入框 → 光标放在「查找内容」框 → 点「格式」→「字体」→ 设<b>红色、加粗</b> → 确定；光标移到「替换为」框 → 点「格式」→「字体」→ 设<b>蓝色、取消加粗</b> → 确定；点「全部替换」。<span class="muted">（两个框下方会显示已设的格式说明，务必核对再替换。）</span></li>
+              <li><b>任务 C（删空行）。</b>先点「不限定格式」清掉刚才的格式条件 → 「查找内容」输入 <code>^p^p</code>、「替换为」输入 <code>^p</code> → 「全部替换」，<b>反复点直到提示"替换 0 处"</b>（一次只能消掉一半空行）。</li>
+              <li><b>任务 D（通配符删批注）。</b>勾选「使用通配符」→「查找内容」输入 <code>【*】</code>、「替换为」留空 →「全部替换」。<span class="muted">（* 代表任意多个字符，但不会跨段落，所以只会匹配段内的【…】。）</span></li>
+              <li><b>验收。</b>用 <kbd>Ctrl</kbd>+<kbd>F</kbd> 搜「【」应显示 0 个结果；再目视检查空行是否只剩一个。完成后 <kbd>Ctrl</kbd>+<kbd>S</kbd> 另存为 <code>学号-姓名-练习3-2.docx</code>。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e3-2-replace.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e3-2-replace.svg" alt="「查找和替换」（Ctrl+H）：查找内容 / 替换为两栏输入，「更多 >>」可展开通配符与特殊字符。" loading="lazy"></a><figcaption><span class="tag-step">步骤 1–2</span>「查找和替换」（Ctrl+H）：查找内容 / 替换为两栏输入，「更多 >>」可展开通配符与特殊字符。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e3-2-format.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e3-2-format.svg" alt="格式替换：查找端设「红色 + 加粗」，替换端设「蓝色 + 不加粗」，两端格式必须分别设置。" loading="lazy"></a><figcaption><span class="tag-step">步骤 3</span>格式替换：查找端设「红色 + 加粗」，替换端设「蓝色 + 不加粗」，两端格式必须分别设置。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>替换后无重复词（"跨境跨境"） · 格式替换两端条件都设对 · 空行彻底清除（无残留 ¶¶） · 【】批注全删且原文正文未误删</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>直接替换「电子商务 → 跨境电子商务」：原文中已有"跨境电子商务"处会变成"跨境跨境电子商务"。<b>这是最经典的陷阱</b>。</li>
+                <li>格式替换只设了「查找」条件没设「替换」条件：结果是"红色加粗"被替换成"红色加粗"，看不出变化。</li>
+                <li>删空行只替换一次就以为完成：<code>^p^p → ^p</code> 一次只能减半，必须重复到"0 处"。</li>
+                <li>勾了「使用通配符」却输入 <code>^p</code>：通配符模式下段落标记要用 <code>^13</code>，否则查不到。做完任务 D 记得取消勾选，再做任务 C。</li>
+              </ul>
+            </div>
+            <div class="callout tip">
+              <h4>常用替换代码速查</h4>
+              <p class="small mb0"><code>^p</code> 段落标记 · <code>^t</code> 制表符 · <code>^l</code> 手动换行符（软回车） · <code>^m</code> 手动分页符 · <code>^w</code> 空白区域（空格与制表符） · 通配符 <code>?</code> 任意单字符 · <code>*</code> 任意多字符 · <code>[0-9]</code> 任一数字 · <code>{2,}</code> 前一项至少出现 2 次</p>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e3-2-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e3-2-result.svg" alt="替换前后对比：直接替换会出现「跨境跨境电子商务」，占位符两遍替换结果正确" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>替换前后对比：直接替换会出现「跨境跨境电子商务」，占位符两遍替换结果正确</figcaption></figure></div></div>
+            </article>
+
+        <!-- 例 3-3 -->
+        <article class="ex" id="e3-3">
+          <header class="ex-h">
+            <span class="ex-no">例 3-3</span>
+            <h4>分栏与首字下沉</h4>
+            <span class="badge info">页面布局 · 分栏</span>
+            <span class="badge">6 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li>在 <code>练习3-1.docx</code> 基础上，把「二、实训内容」下的 2 段正文设为<b>两栏</b>，栏间距 <b>1 厘米</b>，加<b>分隔线</b>。</li>
+                <li>把这两栏的第 1 段设<b>首字下沉 2 行</b>，距正文 <b>0.2 厘米</b>。</li>
+                <li>另存为 <code>学号-姓名-练习3-3.docx</code>。</li>
+              </ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>选中要分栏的段落。</b>从「实训内容包括…」段首拖动到第 2 段末尾，<b>不要选中第 2 段末尾的 ¶</b>（否则整节都会分栏，后面的标题也被拉进两栏里）。</li>
+              <li><b>设分栏。</b>「页面布局」→「分栏」→「更多分栏」→ 预设选 <b>两栏</b> → 勾选「<b>分隔线</b>」→「间距」输 <b>1 厘米</b> →「应用于」显示为"所选文字" → 确定。</li>
+              <li><b>设首字下沉。</b>光标点在要下沉的那段内（不用选中）→「插入」→「首字下沉」→「首字下沉选项」→ 位置选 <b>下沉</b>、「下沉行数」<b>2</b>、「距正文」<b>0.2 厘米</b> → 确定。</li>
+              <li><b>看效果。</b>首字放大并占两行高度，其后文字环绕。若首字跑到栏外，说明分栏选区包含了段落标记，撤销后重新只选文字。</li>
+              <li><b>保存。</b><kbd>F12</kbd> 另存为 <code>学号-姓名-练习3-3.docx</code>。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e3-3-cols.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e3-3-cols.svg" alt="「分栏」对话框：栏数选两栏、勾选分隔线、栏间距 1 厘米，「应用于」必须是 <b>所选文字</b>。" loading="lazy"></a><figcaption><span class="tag-step">步骤 2</span>「分栏」对话框：栏数选两栏、勾选分隔线、栏间距 1 厘米，「应用于」必须是 <b>所选文字</b>。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>栏数 2 · 栏间距 1 厘米 · 有分隔线 · 首字下沉 2 行且距正文 0.2 厘米 · 仅所选段落分栏（其余版面不变）</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>直接点「两栏」按钮：整套文档都变两栏。要精确控制就进「更多分栏」并确认"应用于：所选文字"。</li>
+                <li>分栏后最后一段"跨栏"不齐：通常是选区含段落标记导致，删掉标记或用 <kbd>Ctrl</kbd>+<kbd>Z</kbd> 重做。</li>
+                <li>首字下沉与分栏同时用时版面跳动：先做分栏、再做首字下沉，顺序不要反。</li>
+              </ul>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e3-3-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e3-3-result.svg" alt="两栏 + 分隔线的版面，左栏首字下沉 2 行" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>两栏 + 分隔线的版面，左栏首字下沉 2 行</figcaption></figure></div></div>
+            </article>
+
+        <!-- 例 3-4 -->
+        <article class="ex" id="e3-4">
+          <header class="ex-h">
+            <span class="ex-no">例 3-4</span>
+            <h4>文字水印、页面边框与页面颜色</h4>
+            <span class="badge info">页面装饰</span>
+            <span class="badge">5 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li>给文档添加文字水印「内部资料 请勿外传」，字号 <b>36</b>，颜色浅灰，勾选<b>半透明</b>。</li>
+                <li>给页面加 <b>1.5 磅双线方框</b>（应用于整篇文档）。</li>
+                <li>页面颜色设为浅蓝，RGB 值 <b>(221, 235, 247)</b>。</li>
+                <li>另存为 <code>学号-姓名-练习3-4.docx</code>。</li>
+              </ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>加水印。</b>「页面布局」→「水印」→「自定义水印」→ 选「<b>文字水印</b>」→ 内容框输入 <code>内部资料 请勿外传</code> → 字号选 <b>36</b> → 颜色选浅灰 → 勾选「半透明」→ 确定。水印会出现在每一页正文背后。</li>
+              <li><b>加页面边框。</b>「页面布局」→「页面边框」→「页面边框」选项卡 → 设置选 <b>方框</b>、线型选 <b>双线</b>、宽度 <b>1.5 磅</b> →「应用于」选 <b>整篇文档</b> → 确定。</li>
+              <li><b>设页面颜色。</b>「页面布局」→「页面颜色」→「其他颜色」→「自定义」→ 输入 R <b>221</b>、G <b>235</b>、B <b>247</b> → 确定。</li>
+              <li><b>核对与保存。</b>翻到第 2 页确认水印与边框仍在（说明应用于整篇）；<kbd>F12</kbd> 另存为 <code>学号-姓名-练习3-4.docx</code>。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e3-4-watermark.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e3-4-watermark.svg" alt="「自定义水印」：水印类型选文字水印，填文字与字号 36，颜色浅灰并勾选半透明。" loading="lazy"></a><figcaption><span class="tag-step">步骤 1</span>「自定义水印」：水印类型选文字水印，填文字与字号 36，颜色浅灰并勾选半透明。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e3-4-border.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e3-4-border.svg" alt="「页面边框」：设置选方框、线型双线、宽度 1.5 磅，「应用于」选整篇文档。" loading="lazy"></a><figcaption><span class="tag-step">步骤 2</span>「页面边框」：设置选方框、线型双线、宽度 1.5 磅，「应用于」选整篇文档。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>水印文字与字号 · 半透明已勾选 · 边框为 1.5 磅双线且应用于整篇 · 页面颜色 RGB 准确</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>水印只出现在首页：检查「应用于」或是否被节分隔；删除水印用「水印 → 删除水印」，不要手动去页眉里删。</li>
+                <li>页面边框"应用于本节"，多节文档就只有一节有框。</li>
+                <li>用「突出显示」或底纹冒充水印：位置、倾斜、透明度都不对，且影响正文阅读。</li>
+              </ul>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e3-4-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e3-4-result.svg" alt="文字水印 + 双线页面边框 + 浅蓝页面颜色同时呈现" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>文字水印 + 双线页面边框 + 浅蓝页面颜色同时呈现</figcaption></figure></div></div>
+            </article>
+
+        <div class="callout" style="margin-top:20px">
+          <h4>课后作业（约 20 分钟）</h4>
+          <ul class="clean small" style="margin-top:6px">
+            <li>先故意用"直接替换"做一次例 3-2 任务 A，看看"跨境跨境电子商务"是怎么产生的；再用占位符两遍替换改对，把原因写下来。</li>
+            <li>整理一份自己的"查找替换代码卡"（^p、^t、^l、^w、?、* 各写一句用法）。</li>
+            <li>把任意一篇 500 字文章排成：标题1 / 标题2 样式 + 两栏正文 + 首字下沉 + 文字水印。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 4 课时 ============ -->
+  <section id="l4">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>课时</small>04</div>
+        <div class="ltx">
+          <h3>长文档与综合：页眉页码 · 表格 · 图文 · 目录</h3>
+          <p>前三课时练的是"零件"，这一课时把它们装成"整机"。最后 15 分钟做一道 30 分规格的综合大题，按采分点自评。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>3 道例题 + 1 道综合大题</span><span>考纲二·3、二·4、二·5</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本课时学完，你要能做到</h4>
+          <ul class="clean small" style="margin-top:6px">
+            <li>用分节符把封面与正文分开，实现"封面无页码、正文从 1 开始"</li>
+            <li>插入页眉页脚、设置"第 X 页 共 Y 页"，并断开"同前节"链接</li>
+            <li>插入并编辑表格：合并单元格、列宽、表头底纹、标题行重复</li>
+            <li>插入图片设置四周型环绕与图注，生成自动目录并更新域</li>
+          </ul>
+        </div>
+        <div class="shotblock"><div class="kicker">课前导览</div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/l4-insert.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/l4-insert.svg" alt="「插入」选项卡集中了表格、图片、页码、文本框、题注等对象，构成长文档的主体。" loading="lazy"></a><figcaption><span class="tag-step">课前导览</span>「插入」选项卡集中了表格、图片、页码、文本框、题注等对象，构成长文档的主体。</figcaption></figure></div></div>
+
+        <!-- 例 4-1 -->
+        <article class="ex" id="e4-1">
+          <header class="ex-h">
+            <span class="ex-no">例 4-1</span>
+            <h4>分节 + 页眉页脚 + 页码从 1 开始</h4>
+            <span class="badge accent">高频考点</span>
+            <span class="badge">12 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li><b>新建</b>文档，第 1 页做封面（三行文字：标题、专业班级、姓名学号），第 2 页起为正文（约两页文字，可用素材重复录入）。</li>
+                <li>在封面后插入<b>「下一页」分节符</b>。</li>
+                <li>封面<b>不显示</b>页眉页脚与页码；正文页眉为「大数据管理与应用专业 实训报告」（宋体五号、居中、加下边框线）。</li>
+                <li>正文页脚为「第 X 页 共 Y 页」（宋体小五、居中），且<b>页码从 1 开始</b>。</li>
+                <li>保存为 <code>学号-姓名-练习4-1.docx</code>。</li>
+              </ol>
+            </div>
+            <div class="src">
+              <div class="kicker">素材</div>
+              <pre>封面三行：
+计算机等级考试实训报告
+大数据管理与应用专业 2026级
+姓名：×××　学号：×××
+
+正文（可复制两遍凑成两页）：
+一、实训目的
+本次实训旨在熟悉WPS文字的基本操作，掌握长文档的排版规范，包括分节、页眉页脚、页码与目录的用法。
+二、实训内容
+实训内容包括分节符的插入、页眉页脚的分节设置、页码起始值的调整以及自动目录的生成与更新。</pre>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>新建并做封面。</b><kbd>Ctrl</kbd>+<kbd>N</kbd> 新建，录入封面三行；用 <kbd>Enter</kbd> 或 <kbd>Shift</kbd>+<kbd>Enter</kbd> 把它们排在页面中部（可用段前间距，别连打回车堆到中间）。</li>
+              <li><b>插入分节符。</b>光标放在封面最后一行末尾 →「页面布局」→「分隔符」→ 选 <b>「下一页」分节符</b>。此时光标跳到新的一页，文档变成 2 节。</li>
+              <li><b>确认分节成功。</b>打开 ¶ 显示，封面末尾出现一条标着「分节符（下一页）」的双虚线。没有它，后面所有设置都做不成。</li>
+              <li><b>进入页眉编辑。</b>在正文第 1 页顶部双击空白处（或「插入」→「页眉和页脚」），页面变灰、出现页眉虚线框。</li>
+              <li><b>断开"同前节"（最关键一步）。</b>页眉页脚工具条上找到「<b>同前节</b>」（部分版本叫「链接到前一条页眉」）并<b>点掉</b>，让它不再处于按下状态。这样正文页眉才不会和封面共用。</li>
+              <li><b>写页眉并加下框线。</b>输入「大数据管理与应用专业 实训报告」→ 宋体 <b>五号</b>、居中 → 保持选中 →「开始」→「边框」下拉 → 选 <b>下框线</b>。</li>
+              <li><b>写页脚与页码。</b>光标移到页脚区 →「插入」→「页码」→ 选「第 X 页 共 Y 页」样式 → 宋体 <b>小五</b>、居中。<span class="muted">（若没有现成样式，就手打"第 页 共 页"，再用「插入 → 域」分别插入 Page 与 NumPages。）</span></li>
+              <li><b>设起始页码。</b>仍在本节，点「页码」→「设置页码格式」→ 起始页码输 <b>1</b> → 确定。正文首页页脚应显示「第 1 页 共 3 页」——<b>Y 是全文总页数（含封面）</b>，这是"共 Y 页"的正常表现；若题目要求只统计正文页数，就把 Y 换成「节页数」域（SECTIONPAGES）。</li>
+              <li><b>清理封面。</b>回到第 1 页的页眉/页脚区（此时已断开链接），把内容删空，页码也删掉；或勾选「首页不同」。双击正文区退出编辑。</li>
+              <li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd> → 另存为 <code>学号-姓名-练习4-1.docx</code>。翻页检查：封面无页眉页码，正文页眉有下框线、页码从 1 开始。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e4-1-section.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e4-1-section.svg" alt="「页面布局 → 分隔符 → 分节符·下一页」：用分节符才能让封面与正文分别设置页眉页脚。" loading="lazy"></a><figcaption><span class="tag-step">步骤 2</span>「页面布局 → 分隔符 → 分节符·下一页」：用分节符才能让封面与正文分别设置页眉页脚。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e4-1-header.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e4-1-header.svg" alt="页眉页脚编辑状态下的工具条：<b>「同前节」必须点掉</b>，否则正文页眉与封面共用一份。" loading="lazy"></a><figcaption><span class="tag-step">步骤 4–5</span>页眉页脚编辑状态下的工具条：<b>「同前节」必须点掉</b>，否则正文页眉与封面共用一份。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e4-1-pageno.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e4-1-pageno.svg" alt="「设置页码格式」：起始页码填 1，页码位置与对齐方式按题目要求选择。" loading="lazy"></a><figcaption><span class="tag-step">步骤 8</span>「设置页码格式」：起始页码填 1，页码位置与对齐方式按题目要求选择。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>有分节符（不是用回车顶到下一页） · 「同前节」已断开 · 页眉字体字号与下框线 · 页脚"第X页 共Y页" · 正文起始页码为 1</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>用连打 <kbd>Enter</kbd> 把正文顶到第 2 页：没有分节，封面页眉永远删不掉。</li>
+                <li>没断开「同前节」就去删封面页码：正文页码跟着一起消失，越改越乱。</li>
+                <li>在封面节里设"起始页码 1"：正文会从 2 开始。</li>
+                <li>只设了「首页不同」：首页页眉没了，但页码仍会占位，且第 3 页之后可能又出现，分节才是正解。</li>
+              </ul>
+            </div>
+            <div class="callout tip">
+              <h4>考场应急</h4>
+              <p>页码乱掉时，最快的修法是：选中页脚内容全部删除 → 断开「同前节」→ 重新「插入 → 页码」→ 设起始值。不要试图一个个改数字。</p>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e4-1-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e4-1-result.svg" alt="封面（第 1 节）无页眉页脚，正文（第 2 节）页眉带下框线、页脚页码从 1 开始" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>封面（第 1 节）无页眉页脚，正文（第 2 节）页眉带下框线、页脚页码从 1 开始</figcaption></figure></div></div>
+            </article>
+
+        <!-- 例 4-2 -->
+        <article class="ex" id="e4-2">
+          <header class="ex-h">
+            <span class="ex-no">例 4-2</span>
+            <h4>表格制作：5 行 4 列成绩表</h4>
+            <span class="badge info">表格 · 底纹 · 框线</span>
+            <span class="badge">11 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li>在文档末尾插入 <b>5 行 4 列</b>表格，表头为「序号 / 姓名 / 平时成绩 / 总评」。</li>
+                <li>填入 4 行数据（序号 1~4，姓名自拟，成绩 60~100 之间的整数）。</li>
+                <li>表格<b>居中</b>；列宽依次 <b>1.5 / 4 / 3 / 3 厘米</b>；表头行<b>浅灰底纹、加粗、居中</b>；全表加<b>所有框线</b>。</li>
+                <li>表格上方加题注「表1 学生成绩表」（宋体五号、居中）。</li>
+                <li>另存为 <code>学号-姓名-练习4-2.docx</code>。</li>
+              </ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>插入表格。</b>光标定位到文末 →「插入」→「表格」→「插入表格」→ 列数 <b>4</b>、行数 <b>5</b> → 确定。</li>
+              <li><b>录入数据。</b>逐格输入，按 <kbd>Tab</kbd> 跳到下一格；在最后一格按 Tab 会自动新增一行（本题不需要，注意别多按）。</li>
+              <li><b>表格居中。</b>点表格左上角的十字箭头选中整个表格 → 右键 →「<b>表格属性</b>」→「表格」选项卡 → 对齐方式选 <b>居中</b> → 确定。<span class="muted">（选中整表后按 <kbd>Ctrl</kbd>+<kbd>E</kbd> 也能让表格整体居中；注意别把"表格工具 → 对齐方式"里的九宫格当成表格居中，那是设置单元格内文字的对齐。）</span></li>
+              <li><b>设列宽。</b>选中表格 →「表格属性」→「列」→ 勾选「指定宽度」，逐列设 <b>1.5 / 4 / 3 / 3 厘米</b>；也可选中某一列后在「表格工具 → 布局」里输宽度。<span class="muted">（先设「自动调整 → 固定列宽」，否则列宽会被内容顶变。）</span></li>
+              <li><b>表头格式。</b>选中第 1 行 →「表格工具」→「底纹」选<b>浅灰</b>（如 15% 灰度）→ <kbd>Ctrl</kbd>+<kbd>B</kbd> 加粗 → 对齐选<b>居中</b>。</li>
+              <li><b>加所有框线。</b>选中整个表 →「表格工具」→「边框」→ 选 <b>所有框线</b>。（若表格原本无框线，这一步才看得见格子。）</li>
+              <li><b>跨页标题重复。</b>选中第 1 行 →「表格工具」→ 点 <b>「标题行重复」</b>；或用「表格属性」→「行」→ 勾选「在各页顶端以标题行形式重复出现」。</li>
+              <li><b>加题注。</b>光标放在表格上方一段 →「引用」→「题注」→「新建标签」输入 <code>表</code> → 位置选 <b>所选项目上方</b> → 确定；把题注文字改为「表1 学生成绩表」，设宋体五号、居中。最后另存为 <code>学号-姓名-练习4-2.docx</code>。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e4-2-insert.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e4-2-insert.svg" alt="「插入 → 表格 → 插入表格」：列数 4、行数 5，勾选「首行为标题行」，对齐方式居中。" loading="lazy"></a><figcaption><span class="tag-step">步骤 1</span>「插入 → 表格 → 插入表格」：列数 4、行数 5，勾选「首行为标题行」，对齐方式居中。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e4-2-prop.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e4-2-prop.svg" alt="「表格属性 → 列」：逐列填写宽度 1.5 / 4 / 3 / 3 厘米（先设固定列宽再改数值）。" loading="lazy"></a><figcaption><span class="tag-step">步骤 4</span>「表格属性 → 列」：逐列填写宽度 1.5 / 4 / 3 / 3 厘米（先设固定列宽再改数值）。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>5 行 4 列 · 表头文字与底纹、加粗、居中 · 四列宽度数值 · 所有框线 · 题注在上方且字体字号正确</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>用空格或制表符"摆"出表格外观：评卷直接判 0 分——必须是真的表格对象。</li>
+                <li>用鼠标拖列宽：数值不精确，抽检会判错；一定在「表格属性」里输入数字。</li>
+                <li>「标题行重复」只对跨页表格有意义，设置后在第 2 页看第 1 行是否重复出现，别只看第 1 页。</li>
+                <li>题注默认在表格下方，题目要求"上方"时必须改位置。</li>
+              </ul>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e4-2-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e4-2-result.svg" alt="成绩表成品：表头浅灰底纹加粗居中、全表所有框线、表格整体居中" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>成绩表成品：表头浅灰底纹加粗居中、全表所有框线、表格整体居中</figcaption></figure></div></div>
+            </article>
+
+        <!-- 例 4-3 -->
+        <article class="ex" id="e4-3">
+          <header class="ex-h">
+            <span class="ex-no">例 4-3</span>
+            <h4>插入图片、环绕方式与文本框</h4>
+            <span class="badge info">图片 · 环绕 · 文本框</span>
+            <span class="badge">7 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol>
+                <li>在正文第 2 段后插入一张图片（用「插入 → 图片 → 本地图片」，随便选一张电脑里的图）。</li>
+                <li>图片宽 <b>7 厘米</b>（高按比例），<b>四周型环绕</b>，<b>居中</b>，加 <b>1 磅橙色</b>边框。</li>
+                <li>图片下方加图注「图1 实训机房」（宋体五号、居中）。</li>
+                <li>在文末插入一个<b>竖向文本框</b>，内容「重点复习」，宋体小四、加粗。</li>
+                <li>另存为 <code>学号-姓名-练习4-3.docx</code>。</li>
+              </ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps">
+              <li><b>插入图片。</b>光标定位到第 2 段末尾按一次 <kbd>Enter</kbd> →「插入」→「图片」→「本地图片」→ 选择图片文件 → 打开。</li>
+              <li><b>改环绕方式。</b>选中图片 →「图片工具」→「环绕」→ 选 <b>四周型环绕</b>。<span class="muted">（默认是"嵌入型"，嵌入型图片不能自由拖动，很多同学卡在这一步。）</span></li>
+              <li><b>设尺寸。</b>「图片工具」→ 在高度/宽度框里把宽度改为 <b>7 厘米</b>；若高度没自动跟着变，先勾选/取消「锁定纵横比」再设高度，保证不变形。</li>
+              <li><b>居中与边框。</b>「图片工具」→「对齐」→ <b>水平居中</b>（下拉里"相对于"选<b>页边距</b>，图片才会在版心居中）；找不到对齐按钮，就把图片拖到段落正中。再点「图片边框」→ 颜色选<b>橙色</b>、「粗细」选 <b>1 磅</b>。</li>
+              <li><b>加图注。</b>图片下方另起一段 →「引用」→「题注」→ 新建标签 <code>图</code> → 位置 <b>所选项目下方</b> → 输入「图1 实训机房」→ 宋体五号、居中。</li>
+              <li><b>加文本框。</b>「插入」→「文本框」→ 选<b>竖向文本框</b> → 在页边位置拖出框 → 输入「重点复习」→ 宋体小四、<kbd>Ctrl</kbd>+<kbd>B</kbd> 加粗；把「形状填充」设为无填充、「形状轮廓」设为无轮廓。<kbd>F12</kbd> 另存为 <code>学号-姓名-练习4-3.docx</code>。</li>
+            </ol>
+            
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e4-3-wrap.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e4-3-wrap.svg" alt="「图片工具 → 环绕 → 四周型环绕」，在「大小」中把宽度设为 7 厘米，「对齐」选水平居中（相对于页边距），「图片边框」设 1 磅橙色。" loading="lazy"></a><figcaption><span class="tag-step">步骤 2–4</span>「图片工具 → 环绕 → 四周型环绕」，在「大小」中把宽度设为 7 厘米，「对齐」选水平居中（相对于页边距），「图片边框」设 1 磅橙色。</figcaption></figure></div></div>
+            <div class="score"><b>采分点</b>环绕方式为四周型 · 宽度 7 厘米未变形 · 边框 1 磅橙色 · 图注位置与字体 · 文本框为竖向</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul>
+                <li>图片还是"嵌入型"就去拖：拖不动，或者一拖就把段落文字挤出页面。先改环绕方式。</li>
+                <li>只改宽度没管高度：图片被压扁。宽高比要锁定。</li>
+                <li>用空格把图片推到中间：图片位置会随文字变化乱跑，评分也判错。</li>
+              </ul>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e4-3-result.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e4-3-result.svg" alt="图片四周型环绕 + 居中 + 1 磅橙色边框，下方为「图1」题注" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>图片四周型环绕 + 居中 + 1 磅橙色边框，下方为「图1」题注</figcaption></figure></div></div>
+            </article>
+
+        <!-- 例 4-4 综合 -->
+        <article class="ex" id="e4-4" style="border-left-color:var(--brand)">
+          <header class="ex-h" style="background:#eef4fb">
+            <span class="ex-no" style="background:var(--brand)">例 4-4</span>
+            <h4>综合大题：从新建到交卷，一份完整的"报名通知"</h4>
+            <span class="badge accent">结课测评 · 30 分</span>
+            <span class="badge">15 分钟（课后可延长到 30 分钟）</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求（按考试操作题的出题方式编写）</div>
+              <ol>
+                <li>新建一个空白文档，录入素材全文，保存为 <code>学号-姓名-综合.docx</code>。</li>
+                <li>大标题：黑体、二号、居中、段后 1 行；三个小标题套用「标题2」样式。</li>
+                <li>正文：宋体、小四、首行缩进 2 字符、1.5 倍行距。</li>
+                <li>「报名流程」4 条用自动编号；「注意事项」3 条用项目符号。</li>
+                <li>在「时间安排」下插入 4 行 3 列表格，表头浅灰底纹加粗居中，全表所有框线，表格居中。</li>
+                <li>插入一张图片，四周型环绕、宽 6 厘米，图注「图1 考试流程示意图」。</li>
+                <li>页面：A4、页边距上下 2.54 厘米、左右 3.17 厘米。</li>
+                <li>页眉「管理学院 考试报名通知」居中，页脚「第 X 页」居中。</li>
+                <li>在正文最前面插入<b>自动目录</b>（单独一页），并更新域。</li>
+                <li>输出同名 PDF。</li>
+              </ol>
+            </div>
+            <div class="src">
+              <div class="kicker">素材</div>
+              <pre>关于2026年秋季学期计算机等级考试报名的通知
+一、报考对象
+全体在校本科生，尤其是大数据管理与应用、电子商务、物流管理等专业2026级学生。
+二、报名流程
+登录中国教育考试网注册账号
+选择考点与考试科目
+上传照片并在线缴费
+打印准考证
+三、时间安排
+（此处插入表格：阶段 / 时间 / 说明）
+四、注意事项
+照片须为近期免冠证件照，背景为白色或浅蓝色
+缴费后请保留支付凭证截图
+报名截止后不再接受补报</pre>
+            </div>
+            <div class="kicker">解题步骤（按这个顺序做，最省时间）</div>
+            <ol class="steps">
+              <li><b>新建 → 录入 → 先存一次。</b><kbd>Ctrl</kbd>+<kbd>N</kbd> 新建，录入全文（表格和图先留位置），立刻 <kbd>F12</kbd> 另存为 <code>学号-姓名-综合.docx</code>。<b>先存盘再排版</b>——这是考场上最重要的一条纪律。</li>
+              <li><b>套样式。</b>大标题套「标题1」并改样式：黑体、二号、居中、段后 1 行；三个小标题套「标题2」。正文全选后套「正文」，再改样式为宋体小四、首行缩进 2 字符、1.5 倍行距。</li>
+              <li><b>编号与符号。</b>「报名流程」4 条套自动编号 1~4；「注意事项」3 条套 • 项目符号。</li>
+              <li><b>插表格。</b>光标放到「三、时间安排」下一行 →「插入」→「表格」→ 4 行 3 列 → 录入「阶段 / 时间 / 说明」等 → 表头底纹浅灰 + 加粗 + 居中 → 全表所有框线 → 表格属性里设整表居中、列宽 3/4/7 厘米。</li>
+              <li><b>插图片。</b>「插入 → 图片 → 本地图片」→ 选图 →「图片工具 → 环绕 → 四周型」→ 宽 6 厘米 → 居中 → 下方用「引用 → 题注」加图注「图1 考试流程示意图」，宋体五号居中。</li>
+              <li><b>设页面。</b>「页面布局」→ 纸张 A4、纵向 →「页边距 → 自定义」→ 上下 2.54、左右 3.17 厘米 → 应用于整篇文档。</li>
+              <li><b>设页眉页脚。</b>「插入 → 页眉和页脚」→ 页眉输入「管理学院 考试报名通知」，宋体五号居中 → 页脚「插入 → 页码」选「第 X 页」样式，宋体小五居中。</li>
+              <li><b>插目录。</b>光标放到大标题之前 → 按 <kbd>Enter</kbd> 空出一页（或用「页面布局 → 分隔符 → 分页符」）→ 光标在新页首行 →「引用」→「目录」→「自动目录」→ 生成后点「更新目录」→ 选 <b>更新整个目录</b>。</li>
+              <li><b>收尾。</b>通读一遍：目录页码与实际是否一致（变了就 <kbd>Ctrl</kbd>+<kbd>A</kbd> 后按 <kbd>F9</kbd> 更新域）→ <kbd>Ctrl</kbd>+<kbd>S</kbd> → 「文件 → 输出为PDF」存到同一文件夹 → 打开 PDF 快速翻一遍。</li>
+            </ol>
+            <div class="shotblock"><div class="kicker">关键操作截图<span class="hint">（点击图片可放大查看）</span></div><div class="shotgrid"><figure class="shot"><a href="./assets/wps-img/e4-4-toc.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e4-4-toc.svg" alt="「引用 → 目录 → 自动目录」：先套用标题样式，再生成目录；页码有变时选「更新整个目录」。" loading="lazy"></a><figcaption><span class="tag-step">步骤 8</span>「引用 → 目录 → 自动目录」：先套用标题样式，再生成目录；页码有变时选「更新整个目录」。</figcaption></figure><figure class="shot"><a href="./assets/wps-img/e4-4-tocpage.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e4-4-tocpage.svg" alt="生成的目录单独占一页，条目与正文标题一一对应，页码可通过点击跳转。" loading="lazy"></a><figcaption><span class="tag-step">步骤 8 · 结果</span>生成的目录单独占一页，条目与正文标题一一对应，页码可通过点击跳转。</figcaption></figure></div></div>
+            
+
+            <div class="kicker" style="margin-top:18px">自评表（每项 3 分，满分 30）</div>
+            <div class="table-wrap" style="margin-top:8px">
+              <table class="tbl small-tbl">
+                <thead><tr><th class="num">序</th><th>采分点</th><th class="num">分值</th><th>自评要点</th></tr></thead>
+                <tbody>
+                  <tr><td class="num">1</td><td>文件名与保存位置</td><td class="num">3</td><td>文件名、扩展名、文件夹三者全对</td></tr>
+                  <tr><td class="num">2</td><td>大标题格式</td><td class="num">3</td><td>黑体、二号、居中、段后 1 行，且用的是样式</td></tr>
+                  <tr><td class="num">3</td><td>小标题样式</td><td class="num">3</td><td>3 个都套了「标题2」，导航窗格里能看到</td></tr>
+                  <tr><td class="num">4</td><td>正文格式</td><td class="num">3</td><td>宋体小四、首行缩进 2 字符（非空格）、1.5 倍行距</td></tr>
+                  <tr><td class="num">5</td><td>编号与项目符号</td><td class="num">3</td><td>自动编号 / 项目符号，不是手打</td></tr>
+                  <tr><td class="num">6</td><td>表格</td><td class="num">3</td><td>4 行 3 列、表头底纹加粗居中、所有框线、表格居中</td></tr>
+                  <tr><td class="num">7</td><td>图片与图注</td><td class="num">3</td><td>四周型、宽 6 厘米、图注在下且字体正确</td></tr>
+                  <tr><td class="num">8</td><td>页面与页眉页脚</td><td class="num">3</td><td>A4、四个页边距正确；页眉居中、页脚「第 X 页」</td></tr>
+                  <tr><td class="num">9</td><td>自动目录</td><td class="num">3</td><td>单独一页、可点击跳转、页码正确</td></tr>
+                  <tr><td class="num">10</td><td>PDF 输出</td><td class="num">3</td><td>与 docx 同名同目录，打开无乱码</td></tr>
+                </tbody>
+                <tfoot><tr style="background:var(--surface-2);font-weight:800"><td class="num">—</td><td>合计</td><td class="num">30</td><td>≥ 24 分视为通过本模块入门要求</td></tr></tfoot>
+              </table>
+            </div>
+
+            <div class="callout warn" style="margin-top:14px">
+              <h4>综合题最常见的 6 个失分点</h4>
+              <ul>
+                <li>最后忘了保存 / 只存了 PDF 没存 docx（考试两个都可能查）。</li>
+                <li>标题手工设格式，没套样式 → 目录生成失败，连带丢 6 分。</li>
+                <li>目录页码是旧的：生成后没按「更新整个目录」。</li>
+                <li>页眉页脚把所有页都改了，或封面也被加上页码。</li>
+                <li>表格用空格摆、图片用空格推。</li>
+                <li>页边距只改了一节，或单位错成磅。</li>
+              </ul>
+            </div>
+          </div>
+        
+            <div class="shotblock"><div class="kicker">完成效果</div><div class="shotgrid"><figure class="shot result"><a href="./assets/wps-img/e4-4-doc.svg" target="_blank" rel="noopener" title="点击查看大图"><img src="./assets/wps-img/e4-4-doc.svg" alt="综合大题成品：标题样式 + 自动编号 + 表格 + 项目符号 + 页眉页脚" loading="lazy"></a><figcaption><span class="tag-eff">完成效果</span>综合大题成品：标题样式 + 自动编号 + 表格 + 项目符号 + 页眉页脚</figcaption></figure></div></div>
+            </article>
+
+        <div class="callout" style="margin-top:20px">
+          <h4>课后作业（结课任务）</h4>
+          <ul class="clean small" style="margin-top:6px">
+            <li>独立重做例 4-4，限时 30 分钟，按自评表打分并记录失分点。</li>
+            <li>把自评表拍照/截图交给老师，作为本模块的过程性考核材料。</li>
+            <li>预习下一阶段：电子表格（公式与函数），届时会用同样的"新建—操作—保存"流程。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 附录 ============ -->
+  <section class="section-sm" id="appendix">
+    <h2>三、附录：考场随查</h2>
+
+    <h3 class="mt2">附 1　必背快捷键（前 10 个必须闭眼能按）</h3>
+    <div class="table-wrap mt1">
+      <table class="tbl">
+        <thead><tr><th>快捷键</th><th>作用</th><th>什么时候用</th></tr></thead>
+        <tbody>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>N</kbd></td><td>新建空白文档</td><td>每道小题开始时</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>保存（覆盖）</td><td>每完成一步就按一次</td></tr>
+          <tr><td><kbd>F12</kbd></td><td>另存为</td><td>改文件名 / 换位置</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd></td><td>撤销 / 恢复</td><td>改错了立刻回退</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>A</kbd></td><td>全选</td><td>统一改全文格式（慎用）</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>F</kbd> / <kbd>Ctrl</kbd>+<kbd>H</kbd></td><td>查找 / 替换</td><td>纠错、批量改格式</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>G</kbd></td><td>定位（到页 / 表格 / 图）</td><td>长文档快速跳转</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>B</kbd> / <kbd>I</kbd> / <kbd>U</kbd></td><td>加粗 / 倾斜 / 下划线</td><td>标题与重点词</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>E</kbd> / <kbd>L</kbd> / <kbd>R</kbd> / <kbd>J</kbd></td><td>居中 / 左 / 右 / 两端对齐</td><td>标题、落款、正文</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>=</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>=</kbd></td><td>下标 / 上标</td><td>化学式、单位</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>Enter</kbd></td><td>插入分页符</td><td>另起一页</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd></td><td>插入分栏（列）符</td><td>分栏排版</td></tr>
+          <tr><td><kbd>F9</kbd></td><td>更新域（目录、页码）</td><td>目录页码不对时</td></tr>
+          <tr><td><kbd>Shift</kbd>+<kbd>F3</kbd></td><td>切换英文大小写</td><td>英文标题</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="mt3">附 2　"我要做…点哪里"路径速查</h3>
+    <div class="table-wrap mt1">
+      <table class="tbl">
+        <thead><tr><th style="width:200px">要做的事</th><th>路径</th></tr></thead>
+        <tbody>
+          <tr><td>新建 / 保存 / 另存为</td><td>文件 → 新建 / 保存 / 另存为；或 <kbd>Ctrl</kbd>+<kbd>N</kbd>、<kbd>Ctrl</kbd>+<kbd>S</kbd>、<kbd>F12</kbd></td></tr>
+          <tr><td>加打开密码</td><td>文件 → 文档加密 → 密码加密</td></tr>
+          <tr><td>输出 PDF</td><td>文件 → 输出为PDF（部分版本：另存为PDF）</td></tr>
+          <tr><td>字体 / 字符间距</td><td>开始 → 字体组右下角小箭头 →「字体」对话框 →「字符间距」选项卡</td></tr>
+          <tr><td>对齐 / 缩进 / 行距 / 段间距</td><td>开始 → 段落组右下角小箭头（或右键 → 段落）</td></tr>
+          <tr><td>字符底纹 / 字符边框</td><td>开始 → 字体组「A 带底色」「方框 A」图标</td></tr>
+          <tr><td>段落边框和底纹</td><td>开始 → 边框下拉 → 边框和底纹（注意"应用于"选段落）</td></tr>
+          <tr><td>格式刷</td><td>开始 → 格式刷（单击刷一次，双击连续刷，<kbd>Esc</kbd> 退出）</td></tr>
+          <tr><td>样式与修改样式</td><td>开始 → 样式组；在样式名上右键 → 修改</td></tr>
+          <tr><td>导航窗格</td><td>视图 → 导航窗格</td></tr>
+          <tr><td>纸张 / 页边距 / 分栏 / 分隔符</td><td>页面布局（或"页面"）→ 纸张大小 / 页边距 / 分栏 / 分隔符</td></tr>
+          <tr><td>水印 / 页面边框 / 页面颜色</td><td>页面布局 → 水印 / 页面边框 / 页面颜色</td></tr>
+          <tr><td>页眉页脚 / 页码</td><td>插入 → 页眉和页脚 / 页码；页码起始值在「页码 → 设置页码格式」</td></tr>
+          <tr><td>分节符（下一页）</td><td>页面布局 → 分隔符 → 分节符·下一页</td></tr>
+          <tr><td>首字下沉</td><td>插入 → 首字下沉 → 首字下沉选项</td></tr>
+          <tr><td>表格插入 / 属性</td><td>插入 → 表格；右键 → 表格属性（列宽、行、环绕）</td></tr>
+          <tr><td>合并单元格 / 标题行重复</td><td>表格工具 → 合并单元格 / 标题行重复</td></tr>
+          <tr><td>表格底纹 / 框线</td><td>表格工具 → 底纹 / 边框 → 所有框线</td></tr>
+          <tr><td>图片环绕 / 边框 / 大小</td><td>图片工具 → 环绕 / 图片边框 / 高度宽度框</td></tr>
+          <tr><td>文本框（横 / 竖）</td><td>插入 → 文本框 → 横向 / 竖向文本框</td></tr>
+          <tr><td>题注</td><td>引用 → 题注（可新建标签"表""图"）</td></tr>
+          <tr><td>自动目录 / 更新目录</td><td>引用 → 目录 → 自动目录；「更新目录」或 <kbd>F9</kbd></td></tr>
+          <tr><td>字数统计</td><td>审阅 → 字数统计</td></tr>
+          <tr><td>修订与批注</td><td>审阅 → 修订 / 新建批注</td></tr>
+          <tr><td>显示段落标记</td><td>开始 → ¶（显示/隐藏段落标记）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="mt3">附 3　交卷前 10 条自查（照着念一遍，能救 5 分以上）</h3>
+    <div class="grid g2 mt1">
+      <div class="card flat" style="border-left:4px solid var(--ok)">
+        <ul class="clean small tight">
+          <li><b>文件名</b>是否与题目要求<b>一字不差</b>（含学号姓名、下划线、扩展名）。</li>
+          <li><b>保存位置</b>是否是题目指定文件夹（不是桌面、不是"我的文档"）。</li>
+          <li>docx 与 PDF <b>是否都存了</b>，且同名。</li>
+          <li>标题是否用<b>样式</b>，导航窗格里层级对不对。</li>
+          <li>首行缩进是"格式"还是"空格"（打开 ¶ 看一眼）。</li>
+        </ul>
+      </div>
+      <div class="card flat" style="border-left:4px solid var(--ok)">
+        <ul class="clean small tight">
+          <li>页边距<b>四个数值</b>与单位是否正确，"应用于整篇文档"。</li>
+          <li>页眉页脚是否<b>断了"同前节"</b>，封面有没有被误加页码。</li>
+          <li>目录是否<b>更新过</b>，页码与实际一致。</li>
+          <li>表格是真表格还是空格摆的；图片是浮动还是嵌入。</li>
+          <li>最后再按一次 <kbd>Ctrl</kbd>+<kbd>S</kbd>，并<b>关闭文件重开</b>验证。</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="mt3">附 4　新手最容易丢分的 10 个动作</h3>
+    <div class="table-wrap mt1">
+      <table class="tbl">
+        <thead><tr><th class="num">#</th><th>动作</th><th>后果</th><th>正确做法</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td>用空格做居中 / 右对齐 / 首行缩进</td><td>格式项判 0 分，文字一改就乱</td><td>用对齐按钮与「特殊格式 → 首行缩进」</td></tr>
+          <tr><td class="num">2</td><td>标题只改字体字号，不套样式</td><td>目录生成失败，连环失分</td><td>套「标题1/标题2」，再改样式定义</td></tr>
+          <tr><td class="num">3</td><td>用 <kbd>Enter</kbd> 顶出新页</td><td>无法分节，页眉页码改不动</td><td>分隔符 → 分页符 / 分节符（下一页）</td></tr>
+          <tr><td class="num">4</td><td>剪切段落不带 ¶</td><td>两段合并，段落格式全乱</td><td>三击选中整段再剪切</td></tr>
+          <tr><td class="num">5</td><td>改字号冒充上下标</td><td>格式检查不通过</td><td><kbd>Ctrl</kbd>+=／<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+=</td></tr>
+          <tr><td class="num">6</td><td>「应用于」选"文字"而非"段落"</td><td>底纹、边框只包住文字</td><td>看对话框里的"应用于"再确定</td></tr>
+          <tr><td class="num">7</td><td>替换不考虑重复词</td><td>出现"跨境跨境…"</td><td>全字匹配或占位符两段替换</td></tr>
+          <tr><td class="num">8</td><td>图片保持"嵌入型"就拖动</td><td>版面被挤乱</td><td>先改四周型环绕</td></tr>
+          <tr><td class="num">9</td><td>目录不更新</td><td>页码与实际不符</td><td>「更新整个目录」或 <kbd>F9</kbd></td></tr>
+          <tr><td class="num">10</td><td>做完不存 / 存错地方</td><td>整题 0 分</td><td>开工先另存，收工再保存</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <h2>四、学完这 4 课时，接下来去哪</h2>
+    <p class="lead">第 1 次课打的是「文字基本功」——把 8 个基础实操点各练了两遍（跟做 1 遍、独立做 1 遍）。接下来第 2 次课进入页眉页脚、表格、图形与公式，第 3 次课做目录、审阅与邮件合并。<b>三次课合起来，就是文字操作题的 30 分。</b></p>
+    <div class="grid g3 mt2">
+      <a class="card hoverable" href="./实操-文字2.html"><h3>➡️ 第 2 次课 · 页眉页脚 / 表格 / 图形 / 公式</h3><p class="muted small">奇偶页不同与分节页码、成绩表与表格公式、图片环绕与流程图、文本框链接与公式编辑器。8 道题全部带采分点。</p><span class="btn ghost mt1">继续第 2 次课</span></a>
+      <a class="card hoverable" href="./实操-文字3.html"><h3>📑 第 3 次课 · 目录题注 / 审阅修订 / 邮件合并</h3><p class="muted small">多级列表与自动目录、含章节号的题注与交叉引用、脚注与索引、修订与文档保护、邮件合并批量生成通知书。</p><span class="btn ghost mt1">进入第 3 次课</span></a>
+      <a class="card hoverable" href="./实操训练.html"><h3>🗺️ 实操训练总览 · 8 次课 80 分</h3><p class="muted small">文字 3 次 + 表格 3 次 + 演示 2 次，共 32 小节 72 道实操题，按考纲逐条覆盖，附 80 分覆盖矩阵与三种学习节奏。</p><span class="btn ghost mt1">查看总览</span></a>
+    </div>
+    <div class="callout key mt2">
+      <h4>给老师的一句使用建议</h4>
+      <p>每道例题建议按「<b>先讲 1 分钟要点 → 学生自己做 → 到点统一演示</b>」的节奏走：例题卡片右上角的「收起步骤」可以先收起来，让学生盲做 2 分钟，再展开对步骤，印象比"跟着点一遍"深得多。纸质授课时直接 <kbd>Ctrl</kbd>+<kbd>P</kbd> 打印，步骤会自动全部展开。</p>
+    </div>
+  </section>
+
+</main>
+
+<div class="bar">
+  <button type="button" id="btnAll">展开全部步骤</button>
+  <button type="button" class="clock" id="btnClock">⏱ 45:00 课时计时</button>
+</div>
+
+<footer class="footer"><div class="wrap"><div class="cols">
+  <div><h4>大连财经学院 · 计算机国家二级考试（WPS 类）</h4><p class="small"><span class="org">主办：大连财经学院计算机国家二级考试（WPS 类）课程组</span></p><p class="small">本站为<b>校内教学辅助资料</b>，依据《全国计算机等级考试(NCRE) 二级 WPS Office 高级应用与设计考试大纲(2025 年版)》与《二级公共基础知识考试大纲(2025 年版)》编写，供教学与备考使用。</p></div>
+  <div><h4>成果导航</h4><p class="small"><a href="./教学大纲.html">教学大纲</a> · <a href="./教学日历.html">教学日历</a> · <a href="./教案.html">教案</a></p><p class="small"><a href="./实操训练.html">实操训练 8 次课</a> · <a href="./培训课件.html">培训课件</a> · <a href="./电子书.html">电子书</a></p><p class="small"><a href="./用户中心.html">用户中心</a> · <a href="./群管理.html">班级群</a> · <a href="./使用说明.html">使用说明</a> · <a href="./关于本站.html">关于本站</a></p></div>
+  <div><h4>官方信息</h4><p class="small">本站为<b>非官方</b>网站，不提供报名、缴费、查分服务。考试政策与报名信息以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 当年公告为准。</p><p class="small">学校官网：<a href="https://www.dlufe.edu.cn/" target="_blank" rel="noopener">www.dlufe.edu.cn</a></p></div>
+  <div><h4>免责声明</h4><p class="small">本站不收集任何个人信息，无收费项目，不含广告与商业推广；内容仅供校内教学与备考参考，如与官方文件不一致，以官方文件为准。</p><p class="small"><a href="./关于本站.html">关于本站 / 免责声明 →</a></p></div>
+</div>
+<div class="disc">© 大连财经学院 · 计算机国家二级考试（WPS 类）课程组 ｜ 校内教学辅助资料，非官方考试网站 ｜ 考试政策以中国教育考试网公告为准</div>
+</div></footer>
+
+<script>
+(function(){
+  // 折叠 / 展开单题步骤
+  document.querySelectorAll('[data-fold]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var card = btn.closest('.ex');
+      var body = card.querySelector('.ex-b');
+      var hidden = body.classList.toggle('hide');
+      btn.textContent = hidden ? '展开步骤' : '收起步骤';
+    });
+  });
+
+  // 全部展开 / 全部收起
+  var allBtn = document.getElementById('btnAll');
+  var expanded = true;
+  allBtn.addEventListener('click', function(){
+    expanded = !expanded;
+    document.querySelectorAll('.ex-b').forEach(function(b){ b.classList.toggle('hide', !expanded); });
+    document.querySelectorAll('[data-fold]').forEach(function(b){ b.textContent = expanded ? '收起步骤' : '展开步骤'; });
+    allBtn.textContent = expanded ? '收起全部步骤' : '展开全部步骤';
+  });
+  allBtn.textContent = '收起全部步骤';
+
+  // 45 分钟课时计时器
+  var clock = document.getElementById('btnClock');
+  var left = 45 * 60, timer = null;
+  function fmt(s){
+    var m = Math.floor(s / 60), ss = s % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  clock.addEventListener('click', function(){
+    if (timer) { clearInterval(timer); timer = null; clock.textContent = '⏱ ' + fmt(left) + ' 已暂停'; return; }
+    if (left <= 0) { left = 45 * 60; }
+    timer = setInterval(function(){
+      left--;
+      if (left <= 0) {
+        clearInterval(timer); timer = null;
+        clock.textContent = '⏱ 时间到！';
+        left = 0;
+        return;
+      }
+      clock.textContent = '⏱ ' + fmt(left);
+    }, 1000);
+    clock.textContent = '⏱ ' + fmt(left);
+  });
+})();
+</script>
+<script src="./assets/auth.js"></script>
+<script src="./assets/groups.js"></script>
+<script src="./assets/auth-ui.js"></script>
+</body>
+</html>

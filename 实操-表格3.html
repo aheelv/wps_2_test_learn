@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WPS 处理电子表格 · 第 6 次课（4 小节 8 题）| 大连财经学院 计算机国家二级（WPS 类）</title>
+<meta name="description" content="WPS 电子表格第 3 次课实操：4 小节 8 道例题，覆盖分类汇总与合并计算、数据有效性、柱形/折线/饼图与次坐标轴、迷你图、数据透视表与透视图、切片器与日程表、模拟运算表与单变量求解、方案管理器、工作表保护与打印。">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="stylesheet" href="./assets/practice.css">
+</head>
+<body>
+
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">WPS</span><span>大连财经学院 · 计算机国家二级（WPS 类）<small>校内教学辅助资料 · 非官方</small></span></a>
+  <nav class="navlinks">
+    <a href="./index.html">学习中心</a>
+    <a href="./考试介绍.html">考试介绍</a>
+    <a href="./教学大纲.html">教学大纲</a>
+    <a href="./考纲对照表.html">考纲对照表</a>
+    <a href="./教学日历.html">教学日历</a>
+    <a href="./教案.html">教案</a>
+    <a class="on" href="./实操训练.html">实操训练</a>
+    <a href="./培训课件.html">培训课件</a>
+    <a href="./电子书.html">电子书</a>
+    <a href="./资料汇编.html">资料汇编</a>
+    <a href="./考试模拟系统/index.html">模拟考试</a>
+  </nav>
+</div></header>
+
+<div class="noticebar"><div class="wrap">
+  <span class="nb-ic">ⓘ</span>
+  <span><b>大连财经学院</b> 计算机国家二级考试（WPS 类）校内教学辅助资料 · <b>本站为非官方考试网站</b>，不提供报名、缴费、查分服务，不收集任何个人信息。官方信息请以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 为准。</span>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">实操训练 · 第 6 次课 / 共 8 次 · WPS 处理电子表格</div>
+  <h1>分类汇总 · 图表 · 数据透视表 · 模拟分析与安全</h1>
+  <p class="sub">这是表格模块的最后一次课，也是「数据呈现」的分水岭：同样一份 30 行流水，别人交一张密密麻麻的表，你交分类汇总 + 图表 + 透视表——20 分里能多拿 8 分。四类操作各有固定套路，练熟了几乎不丢分。</p>
+  <div class="flex mt2">
+    <a class="btn accent" href="#s1">▶ 从第 1 小节开始</a>
+    <a class="btn ghost" href="#cover">知识点覆盖对照</a>
+    <a class="btn ghost" href="#check">交卷自查清单</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><b>4</b><span>小节 · 每节 45 分钟</span></div>
+    <div class="hero-stat"><b>8</b><span>道实操例题</span></div>
+    <div class="hero-stat"><b>30 分</b><span>电子表格操作题</span></div>
+    <div class="hero-stat"><b>80%</b><span>课堂时间用于动手</span></div>
+    <div class="hero-stat"><b>模块三</b><span>12 课时</span></div>
+  </div>
+</div></section>
+
+<main class="wrap">
+
+  <div class="crumbs">
+    <a href="./index.html">学习中心</a><span class="sep">/</span><a href="./实操训练.html">实操训练</a><span class="sep">/</span>第 6 次课 · WPS 处理电子表格
+  </div>
+
+  <section class="section-sm">
+    <h2>本次课定位与目标</h2>
+    <p class="lead">分类汇总、图表、透视表、模拟分析，这四块的共同点是：<b>都有「必须先做对前一步」的前提</b>。分类汇总必须先排序，透视表必须先保证源数据规范（无合并单元格、无空行），双变量模拟运算表必须把公式放在左上角。前提错一步，后面全废——所以本课每一题都先讲前提。</p>
+    <div class="grid g2 mt2">
+      <div class="card">
+        <h3>课程基本信息</h3>
+        <div class="table-wrap mt1" style="border:0">
+          <table class="tbl small-tbl" style="min-width:auto">
+            <tbody>
+              <tr><th style="width:110px">所属模块</th><td>模块三 · WPS 处理电子表格（12 课时）</td></tr>
+              <tr><th>本次课位置</th><td>第 6 次课 / 共 8 次 · 4 小节 8 题</td></tr>
+              <tr><th>对应考纲</th><td>考纲三·3（分类汇总、合并计算、模拟分析）· 三·5（图表）· 三·6（数据透视表与数据透视图）· 三·7（安全性）· 三·8（多工作表联动与打印）</td></tr>
+              <tr><th>对应题型</th><td>电子表格操作题（30 分）</td></tr>
+              <tr><th>讲练配比</th><td>每小节讲授 8~10 分钟 ＋ 动手 35~37 分钟（练习占 <b>80%</b>）</td></tr>
+              <tr><th>前置要求</th><td>已完成表格第 1、2 次课；会用 SUM/IF 与绝对引用，会做多条件统计</td></tr>
+              <tr><th>结课标准</th><td>独立完成 8 题；能在 6 分钟内完成「排序→分类汇总→生成图表」的连环操作，自评 ≥ 24/30 分</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card" style="border-left:5px solid var(--m4)">
+        <h3>学完这 4 小节，你要能做到</h3>
+        <ul class="clean mt1"><li><b>汇总：</b>会先排序再分类汇总、会做嵌套汇总、会用分级显示隐藏明细、会用合并计算汇总多表</li><li><b>图表：</b>会创建柱形/折线/饼图，会把一个系列放到次坐标轴，会加标题/图例/数据标签，会插迷你图</li><li><b>透视：</b>会拖字段做行列值布局、会改值显示方式与数字格式、会插透视图与切片器并刷新</li><li><b>分析：</b>会用模拟运算表（单/双变量）、单变量求解反推、方案管理器保存多套假设</li><li><b>安全：</b>会保护工作表、加密工作簿、跟踪修订，会把打印区域/分页符/标题行设对</li></ul>
+        <div class="callout key mt2"><h4>💡 为什么这样排</h4><p class="small mb0">从「汇总」到「可视化」到「交互分析」再到「预测与保护」，是数据分析的完整链条。考试综合题常常把前三步串在一道题里（先分类汇总、再画图、最后做透视表），所以顺序练习比单独练更有效。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm" id="cover">
+    <h2>知识点覆盖对照表</h2>
+    <p class="muted">本表逐小节列出「对应考纲条目 → 承载题目 → 覆盖的具体知识点」，用于核对<b>无遗漏</b>；考前可只看这一张表做最后清点。</p>
+    <div class="table-wrap mt2">
+      <table class="tbl cover-tbl">
+        <thead><tr><th class="num" style="width:56px">小节</th><th style="width:210px">小节主题</th><th style="width:190px">对应考纲条目</th><th class="num" style="width:110px">题目</th><th>覆盖知识点</th></tr></thead>
+        <tbody>
+<tr><td class="num"><b>1</b></td><td><b>分类汇总、合并计算与数据有效性</b></td><td class="small">考纲三·3</td><td class="small nowrap">例 6-1、例 6-2</td><td><span class="pill">分类汇总的三个必填项：分类字段、汇总方式、选定汇总项</span><span class="pill">「替换当前分类汇总」「每组数据分页」「汇总结果显示在数据下方」</span><span class="pill">嵌套分类汇总（第二次汇总不替换前一次）</span><span class="pill">分级显示（左侧 1/2/3 按钮）与显示/隐藏明细</span><span class="pill">删除分类汇总（全部删除）</span><span class="pill">合并计算：按位置 / 按类别（首行、最左列）</span><span class="pill">数据有效性：整数/小数/日期/序列/自定义公式</span><span class="pill">输入信息、出错警告与「圈释无效数据」</span></td></tr>
+<tr><td class="num"><b>2</b></td><td><b>图表的创建、编辑与修饰</b></td><td class="small">考纲三·5</td><td class="small nowrap">例 6-3、例 6-4</td><td><span class="pill">图表类型选择：柱形/条形/折线/饼图/散点/面积</span><span class="pill">选择数据：数据区域、系列、类别轴标签</span><span class="pill">切换行/列、添加系列、删除系列</span><span class="pill">次坐标轴与组合图（柱形 + 折线）</span><span class="pill">图表元素：标题、坐标轴标题、图例、数据标签、网格线、趋势线</span><span class="pill">图表样式与颜色、图表布局</span><span class="pill">数据标签的数字格式与位置</span><span class="pill">迷你图（折线/柱形/盈亏）的插入与设置</span></td></tr>
+<tr><td class="num"><b>3</b></td><td><b>数据透视表与数据透视图</b></td><td class="small">考纲三·6</td><td class="small nowrap">例 6-5、例 6-6</td><td><span class="pill">源数据的规范要求（无合并单元格、无空行、单行标题）</span><span class="pill">插入透视表（新工作表 / 现有位置）与字段列表四个区域</span><span class="pill">行/列/值/筛选的拖放布局</span><span class="pill">值字段设置：求和/计数/平均/最大，以及「值显示方式」</span><span class="pill">数字格式与字段标题重命名</span><span class="pill">数据透视图的插入与联动</span><span class="pill">切片器、日程表与「刷新」</span></td></tr>
+<tr><td class="num"><b>4</b></td><td><b>模拟分析、安全性与打印输出</b></td><td class="small">考纲三·3 / 三·7 / 三·8</td><td class="small nowrap">例 6-7、例 6-8</td><td><span class="pill">模拟运算表：单变量（一个输入）与双变量（两个输入）</span><span class="pill">模拟运算表的「公式单元格必须在左上角」</span><span class="pill">单变量求解：目标值、可变单元格、迭代结果</span><span class="pill">方案管理器：保存/显示/汇总多套假设</span><span class="pill">保护工作表（密码、允许的操作）与保护工作簿</span><span class="pill">文档加密：打开密码 / 修改密码</span><span class="pill">跟踪修订与批注</span><span class="pill">打印区域、分页符、打印标题、缩放</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn mt2">
+      <h4>⚠️ 覆盖口径说明</h4>
+      <p class="mb0 small">表中知识点均来自《全国计算机等级考试（NCRE）二级 WPS Office 高级应用与设计考试大纲（2025 年版）》模块三对应条目，每一条都有具体题目承接。<b>同一知识点在不同题目中重复出现是有意设计</b>——考试评分看的是操作结果，只有练到"不看书也能做对"才算掌握。</p>
+    </div>
+  </section>
+
+  <nav class="lessonnav"><a href="#s1">第 1 小节 · 分类汇总</a><a href="#s2">第 2 小节 · 图表</a><a href="#s3">第 3 小节 · 数据透视表</a><a href="#s4">第 4 小节 · 模拟与安全</a></nav>
+
+  <!-- ============ 第 1 小节 ============ -->
+  <section id="s1">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>小节</small>01</div>
+        <div class="ltx">
+          <h3>分类汇总、合并计算与数据有效性</h3>
+          <p>先排序再汇总、嵌套两级、分级显示、合并计算的两个方向、数据有效性与圈释。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>2 道实操题</span><span>考纲三·3</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本小节必须掌握的知识点</h4>
+          <ul class="clean small" style="margin-top:6px"><li>分类汇总的三个必填项：分类字段、汇总方式、选定汇总项</li><li>「替换当前分类汇总」「每组数据分页」「汇总结果显示在数据下方」</li><li>嵌套分类汇总（第二次汇总不替换前一次）</li><li>分级显示（左侧 1/2/3 按钮）与显示/隐藏明细</li><li>删除分类汇总（全部删除）</li><li>合并计算：按位置 / 按类别（首行、最左列）</li><li>数据有效性：整数/小数/日期/序列/自定义公式</li><li>输入信息、出错警告与「圈释无效数据」</li></ul>
+        </div>
+        <article class="ex" id="e6-1">
+          <header class="ex-h">
+            <span class="ex-no">例 6-1</span>
+            <h4>分类汇总：先排序 + 按部门求和 + 嵌套产品二级汇总</h4>
+            <span class="badge info">分类汇总</span><span class="badge info">排序前提</span><span class="badge info">分级显示</span>
+            <span class="badge">16 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（A 日期、B 部门、C 产品、D 金额，30 行，部门顺序是乱的）。</li><li><b>先按「部门」升序排序</b>（分类汇总的前提）。</li><li>做<b>第一次分类汇总</b>：分类字段「部门」、汇总方式「求和」、汇总项「金额」。</li><li>在保留第一次汇总的前提下，再做<b>第二次汇总</b>：分类字段「产品」、求和「金额」（嵌套）。</li><li>用左侧分级按钮切换到<b>级别 2</b>，只显示汇总行。</li><li>再切回级别 3 查看明细，最后<b>删除全部分类汇总</b>。</li><li>保存为 <code>学号-姓名-练习6-1.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>为什么必须先排序。</b>分类汇总是「遇到相同的值就断开分组」，部门乱序时同一个部门会被分成好几段，各自汇总——数字看起来像对的，其实全错。</li><li><b>排序。</b>点数据区任一单元格 →「数据」→「排序」→ 主要关键字「<b>部门</b>」→ 升序 → 确定。</li><li><b>第一次汇总。</b>仍点数据区任一单元格 →「数据」→「<b>分类汇总</b>」→ 分类字段「<b>部门</b>」→ 汇总方式「<b>求和</b>」→ 选定汇总项只勾「<b>金额</b>」→ 确定。<br>此时表格左侧出现 1/2/3 三个分级按钮。</li><li><b>第二次汇总。</b>再次「数据」→「分类汇总」→ 分类字段改「<b>产品</b>」→ 汇总方式「求和」→ 汇总项「金额」→ <b>取消勾选「替换当前分类汇总」</b> → 确定。<br>不取消，第一级汇总会被覆盖，嵌套就没了。</li><li><b>看分级显示。</b>点左上角「<b>2</b>」→ 只显示部门汇总行；点「3」→ 显示全部明细；点「1」→ 只显示总计。</li><li><b>认识汇总行。</b>每段末尾的「XX 汇总」行是自动插入的，<b>不能手工删</b>，否则汇总结构错乱。</li><li><b>删除汇总。</b>「数据」→「分类汇总」→ 点「<b>全部删除</b>」→ 表格恢复原样（但排序仍保留）。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>已按部门升序排序（分类字段有序） · 第一次汇总为部门+金额求和 · 第二次汇总为产品+金额且未替换前一次 · 分级显示可切换 1/2/3 级 · 已全部删除汇总</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>不排序直接汇总：部门被拆成多段，总额看似合理实则重复/遗漏。</li><li>第二次汇总勾了「替换当前分类汇总」：第一级汇总消失，只剩产品级。</li><li>汇总项把「日期」「数量」也勾上：出现多余的汇总列，格式不符。</li><li>手工删除汇总行：分级结构被破坏，后续无法正确显示。</li><li>在筛选状态下做分类汇总：只汇总可见行，结果偏小。</li></ul>
+            </div>
+            <div class="callout tip"><h4>分类汇总 vs 数据透视表</h4><p class="small mb0">分类汇总的结果「写」在原表上，适合打印与逐段查看；透视表是独立的汇总视图，适合反复换维度分析。考试若要求「在原表上插入汇总行」，只能用分类汇总。</p></div>
+          </div>
+        </article>
+        <article class="ex" id="e6-2">
+          <header class="ex-h">
+            <span class="ex-no">例 6-2</span>
+            <h4>合并计算（按位置/按类别）+ 数据有效性 + 圈释无效数据</h4>
+            <span class="badge info">合并计算</span><span class="badge info">数据有效性</span><span class="badge info">圈释</span>
+            <span class="badge">16 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（「1月」「2月」「3月」三张表结构相同，A 产品、B 数量、C 金额）。</li><li>在「汇总」表 A1 用<b>合并计算（按位置）</b>把三张表的数量与金额相加。</li><li>删除结果，改用<b>合并计算（按类别）</b>，勾选「<b>首行</b>」与「<b>最左列</b>」重新汇总。</li><li>在「汇总」表 D2:D10 设置<b>数据有效性</b>：整数、介于 <b>0 和 10000</b>。</li><li>为有效性加<b>输入信息</b>：「请输入 0~10000 的整数」；<b>出错警告</b>：「超出允许范围」。</li><li>在 D3 故意输入 <b>20000</b>，用「<b>圈释无效数据</b>」把它圈出来。</li><li>保存为 <code>学号-姓名-练习6-2.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>确认结构一致。</b>三张表的行列顺序完全相同，才能「按位置」合并。</li><li><b>按位置合并。</b>切到「汇总」表 → 点 A1 →「数据」→「<b>合并计算</b>」→ 函数选「<b>求和</b>」→ 点「引用位置」右侧折叠按钮 → 选「1月」的 A1:C10 →「<b>添加</b>」→ 同样添加 2 月、3 月 → 确定。<br>不勾「首行」「最左列」，即为按位置对应相加。</li><li><b>检查结果。</b>汇总表的行数与产品顺序应与 1 月表完全一致，数值为三月之和。</li><li><b>按类别合并。</b>先清除汇总结果，再「合并计算」→ 勾选「<b>首行</b>」与「<b>最左列</b>」→ 重新添加三个区域 → 确定。<br>此时系统按「产品名称」匹配，即使三张表产品顺序不同也能正确相加。</li><li><b>设有效性。</b>选中 D2:D10 →「数据」→「<b>有效性</b>」→ 允许「<b>整数</b>」→ 数据「<b>介于</b>」→ 最小值 <b>0</b>、最大值 <b>10000</b>。</li><li><b>加输入信息。</b>切到「<b>输入信息</b>」选项卡 → 标题「数量录入」→ 输入信息「请输入 0~10000 的整数」→ 确定。选中单元格时会自动浮出提示。</li><li><b>加出错警告。</b>切到「<b>出错警告</b>」选项卡 → 样式「停止」→ 标题「超出允许范围」→ 错误信息「请输入 0~10000 的整数」→ 确定。</li><li><b>测试。</b>在 D3 输入 <b>20000</b> → 应弹出警告并拒绝输入；若允许输入，说明有效性范围设错。</li><li><b>圈释。</b>「数据」→「有效性」下拉 →「<b>圈释无效数据</b>」→ 无效值被红圈标出。再次点同一项可「清除无效数据标识圈」。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>按位置合并结果等于三表之和 · 按类别合并勾选了首行与最左列 · D 列有效性为整数 0~10000 · 输入信息与出错警告文字正确 · 圈释无效数据可显示红圈</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>按位置合并时三表行列顺序不同：数据错位相加，结果毫无意义。</li><li>按类别合并不勾「最左列」：不同产品被当成同一行相加。</li><li>添加引用位置时没点「添加」：只记住最后一个区域，等于只汇总一张表。</li><li>有效性只设了范围没设「出错警告」：输入超范围值时只是被拒绝，没有提示文字。</li><li>有效性设置后仍能输入：检查是否选错了区域，或单元格原本是文本格式。</li></ul>
+            </div>
+            <div class="callout tip"><h4>按位置 vs 按类别</h4><p class="small mb0"><b>按位置</b>：各表行列完全对齐（如每月固定模板），直接对应相加；<b>按类别</b>：各表行列顺序可能不同，靠首行/最左列的名称匹配。后者更稳，但要求标签文字完全一致。</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 2 小节 ============ -->
+  <section id="s2">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>小节</small>02</div>
+        <div class="ltx">
+          <h3>图表的创建、编辑与修饰</h3>
+          <p>柱形图 + 折线次坐标轴、饼图百分比与分离、图表元素、迷你图。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>2 道实操题</span><span>考纲三·5</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本小节必须掌握的知识点</h4>
+          <ul class="clean small" style="margin-top:6px"><li>图表类型选择：柱形/条形/折线/饼图/散点/面积</li><li>选择数据：数据区域、系列、类别轴标签</li><li>切换行/列、添加系列、删除系列</li><li>次坐标轴与组合图（柱形 + 折线）</li><li>图表元素：标题、坐标轴标题、图例、数据标签、网格线、趋势线</li><li>图表样式与颜色、图表布局</li><li>数据标签的数字格式与位置</li><li>迷你图（折线/柱形/盈亏）的插入与设置</li></ul>
+        </div>
+        <article class="ex" id="e6-1">
+          <header class="ex-h">
+            <span class="ex-no">例 6-3</span>
+            <h4>柱形 + 折线次坐标轴：销售额与增长率双轴图</h4>
+            <span class="badge info">柱形图</span><span class="badge info">次坐标轴</span><span class="badge info">数据标签</span>
+            <span class="badge">17 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（A1:D13：月份、销售额、增长率）。</li><li>以「月份」为类别、「销售额」为数值创建<b>簇状柱形图</b>。</li><li>把「<b>增长率</b>」系列改为<b>折线图</b>并放在<b>次坐标轴</b>。</li><li>图表标题：「<b>2026 年销售额与增长率</b>」；图例放在<b>底部</b>。</li><li>添加<b>坐标轴标题</b>：主纵轴「销售额（万元）」，次纵轴「增长率」；横轴「月份」。</li><li>为增长率系列添加<b>数据标签</b>，显示<b>百分比、1 位小数</b>。</li><li>把图表移动到 <b>F2</b> 附近，大小设为 <b>宽 12 厘米、高 8 厘米</b>。</li><li>保存为 <code>学号-姓名-练习6-3.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>先选数据。</b>选中 <code>A1:C13</code>（含表头与月份列）→「插入」→「<b>图表</b>」→「<b>柱形图</b>」→「<b>簇状柱形图</b>」→ 确定。</li><li><b>检查轴标签。</b>横轴应是 1~12 月，若显示成 1、2、3…说明「月份」列没被识别为类别，右键 →「<b>选择数据</b>」→ 在「水平（分类）轴标签」里指定 <code>A2:A13</code>。</li><li><b>加增长率系列。</b>右键图表 →「<b>选择数据</b>」→「<b>添加</b>」→ 系列名称选 C1、系列值选 <code>C2:C13</code> → 确定。此时图上多出一组几乎贴地的柱子（因为增长率是小数）。</li><li><b>改次坐标轴（关键）。</b>右键「增长率」系列 →「<b>更改系列图表类型</b>」→ 选「<b>组合图</b>」→ 增长率选「<b>折线图</b>」并勾选右侧「<b>次坐标轴</b>」→ 确定。</li><li><b>加标题。</b>点图表 →「图表工具」→「<b>添加图表元素</b>」→「图表标题」→「图表上方」→ 输入「2026 年销售额与增长率」。</li><li><b>图例位置。</b>「添加图表元素」→「图例」→「<b>底部</b>」。</li><li><b>坐标轴标题。</b>「添加图表元素」→「坐标轴标题」→ 分别为主纵轴、次纵轴、横轴输入文字。</li><li><b>数据标签。</b>右键「增长率」折线 →「<b>添加数据标签</b>」→ 再右键标签 →「<b>设置数据标签格式</b>」→ 勾选「类别名称」不需要、勾选「值」→ 数字 → 类别「百分比」、小数位数 <b>1</b>。</li><li><b>调整大小位置。</b>拖动图表到 F2 附近 → 右键 →「大小和属性」→ 取消锁定纵横比 → 宽 <b>12 厘米</b>、高 <b>8 厘米</b>。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>图表类型为簇状柱形图 · 增长率系列为折线且位于次坐标轴 · 图表标题文字完全一致 · 图例在底部 · 三个坐标轴标题齐全 · 增长率数据标签为百分比 1 位小数 · 图表尺寸为 12×8 厘米</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>数据区域漏了表头：系列名称变成「系列1/系列2」，图例不对。</li><li>直接把增长率也画成柱子：看不出趋势，且题目明确要求折线+次坐标轴。</li><li>用「插入形状」手画一条线当折线：不是图表系列，评分不认。</li><li>数据标签设成「常规」：显示 0.1234 而不是 12.3%。</li><li>图表大小用拖拽估：宽高不是 12×8，尺寸评分点丢分。</li></ul>
+            </div>
+            <div class="callout tip"><h4>为什么要次坐标轴</h4><p class="small mb0">销售额是「万元」量级（几千），增长率是「百分比」量级（零点几）。放在同一根轴上，增长率会被压成一条贴底直线。次坐标轴给它独立刻度，两条数据才都看得清——这也是考试常考的「组合图」考点。</p></div>
+          </div>
+        </article>
+        <article class="ex" id="e6-2">
+          <header class="ex-h">
+            <span class="ex-no">例 6-4</span>
+            <h4>饼图：类别+百分比、分离扇区、图表样式 + 迷你图</h4>
+            <span class="badge info">饼图</span><span class="badge info">数据标签</span><span class="badge info">迷你图</span>
+            <span class="badge">15 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（A1:B5：部门、销售额，4 个部门）。</li><li>以部门为类别、销售额为值创建<b>饼图</b>。</li><li>显示数据标签：<b>类别名称 + 百分比</b>（1 位小数），不显示值。</li><li>把「<b>销售部</b>」扇区<b>分离</b>出来（分离程度 10%）。</li><li>图表标题「各部门销售额占比」，图例放在<b>右侧</b>，应用一种<b>图表样式</b>。</li><li>在 <b>D2:D5</b> 为四个部门插入<b>折线迷你图</b>（数据取自 1~6 月的 B~G 列）。</li><li>保存为 <code>学号-姓名-练习6-4.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>选数据。</b>选中 <code>A1:B5</code> →「插入」→「图表」→「<b>饼图</b>」→ 选「饼图」→ 确定。</li><li><b>加标签。</b>右键饼图 →「<b>添加数据标签</b>」→ 再右键标签 →「<b>设置数据标签格式</b>」。</li><li><b>勾选项。</b>在右侧面板勾选「<b>类别名称</b>」与「<b>百分比</b>」，<b>取消</b>「值」→ 百分比的小数位数设为 <b>1</b>。</li><li><b>分离扇区。</b>单击选中整个饼图 → 再<b>单击「销售部」那一块</b>（只选中该扇区）→ 向右拖动一点；或在「设置数据点格式」里把「<b>点爆炸型</b>」设为 <b>10%</b>。<br>分离程度用数值设置才准，拖动只能估。</li><li><b>标题与图例。</b>「添加图表元素」→ 图表标题 → 输入「各部门销售额占比」；图例 →「<b>右侧</b>」。</li><li><b>换样式。</b>「图表工具」→「<b>图表样式</b>」→ 选一种配色（如「样式 8」）；也可「更改颜色」选配色方案。</li><li><b>迷你图。</b>选中 D2 →「插入」→「<b>迷你图</b>」→「<b>折线图</b>」→ 数据范围选 <code>B2:G2</code> → 位置范围 <code>$D$2</code> → 确定。</li><li><b>批量做其余。</b>选中 D2 拖填充柄到 D5，迷你图会按行自动延伸（每一行取自己那一行的 6 个月）。</li><li><b>标记点。</b>「迷你图工具」→ 勾选「<b>标记</b>」→ 可显示最高点/最低点，便于看出峰谷。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>图表类型为饼图 · 数据标签含类别名称与百分比（1 位小数）且不显示值 · 销售部扇区已分离 · 标题与图例位置正确 · 已应用图表样式 · D2:D5 迷你图为折线且按行取数</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>饼图数据里包含了合计行：合计占一大块，占比全错。</li><li>只显示「值」不显示「百分比」：题目要求的标签类型不符。</li><li>选中整个饼图就拖：所有扇区一起分离，不是只分「销售部」。</li><li>迷你图数据范围没锁列（B2:G2 写成 B2:G5）：每条迷你图取到同一片区域。</li><li>饼图类别超过 6 个仍用饼图：应改柱形图（考试题一般不超过 6 类）。</li></ul>
+            </div>
+            <div class="callout tip"><h4>饼图什么时候不该用</h4><p class="small mb0">类别超过 6~7 个、或各类数值接近时，饼图几乎看不出差别，应改用条形图（横向柱形图）按大小排序。这是常考的「图表选型」判断题。</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 3 小节 ============ -->
+  <section id="s3">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>小节</small>03</div>
+        <div class="ltx">
+          <h3>数据透视表与数据透视图</h3>
+          <p>字段布局、值汇总与显示方式、数字格式、透视图、切片器与日程表、刷新。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>2 道实操题</span><span>考纲三·6</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本小节必须掌握的知识点</h4>
+          <ul class="clean small" style="margin-top:6px"><li>源数据的规范要求（无合并单元格、无空行、单行标题）</li><li>插入透视表（新工作表 / 现有位置）与字段列表四个区域</li><li>行/列/值/筛选的拖放布局</li><li>值字段设置：求和/计数/平均/最大，以及「值显示方式」</li><li>数字格式与字段标题重命名</li><li>数据透视图的插入与联动</li><li>切片器、日程表与「刷新」</li></ul>
+        </div>
+        <article class="ex" id="e6-1">
+          <header class="ex-h">
+            <span class="ex-no">例 6-5</span>
+            <h4>透视表：部门×季度交叉表 + 占行总计百分比 + ¥格式</h4>
+            <span class="badge info">数据透视表</span><span class="badge info">值显示方式</span><span class="badge info">数字格式</span>
+            <span class="badge">16 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（A1:F31：日期、部门、产品、数量、单价、金额）。</li><li>以该区域为源，在<b>新工作表</b>插入数据透视表，命名为「部门季度汇总」。</li><li>布局：<b>行</b> = 部门，<b>列</b> = 季度，<b>值</b> = 金额（<b>求和</b>）。</li><li>调整值的显示方式为「<b>占同行总计的百分比</b>」，数字格式为 <b>0.0%</b>。</li><li>复制一份透视表到下方，改回「求和」并把数字格式设为 <b>¥#,##0</b>。</li><li>把「求和项:金额」字段标题改为「<b>金额合计</b>」。</li><li>修改源表任意一个金额，然后<b>刷新</b>透视表，确认结果更新。</li><li>保存为 <code>学号-姓名-练习6-5.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>检查源数据。</b>确认 A1:F31 没有合并单元格、没有空行、首行是字段名。有合并单元格时透视表会报「字段名无效」。</li><li><b>插入透视表。</b>点数据区任一单元格 →「插入」→「<b>数据透视表</b>」→ 区域自动识别为 <code>A1:F31</code> → 位置选「<b>新工作表</b>」→ 确定。</li><li><b>重命名工作表。</b>双击新工作表标签 → 输入「部门季度汇总」。</li><li><b>拖字段。</b>右侧字段列表：把「部门」拖到「<b>行</b>」区、「季度」拖到「<b>列</b>」区、「金额」拖到「<b>值</b>」区。<br>若源表没有「季度」列，可先用 <code>=&quot;Q&quot;&amp;ROUNDUP(MONTH(A2)/3,0)</code> 建辅助列。</li><li><b>确认汇总方式。</b>点值区的「求和项:金额」→「<b>值字段设置</b>」→ 汇总方式选「<b>求和</b>」。（若源列有空白，系统可能默认「计数」，要手动改。）</li><li><b>改显示方式。</b>同一对话框 →「<b>值显示方式</b>」选项卡 → 下拉选「<b>占同行总计的百分比</b>」→ 确定。</li><li><b>设数字格式。</b>「值字段设置」→「<b>数字格式</b>」→ 分类「百分比」→ 小数位数 1 → 确定（或自定义 <code>0.0%</code>）。</li><li><b>做第二份。</b>复制整个透视表 → 粘贴到下方 → 在副本上把「值显示方式」改回「<b>无计算</b>」→ 数字格式改为自定义 <code>¥#,##0</code>。</li><li><b>改字段标题。</b>点中「求和项:金额」这个标题单元格 → <b>直接输入</b>「金额合计」→ <kbd>Enter</kbd>。<br>注意：若提示「已存在相同字段名」，在原名后加一个空格即可。</li><li><b>刷新。</b>回源表改一个金额 → 回到透视表 → 右键 →「<b>刷新</b>」（或「分析」→「刷新」）。<br><b>透视表不会自动更新</b>，这一步是必考点。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>透视表位于新工作表且命名为「部门季度汇总」 · 行为部门、列为季度、值为金额求和 · 第一份为「占同行总计的百分比」且格式 0.0% · 第二份为求和且格式 ¥#,##0 · 字段标题改为「金额合计」 · 刷新后数据同步</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>源数据有合并单元格：插入时报「数据透视表字段名无效」。</li><li>值区拖了两个字段：出现两列值，布局不符。</li><li>只改数字格式不改显示方式：数字还是绝对值，不是百分比。</li><li>以为透视表会自动更新：源表改了不刷新，结果还是旧的。</li><li>直接改透视表里的单元格：提示「不能更改数据透视表的这一部分」，必须改源数据。</li></ul>
+            </div>
+            <div class="callout tip"><h4>透视表三条铁律</h4><p class="small mb0">① 源数据必须是「一维表」——一行一条记录、一列一个字段；② 结果不能手工改，只能改源数据后刷新；③ 布局随时可拖，所以「先出结构，再调格式」。</p></div>
+          </div>
+        </article>
+        <article class="ex" id="e6-2">
+          <header class="ex-h">
+            <span class="ex-no">例 6-6</span>
+            <h4>数据透视图 + 切片器（部门、季度）+ 日程表 + 联动刷新</h4>
+            <span class="badge info">数据透视图</span><span class="badge info">切片器</span><span class="badge info">日程表</span>
+            <span class="badge">15 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>在上题透视表基础上，插入<b>数据透视图</b>（簇状柱形图）。</li><li>为透视图添加<b>切片器</b>：<b>部门</b>与<b>季度</b>两个。</li><li>为透视图添加<b>日程表</b>（按「日期」字段，按月显示）。</li><li>在切片器中只选「销售部」，观察图表随之变化。</li><li>把透视图标题改为「各部门季度销售额」，图例放在底部。</li><li>保存为 <code>学号-姓名-练习6-6.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>基于透视表插透视图。</b>点透视表内任一单元格 →「<b>数据透视表工具</b>」→「<b>分析</b>」→「<b>数据透视图</b>」→ 选「簇状柱形图」→ 确定。</li><li><b>插切片器。</b>「分析」→「<b>插入切片器</b>」→ 勾选「<b>部门</b>」与「<b>季度</b>」→ 确定。两个切片器浮在表上，可拖动排列。</li><li><b>切片器样式。</b>选中切片器 →「切片器工具」→「选项」→ 选一种样式；按钮列数可设为 2 列，更紧凑。</li><li><b>插日程表。</b>「分析」→「<b>插入日程表</b>」→ 勾选「<b>日期</b>」→ 确定 → 在日程表右上角下拉选「<b>月</b>」。</li><li><b>试联动。</b>点切片器里的「销售部」→ 透视图与透视表<b>同时</b>只剩销售部的数据。<br>再按住 <kbd>Ctrl</kbd> 点「技术部」可多选。</li><li><b>清空筛选。</b>点切片器右上角的「<b>清除筛选</b>」图标（带红叉的漏斗），恢复全部数据。</li><li><b>改标题与图例。</b>点透视图标题 → 输入「各部门季度销售额」；「添加图表元素」→ 图例 → 底部。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>已插入数据透视图（簇状柱形图） · 部门与季度两个切片器均存在 · 已插入按月的日程表 · 切片器筛选时图表与透视表同步变化 · 标题与图例位置正确</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>用「插入图表」而不是「数据透视图」：切片器无法与它联动。</li><li>切片器只勾了一个字段：少一个，联动维度不全。</li><li>切片器筛选后图表不变：说明图表不是基于该透视表生成的。</li><li>日程表选成「季度/年」：题目要求按月。</li><li>忘记清除筛选就保存：打开时看到的是筛选后的残缺数据。</li></ul>
+            </div>
+            <div class="callout tip"><h4>切片器与筛选按钮的区别</h4><p class="small mb0">字段的筛选下拉只影响<b>自己这张</b>透视表；切片器可以同时连接<b>多个</b>透视表（右键 →「报表连接」），是仪表盘式布局的核心。考试里只要看到「切片器」三个字，就必须用「插入切片器」。</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 第 4 小节 ============ -->
+  <section id="s4">
+    <div class="lesson">
+      <div class="lesson-h">
+        <div class="lnum"><small>小节</small>04</div>
+        <div class="ltx">
+          <h3>模拟分析、安全性与打印输出</h3>
+          <p>模拟运算表（单/双变量）、单变量求解、方案管理器、工作表保护、加密与打印。</p>
+          <div class="lmeta"><span>45 分钟</span><span>讲 10 / 练 35</span><span>2 道实操题</span><span>考纲三·3 / 三·7 / 三·8</span></div>
+        </div>
+      </div>
+      <div class="lesson-b">
+        <div class="callout tip">
+          <h4>本小节必须掌握的知识点</h4>
+          <ul class="clean small" style="margin-top:6px"><li>模拟运算表：单变量（一个输入）与双变量（两个输入）</li><li>模拟运算表的「公式单元格必须在左上角」</li><li>单变量求解：目标值、可变单元格、迭代结果</li><li>方案管理器：保存/显示/汇总多套假设</li><li>保护工作表（密码、允许的操作）与保护工作簿</li><li>文档加密：打开密码 / 修改密码</li><li>跟踪修订与批注</li><li>打印区域、分页符、打印标题、缩放</li></ul>
+        </div>
+        <article class="ex" id="e6-1">
+          <header class="ex-h">
+            <span class="ex-no">例 6-7</span>
+            <h4>贷款模型：PMT + 单变量模拟运算表 + 双变量表 + 单变量求解 + 方案</h4>
+            <span class="badge info">PMT</span><span class="badge info">模拟运算表</span><span class="badge info">单变量求解</span><span class="badge info">方案管理器</span>
+            <span class="badge">18 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>新建工作表「贷款模型」：B1 本金 <b>800000</b>、B2 年利率 <b>4.2%</b>、B3 年限 <b>20</b>、B4 月供（公式）。</li><li>B4 用 <b>PMT</b> 计算月供（等额本息，期末还款）。</li><li>在 D2:D8 列出利率 3.5%~5.5%（步长 0.25%），用<b>单变量模拟运算表</b>算出各利率下的月供（结果放 E2:E8）。</li><li>在 D12:H16 建<b>双变量模拟运算表</b>（行=年限 15/20/25/30，列=利率）。</li><li>用<b>单变量求解</b>：月供固定 <b>5000</b> 元，反推可贷本金（可变单元格 B1）。</li><li>用<b>方案管理器</b>保存 3 套方案：「保守」「标准」「激进」（利率 3.8%/4.2%/5.0%），并生成<b>方案摘要</b>。</li><li>保存为 <code>学号-姓名-练习6-7.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>建模型。</b>B1 输入 <code>800000</code>、B2 输入 <code>4.2%</code>、B3 输入 <code>20</code>；A 列写好标签。</li><li><b>写月供公式。</b>B4 输入 <span class="fx">=PMT(B2/12,B3*12,-B1)</span> → <kbd>Enter</kbd>。<br>三个核心参数：期利率（年利率÷12）、总期数（年×12）、现值（<b>加负号</b>表示贷款流入，否则算出负数）。</li><li><b>设货币格式。</b>B4 设 <code>¥#,##0.00</code>，B2 设 <code>0.00%</code>。</li><li><b>铺利率序列。</b>D2 输入 <code>3.5%</code>、D3 输入 <code>3.75%</code> → 选中 D2:D3 拖到 D8（得到 3.5%~5.5%）。</li><li><b>单变量模拟运算表。</b>在 E1 输入 <span class="fx">=B4</span>（引用月供公式）→ 选中 <code>D1:E8</code>（<b>公式格在区域左上角</b>）→「数据」→「<b>模拟分析</b>」→「<b>模拟运算表</b>」→「输入引用列的单元格」填 <code>$B$2</code>（利率）→ 确定。<br>E2:E8 自动填入对应利率下的月供。</li><li><b>检查左上行。</b>E1 应等于 B4；若显示空白，说明公式格没放在左上角。</li><li><b>双变量表。</b>在 D11 输入 <span class="fx">=B4</span>；D12:D15 输入年限 15/20/25/30；E11:H11 输入利率 3.5%/4.0%/4.5%/5.0%。<br>选中 <code>D11:H15</code> →「模拟运算表」→「引用行的单元格」填 <code>$B$2</code>（利率）、「引用列的单元格」填 <code>$B$3</code>（年限）→ 确定。</li><li><b>单变量求解。</b>「数据」→「模拟分析」→「<b>单变量求解</b>」→ 目标单元格 <code>$B$4</code>、目标值 <b>5000</b>、可变单元格 <code>$B$1</code> → 确定 → 求解结果会提示「找到解」。</li><li><b>记录答案。</b>求解后 B1 变为约 81 万左右（具体随利率变化），把这个值抄到题目要求的单元格，再按 <kbd>Ctrl</kbd>+<kbd>Z</kbd> 撤销还原 B1 = 800000。</li><li><b>保存方案。</b>「数据」→「模拟分析」→「<b>方案管理器</b>」→「添加」→ 方案名「保守」→ 可变单元格选 <code>$B$2</code> → 输入 <code>3.8%</code> → 确定；再添加「标准」4.2%、「激进」5.0%。</li><li><b>生成摘要。</b>「方案管理器」→「<b>摘要</b>」→ 结果单元格选 <code>$B$4</code> → 确定，自动生成对比表。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>PMT 公式参数正确（B2/12、B3*12、-B1） · 单变量模拟运算表公式格在左上且引用列为 $B$2 · 双变量表引用行 $B$2、引用列 $B$3 · 单变量求解目标 5000 且可变单元格为 B1 · 三个方案已保存且生成摘要</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>PMT 第三参数不加负号：月供是负数，后续模拟运算表全是负值。</li><li>模拟运算表没选中「公式格 + 变量值 + 结果空白区」整个区域：只算出一格。</li><li>引用行/引用列填反：双变量表的结果矩阵整体转置。</li><li>单变量求解的可变单元格选了公式格 B4：循环引用，报错。</li><li>求解后忘记撤销：B1 被改小，后续方案对比全部基于新本金。</li></ul>
+            </div>
+            <div class="callout tip"><h4>单变量 vs 双变量</h4><p class="small mb0"><b>单变量</b>：只有一组输入值（一列或一行），区域是「公式格 + 一列/行变量 + 结果列/行」；<b>双变量</b>：两组输入构成矩阵，公式格必须在左上角，行与列分别对应两个引用单元格。</p></div>
+          </div>
+        </article>
+        <article class="ex" id="e6-2">
+          <header class="ex-h">
+            <span class="ex-no">例 6-8</span>
+            <h4>保护与打印：工作表保护 + 工作簿加密 + 跟踪修订 + 分页符</h4>
+            <span class="badge info">保护工作表</span><span class="badge info">加密</span><span class="badge info">跟踪修订</span><span class="badge info">分页符</span>
+            <span class="badge">15 分钟</span>
+            <button class="fold" type="button" data-fold>收起步骤</button>
+          </header>
+          <div class="ex-b">
+            <div class="req">
+              <div class="kicker">题目要求</div>
+              <ol><li>打开素材（Sheet1 为录入表，Sheet2 为汇总表）。</li><li>保护 <b>Sheet1</b>：密码 <code>1234</code>，仅允许「<b>选定锁定单元格</b>」与「<b>选定未锁定的单元格</b>」。</li><li><b>解锁 C2:C21</b>（设为可编辑），再重新保护，验证只有该区域能改。</li><li>为<b>工作簿</b>设置打开密码 <code>WPS2026</code>。</li><li>在 Sheet1 开启<b>跟踪修订</b>，修改 A2 的内容，确认留下修订记录。</li><li>在 <b>第 10 行</b>与<b>第 20 行</b>上方各插入一个<b>分页符</b>，设打印标题行为第 1 行。</li><li>进入打印预览，确认分页位置与每页表头。</li><li>保存为 <code>学号-姓名-练习6-8.xlsx</code>。</li></ol>
+            </div>
+            <div class="kicker">解题步骤</div>
+            <ol class="steps"><li><b>先解锁可编辑区。</b>选中 C2:C21 → <kbd>Ctrl</kbd>+<kbd>1</kbd> →「<b>保护</b>」选项卡 → <b>取消勾选</b>「锁定」→ 确定。<br>默认所有单元格都是「锁定」的，保护后全部不可改。</li><li><b>保护工作表。</b>切到 Sheet1 →「<b>审阅</b>」→「<b>保护工作表</b>」→ 勾选「选定锁定单元格」「选定未锁定的单元格」→ 密码 <code>1234</code> → 确定 → 再输一次。</li><li><b>验证。</b>试着在 A2 输入文字 → 应弹出「单元格或图表受保护」；在 C2 输入 → 应可以正常修改。</li><li><b>工作簿加密。</b>「文件」→「<b>文档加密</b>」→「打开密码」输入 <code>WPS2026</code> 两次 → 确定 → 保存。</li><li><b>跟踪修订。</b>「审阅」→「<b>跟踪修订</b>」（开启后按钮高亮）→ 修改 A2 内容 → 单元格出现批注框与颜色标记。</li><li><b>插入分页符。</b>选中 <b>第 10 行</b>的行号 →「页面布局」→「<b>分隔符</b>」→「<b>插入分页符</b>」；对第 20 行重复。插入后出现蓝色虚线（分页预览视图下为实线）。</li><li><b>设打印标题。</b>「页面布局」→「<b>打印标题</b>」→ 顶端标题行选 <code>$1:$1</code> → 确定。</li><li><b>预览。</b>「文件」→「打印」→ 每一页顶部都应有表头，分页位置在第 9/10 行之间与第 19/20 行之间。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
+            <div class="score"><b>采分点</b>C2:C21 已取消锁定 · Sheet1 已保护且密码为 1234 · 保护后仅 C 列可编辑 · 打开密码为 WPS2026 · 跟踪修订已开启且留下记录 · 第 10/20 行前各有一个分页符 · 顶端标题行为 $1:$1</div>
+            <div class="callout warn">
+              <h4>易错提醒</h4>
+              <ul><li>忘了先取消 C 列的「锁定」：保护后哪里都不能改，与题目要求相反。</li><li>保护时没勾「选定锁定单元格」：连查看都受限，体验极差且不合要求。</li><li>密码两次输入不一致：设置失败但不一定提示。</li><li>分页符插在第 10 行<b>之后</b>：分页位置偏一行，第 10 行跑到下一页。</li><li>加密后忘记密码：文件无法打开，且无法找回。</li></ul>
+            </div>
+            <div class="callout tip"><h4>保护工作表前的必做一步</h4><p class="small mb0">先想清楚「哪些格子要让人填」，把这些格子的「锁定」取消，再去保护。顺序反了（先保护再解锁）就必须先撤销保护，否则改不了任何东西。</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section-sm" id="check">
+    <h2>本次课小结与交卷自查</h2>
+    <p class="lead">做完 8 道题，用下面两张表各花 3 分钟过一遍——<b>自查过的题，考场上才敢交卷</b>。</p>
+    <div class="grid g2 mt2">
+      <div class="card">
+        <h3>✅ 交卷自查清单（做完逐项打勾）</h3>
+        <ol class="checklist mt1"><li>分类汇总前是否<b>先按分类字段排序</b>（没排序就是一锅粥）</li><li>分类汇总的「<b>替换当前分类汇总</b>」是否按题目要求勾选</li><li>合并计算的「<b>首行/最左列</b>」是否按数据方向勾选</li><li>图表的数据区域是否包含<b>类别轴标签</b>与<b>系列名称</b></li><li>次坐标轴是否通过「<b>更改系列图表类型</b>」实现，而不是手工加一条线</li><li>饼图是否显示<b>类别名称 + 百分比</b>（不是只显示值）</li><li>透视表源数据是否有<b>合并单元格/空行/空列</b></li><li>值字段的<b>汇总方式</b>（求和/计数）与<b>显示方式</b>（百分比）是否设对</li><li>模拟运算表的<b>公式单元格</b>是否位于区域左上角</li><li>保护工作表是否<b>真的生效</b>（试着改一个锁定单元格）</li></ol>
+      </div>
+      <div class="card" style="border-left:5px solid var(--accent)">
+        <h3>🔻 本次课最容易丢分的 5 处</h3>
+        <ul class="clean mt1"><li><b>不排序就分类汇总</b>——同名部门被拆成好几段，汇总额全错，且不报错。</li><li><b>分类汇总对话框里没取消「替换当前分类汇总」</b>——第二次汇总把第一次的覆盖掉。</li><li><b>图表数据区域选错</b>——把合计行也画进去，柱子多出一根。</li><li><b>透视表源数据有合并单元格</b>——字段拖不进去，或结果缺项。</li><li><b>单变量求解的「可变单元格」选错</b>——迭代出荒谬结果（如负本金）。</li></ul>
+        <div class="callout key mt2"><h4>考场时间提示</h4><p class="small mb0">表格综合题最后一段建议 <b>25 分钟</b>：分类汇总 6 分钟 → 图表 8 分钟 → 透视表 7 分钟 → 保护与打印 4 分钟。图表与透视表都是「先出结果，再调格式」，格式细节（颜色、字号）分值低，先把标题、图例、数据标签这些「有名字的评分点」做齐。</p></div>
+      </div>
+    </div>
+<div class="pager"><a class="prev" href="./实操-表格2.html"><div class="dir">← 上一次课</div><div class="tt">表格 2 · 查找引用、文本日期、数组、排序筛选</div><div class="dd">4 小节 8 题</div></a><a class="next" href="./实操-演示1.html"><div class="dir">下一次课 →</div><div class="tt">演示 1 · 幻灯片管理、主题母版、图文图表</div><div class="dd">4 小节 8 题 · 进入 20 分演示模块</div></a></div>
+  </section>
+
+</main>
+
+<div class="bar">
+  <button type="button" id="btnAll">收起全部步骤</button>
+  <button type="button" class="clock" id="btnClock">⏱ 45:00 课时计时</button>
+</div>
+
+<footer class="footer"><div class="wrap"><div class="cols">
+  <div><h4>大连财经学院 · 计算机国家二级考试（WPS 类）</h4><p class="small"><span class="org">主办：大连财经学院计算机国家二级考试（WPS 类）课程组</span></p><p class="small">本站为<b>校内教学辅助资料</b>，依据《全国计算机等级考试(NCRE) 二级 WPS Office 高级应用与设计考试大纲(2025 年版)》与《二级公共基础知识考试大纲(2025 年版)》编写，供教学与备考使用。</p></div>
+  <div><h4>实操训练导航</h4><p class="small"><a href="./实操训练.html">实操训练总览</a> · <a href="./入门实操课.html">文字 1</a> · <a href="./实操-文字2.html">文字 2</a> · <a href="./实操-文字3.html">文字 3</a></p><p class="small"><a href="./实操-表格1.html">表格 1</a> · <a href="./实操-表格2.html">表格 2</a> · <a href="./实操-表格3.html">表格 3</a></p><p class="small"><a href="./实操-演示1.html">演示 1</a> · <a href="./实操-演示2.html">演示 2</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p></div>
+  <div><h4>官方信息</h4><p class="small">本站为<b>非官方</b>网站，不提供报名、缴费、查分服务。考试政策与报名信息以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 当年公告为准。</p><p class="small">学校官网：<a href="https://www.dlufe.edu.cn/" target="_blank" rel="noopener">www.dlufe.edu.cn</a></p></div>
+  <div><h4>免责声明</h4><p class="small">本站不收集任何个人信息，无收费项目，不含广告与商业推广；内容仅供校内教学与备考参考，如与官方文件不一致，以官方文件为准。</p><p class="small"><a href="./关于本站.html">关于本站 / 免责声明 →</a></p></div>
+</div>
+<div class="disc">© 大连财经学院 · 计算机国家二级考试（WPS 类）课程组 ｜ 校内教学辅助资料，非官方考试网站 ｜ 考试政策以中国教育考试网公告为准</div>
+</div></footer>
+
+<script>
+(function(){
+  document.querySelectorAll('[data-fold]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var card = btn.closest('.ex');
+      var body = card.querySelector('.ex-b');
+      var hidden = body.classList.toggle('hide');
+      btn.textContent = hidden ? '展开步骤' : '收起步骤';
+    });
+  });
+
+  var allBtn = document.getElementById('btnAll');
+  var expanded = true;
+  allBtn.addEventListener('click', function(){
+    expanded = !expanded;
+    document.querySelectorAll('.ex-b').forEach(function(b){ b.classList.toggle('hide', !expanded); });
+    document.querySelectorAll('[data-fold]').forEach(function(b){ b.textContent = expanded ? '收起步骤' : '展开步骤'; });
+    allBtn.textContent = expanded ? '收起全部步骤' : '展开全部步骤';
+  });
+
+  var clock = document.getElementById('btnClock');
+  var left = 45 * 60, timer = null;
+  function fmt(s){
+    var m = Math.floor(s / 60), ss = s % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  clock.addEventListener('click', function(){
+    if (timer) { clearInterval(timer); timer = null; clock.textContent = '⏱ ' + fmt(left) + ' 已暂停'; return; }
+    if (left <= 0) { left = 45 * 60; }
+    timer = setInterval(function(){
+      left--;
+      if (left <= 0) { clearInterval(timer); timer = null; clock.textContent = '⏱ 时间到！'; left = 0; return; }
+      clock.textContent = '⏱ ' + fmt(left);
+    }, 1000);
+    clock.textContent = '⏱ ' + fmt(left);
+  });
+})();
+</script>
+<script src="./assets/auth.js"></script>
+<script src="./assets/groups.js"></script>
+<script src="./assets/auth-ui.js"></script>
+</body>
+</html>
