@@ -246,3 +246,39 @@ table.small-tbl { font-size: 13.5px }
   ol.steps > li::before { background: #ddd !important; color: #12213a !important }
   .pager, .crumbs { display: none !important }
 }
+
+/* ===== 练习素材包：每题下载入口 + 课页索引 + 总页索引 ===== */
+.mat{background:#f5f9ff;border:1px solid #cddff5;border-radius:11px;padding:12px 14px;margin:0 0 14px}
+.mat-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:9px}
+.mat-tag{font-size:11px;font-weight:800;letter-spacing:.06em;color:#fff;background:#1c4ed8;border-radius:5px;padding:3px 8px;white-space:nowrap}
+.mat-h b{font-size:13.5px;color:#12306b;word-break:break-all}
+.mat-size{font-size:11.5px;color:#6b7683;margin-left:auto;white-space:nowrap}
+.mat-files{list-style:none;margin:0 0 9px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 14px}
+.mat-files li{font-size:12.5px;display:flex;gap:8px;min-width:0;align-items:baseline}
+.mat-files code{color:#12306b;font-size:12px;word-break:break-all}
+.mat-files span{color:#6b7683;white-space:nowrap;font-size:11.5px}
+.mat-note{font-size:12.5px;line-height:1.7;color:#4b5866;margin:0 0 10px}
+.mat-note b{color:#12306b}
+.mat-dl{display:inline-flex;align-items:center;gap:6px;background:#1c4ed8;color:#fff;border-radius:8px;
+  padding:8px 15px;font-size:13px;font-weight:700;text-decoration:none;transition:background .15s}
+.mat-dl:hover{background:#12306b;color:#fff}
+.matidx{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:18px 0 8px;box-shadow:var(--shadow)}
+.matidx-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.matidx-h h3{margin:0;font-size:17px}
+.matidx-sub{font-size:12px;color:var(--muted)}
+.matidx-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.matidx-i{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:9px;
+  padding:8px 10px;text-decoration:none;background:#fbfdff;min-width:0}
+.matidx-i:hover{border-color:#1c4ed8;background:#f2f7ff}
+.mi-no{font-size:11px;font-weight:800;color:#1c4ed8;white-space:nowrap}
+.mi-t{font-size:12px;color:#33404e;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mi-dl{font-size:11px;color:#1c4ed8;font-weight:700;white-space:nowrap}
+.matidx-f{font-size:12px;color:var(--muted);margin:10px 0 0;line-height:1.7}
+.matidx-f a{color:#1c4ed8}
+.matrules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+.matall{margin-top:14px;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:#fbfdff}
+.matall summary{cursor:pointer;font-weight:700;font-size:14px;color:#12306b}
+.matall[open] summary{margin-bottom:10px}
+.matall .tbl{font-size:12.5px}
+@media(max-width:900px){.matidx-grid,.matrules{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.matidx-grid,.matrules,.mat-files{grid-template-columns:1fr}}

@@ -1,0 +1,107 @@
+[
+ {
+  "item": "素材目录数 = 72",
+  "ok": true,
+  "detail": "72 个"
+ },
+ {
+  "item": "下载压缩包数 = 72",
+  "ok": true,
+  "detail": "72 个"
+ },
+ {
+  "item": "压缩包命名与清单一一对应",
+  "ok": true,
+  "detail": "差异 0"
+ },
+ {
+  "item": "目录命名与清单一一对应",
+  "ok": true,
+  "detail": "差异 0"
+ },
+ {
+  "item": "包内文件与压缩包内容一致、无无关文件",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "item": "每包含起始素材与素材说明",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "item": "所有 docx/xlsx/pptx 可正常打开且非空",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "item": "8 个课页 72 题均有唯一下载入口",
+  "ok": true,
+  "detail": "72 个入口；"
+ },
+ {
+  "item": "总页含素材索引章节",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "item": "总页含 72 行对应关系清单",
+  "ok": true,
+  "detail": "72 行"
+ },
+ {
+  "item": "无「具体小版本号」残留",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "item": "无「旧版 WPS 年份」残留",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "item": "无「操作系统硬绑定」残留",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "item": "无「非考试专用版称谓」残留",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "item": "无「其他套件文件类型名」残留",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "item": "无「Office 组件混称」残留",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "item": "无「旧版选项卡名」残留",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "item": "统一称谓「WPS Office 教育考试专用版」在用",
+  "ok": true,
+  "detail": "217 处"
+ },
+ {
+  "item": "组件术语统一（WPS 文字 / WPS 表格 / WPS 演示）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "item": "现行功能入口「页面」在用",
+  "ok": true,
+  "detail": "21 处"
+ },
+ {
+  "item": "72 题解题步骤均在教育考试专用版可用功能范围内",
+  "ok": true,
+  "detail": "72 题 / 0 处越界"
+ }
+]
