@@ -107,7 +107,7 @@ def check_pages():
 # ------------------------------------------------ 4. 版本一致性
 BAN = [
     (r'12\.x|12\.1\.|11\.1\.', '具体小版本号'),
-    (r'WPS\s?(?:2010|2013|2016|2019)', '旧版 WPS 年份'),
+    (r'WPS\s?(?:2010|2013|2016|2019)', '旧版年份'),
     (r'Windows 10/11|教育考试专用版（Windows', '操作系统硬绑定'),
     # 校验项显示名不得含被禁字面词，否则生成的索引页会「自指命中」
     (r'个人版', '非考试专用版称谓'),
@@ -117,23 +117,35 @@ BAN = [
 ]
 KEEP_OK = ('页面布局',)  # 考纲条目 / 知识点名，允许保留
 
+# 修正清单的「修订前」需原样引用旧文案；用等长空白屏蔽历史引文区，其余内容照常严格扫描
+QUOTE_RE = re.compile(r'<!--\s*AUDIT-QUOTE-BEGIN\s*-->.*?<!--\s*AUDIT-QUOTE-END\s*-->', re.S)
+
+
+def strip_quotes(s):
+    return QUOTE_RE.sub(lambda m: re.sub(r'[^\n]', ' ', m.group(0)), s)
+
 
 def check_version():
     files = sorted((ROOT).glob('*.html')) + sorted((ROOT / 'assets/wps-img').glob('*.svg')) + \
-            sorted((ROOT / '考试模拟系统').glob('*.html'))
-    # 素材总说明、索引页与 72 份包内说明同样纳入版本口径扫描
-    for extra in (ROOT / '练习素材' / '索引.html', ROOT / '练习素材' / 'README.txt'):
+            sorted((ROOT / '考试模拟系统').glob('*.html')) + \
+            sorted((ROOT / 'assets').glob('*.js'))
+    # 理论题库（站内发布的离线应用）与素材总说明、索引页一并纳入版本口径扫描
+    for extra in (ROOT / '理论题库' / 'index.html', ROOT / '理论题库' / 'README.txt',
+                  ROOT / '练习素材' / '索引.html', ROOT / '练习素材' / 'README.txt'):
         if extra.exists(): files.append(extra)
     files += sorted((ROOT / '练习素材').glob('练习*/素材说明.txt'))
+    # 完成比对文档与模拟操作截图同样纳入版本口径扫描
+    cdir = ROOT / '练习素材' / '完成比对'
+    files += sorted(cdir.glob('*/完成比对文档.html')) + sorted(cdir.glob('*/操作示意.svg'))
     detail = []
     for pat, name in BAN:
         hits = []
         for p in files:
-            s = p.read_text(encoding='utf-8')
+            s = strip_quotes(p.read_text(encoding='utf-8'))
             n = len(re.findall(pat, s))
             if n: hits.append('%s:%d' % (p.name, n))
         chk('无「%s」残留' % name, not hits, ', '.join(hits[:4]))
-    alltext = '\n'.join(p.read_text(encoding='utf-8') for p in files)
+    alltext = '\n'.join(strip_quotes(p.read_text(encoding='utf-8')) for p in files)
     std = 'WPS Office 教育考试专用版'
     chk('统一称谓「%s」在用' % std, alltext.count(std) >= 55, '%d 处' % alltext.count(std))
     chk('组件术语统一（WPS 文字 / WPS 表格 / WPS 演示）',
@@ -152,12 +164,14 @@ def make_index():
     rows = []
     for r in MF:
         href = './下载/' + r['zip']
+        cmp_href = './完成比对/' + quote(r['folder']) + '/完成比对文档.html'
         fl = '、'.join('<code>%s</code>' % esc(f) for f in r['files'] if f != '素材说明.txt')
         rows.append('<tr><td class="c">%s</td><td class="c">第 %d 次课</td><td>%s</td>'
                     '<td><code>%s</code><br><span class="mut">%s</span></td><td class="c">%d</td>'
-                    '<td><a class="btn" href="%s" download="%s">下载</a></td></tr>'
+                    '<td><a class="btn" href="%s" download="%s">下载</a> '
+                    '<a class="btn" href="%s">比对</a></td></tr>'
                     % (esc(r['no']), r['ci'], esc(r['title'][:40]), esc(r['zip']),
-                       fl, len(r['files']), quote(href), esc(r['zip'])))
+                       fl, len(r['files']), quote(href), esc(r['zip']), cmp_href))
     upd = [
         ('练习素材/（新建目录）', '72 个题目素材目录 + 72 个 zip + 总说明 README.txt'),
         ('assets/practice.css（追加）', '素材包下载块、课页索引、总页索引样式'),
@@ -165,6 +179,10 @@ def make_index():
         ('实操训练.html', '新增「五、练习素材包索引」与 72 行对应清单；原「五、配套资源」顺延为六；hero 与页脚加入口'),
         ('其余 14 个页面 + 50 张界面示意图', '版本口径统一，清除旧版残留'),
         ('tools/material/（脚本）', 'specs.py / build.py / patch_html.py / fix_version.py / verify.py / manifest.json'),
+        ('练习素材/完成比对/（新建 72 个目录）', '每套含 完成比对文档.html + 完成结果文件 + 操作示意.svg，与素材包同名一一对应'),
+        ('8 个实操课页（追加）', '每题新增「完成比对文档」链接与解题步骤模拟操作截图块，编号与步骤序号一致'),
+        ('assets/practice.css（追加）', '.cmp-dl / .steps-shot 样式'),
+        ('tools/material/（新增脚本与清单）', 'fix_link.py / make_shots.py / make_results.py / audit_link.py / audit_coverage.py / compare_manifest.json'),
     ]
     upd_rows = ''.join('<tr><td><code>%s</code></td><td>%s</td></tr>' % (esc(a), esc(b)) for a, b in upd)
     vr = ''.join('<tr><td>%s</td><td class="%s">%s</td><td class="mut">%s</td></tr>'
@@ -191,16 +209,17 @@ a.btn:hover{background:#12306b}.stat{display:flex;gap:14px;flex-wrap:wrap;margin
 .stat div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 20px}
 .stat b{display:block;font-size:24px;color:var(--brand)}.stat span{font-size:12px;color:var(--mut)}
 </style></head><body><div class="wrap">
-<h1>练习素材索引与版本一致性校验</h1>
-<p class="lead">实操训练 8 次课 · 32 小节 · 72 道实操题 ｜ 每题一个独立素材包 ｜ 考试环境：WPS Office 教育考试专用版</p>
-<div class="stat"><div><b>72</b><span>题目 / 素材包</span></div><div><b>@@FILES@@</b><span>包内文件总数</span></div>
+<h1>练习素材索引与全链路校验</h1>
+<p class="lead">实操训练 8 次课 · 32 小节 · 72 道实操题 ｜ 每题一个独立素材包 + 一套完成比对文档 ｜ 考试环境：WPS Office 教育考试专用版</p>
+<div class="stat"><div><b>72</b><span>题目 / 素材包</span></div><div><b>72</b><span>完成比对 / 截图</span></div>
+<div><b>@@FILES@@</b><span>包内文件总数</span></div>
 <div><b>@@NOK@@ / @@TOTAL@@</b><span>校验通过 / 校验项</span></div><div><b>@@VBAD@@</b><span>版本一致性异常项</span></div></div>
 <h2>一、更新清单</h2><div class="card"><table><thead><tr><th style="width:290px">位置</th><th>更新内容</th></tr></thead><tbody>@@UPD@@</tbody></table></div>
 <h2>二、题目与文件包对应关系（72 条）</h2><div class="card"><table>
 <thead><tr><th class="c" style="width:64px">题号</th><th class="c" style="width:80px">次课</th><th style="width:230px">题目</th>
-<th>素材包 / 包内文件</th><th class="c" style="width:52px">文件数</th><th class="c" style="width:66px">下载</th></tr></thead>
+<th>素材包 / 包内文件</th><th class="c" style="width:52px">文件数</th><th class="c" style="width:112px">下载 / 比对</th></tr></thead>
 <tbody>@@ROWS@@</tbody></table></div>
-<h2>三、版本一致性校验结果</h2><div class="card"><table>
+<h2>三、全链路校验结果（@@TOTAL@@ 项）</h2><div class="card"><table>
 <thead><tr><th style="width:330px">校验项</th><th class="c" style="width:90px">结果</th><th>说明</th></tr></thead>
 <tbody>@@VER@@</tbody></table></div>
 <h2>四、命名与内容口径</h2><div class="card">
@@ -211,6 +230,17 @@ a.btn:hover{background:#12306b}.stat{display:flex;gap:14px;flex-wrap:wrap;margin
 <p><b>版本</b>：全站统一 <b>WPS Office 教育考试专用版</b>（2025 年版考试大纲指定考试环境）；组件称 WPS 文字 / WPS 表格 / WPS 演示；
 页面级命令在「页面」选项卡；不引用具体小版本号，不与任何其他版本混用。考纲条目中的页面设置类知识点名称按大纲原文保留，仅作知识点名，不作界面入口。</p>
 <p class="mut">生成工具：tools/material/ ｜ <a href="../实操训练.html#materials">返回实操训练 · 素材索引</a></p></div>
+<h2>五、完成比对文档与模拟操作截图</h2><div class="card">
+<p><b>位置</b>：<code>练习素材/完成比对/&lt;素材包同名目录&gt;/</code>，共 72 套，与素材包紧邻且一一对应。</p>
+<p><b>完成比对文档</b>（网页上统一链接名「完成比对文档」）：起始素材清单、题目要求、解题步骤、
+完成效果 / 采分点、逐项完成核对表、可打开的解题结果文件与模拟操作截图。</p>
+<p><b>解题结果文件</b>：<code>完成结果-练习N-M.docx / .xlsx / .pptx</code>，按原题组件类型生成，
+列出每一步应出现的参数、公式、区域与对象基准，供交卷自查逐项比对。</p>
+<p><b>模拟操作截图</b>：<code>操作示意.svg</code>，按 WPS Office 教育考试专用版功能区绘制；
+橙色编号与网页解题步骤序号一致，图中文字与数据取自本题素材包，功能入口取自本题解题步骤。</p>
+<p><b>覆盖核验</b>：48 项考纲操作类知识点全覆盖（WPS 文字 19 / WPS 表格 17 / WPS 演示 12）；
+72 题 0 越界知识点、0 不可实现操作、0 版本混用措辞。单项选择题 20 分属理论题，不在 72 道实操题覆盖范围内。</p>
+</div>
 </div></body></html>
 '''
     # 用占位符替换而非 % 格式化：模板内含 CSS 字面百分号（如 width:100%），
@@ -233,12 +263,105 @@ def check_compliance():
         len(qs) == 72 and n == 0, '%d 题 / %d 处越界' % (len(qs), n))
 
 
+def check_results():
+    """完成比对文档 / 解题结果文件 / 模拟操作截图 / 网页链接 / 全链路一致性 / 知识点覆盖。"""
+    import audit_link, audit_coverage
+    from docx import Document
+    from openpyxl import load_workbook
+    from pptx import Presentation
+    P = Path(__file__).parent
+    R = json.load(open(P / 'compare_manifest.json', encoding='utf-8'))
+    EX = json.load(open(P / 'exercises.json', encoding='utf-8'))
+    MB = {(r['ci'], r['seq']): r for r in MF}
+    EB = {(r['ci'], r['seq']): r for r in EX}
+
+    bad = []
+    if len(R) != 72:
+        bad.append('清单 %d 条' % len(R))
+    for r in R:
+        k = (r['ci'], r['seq'])
+        if k not in EB or k not in MB:
+            bad.append('%s 无对应题目' % r['no'])
+        elif r['folder'] != MB[k]['folder'] or r['page'] != EB[k]['page']:
+            bad.append('%s 对应错位' % r['no'])
+    chk('完成比对清单 72 条与题目 / 素材包一一对应', not bad, ', '.join(bad[:4]))
+
+    for label, key in (('完成比对文档', 'doc'), ('解题结果文件', 'result'),
+                       ('模拟操作截图', 'shot')):
+        miss = [r['no'] for r in R if not r[key] or not (ROOT / r[key]).exists()]
+        chk('72 份%s齐全' % label, not miss, '缺 %d 份：%s' % (len(miss), ', '.join(miss[:4])))
+
+    bad = []
+    for r in R:
+        p = ROOT / r['result']
+        try:
+            if p.suffix == '.docx': Document(str(p))
+            elif p.suffix == '.xlsx':
+                wb = load_workbook(str(p), read_only=True); wb.close()
+            else: Presentation(str(p))
+        except Exception as ex:
+            bad.append('%s(%s)' % (r['no'], type(ex).__name__))
+    chk('72 份解题结果文件均可正常打开', not bad, ', '.join(bad[:4]))
+
+    bad = []
+    for r in R:
+        t = (ROOT / r['doc']).read_text(encoding='utf-8')
+        for kw in ('本题起始素材包', '题目要求', '解题步骤', '逐项完成核对表',
+                   '操作示意.svg', '完成结果-练习', '教育考试专用版'):
+            if kw not in t:
+                bad.append('%s 缺 %s' % (r['no'], kw))
+        for u in re.findall(r'(?:href|src)="([^"]+)"', t):
+            if u.startswith(('http', '#')):
+                continue
+            if not ((ROOT / r['doc']).parent / unquote(u.split('#')[0])).exists():
+                bad.append('%s 失效链接 %s' % (r['no'], u[:36]))
+    chk('72 份完成比对文档内容完整且内部链接有效', not bad, ', '.join(bad[:4]))
+
+    bad = []
+    for r in R:
+        s = (ROOT / r['shot']).read_text(encoding='utf-8')
+        steps = len(EB[(r['ci'], r['seq'])]['steps'])
+        expect = min(steps, 12) + (1 if steps > 12 else 0)
+        n = s.count('fill="#e8710a"')
+        if not s.startswith('<svg') or '教育考试专用版' not in s or n < expect:
+            bad.append('%s(编号 %d/%d)' % (r['no'], n, expect))
+    chk('72 张截图为教育考试专用版界面且编号覆盖解题步骤', not bad, ', '.join(bad[:4]))
+
+    bad = []
+    for q in EX:
+        s = (ROOT / q['page']).read_text(encoding='utf-8')
+        a = re.findall(r'<article class="ex"[^>]*>.*?</article>', s, re.S)[q['seq'] - 1]
+        c = re.search(r'<a class="cmp-dl" href="([^"]+)"[^>]*>(.*?)</a>', a, re.S)
+        sh = re.search(r'<div class="steps-shot">.*?<img src="([^"]+)"', a, re.S)
+        if not c or '完成比对文档' not in re.sub(r'<[^>]+>', '', c.group(2)):
+            bad.append('%s 缺完成比对链接' % q['no'])
+        if not sh:
+            bad.append('%s 缺步骤截图' % q['no'])
+        for u in ([c.group(1)] if c else []) + ([sh.group(1)] if sh else []):
+            if not (ROOT / unquote(u.lstrip('./'))).exists():
+                bad.append('%s 失效目标 %s' % (q['no'], u[:40]))
+    chk('72 题网页「完成比对文档」链接与步骤截图配置正确', not bad, ', '.join(bad[:4]))
+
+    detail, _ = audit_link.collect()
+    chk('题目 / 步骤 / 素材包 / 网页全链路一致', not detail,
+        '%d 处不一致' % len(detail))
+
+    rows, gaps, outside, mix = audit_coverage.collect()
+    chk('考纲操作类知识点全覆盖', len(rows) >= 40 and not gaps,
+        '%d / %d 项；未覆盖：%s' % (len(rows) - len(gaps), len(rows),
+                                  ', '.join(g['point'] for g in gaps[:3])))
+    chk('无越界知识点或不可实现操作', not outside,
+        '%d 题越界' % len(outside))
+    chk('全站无版本混用措辞', not mix, '%d 处' % len(mix))
+
+
 def main():
     check_files()
     counts = check_docs()
     check_pages()
     detail = check_version()
     check_compliance()
+    check_results()
     p, nok = make_index()
     # 总页补索引页入口
     tp = ROOT / '实操训练.html'

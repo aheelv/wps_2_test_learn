@@ -1,0 +1,100 @@
+{
+ "config_version": "2026-11-07",
+ "site": {
+  "name": "大连财经学院 · 计算机国家二级考试（WPS 类）学习中心",
+  "subject": "NCRE 二级 WPS Office 高级应用与设计（科目代码 67）",
+  "syllabus": "NCRE 二级 WPS Office 高级应用与设计考试大纲（2025 年版）",
+  "public_basis": "《二级公共基础知识考试大纲（2025 年版）》",
+  "software": "WPS Office 教育考试专用版",
+  "disclaimer": "校内教学辅助资料 · 非官方考试网站 · 不提供报名/缴费/查分，不收集个人信息"
+ },
+ "design_basis": [
+  {"source": "EricWang1358/cs-learning-os · architecture.md", "adopted": "core / support / archive 三层分类；目录与索引优先；避免 junk drawer 式平铺"},
+  {"source": "XinheLIU/Coding-Interview-Questions · DESIGN.md", "adopted": "problem-first curriculum：练习与题目优先于课程元数据；克制配色、网格化布局"},
+  {"source": "rabbit-fork/ncre / here-is-song/ncre / lilinhai/computer-levels", "adopted": "NCRE 资料按等级→科目→题型归类，不按文件类型归档"},
+  {"source": "luoqianshi/my-leetcode-blog / Buterr04/LearnData / HuSao/chodocs", "adopted": "静态学习站的「学习路线 + 知识体系」双层组织与轻量索引"},
+  {"source": "网站整体设计专家检索", "adopted": "已按专家推荐流程检索，当前会话无可推荐专家；故采用上述 GitHub 参考自行落地"}
+ ],
+ "tiers": [
+  {"id": "core", "name": "核心模块", "rule": "直接对应考试得分，首页首屏与主导航优先呈现", "entries": ["实操训练", "理论考试"]},
+  {"id": "bridge", "name": "综合演练", "rule": "贯穿学习路径末段的整卷演练，主导航保留一个入口", "entries": ["模拟考试"]},
+  {"id": "support", "name": "辅助层级", "rule": "考试大纲、考试说明、课件、电子书、教案等基础介绍与备课资料，归入次级导航分组", "entries": ["考试介绍", "教学大纲", "考纲对照表", "培训课件", "电子书", "教案", "教学日历", "资料汇编"]},
+  {"id": "archive", "name": "站点服务", "rule": "与备考无关但需可达，归入次级导航末组", "entries": ["使用说明", "关于本站", "用户中心", "群管理", "整站内容配置", "核查与重构报告"]}
+ ],
+ "nav": {
+  "primary": [
+   {"name": "学习中心", "href": "./index.html", "tier": "home", "active": ["index.html"]},
+   {"name": "实操训练", "href": "./实操训练.html", "tier": "core", "active": ["实操训练.html", "入门实操课.html", "实操-文字2.html", "实操-文字3.html", "实操-表格1.html", "实操-表格2.html", "实操-表格3.html", "实操-演示1.html", "实操-演示2.html", "练习素材/索引.html"]},
+   {"name": "理论考试", "href": "./理论考试.html", "tier": "core", "active": ["理论考试.html", "理论题库/index.html"]},
+   {"name": "模拟考试", "href": "./考试模拟系统/index.html", "tier": "bridge", "active": ["考试模拟系统/index.html"]}
+  ],
+  "support_groups": [
+   {"label": "考试信息", "items": [
+    {"name": "考试介绍", "href": "./考试介绍.html", "desc": "报考 · 内容 · 形式 · 时间 · 成绩", "active": ["考试介绍.html"]},
+    {"name": "教学大纲", "href": "./教学大纲.html", "desc": "11 次课结构与讲练配比", "active": ["教学大纲.html"]},
+    {"name": "考纲对照表", "href": "./考纲对照表.html", "desc": "2025 大纲条目 → 课程与题目", "active": ["考纲对照表.html"]}
+   ]},
+   {"label": "教学资源", "items": [
+    {"name": "培训课件", "href": "./培训课件.html", "desc": "HTML 放映 + PPTX", "active": ["培训课件.html"]},
+    {"name": "电子书", "href": "./电子书.html", "desc": "44 个知识点精讲", "active": ["电子书.html"]},
+    {"name": "教案", "href": "./教案.html", "desc": "11 份教案与课堂练习", "active": ["教案.html"]},
+    {"name": "教学日历", "href": "./教学日历.html", "desc": "排期与阶段里程碑", "active": ["教学日历.html"]},
+    {"name": "资料汇编", "href": "./资料汇编.html", "desc": "汇总资料与补充阅读", "active": ["资料汇编.html"]}
+   ]},
+   {"label": "站点服务", "items": [
+    {"name": "用户中心", "href": "./用户中心.html", "active": ["用户中心.html"]},
+    {"name": "群管理", "href": "./群管理.html", "active": ["群管理.html"]},
+    {"name": "使用说明", "href": "./使用说明.html", "active": ["使用说明.html"]},
+    {"name": "关于本站", "href": "./关于本站.html", "active": ["关于本站.html"]},
+    {"name": "整站内容配置", "href": "./整站内容配置.html", "active": ["整站内容配置.html"]},
+    {"name": "核查与重构报告", "href": "./核查与重构报告.html", "active": ["核查与重构报告.html"]}
+   ]}
+  ]
+ },
+ "core_modules": [
+  {
+   "id": "practice", "name": "实操训练", "href": "./实操训练.html", "tier": "core",
+   "score": "操作题 80 分", "stat": "8 次课 · 32 小节 · 72 道题",
+   "detail": "WPS 文字 3 次（30 分）／WPS 表格 3 次（30 分）／WPS 演示 2 次（20 分）。每题附起始素材包、解题步骤、采分点、易错提醒、模拟操作示意与完成比对文档。",
+   "sub": ["8 个课页", "练习素材索引", "72 个下载包", "72 套完成比对"],
+   "env": "全部步骤限定在离线 WPS Office 教育考试专用版可用功能内"
+  },
+  {
+   "id": "theory", "name": "理论考试", "href": "./理论考试.html", "tier": "core",
+   "score": "单项选择题 20 分（含公共基础 10 分）", "stat": "2 分册 · 781 道题",
+   "detail": "基础知识部分 150 题 + 二级公共基础部分 631 题；离线单文件刷题应用，支持分类/状态筛选、关键词搜索、练习/背题/模拟测试、答题卡、收藏、错题、乱序与本地进度保存。",
+   "sub": ["理论考试栏目页", "离线题库应用", "按大纲自学路线", "错题复盘"],
+   "env": "理论题按 2025 大纲范围含 PDF 处理与在线办公概念题；操作题不调用云端功能"
+  }
+ ],
+ "learning_path": [
+  {"stage": "第 1–2 次课", "name": "打基础", "text": "理论：基础知识 150 题起步 + 公共基础分章推进；实操：WPS 界面与文件基本操作", "core": ["theory", "practice"]},
+  {"stage": "第 3–5 次课", "name": "攻文字", "text": "实操：WPS 文字 3 次课 24 题；理论：WPS 基础概念 + 公共基础错题复盘", "core": ["practice", "theory"]},
+  {"stage": "第 6–8 次课", "name": "啃表格", "text": "实操：WPS 表格 3 次课 24 题；理论：用状态筛选只刷未掌握与错题", "core": ["practice", "theory"]},
+  {"stage": "第 9–10 次课", "name": "练演示", "text": "实操：WPS 演示 2 次课 24 题；理论：模拟测试模式按 20 分单选自测", "core": ["practice", "theory"]},
+  {"stage": "第 11 次课", "name": "冲刺模拟", "text": "全真模拟 120 分钟 + 完成比对自检；理论题库按错题/收藏做最后一轮", "core": ["practice", "theory"]}
+ ],
+ "theory": {
+  "hub": "./理论考试.html",
+  "app_source": "11-6/index.html",
+  "app_published": "./理论题库/index.html",
+  "data_source": "11-6/quiz_data.json",
+  "build_source": "11-6/build/",
+  "sections": [
+   {"name": "基础知识部分", "count": 150, "scope": "WPS 综合应用基础与三大组件概念、PDF 处理、在线办公概念", "path_stage": "第 1–2 次课打基础，之后贯穿全程做题"},
+   {"name": "二级公共基础部分", "count": 631, "scope": "数据结构与算法、程序设计基础、软件工程基础、数据库设计基础", "path_stage": "第 1–2 次课起步，按章节分批推进，冲刺阶段只刷错题"}
+  ],
+  "total": 781,
+  "score": "单项选择题 20 分（其中公共基础知识 10 分）",
+  "features": ["分类筛选", "练习状态筛选", "关键词搜索", "练习模式", "背题模式", "模拟测试", "答题卡", "收藏", "错题统计", "乱序与随机跳题", "本地进度保存", "进度导出 JSON", "快捷键"],
+  "offline": true,
+  "ownership_note": "作为与「实操训练」并列的一级核心模块；栏目主页 理论考试.html 承担导学与路径说明，离线题库 理论题库/index.html 承担刷题，二者通过同一主导航可达。11-6/ 仅保留题库源文件与构建脚本，不作为站内入口。"
+ },
+ "validation": {
+  "ops_questions": 72,
+  "ops_knowledge_points": 48,
+  "syllabus_items": 28,
+  "theory_questions": 781,
+  "delivery_checks": 33
+ }
+}

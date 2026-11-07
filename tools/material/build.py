@@ -25,8 +25,11 @@ DATA = json.load(open(Path(__file__).parent / "exercises.json", encoding="utf-8"
 BY = {(e["ci"], e["seq"]): e for e in DATA}
 
 
+TAG_RE = re.compile(r"</?[A-Za-z][^>]*>")   # 只剥真实标签，保留 <=79 / <60 等比较符
+
+
 def clean(s):
-    return re.sub(r"\s+", " ", H.unescape(re.sub(r"<[^>]+>", "", s))).strip()
+    return re.sub(r"\s+", " ", H.unescape(TAG_RE.sub("", s))).strip()
 
 
 # 网页未写 <div class="score"> 时，用网页自评表 / 题目要求补齐「完成效果」，

@@ -1,0 +1,43 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>完成比对文档 · 例 6-2 合并计算（按位置/按类别）+ 数据有效性 + 圈释无效数据</title><style>
+body{margin:0;background:#f5f7fa;color:#232a33;font:15px/1.7 "Microsoft YaHei","Segoe UI",sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:28px 22px 60px}
+h1{font-size:24px;margin:0 0 6px}h2{font-size:18px;margin:30px 0 12px;padding-left:10px;border-left:4px solid #2b6cff}
+.meta{color:#5b6472;font-size:13.5px;margin-bottom:18px}
+.card{background:#fff;border:1px solid #e1e6ee;border-radius:10px;padding:18px 20px;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{border:1px solid #e1e6ee;padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eef2f8;font-weight:700}
+ol,ul{padding-left:24px;margin:8px 0}li{margin:5px 0}
+.tag{display:inline-block;background:#e9f0ff;color:#1a4fd0;border-radius:5px;padding:1px 8px;font-size:12.5px}
+.warn{background:#fff5e9;border:1px solid #f6d7ae;border-radius:8px;padding:12px 16px;font-size:13.5px}
+a{color:#1a4fd0}.btns a{display:inline-block;margin:4px 10px 4px 0;padding:8px 14px;border:1px solid #c9d6ef;
+  border-radius:7px;background:#fff;text-decoration:none;font-size:14px}
+.shot{width:100%;border:1px solid #e1e6ee;border-radius:8px;background:#fff}
+figcaption{color:#6b7482;font-size:12.5px;margin-top:6px}
+footer{color:#8b939f;font-size:12.5px;margin-top:36px;border-top:1px solid #e1e6ee;padding-top:14px}
+</style></head><body><div class="wrap">
+<h1>完成比对文档 · 例 6-2</h1>
+<div class="meta">合并计算（按位置/按类别）+ 数据有效性 + 圈释无效数据 ｜ 第 6 次课 / WPS 表格 ｜ 网页：实操-表格3.html ｜ 考试环境：WPS Office 教育考试专用版（2025 年版考试大纲指定考试环境）</div>
+<div class="card"><span class="tag">用途</span> 本页按修订后的题目要求与解题步骤生成，是<b>交卷自查的结果基准</b>：
+逐项列出每一步应出现的可复核结果，配合模拟操作截图与解题结果文件使用。
+它<b>不是</b>素材包的一部分，不会预置答案动作；起始素材仍从本题素材包下载。</div>
+<div class="btns"><a href="%E5%AE%8C%E6%88%90%E7%BB%93%E6%9E%9C-%E7%BB%83%E4%B9%A06-2.xlsx">下载解题结果文件（完成结果-练习6-2.xlsx）</a><a href="操作示意.svg" target="_blank" rel="noopener">查看模拟操作截图</a>
+<a href="../../../%E5%AE%9E%E6%93%8D-%E8%A1%A8%E6%A0%BC3.html#mat-6-2">返回本题网页</a></div>
+<h2>一、本题起始素材包</h2><div class="card"><p>目录：<code>练习素材/练习6-2-合并计算与有效性/</code>　｜　
+下载包：<code>练习素材/下载/练习6-2-合并计算与有效性.zip</code></p><ul><li><code>素材-练习6-2.xlsx</code></li><li><code>素材说明.txt</code></li></ul></div>
+<h2>二、题目要求</h2><div class="card"><ol><li>打开本题素材包中的起始文件（「1月」「2月」「3月」三张表结构相同，A 产品、B 数量、C 金额）。</li><li>在「汇总」表 A1 用合并计算（按位置）把三张表的数量与金额相加。</li><li>删除结果，改用合并计算（按类别），勾选「首行」与「最左列」重新汇总。</li><li>在「汇总」表 D2:D10 设置数据有效性：整数、介于 0 和 10000。</li><li>为有效性加输入信息：「请输入 0~10000 的整数」；出错警告：「超出允许范围」。</li><li>在 D3 故意输入 20000，用「圈释无效数据」把它圈出来。</li><li>保存为 学号-姓名-练习6-2.xlsx。</li></ol></div>
+<h2>三、解题步骤（编号与下方核对表、截图编号一致）</h2><div class="card"><ol><li>确认结构一致。三张表的行列顺序完全相同，才能「按位置」合并。</li><li>按位置合并。切到「汇总」表 → 点 A1 →「数据」→「合并计算」→ 函数选「求和」→ 点「引用位置」右侧折叠按钮 → 选「1月」的 A1:C10 →「添加」→ 同样添加 2 月、3 月 → 确定。不勾「首行」「最左列」，即为按位置对应相加。</li><li>检查结果。汇总表的行数与产品顺序应与 1 月表完全一致，数值为三月之和。</li><li>按类别合并。先清除汇总结果，再「合并计算」→ 勾选「首行」与「最左列」→ 重新添加三个区域 → 确定。此时系统按「产品名称」匹配，即使三张表产品顺序不同也能正确相加。</li><li>设有效性。选中 D2:D10 →「数据」→「有效性」→ 允许「整数」→ 数据「介于」→ 最小值 0、最大值 10000。</li><li>加输入信息。切到「输入信息」选项卡 → 标题「数量录入」→ 输入信息「请输入 0~10000 的整数」→ 确定。选中单元格时会自动浮出提示。</li><li>加出错警告。切到「出错警告」选项卡 → 样式「停止」→ 标题「超出允许范围」→ 错误信息「请输入 0~10000 的整数」→ 确定。</li><li>测试。在 D3 输入 20000 → 应弹出警告并拒绝输入；若允许输入，说明有效性范围设错。</li><li>圈释。「数据」→「有效性」下拉 →「圈释无效数据」→ 无效值被红圈标出。再次点同一项可「清除无效数据标识圈」。</li><li>保存。Ctrl+S。</li></ol></div>
+<h2>四、完成效果 / 采分点</h2><div class="card">采分点按位置合并结果等于三表之和 · 按类别合并勾选了首行与最左列 · D 列有效性为整数 0~10000 · 输入信息与出错警告文字正确 · 圈释无效数据可显示红圈</div>
+<h2>五、逐项完成核对表</h2><div class="card"><table>
+<thead><tr><th style="width:8%">步骤</th><th style="width:46%">关键操作路径</th><th>应出现的结果（可复核）</th></tr></thead>
+<tbody><tr><td>1</td><td>确认结构一致</td><td>「按位置」</td></tr><tr><td>2</td><td>按位置合并</td><td>「汇总」、A1、「数据」、「合并计算」、「求和」</td></tr><tr><td>3</td><td>检查结果</td><td>检查结果</td></tr><tr><td>4</td><td>按类别合并</td><td>「合并计算」、「首行」、「最左列」、「产品名称」</td></tr><tr><td>5</td><td>设有效性</td><td>D2:D10、「数据」、「有效性」、「整数」、「介于」</td></tr><tr><td>6</td><td>加输入信息</td><td>「输入信息」、「数量录入」</td></tr><tr><td>7</td><td>加出错警告</td><td>「出错警告」、「停止」、「超出允许范围」</td></tr><tr><td>8</td><td>测试</td><td>D3</td></tr><tr><td>9</td><td>圈释</td><td>「数据」、「有效性」、「圈释无效数据」、「清除无效数据标识圈」</td></tr><tr><td>10</td><td>保存</td><td>保存</td></tr></tbody></table></div>
+<h2>六、模拟操作截图</h2><figure><img class="shot" src="操作示意.svg"
+alt="例 6-2 解题步骤模拟操作示意（WPS Office 教育考试专用版）">
+<figcaption>界面示意 · WPS Office 教育考试专用版 · 橙色编号与本题解题步骤序号一致；
+图中文字与数据取自本题素材包，功能入口取自本题解题步骤。</figcaption></figure>
+<div class="warn">核对方法：按网页解题步骤完成并另存自己的成稿后，逐行比对本表第 3 列的
+参数、公式、区域、文件名与对象数量；再对照网页「完成效果 / 采分点」检查版式是否一致。</div>
+<footer>WPS Office 教育考试专用版（2025 年版考试大纲指定考试环境） ｜ 组件术语：WPS 文字 / WPS 表格 / WPS 演示 ｜ 不引用具体小版本号，不与其他版本混用。</footer>
+</div></body></html>

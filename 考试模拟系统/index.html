@@ -299,6 +299,9 @@ table.info td.n{font-variant-numeric:tabular-nums;font-weight:700;color:var(--na
 <script src="../assets/auth-ui.js"></script>
 </head>
 <body>
+<!-- SITE-BAR-BEGIN -->
+<div class="site-bar" style="background:#0f2740;color:#fff;font:600 13px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;padding:7px 18px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="opacity:.8;margin-right:4px">站点导航</span><a href="../index.html" style="color:#fff;text-decoration:none;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.12)">学习中心</a><a href="../实操训练.html" style="color:#fff;text-decoration:none;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.12)">实操训练</a><a href="../理论考试.html" style="color:#fff;text-decoration:none;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.12)">理论考试</a><a href="../考试模拟系统/index.html" style="color:#fff;text-decoration:none;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.12)">模拟考试</a><span style="margin-left:auto;opacity:.8">当前：模拟考试</span></div>
+<!-- SITE-BAR-END -->
 <div class="noticebar"><div class="nb-in">
   <span class="nb-ic">ⓘ</span>
   <span><b>大连财经学院</b> 计算机国家二级考试（WPS 类）校内教学辅助资料 · <b>本站为非官方考试网站</b>，不提供报名、缴费、查分服务，不收集任何个人信息。官方信息请以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 为准。</span>
@@ -404,7 +407,7 @@ const SINGLE = [
 { id:'bx016', cat:'basic', topic:'WPS 综合 · 导出 PDF', diff:'中', q:'在 WPS 文字中把文档输出为 PDF 文件，应使用的功能是（　）。', opts:['文件 → 输出为 PDF','插入 → 图片','审阅 → 修订','视图 → 网格线'], ans:0, exp:'通过「文件」→「输出为 PDF」可将文档导出为 PDF，并可设置输出范围、是否嵌入字体、是否加密、是否生成书签等选项。' },
 { id:'bx017', cat:'basic', topic:'WPS 综合 · 备份与恢复', diff:'中', q:'WPS 因意外关闭导致文档内容未保存，可通过（　）尝试找回。', opts:['文件 → 备份与恢复 → 备份中心','文件 → 文档加密','开始 → 样式','插入 → 页眉页脚'], ans:0, exp:'WPS 提供自动备份功能，通过「文件」→「备份与恢复」→「备份中心」可查看定时备份与临时备份文件，并将其恢复为文档。' },
 { id:'bx018', cat:'basic', topic:'WPS 综合 · 兼容性', diff:'中', q:'下列关于 WPS Office 兼容性的说法中，正确的是（　）。', opts:['WPS 只能打开自身的 .wps/.et/.dps 格式','WPS 可以打开并编辑 .docx/.xlsx/.pptx 等 Microsoft Office 格式文件','WPS 无法打开 PDF 文件','WPS 不能将文档另存为 .docx'], ans:1, exp:'WPS Office 高度兼容 Microsoft Office 格式，可打开、编辑 .doc/.docx/.xls/.xlsx/.ppt/.pptx，也可将文档另存为这些格式，还支持 PDF 的打开与转换。' },
-{ id:'bx019', cat:'basic', topic:'WPS 综合 · 文件保存', diff:'中', q:'下列关于“保存”与“另存为”的说法，正确的是（　）。', opts:['两者完全等价','“保存”默认覆盖原文件，“另存为”可指定新位置或新文件名并生成副本','“另存为”会删除原文件','“保存”只能保存为 PDF'], ans:1, exp:'「保存」将修改写回当前文件；「另存为」可重新指定文件名、保存位置和文件类型，生成一个副本，原文件不受影响，适合保留不同版本。' },
+{ id:'bx019', cat:'basic', topic:'WPS 综合 · 文件保存', diff:'中', q:'下列关于“保存”与“另存为”的说法，正确的是（　）。', opts:['两者完全等价','“保存”默认覆盖原文件，“另存为”可指定新位置或新文件名并生成副本','“另存为”会删除原文件','“保存”只能用于从未保存过的新文档'], ans:1, exp:'「保存」将修改写回当前文件；「另存为」可重新指定文件名、保存位置和文件类型，生成一个副本，原文件不受影响，适合保留历史副本。' },
 { id:'bx020', cat:'basic', topic:'WPS 综合 · 在线办公', diff:'中', q:'WPS 在线办公（云办公）提供的能力不包括（　）。', opts:['多人在线协作编辑同一文档','文档跨设备同步与历史版本管理','在线分享链接并设置访问权限','自动修复计算机硬件故障'], ans:3, exp:'WPS 在线办公提供云存储同步、多人协作、权限分享、版本管理、在线表单与模板等能力；硬件故障修复不属于办公软件的功能范畴。' },
 
 /* ---- WPS 文字 ---- */
@@ -417,7 +420,7 @@ const SINGLE = [
 { id:'wd007', cat:'word', topic:'WPS 文字 · 页眉页脚', diff:'中', q:'要使文档奇数页与偶数页的页眉内容不同，应进行的设置是（　）。', opts:['勾选“首页不同”','勾选“奇偶页不同”','勾选“链接到前一条页眉”','设置页眉距边界距离'], ans:1, exp:'在页眉页脚编辑状态或「页面设置」→「版式」中勾选“奇偶页不同”，即可为奇数页和偶数页分别设置不同的页眉页脚；“首页不同”用于单独设置封面页。' },
 { id:'wd008', cat:'word', topic:'WPS 文字 · 页眉分节', diff:'难', q:'分节后，若希望后续节的页眉不与前一节保持一致而独立设置，应（　）。', opts:['取消“链接到前一条页眉”','删除前一节的页眉','重新插入分页符','设置首页不同'], ans:0, exp:'默认情况下后续节的页眉会“链接到前一条页眉”而跟随前一节变化。只有先取消该链接，才能为当前节单独设置页眉页脚内容。' },
 { id:'wd009', cat:'word', topic:'WPS 文字 · 邮件合并', diff:'中', q:'使用邮件合并批量生成录取通知书，需要准备的两类文件是（　）。', opts:['主文档和数据源（如 Excel 表格）','两个主文档','两个数据源','一个模板和一个样式库'], ans:0, exp:'邮件合并的基本结构是“主文档 + 数据源”：主文档包含固定内容与合并域（如《姓名》《专业》），数据源提供每个收件人的具体数据，合并后为每条记录生成一份文档。' },
-{ id:'wd010', cat:'word', topic:'WPS 文字 · 审阅修订', diff:'中', q:'同事开启了修订功能修改了你的文档，你希望逐条决定是否采纳这些修改，应（　）。', opts:['直接删除所有批注','在“审阅”选项卡中使用“接受/拒绝修订”','关闭修订功能后另存','将文档另存为 PDF'], ans:1, exp:'修订记录了插入、删除、格式更改等痕迹，在「审阅」选项卡中可逐条或一次性“接受”或“拒绝”修订；批注只是旁注，删除批注不等于处理修订。' },
+{ id:'wd010', cat:'word', topic:'WPS 文字 · 审阅修订', diff:'中', q:'同事开启了修订功能修改了你的文档，你希望逐条决定是否采纳这些修改，应（　）。', opts:['直接删除所有批注','在“审阅”选项卡中使用“接受/拒绝修订”','关闭修订功能后另存','将文档输出为 PDF'], ans:1, exp:'修订记录了插入、删除、格式更改等痕迹，在「审阅」选项卡中可逐条或一次性“接受”或“拒绝”修订；批注只是旁注，删除批注不等于处理修订。' },
 { id:'wd011', cat:'word', topic:'WPS 文字 · 脚注尾注', diff:'中', q:'关于脚注与尾注，下列说法正确的是（　）。', opts:['脚注位于文档末尾，尾注位于页面底端','脚注位于页面底端，尾注位于文档（或节）末尾','两者的位置完全相同','一篇文档中最多只能插入一个尾注'], ans:1, exp:'脚注出现在引用所在页的页面底端，便于就近查看；尾注集中出现在文档或节的末尾。可通过「引用」→「插入脚注/尾注」插入，并设置编号格式与位置。' },
 { id:'wd012', cat:'word', topic:'WPS 文字 · 表格操作', diff:'易', q:'在 WPS 文字中，将表格中相邻的两个单元格合并为一个单元格，正确的操作是（　）。', opts:['选中这两个单元格后右击 → 合并单元格','调整列宽使两列等宽','使用“拆分表格”命令','设置单元格垂直对齐方式'], ans:0, exp:'选中要合并的相邻单元格（可多行多列）后，使用右键菜单或「表格工具」中的“合并单元格”命令即可；反向操作是“拆分单元格”。' },
 { id:'wd013', cat:'word', topic:'WPS 文字 · 表格公式', diff:'难', q:'在 WPS 文字的表格中，当前单元格位于某列数值的最下方，要对该列上方所有数值求和，公式应为（　）。', opts:['=SUM(LEFT)','=SUM(ABOVE)','=SUM(RIGHT)','=SUM(BELOW)'], ans:1, exp:'文字表格中的公式用方位参数表示数据范围：ABOVE 表示当前单元格上方、LEFT 表示左侧、RIGHT 表示右侧、BELOW 表示下方，因此对上方数据求和应使用 =SUM(ABOVE)。' },

@@ -1,0 +1,566 @@
+{
+ "title": "WPS 考试自学网站 · 全面核查与内容重构交付",
+ "config_version": "2026-11-07",
+ "verdict": {
+  "software": "WPS Office 教育考试专用版（2025 年版考试大纲指定考试环境）",
+  "syllabus": "NCRE 二级 WPS Office 高级应用与设计考试大纲（2025 年版）",
+  "files_scanned": 230,
+  "defects": 0,
+  "allowed_command_names": {
+   "CMD_PDF": 38,
+   "CMD_PAGE": 11
+  },
+  "ops_questions": 72,
+  "ops_out_of_scope": 0,
+  "ops_knowledge_points": "48 / 48",
+  "syllabus_items": "28 / 28",
+  "syllabus_gaps": [],
+  "theory_total": 781,
+  "theory_sections": {
+   "基础知识部分": 150,
+   "二级公共基础部分": 631
+  },
+  "version_mix": 0,
+  "delivery_checks": "33 / 33",
+  "site_links": {
+   "total": 1497,
+   "broken": 0
+  },
+  "scope_note": {
+   "ops": "操作题 80 分：离线 WPS Office 教育考试专用版，步骤不得依赖云端/AI/插件/宏",
+   "theory": "单选 20 分（含公共基础 10 分）：大纲明确含 PDF 处理与在线办公概念",
+   "source": "NCRE 二级 WPS Office 高级应用与设计考试大纲（2025 年版）"
+  }
+ },
+ "fixes": [
+  {
+   "cat": "版本口径",
+   "where": "assets/curriculum.js",
+   "before": "另存为 PDF / 「页面布局」选项卡 / WPS Office 教育考试专用版（Windows 10）",
+   "after": "输出为 PDF / 「页面」选项卡 / WPS Office 教育考试专用版（不绑定操作系统）",
+   "why": "现行教育考试专用版命令名；考试环境按 2025 大纲只写软件，不写具体 OS 版本"
+  },
+  {
+   "cat": "版本口径",
+   "where": "考试模拟系统/index.html",
+   "before": "将文档另存为 PDF；适合保留不同版本；“保存”只能保存为 PDF",
+   "after": "将文档输出为 PDF；适合保留历史副本；“保存”只能用于从未保存过的新文档",
+   "why": "清除旧版命令与版本混用措辞；错误干扰项改为与题意无关但明确的错误陈述"
+  },
+  {
+   "cat": "版本口径",
+   "where": "入门实操课.html",
+   "before": "页面布局 → 水印/分隔符；二者配合才能一键生成",
+   "after": "页面 → 水印/分隔符；二者配合才能生成自动目录",
+   "why": "现行功能区入口名；「一键生成」易被误读为需 AI/增值功能"
+  },
+  {
+   "cat": "版本口径",
+   "where": "tools/material/verify.py",
+   "before": "校验项显示名「旧版 WPS 年份」",
+   "after": "「旧版年份」",
+   "why": "避免生成的索引页因显示名自指命中禁用词"
+  },
+  {
+   "cat": "表述准确性",
+   "where": "实操-演示2.html · 例 8-3 采分点",
+   "before": "图片链接为指定网址；「第三部分」链接到第 5 张 … 链接已取消",
+   "after": "图片链接指向本文档第 2 张（目录页）；「第三部分」按题目要求完成设置后已取消、最终恢复为普通文本",
+   "why": "采分点与题目要求、最终状态自洽"
+  },
+  {
+   "cat": "表述准确性",
+   "where": "实操-演示2.html · 例 8-3 步骤 7",
+   "before": "验证「点第三部分应跳到第 5 张；点图片应跳到第 2 张；点动作按钮应回首页」",
+   "after": "验证图片→第 2 张、动作按钮→第 1 张、结束按钮→结束放映，并明确「第三部分」已不再跳转",
+   "why": "第 5 步已取消链接，原验证步骤自相矛盾"
+  },
+  {
+   "cat": "表述准确性",
+   "where": "实操-演示2.html · 例 8-3 易错提醒",
+   "before": "网址漏了 https://：被当成相对路径，打不开。",
+   "after": "图片超链接误设为外部文件目标：放映时不会跳回目录页，与题目要求不符。",
+   "why": "本题不设网页链接；删除与本题无关的联网字面量，改为真实易错点"
+  },
+  {
+   "cat": "下游同步",
+   "where": "exercises.json / 素材说明 / zip / 操作示意.svg / 完成比对文档.html",
+   "before": "例 8-3 旧采分点与旧验证步骤",
+   "after": "按修订后网页回写，重跑 72 套完成比对产物与 72 个下载包",
+   "why": "保证题目、步骤、素材包、截图、完成结果文档逐题一致"
+  },
+  {
+   "cat": "审计规则",
+   "where": "tools/site_audit.py",
+   "before": "WORD_PDF 规则把「输出为PDF」也判为缺陷",
+   "after": "只把「另存为 / 保存为」搭配 PDF 的旧版命令写法判缺陷；「输出为PDF」「「页面」选项卡」列入白名单并附理由",
+   "why": "区分旧版 Office 口径与教育考试专用版真实命令名，避免误报、也避免放宽规则"
+  },
+  {
+   "cat": "访问门槛",
+   "where": "assets/auth-ui.js",
+   "before": "21 个页面一律弹全屏登录墙，首屏核心模块被遮挡",
+   "after": "全屏墙只保留在用户中心 / 班级群；课程、实操训练、理论考试免登录直达；墙内新增「免登录返回学习中心」",
+   "why": "核心模块优先呈现、学生更易上手；模拟考试 / 用户中心 / 班级群原有功能级门禁保持不变"
+  },
+  {
+   "cat": "内容架构",
+   "where": "全站 22 个标准页面 + 3 个独立应用",
+   "before": "11 项平铺导航；首页以课件 / 考试介绍为首要入口",
+   "after": "主导航 4 项（学习中心 / 实操训练 / 理论考试 / 模拟考试）+ 分组次级导航；首页两大核心模块首屏",
+   "why": "core / support / archive 分层，考试说明与大纲降为辅助层级"
+  },
+  {
+   "cat": "内容架构",
+   "where": "理论考试.html / 理论题库/index.html",
+   "before": "11-6/ 理论考试部分游离于站内导航之外",
+   "after": "栏目主页 + 离线题库两级入口，与实操训练同级；源文件留在 11-6/ 不作为站内入口",
+   "why": "栏目命名、层级与入口与整站一致"
+  }
+ ],
+ "scope_fix_evidence": {
+  "exercise": "例 8-3 三类超链接 + 动作按钮 + 取消链接",
+  "page": "实操-演示2.html",
+  "category": "表述不准确 / 题目内部矛盾",
+  "fixes": [
+   {
+    "reason": "采分点与题目要求、最终状态对齐",
+    "before": "<div class=\"score\"><b>采分点</b>「第三部分」链接到本文档第 5 张 · 图片链接为指定网址 · 第 6 张有「第一张」动作按钮且单击生效 · 「第三部分」链接已取消 · 第 8 张有「结束放映」动作按钮</div>",
+    "after": "<div class=\"score\"><b>采分点</b>「第三部分」按题目要求完成第 5 张超链接设置后已取消、最终恢复为普通文本 · 第 6 张图片链接指向本文档第 2 张（目录页） · 第 6 张有「第一张」动作按钮且单击生效 · 第 8 张有「结束放映」动作按钮</div>"
+   },
+   {
+    "reason": "验证步骤与第 5 步「取消链接」对齐",
+    "before": "<li><b>验证。</b>按 <kbd>F5</kbd> 放映 → 点「第三部分」应跳到第 5 张；点图片应跳到第 2 张；点动作按钮应回首页。</li>",
+    "after": "<li><b>验证。</b>按 <kbd>F5</kbd> 放映 → 在第 6 张点图片应跳到第 2 张（目录页）；点第 6 张动作按钮应回第 1 张；点第 8 张结束按钮可结束放映；「第三部分」已不再跳转（链接已取消）。</li>"
+   },
+   {
+    "reason": "删除与本题无关的联网字面量，改为本题真实易错点",
+    "before": "<li>网址漏了 https://：被当成相对路径，打不开。</li>",
+    "after": "<li>图片超链接误设为外部文件目标：放映时不会跳回目录页，与题目要求不符。</li>"
+   }
+  ],
+  "downstream": {
+   "exercises_fields": 0,
+   "readmes": 0,
+   "zips": 72,
+   "missing_packs": 0,
+   "shots": 72,
+   "compare_docs": 72
+  },
+  "scope": "WPS Office 教育考试专用版（离线，超链接目标为本文档内部位置）"
+ },
+ "theory_ownership": {
+  "module": "理论考试",
+  "tier": "core（与实操训练并列的一级核心模块）",
+  "hub": "理论考试.html",
+  "app": "理论题库/index.html",
+  "source": {
+   "page": "11-6/index.html",
+   "data": "11-6/quiz_data.json",
+   "build": "11-6/build/"
+  },
+  "sections": [
+   {
+    "name": "基础知识部分",
+    "count": 150
+   },
+   {
+    "name": "二级公共基础部分",
+    "count": 631
+   }
+  ],
+  "total": 781,
+  "score": "单项选择题 20 分（其中公共基础知识 10 分）",
+  "features": [
+   "分类筛选",
+   "练习状态筛选",
+   "关键词搜索",
+   "练习模式",
+   "背题模式",
+   "模拟测试",
+   "答题卡",
+   "收藏",
+   "错题统计",
+   "乱序与随机跳题",
+   "本地进度保存",
+   "进度导出 JSON",
+   "快捷键"
+  ],
+  "offline": true,
+  "nav": [
+   "学习中心",
+   "实操训练",
+   "理论考试",
+   "模拟考试"
+  ],
+  "learning_path": [
+   "第 1–2 次课 打基础",
+   "第 3–5 次课 攻文字",
+   "第 6–8 次课 啃表格",
+   "第 9–10 次课 练演示",
+   "第 11 次课 冲刺模拟"
+  ],
+  "ownership_note": "作为与「实操训练」并列的一级核心模块；栏目主页 理论考试.html 承担导学与路径说明，离线题库 理论题库/index.html 承担刷题，二者通过同一主导航可达。11-6/ 仅保留题库源文件与构建脚本，不作为站内入口。",
+  "generated_files": [
+   "理论考试.html",
+   "理论题库/index.html",
+   "理论题库/README.txt"
+  ]
+ },
+ "site_config": {
+  "source": "tools/site_config.json",
+  "tiers": [
+   {
+    "id": "core",
+    "name": "核心模块",
+    "rule": "直接对应考试得分，首页首屏与主导航优先呈现",
+    "entries": [
+     "实操训练",
+     "理论考试"
+    ]
+   },
+   {
+    "id": "bridge",
+    "name": "综合演练",
+    "rule": "贯穿学习路径末段的整卷演练，主导航保留一个入口",
+    "entries": [
+     "模拟考试"
+    ]
+   },
+   {
+    "id": "support",
+    "name": "辅助层级",
+    "rule": "考试大纲、考试说明、课件、电子书、教案等基础介绍与备课资料，归入次级导航分组",
+    "entries": [
+     "考试介绍",
+     "教学大纲",
+     "考纲对照表",
+     "培训课件",
+     "电子书",
+     "教案",
+     "教学日历",
+     "资料汇编"
+    ]
+   },
+   {
+    "id": "archive",
+    "name": "站点服务",
+    "rule": "与备考无关但需可达，归入次级导航末组",
+    "entries": [
+     "使用说明",
+     "关于本站",
+     "用户中心",
+     "群管理",
+     "整站内容配置",
+     "核查与重构报告"
+    ]
+   }
+  ],
+  "primary_nav": [
+   {
+    "name": "学习中心",
+    "href": "./index.html",
+    "tier": "home",
+    "active": [
+     "index.html"
+    ]
+   },
+   {
+    "name": "实操训练",
+    "href": "./实操训练.html",
+    "tier": "core",
+    "active": [
+     "实操训练.html",
+     "入门实操课.html",
+     "实操-文字2.html",
+     "实操-文字3.html",
+     "实操-表格1.html",
+     "实操-表格2.html",
+     "实操-表格3.html",
+     "实操-演示1.html",
+     "实操-演示2.html",
+     "练习素材/索引.html"
+    ]
+   },
+   {
+    "name": "理论考试",
+    "href": "./理论考试.html",
+    "tier": "core",
+    "active": [
+     "理论考试.html",
+     "理论题库/index.html"
+    ]
+   },
+   {
+    "name": "模拟考试",
+    "href": "./考试模拟系统/index.html",
+    "tier": "bridge",
+    "active": [
+     "考试模拟系统/index.html"
+    ]
+   }
+  ],
+  "support_groups": [
+   {
+    "label": "考试信息",
+    "items": [
+     {
+      "name": "考试介绍",
+      "href": "./考试介绍.html",
+      "desc": "报考 · 内容 · 形式 · 时间 · 成绩",
+      "active": [
+       "考试介绍.html"
+      ]
+     },
+     {
+      "name": "教学大纲",
+      "href": "./教学大纲.html",
+      "desc": "11 次课结构与讲练配比",
+      "active": [
+       "教学大纲.html"
+      ]
+     },
+     {
+      "name": "考纲对照表",
+      "href": "./考纲对照表.html",
+      "desc": "2025 大纲条目 → 课程与题目",
+      "active": [
+       "考纲对照表.html"
+      ]
+     }
+    ]
+   },
+   {
+    "label": "教学资源",
+    "items": [
+     {
+      "name": "培训课件",
+      "href": "./培训课件.html",
+      "desc": "HTML 放映 + PPTX",
+      "active": [
+       "培训课件.html"
+      ]
+     },
+     {
+      "name": "电子书",
+      "href": "./电子书.html",
+      "desc": "44 个知识点精讲",
+      "active": [
+       "电子书.html"
+      ]
+     },
+     {
+      "name": "教案",
+      "href": "./教案.html",
+      "desc": "11 份教案与课堂练习",
+      "active": [
+       "教案.html"
+      ]
+     },
+     {
+      "name": "教学日历",
+      "href": "./教学日历.html",
+      "desc": "排期与阶段里程碑",
+      "active": [
+       "教学日历.html"
+      ]
+     },
+     {
+      "name": "资料汇编",
+      "href": "./资料汇编.html",
+      "desc": "汇总资料与补充阅读",
+      "active": [
+       "资料汇编.html"
+      ]
+     }
+    ]
+   },
+   {
+    "label": "站点服务",
+    "items": [
+     {
+      "name": "用户中心",
+      "href": "./用户中心.html",
+      "active": [
+       "用户中心.html"
+      ]
+     },
+     {
+      "name": "群管理",
+      "href": "./群管理.html",
+      "active": [
+       "群管理.html"
+      ]
+     },
+     {
+      "name": "使用说明",
+      "href": "./使用说明.html",
+      "active": [
+       "使用说明.html"
+      ]
+     },
+     {
+      "name": "关于本站",
+      "href": "./关于本站.html",
+      "active": [
+       "关于本站.html"
+      ]
+     },
+     {
+      "name": "整站内容配置",
+      "href": "./整站内容配置.html",
+      "active": [
+       "整站内容配置.html"
+      ]
+     },
+     {
+      "name": "核查与重构报告",
+      "href": "./核查与重构报告.html",
+      "active": [
+       "核查与重构报告.html"
+      ]
+     }
+    ]
+   }
+  ],
+  "core_modules": [
+   {
+    "id": "practice",
+    "name": "实操训练",
+    "href": "./实操训练.html",
+    "tier": "core",
+    "score": "操作题 80 分",
+    "stat": "8 次课 · 32 小节 · 72 道题",
+    "detail": "WPS 文字 3 次（30 分）／WPS 表格 3 次（30 分）／WPS 演示 2 次（20 分）。每题附起始素材包、解题步骤、采分点、易错提醒、模拟操作示意与完成比对文档。",
+    "sub": [
+     "8 个课页",
+     "练习素材索引",
+     "72 个下载包",
+     "72 套完成比对"
+    ],
+    "env": "全部步骤限定在离线 WPS Office 教育考试专用版可用功能内"
+   },
+   {
+    "id": "theory",
+    "name": "理论考试",
+    "href": "./理论考试.html",
+    "tier": "core",
+    "score": "单项选择题 20 分（含公共基础 10 分）",
+    "stat": "2 分册 · 781 道题",
+    "detail": "基础知识部分 150 题 + 二级公共基础部分 631 题；离线单文件刷题应用，支持分类/状态筛选、关键词搜索、练习/背题/模拟测试、答题卡、收藏、错题、乱序与本地进度保存。",
+    "sub": [
+     "理论考试栏目页",
+     "离线题库应用",
+     "按大纲自学路线",
+     "错题复盘"
+    ],
+    "env": "理论题按 2025 大纲范围含 PDF 处理与在线办公概念题；操作题不调用云端功能"
+   }
+  ],
+  "learning_path": [
+   {
+    "stage": "第 1–2 次课",
+    "name": "打基础",
+    "text": "理论：基础知识 150 题起步 + 公共基础分章推进；实操：WPS 界面与文件基本操作",
+    "core": [
+     "theory",
+     "practice"
+    ]
+   },
+   {
+    "stage": "第 3–5 次课",
+    "name": "攻文字",
+    "text": "实操：WPS 文字 3 次课 24 题；理论：WPS 基础概念 + 公共基础错题复盘",
+    "core": [
+     "practice",
+     "theory"
+    ]
+   },
+   {
+    "stage": "第 6–8 次课",
+    "name": "啃表格",
+    "text": "实操：WPS 表格 3 次课 24 题；理论：用状态筛选只刷未掌握与错题",
+    "core": [
+     "practice",
+     "theory"
+    ]
+   },
+   {
+    "stage": "第 9–10 次课",
+    "name": "练演示",
+    "text": "实操：WPS 演示 2 次课 24 题；理论：模拟测试模式按 20 分单选自测",
+    "core": [
+     "practice",
+     "theory"
+    ]
+   },
+   {
+    "stage": "第 11 次课",
+    "name": "冲刺模拟",
+    "text": "全真模拟 120 分钟 + 完成比对自检；理论题库按错题/收藏做最后一轮",
+    "core": [
+     "practice",
+     "theory"
+    ]
+   }
+  ],
+  "design_basis": [
+   {
+    "source": "EricWang1358/cs-learning-os · architecture.md",
+    "adopted": "core / support / archive 三层分类；目录与索引优先；避免 junk drawer 式平铺"
+   },
+   {
+    "source": "XinheLIU/Coding-Interview-Questions · DESIGN.md",
+    "adopted": "problem-first curriculum：练习与题目优先于课程元数据；克制配色、网格化布局"
+   },
+   {
+    "source": "rabbit-fork/ncre / here-is-song/ncre / lilinhai/computer-levels",
+    "adopted": "NCRE 资料按等级→科目→题型归类，不按文件类型归档"
+   },
+   {
+    "source": "luoqianshi/my-leetcode-blog / Buterr04/LearnData / HuSao/chodocs",
+    "adopted": "静态学习站的「学习路线 + 知识体系」双层组织与轻量索引"
+   },
+   {
+    "source": "网站整体设计专家检索",
+    "adopted": "已按专家推荐流程检索，当前会话无可推荐专家；故采用上述 GitHub 参考自行落地"
+   }
+  ],
+  "rendered_page": "整站内容配置.html"
+ },
+ "artifacts": [
+  "核查与重构报告.html",
+  "整站内容配置.html",
+  "理论考试.html",
+  "理论题库/index.html",
+  "理论题库/README.txt",
+  "index.html",
+  "tools/site_config.json",
+  "tools/site_audit_report.json",
+  "tools/syllabus_coverage.json",
+  "tools/theory_integration.json",
+  "tools/site_links.json",
+  "tools/delivery_report.json",
+  "tools/material/scope_fix_report.json",
+  "tools/material/verify_report.json"
+ ],
+ "rebuild_order": [
+  "python tools/material/fix_scope.py",
+  "python tools/site_theory.py",
+  "python tools/site_home.py",
+  "python tools/site_nav.py",
+  "python tools/site_audit.py --report",
+  "python tools/syllabus_map.py",
+  "python tools/material/verify.py",
+  "python tools/site_report.py",
+  "python tools/site_nav.py  # 报告页加入导航后再跑一次"
+ ],
+ "notes": [
+  "理论题中的 PDF 处理、在线办公概念属 2025 大纲单项选择题范围，不按操作题越界处理。",
+  "操作题 72 道严格限定在离线 WPS Office 教育考试专用版，不调用云端 / AI / 插件 / 宏 / 联网验证。",
+  "模拟考试 / 用户中心 / 班级群保留账号门禁；课程与题库内容免登录可直接学习。",
+  "11-6/ 保留题库源数据与构建脚本，不作为站内入口，避免同名内容两处可点。",
+  "修正清单的「修订前」是历史引文，用 AUDIT-QUOTE 标记屏蔽；两个扫描器仍对报告其余内容严格检查。",
+  "本轮未发布到 GitHub（用户未要求发布）。"
+ ]
+}

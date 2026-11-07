@@ -1,0 +1,43 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>完成比对文档 · 例 4-5 三种引用：跨表算金额、$B$10 算占比、$A2*E$1 做乘法表、名称算税额</title><style>
+body{margin:0;background:#f5f7fa;color:#232a33;font:15px/1.7 "Microsoft YaHei","Segoe UI",sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:28px 22px 60px}
+h1{font-size:24px;margin:0 0 6px}h2{font-size:18px;margin:30px 0 12px;padding-left:10px;border-left:4px solid #2b6cff}
+.meta{color:#5b6472;font-size:13.5px;margin-bottom:18px}
+.card{background:#fff;border:1px solid #e1e6ee;border-radius:10px;padding:18px 20px;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{border:1px solid #e1e6ee;padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eef2f8;font-weight:700}
+ol,ul{padding-left:24px;margin:8px 0}li{margin:5px 0}
+.tag{display:inline-block;background:#e9f0ff;color:#1a4fd0;border-radius:5px;padding:1px 8px;font-size:12.5px}
+.warn{background:#fff5e9;border:1px solid #f6d7ae;border-radius:8px;padding:12px 16px;font-size:13.5px}
+a{color:#1a4fd0}.btns a{display:inline-block;margin:4px 10px 4px 0;padding:8px 14px;border:1px solid #c9d6ef;
+  border-radius:7px;background:#fff;text-decoration:none;font-size:14px}
+.shot{width:100%;border:1px solid #e1e6ee;border-radius:8px;background:#fff}
+figcaption{color:#6b7482;font-size:12.5px;margin-top:6px}
+footer{color:#8b939f;font-size:12.5px;margin-top:36px;border-top:1px solid #e1e6ee;padding-top:14px}
+</style></head><body><div class="wrap">
+<h1>完成比对文档 · 例 4-5</h1>
+<div class="meta">三种引用：跨表算金额、$B$10 算占比、$A2*E$1 做乘法表、名称算税额 ｜ 第 4 次课 / WPS 表格 ｜ 网页：实操-表格1.html ｜ 考试环境：WPS Office 教育考试专用版（2025 年版考试大纲指定考试环境）</div>
+<div class="card"><span class="tag">用途</span> 本页按修订后的题目要求与解题步骤生成，是<b>交卷自查的结果基准</b>：
+逐项列出每一步应出现的可复核结果，配合模拟操作截图与解题结果文件使用。
+它<b>不是</b>素材包的一部分，不会预置答案动作；起始素材仍从本题素材包下载。</div>
+<div class="btns"><a href="%E5%AE%8C%E6%88%90%E7%BB%93%E6%9E%9C-%E7%BB%83%E4%B9%A04-5.xlsx">下载解题结果文件（完成结果-练习4-5.xlsx）</a><a href="操作示意.svg" target="_blank" rel="noopener">查看模拟操作截图</a>
+<a href="../../../%E5%AE%9E%E6%93%8D-%E8%A1%A8%E6%A0%BC1.html#mat-4-5">返回本题网页</a></div>
+<h2>一、本题起始素材包</h2><div class="card"><p>目录：<code>练习素材/练习4-5-单元格引用/</code>　｜　
+下载包：<code>练习素材/下载/练习4-5-单元格引用.zip</code></p><ul><li><code>素材-练习4-5.xlsx</code></li><li><code>素材说明.txt</code></li></ul></div>
+<h2>二、题目要求</h2><div class="card"><ol><li>打开本题素材包中的起始文件（含「金额」「单价」「数量」「参数」四张表，参数!B2 = 0.13）。</li><li>在「金额」表 B2:B9 用相对引用计算 = 单价 × 数量（引用其他工作表）。</li><li>在 C2:C9 计算各产品金额占总额的比例，总额在 B10，要求下拉时总额不变（用绝对引用）。</li><li>在 E1:I9 用混合引用生成九九乘法表（第 1 行为 1~9，A 列也为 1~9）。</li><li>定义名称「税率」指向 参数!$B$2，在 D2:D9 用 =B2*税率 计算税额。</li><li>在 F12 用三维引用汇总 1 月、2 月、3 月三张表 B2 单元格之和。</li><li>保存为 学号-姓名-练习4-5.xlsx。</li></ol></div>
+<h2>三、解题步骤（编号与下方核对表、截图编号一致）</h2><div class="card"><ol><li>打开本题素材包中的起始文件，先看清四张表的名称与结构。表名有空格或数字开头时，引用要加单引号（如 &#x27;1月&#x27;!B2）。</li><li>相对引用。在「金额」表 B2 输入 =单价!B2*数量!B2 → Enter → 选中 B2 拖填充柄到 B9。下拉后 B3 会自动变成 单价!B3*数量!B3——这就是相对引用的「跟着走」。</li><li>算占比（关键）。C2 输入 =B2/$B$10 → 下拉到 C9。$B$10 的行和列都被锁定，下拉时始终指向总额；写成 B10 就会变成 B11、B12（空白），结果显示 #DIV/0!。</li><li>设百分比格式。选中 C2:C9 → Ctrl+1 → 分类「百分比」→ 小数位数 1 → 确定。</li><li>铺乘法表的表头。E1 输入 1、F1 输入 2 → 选中 E1:F1 → 拖到 I1（得到 1~9）；A2 输入 1、A3 输入 2 → 选中拖到 A10（得到 1~9）。</li><li>写混合引用。E2 输入 =$A2*E$1 → Enter → 选中 E2 向右拖到 I2，再向下拖到 E10。理解方式：$A2 锁列不锁行（右拉时始终取 A 列），E$1 锁行不锁列（下拉时始终取第 1 行）。</li><li>验证乘法表。抽查 E3（=3×1=3）与 I9（=9×9=81），数值正确说明引用方向对。</li><li>定义名称。「公式」→「定义名称」→ 名称输入「税率」→ 引用位置输入 =参数!$B$2 → 确定。</li><li>用名称计算。D2 输入 =B2*税率 → 下拉到 D9。名称相当于给单元格取了个「外号」，公式里可直接用。</li><li>三维引用。F12 输入 =SUM(&#x27;1月:3月&#x27;!B2) → Enter。若表名是「1月」「2月」「3月」，跨表区域写法为 &#x27;1月:3月&#x27;!B2；也可写成 =SUM(&#x27;1月&#x27;!B2,&#x27;2月&#x27;!B2,&#x27;3月&#x27;!B2)。</li><li>保存。Ctrl+S。</li></ol></div>
+<h2>四、完成效果 / 采分点</h2><div class="card">采分点B2:B9 为跨表相对引用且结果正确 · C2:C9 使用 $B$10 绝对引用（下拉不错位） · E1:I9 用 $A2*E$1 混合引用生成完整乘法表 · 已定义名称「税率」并指向 参数!$B$2 · D 列用名称计算 · F12 三维引用求和正确</div>
+<h2>五、逐项完成核对表</h2><div class="card"><table>
+<thead><tr><th style="width:8%">步骤</th><th style="width:46%">关键操作路径</th><th>应出现的结果（可复核）</th></tr></thead>
+<tbody><tr><td>1</td><td>打开本题素材包中的起始文件，先看清四张表的名称与结构</td><td>B2</td></tr><tr><td>2</td><td>相对引用</td><td>「金额」、B2、B9、B3、「跟着走」</td></tr><tr><td>3</td><td>算占比（关键）</td><td>C2、B2、C9、B10、B11</td></tr><tr><td>4</td><td>设百分比格式</td><td>C2:C9、「百分比」</td></tr><tr><td>5</td><td>铺乘法表的表头</td><td>E1、F1、E1:F1、I1、A2</td></tr><tr><td>6</td><td>写混合引用</td><td>E2、A2、I2、E10、1 行</td></tr><tr><td>7</td><td>验证乘法表</td><td>E3、I9</td></tr><tr><td>8</td><td>定义名称</td><td>「公式」、「定义名称」、「税率」</td></tr><tr><td>9</td><td>用名称计算</td><td>D2、B2、D9、「外号」</td></tr><tr><td>10</td><td>三维引用</td><td>F12、=SUM(、B2、「1月」、「2月」</td></tr><tr><td>11</td><td>保存</td><td>保存</td></tr></tbody></table></div>
+<h2>六、模拟操作截图</h2><figure><img class="shot" src="操作示意.svg"
+alt="例 4-5 解题步骤模拟操作示意（WPS Office 教育考试专用版）">
+<figcaption>界面示意 · WPS Office 教育考试专用版 · 橙色编号与本题解题步骤序号一致；
+图中文字与数据取自本题素材包，功能入口取自本题解题步骤。</figcaption></figure>
+<div class="warn">核对方法：按网页解题步骤完成并另存自己的成稿后，逐行比对本表第 3 列的
+参数、公式、区域、文件名与对象数量；再对照网页「完成效果 / 采分点」检查版式是否一致。</div>
+<footer>WPS Office 教育考试专用版（2025 年版考试大纲指定考试环境） ｜ 组件术语：WPS 文字 / WPS 表格 / WPS 演示 ｜ 不引用具体小版本号，不与其他版本混用。</footer>
+</div></body></html>

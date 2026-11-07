@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>核查与重构报告 · 学习中心</title>
+<meta name="description" content="WPS 考试自学网站全面核查结论、修正清单、理论考试内容归属说明与整站内容配置。">
+<link rel="stylesheet" href="./assets/style.css"></head><body>
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">WPS</span><span>大连财经学院 · 计算机国家二级（WPS 类）<small>校内教学辅助资料 · 非官方</small></span></a>
+  <!-- SITE-NAV-BEGIN -->
+  <nav class="navlinks">
+    <a href="./index.html">学习中心</a>
+    <a class="core" href="./实操训练.html">实操训练</a>
+    <a class="core" href="./理论考试.html">理论考试</a>
+    <a href="./考试模拟系统/index.html">模拟考试</a>
+  </nav>
+<!-- SITE-NAV-END -->
+</div></header>
+<!-- SITE-SUBNAV-BEGIN -->
+<div class="subnav"><div class="wrap"><span class="sn-label">考试信息</span><a href="./考试介绍.html">考试介绍</a><a href="./教学大纲.html">教学大纲</a><a href="./考纲对照表.html">考纲对照表</a><span class="sn-sep"></span><span class="sn-label">教学资源</span><a href="./培训课件.html">培训课件</a><a href="./电子书.html">电子书</a><a href="./教案.html">教案</a><a href="./教学日历.html">教学日历</a><a href="./资料汇编.html">资料汇编</a><span class="sn-sep"></span><span class="sn-label">站点服务</span><a href="./用户中心.html">用户中心</a><a href="./群管理.html">群管理</a><a href="./使用说明.html">使用说明</a><a href="./关于本站.html">关于本站</a><a href="./整站内容配置.html">整站内容配置</a><a class="sn-on" href="./核查与重构报告.html">核查与重构报告</a></div></div>
+<!-- SITE-SUBNAV-END -->
+<div class="noticebar"><div class="wrap"><span class="nb-ic">ⓘ</span><span>本报告由脚本从实测 JSON 汇总生成，与 <code>tools/site_audit_report.json</code>、<code>tools/delivery_report.json</code> 同源，可直接复核。</span></div></div>
+<section class="hero"><div class="wrap"><div class="eyebrow">全面核查与内容重构 · 配置版本 2026-11-07</div>
+<h1>核查与重构报告</h1>
+<p class="sub">四项交付：核查结论 · 修正清单 · 理论考试内容归属说明 · 整站内容配置。依据《NCRE 二级 WPS Office 高级应用与设计考试大纲（2025 年版）》，统一按 <b>WPS Office 教育考试专用版</b> 口径。</p></div></section>
+<main class="wrap">
+  <section class="section-sm"><h2>一、核查结论</h2>
+    <div class="table-wrap"><table class="tbl"><thead><tr><th>核查项</th><th>实测结论</th></tr></thead><tbody><tr><td><b>扫描范围</b></td><td>230 个文件（页面 / 课程数据 JS / 界面图 SVG / 素材说明 / 完成比对 / 题库）</td></tr><tr><td><b>实操题功能越界</b></td><td>72 题 / 0 处越界（离线教育考试专用版功能集内）</td></tr><tr><td><b>操作类知识点覆盖</b></td><td>48 / 48 项，未覆盖 0 项</td></tr><tr><td><b>2025 版官方大纲覆盖</b></td><td>28 / 28 条考试内容，缺漏 0 条</td></tr><tr><td><b>理论题库</b></td><td>781 题（基础知识部分 150 + 二级公共基础部分 631）</td></tr><tr><td><b>版本 / 表述缺陷</b></td><td>0 处；现行命令名白名单 49 处（附理由）</td></tr><tr><td><b>版本混用措辞</b></td><td>0 处</td></tr><tr><td><b>素材与全链路交付校验</b></td><td>33 / 33 项通过</td></tr><tr><td><b>站内链接</b></td><td>1497 条本地引用 / 0 条失效</td></tr><tr><td><b>软件环境口径</b></td><td>WPS Office 教育考试专用版（2025 年版考试大纲指定考试环境）</td></tr></tbody></table></div>
+    <div class="callout key mt2"><h4>范围边界</h4><p class="mb0">操作题 80 分：离线 WPS Office 教育考试专用版，步骤不得依赖云端/AI/插件/宏；单选 20 分（含公共基础 10 分）：大纲明确含 PDF 处理与在线办公概念</p></div></section>
+
+  <section class="section-sm"><h2>二、修正清单</h2>
+    <p class="lead">共 12 类修订。除最后两类为结构性调整外，其余均为「只改不合规部分，不动题意、题序与最终答案」的最小修订。</p>
+    <div class="table-wrap"><table class="tbl"><thead><tr><th>分类</th><th>位置</th><th>修订前</th><th>修订后</th><th>依据</th></tr></thead>
+    <tbody><tr><td class="nowrap"><span class="pill">版本口径</span></td><td class="small">assets/curriculum.js</td><td class="small"><!-- AUDIT-QUOTE-BEGIN -->另存为 PDF / 「页面布局」选项卡 / WPS Office 教育考试专用版（Windows 10）<!-- AUDIT-QUOTE-END --></td><td class="small">输出为 PDF / 「页面」选项卡 / WPS Office 教育考试专用版（不绑定操作系统）</td><td class="small">现行教育考试专用版命令名；考试环境按 2025 大纲只写软件，不写具体 OS 版本</td></tr><tr><td class="nowrap"><span class="pill">版本口径</span></td><td class="small">考试模拟系统/index.html</td><td class="small"><!-- AUDIT-QUOTE-BEGIN -->将文档另存为 PDF；适合保留不同版本；“保存”只能保存为 PDF<!-- AUDIT-QUOTE-END --></td><td class="small">将文档输出为 PDF；适合保留历史副本；“保存”只能用于从未保存过的新文档</td><td class="small">清除旧版命令与版本混用措辞；错误干扰项改为与题意无关但明确的错误陈述</td></tr><tr><td class="nowrap"><span class="pill">版本口径</span></td><td class="small">入门实操课.html</td><td class="small"><!-- AUDIT-QUOTE-BEGIN -->页面布局 → 水印/分隔符；二者配合才能一键生成<!-- AUDIT-QUOTE-END --></td><td class="small">页面 → 水印/分隔符；二者配合才能生成自动目录</td><td class="small">现行功能区入口名；「一键生成」易被误读为需 AI/增值功能</td></tr><tr><td class="nowrap"><span class="pill">版本口径</span></td><td class="small">tools/material/verify.py</td><td class="small"><!-- AUDIT-QUOTE-BEGIN -->校验项显示名「旧版 WPS 年份」<!-- AUDIT-QUOTE-END --></td><td class="small">「旧版年份」</td><td class="small">避免生成的索引页因显示名自指命中禁用词</td></tr><tr><td class="nowrap"><span class="pill">表述准确性</span></td><td class="small">实操-演示2.html · 例 8-3 采分点</td><td class="small"><!-- AUDIT-QUOTE-BEGIN -->图片链接为指定网址；「第三部分」链接到第 5 张 … 链接已取消<!-- AUDIT-QUOTE-END --></td><td class="small">图片链接指向本文档第 2 张（目录页）；「第三部分」按题目要求完成设置后已取消、最终恢复为普通文本</td><td class="small">采分点与题目要求、最终状态自洽</td></tr><tr><td class="nowrap"><span class="pill">表述准确性</span></td><td class="small">实操-演示2.html · 例 8-3 步骤 7</td><td class="small"><!-- AUDIT-QUOTE-BEGIN -->验证「点第三部分应跳到第 5 张；点图片应跳到第 2 张；点动作按钮应回首页」<!-- AUDIT-QUOTE-END --></td><td class="small">验证图片→第 2 张、动作按钮→第 1 张、结束按钮→结束放映，并明确「第三部分」已不再跳转</td><td class="small">第 5 步已取消链接，原验证步骤自相矛盾</td></tr><tr><td class="nowrap"><span class="pill">表述准确性</span></td><td class="small">实操-演示2.html · 例 8-3 易错提醒</td><td class="small"><!-- AUDIT-QUOTE-BEGIN -->网址漏了 https://：被当成相对路径，打不开。<!-- AUDIT-QUOTE-END --></td><td class="small">图片超链接误设为外部文件目标：放映时不会跳回目录页，与题目要求不符。</td><td class="small">本题不设网页链接；删除与本题无关的联网字面量，改为真实易错点</td></tr><tr><td class="nowrap"><span class="pill">下游同步</span></td><td class="small">exercises.json / 素材说明 / zip / 操作示意.svg / 完成比对文档.html</td><td class="small"><!-- AUDIT-QUOTE-BEGIN -->例 8-3 旧采分点与旧验证步骤<!-- AUDIT-QUOTE-END --></td><td class="small">按修订后网页回写，重跑 72 套完成比对产物与 72 个下载包</td><td class="small">保证题目、步骤、素材包、截图、完成结果文档逐题一致</td></tr><tr><td class="nowrap"><span class="pill">审计规则</span></td><td class="small">tools/site_audit.py</td><td class="small"><!-- AUDIT-QUOTE-BEGIN -->WORD_PDF 规则把「输出为PDF」也判为缺陷<!-- AUDIT-QUOTE-END --></td><td class="small">只把「另存为 / 保存为」搭配 PDF 的旧版命令写法判缺陷；「输出为PDF」「「页面」选项卡」列入白名单并附理由</td><td class="small">区分旧版 Office 口径与教育考试专用版真实命令名，避免误报、也避免放宽规则</td></tr><tr><td class="nowrap"><span class="pill">访问门槛</span></td><td class="small">assets/auth-ui.js</td><td class="small"><!-- AUDIT-QUOTE-BEGIN -->21 个页面一律弹全屏登录墙，首屏核心模块被遮挡<!-- AUDIT-QUOTE-END --></td><td class="small">全屏墙只保留在用户中心 / 班级群；课程、实操训练、理论考试免登录直达；墙内新增「免登录返回学习中心」</td><td class="small">核心模块优先呈现、学生更易上手；模拟考试 / 用户中心 / 班级群原有功能级门禁保持不变</td></tr><tr><td class="nowrap"><span class="pill">内容架构</span></td><td class="small">全站 22 个标准页面 + 3 个独立应用</td><td class="small"><!-- AUDIT-QUOTE-BEGIN -->11 项平铺导航；首页以课件 / 考试介绍为首要入口<!-- AUDIT-QUOTE-END --></td><td class="small">主导航 4 项（学习中心 / 实操训练 / 理论考试 / 模拟考试）+ 分组次级导航；首页两大核心模块首屏</td><td class="small">core / support / archive 分层，考试说明与大纲降为辅助层级</td></tr><tr><td class="nowrap"><span class="pill">内容架构</span></td><td class="small">理论考试.html / 理论题库/index.html</td><td class="small"><!-- AUDIT-QUOTE-BEGIN -->11-6/ 理论考试部分游离于站内导航之外<!-- AUDIT-QUOTE-END --></td><td class="small">栏目主页 + 离线题库两级入口，与实操训练同级；源文件留在 11-6/ 不作为站内入口</td><td class="small">栏目命名、层级与入口与整站一致</td></tr></tbody></table></div>
+    <p class="small muted mt1">例 8-3 的下游同步明细（重建 72 套完成比对产物、72 个压缩包）：<code>tools/material/scope_fix_report.json</code>。</p></section>
+
+  <section class="section-sm"><h2>三、理论考试内容归属说明</h2>
+    <div class="grid g2"><div class="card"><h3>归属层级</h3>
+      <p>作为与「实操训练」并列的一级核心模块；栏目主页 理论考试.html 承担导学与路径说明，离线题库 理论题库/index.html 承担刷题，二者通过同一主导航可达。11-6/ 仅保留题库源文件与构建脚本，不作为站内入口。</p>
+      <p class="small mb0">主导航：<span class="pill">学习中心 → home</span><span class="pill">实操训练 → core</span><span class="pill">理论考试 → core</span><span class="pill">模拟考试 → bridge</span></p></div>
+      <div class="card"><h3>与学习路径的对应</h3>
+        <div class="table-wrap" style="border:0"><table class="tbl" style="min-width:auto"><thead>
+        <tr><th>分册</th><th class="num">题量</th><th>覆盖内容</th><th>对应阶段</th></tr></thead><tbody><tr><td><b>基础知识部分</b></td><td class="num">150 题</td><td class="small">WPS 综合应用基础与三大组件概念、PDF 处理、在线办公概念</td><td class="small">第 1–2 次课打基础，之后贯穿全程做题</td></tr><tr><td><b>二级公共基础部分</b></td><td class="num">631 题</td><td class="small">数据结构与算法、程序设计基础、软件工程基础、数据库设计基础</td><td class="small">第 1–2 次课起步，按章节分批推进，冲刺阶段只刷错题</td></tr></tbody></table></div></div></div>
+    <div class="callout tip mt2"><h4>两级入口与源文件</h4><p class="mb0">栏目主页 <a href="./理论考试.html">理论考试.html</a> → 离线题库 <a href="./理论题库/index.html">理论题库/index.html</a>（内嵌 781 题、无外部资源）。<code>11-6/</code> 仅保留题库源数据与构建脚本，<b>不作为站内入口</b>，避免同名内容两处可点、口径漂移。</p></div></section>
+
+  <section class="section-sm"><h2>四、整站内容配置</h2>
+    <div class="table-wrap"><table class="tbl"><thead><tr><th>层级</th><th>归属规则</th><th>栏目</th></tr></thead><tbody><tr><td class="nowrap"><b>core · 核心模块</b></td><td class="small">直接对应考试得分，首页首屏与主导航优先呈现</td><td class="small">实操训练 / 理论考试</td></tr><tr><td class="nowrap"><b>bridge · 综合演练</b></td><td class="small">贯穿学习路径末段的整卷演练，主导航保留一个入口</td><td class="small">模拟考试</td></tr><tr><td class="nowrap"><b>support · 辅助层级</b></td><td class="small">考试大纲、考试说明、课件、电子书、教案等基础介绍与备课资料，归入次级导航分组</td><td class="small">考试介绍 / 教学大纲 / 考纲对照表 / 培训课件 / 电子书 / 教案 / 教学日历 / 资料汇编</td></tr><tr><td class="nowrap"><b>archive · 站点服务</b></td><td class="small">与备考无关但需可达，归入次级导航末组</td><td class="small">使用说明 / 关于本站 / 用户中心 / 群管理 / 整站内容配置 / 核查与重构报告</td></tr></tbody></table></div>
+    <p class="mt2"><a class="btn" href="./整站内容配置.html">打开整站内容配置页 →</a>
+      <a class="btn ghost" href="./tools/site_config.json">site_config.json</a>
+      <a class="btn ghost" href="./tools/delivery_report.json">delivery_report.json</a></p>
+    <h3 class="mt2">设计参考</h3><ul class="clean"><li><b>EricWang1358/cs-learning-os · architecture.md</b>：core / support / archive 三层分类；目录与索引优先；避免 junk drawer 式平铺</li><li><b>XinheLIU/Coding-Interview-Questions · DESIGN.md</b>：problem-first curriculum：练习与题目优先于课程元数据；克制配色、网格化布局</li><li><b>rabbit-fork/ncre / here-is-song/ncre / lilinhai/computer-levels</b>：NCRE 资料按等级→科目→题型归类，不按文件类型归档</li><li><b>luoqianshi/my-leetcode-blog / Buterr04/LearnData / HuSao/chodocs</b>：静态学习站的「学习路线 + 知识体系」双层组织与轻量索引</li><li><b>网站整体设计专家检索</b>：已按专家推荐流程检索，当前会话无可推荐专家；故采用上述 GitHub 参考自行落地</li></ul></section>
+
+  <section class="section-sm"><h2>五、交付文件与重建顺序</h2>
+    <div class="grid g2"><div class="card"><h3>交付文件</h3><ul class="clean small"><li><code>核查与重构报告.html</code></li><li><code>整站内容配置.html</code></li><li><code>理论考试.html</code></li><li><code>理论题库/index.html</code></li><li><code>理论题库/README.txt</code></li><li><code>index.html</code></li><li><code>tools/site_config.json</code></li><li><code>tools/site_audit_report.json</code></li><li><code>tools/syllabus_coverage.json</code></li><li><code>tools/theory_integration.json</code></li><li><code>tools/site_links.json</code></li><li><code>tools/delivery_report.json</code></li><li><code>tools/material/scope_fix_report.json</code></li><li><code>tools/material/verify_report.json</code></li></ul></div>
+    <div class="card"><h3>幂等重建顺序</h3><ol class="clean small"><li><code>python tools/material/fix_scope.py</code></li><li><code>python tools/site_theory.py</code></li><li><code>python tools/site_home.py</code></li><li><code>python tools/site_nav.py</code></li><li><code>python tools/site_audit.py --report</code></li><li><code>python tools/syllabus_map.py</code></li><li><code>python tools/material/verify.py</code></li><li><code>python tools/site_report.py</code></li><li><code>python tools/site_nav.py  # 报告页加入导航后再跑一次</code></li></ol></div></div>
+    <h3 class="mt2">边界与说明</h3><ul class="clean small"><li>理论题中的 PDF 处理、在线办公概念属 2025 大纲单项选择题范围，不按操作题越界处理。</li><li>操作题 72 道严格限定在离线 WPS Office 教育考试专用版，不调用云端 / AI / 插件 / 宏 / 联网验证。</li><li>模拟考试 / 用户中心 / 班级群保留账号门禁；课程与题库内容免登录可直接学习。</li><li>11-6/ 保留题库源数据与构建脚本，不作为站内入口，避免同名内容两处可点。</li><li>修正清单的「修订前」是历史引文，用 AUDIT-QUOTE 标记屏蔽；两个扫描器仍对报告其余内容严格检查。</li><li>本轮未发布到 GitHub（用户未要求发布）。</li></ul></section>
+</main>
+<footer class="footer"><div class="wrap"><div class="cols"><div><h4>核心模块</h4><p class="small">
+<a href="./实操训练.html">实操训练 · 72 题</a> · <a href="./理论考试.html">理论考试 · 781 题</a> ·
+<a href="./考试模拟系统/index.html">模拟考试</a></p></div><div><h4>交付物</h4><p class="small">
+<a href="./整站内容配置.html">整站内容配置</a> · <a href="./练习素材/索引.html">素材与交付校验索引</a></p></div>
+<div><h4>说明</h4><p class="small">校内教学辅助资料 · 非官方考试网站 · 不提供报名/缴费/查分，不收集个人信息</p></div></div>
+<div class="disc">© 大连财经学院 · 计算机国家二级考试（WPS 类）课程组 ｜ 非官方考试网站</div></div></footer>
+</body></html>

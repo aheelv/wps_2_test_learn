@@ -1,0 +1,43 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>完成比对文档 · 例 4-8 IF 三级跳：单条件 → 嵌套五级 → IF + AND/OR 组合</title><style>
+body{margin:0;background:#f5f7fa;color:#232a33;font:15px/1.7 "Microsoft YaHei","Segoe UI",sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:28px 22px 60px}
+h1{font-size:24px;margin:0 0 6px}h2{font-size:18px;margin:30px 0 12px;padding-left:10px;border-left:4px solid #2b6cff}
+.meta{color:#5b6472;font-size:13.5px;margin-bottom:18px}
+.card{background:#fff;border:1px solid #e1e6ee;border-radius:10px;padding:18px 20px;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{border:1px solid #e1e6ee;padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eef2f8;font-weight:700}
+ol,ul{padding-left:24px;margin:8px 0}li{margin:5px 0}
+.tag{display:inline-block;background:#e9f0ff;color:#1a4fd0;border-radius:5px;padding:1px 8px;font-size:12.5px}
+.warn{background:#fff5e9;border:1px solid #f6d7ae;border-radius:8px;padding:12px 16px;font-size:13.5px}
+a{color:#1a4fd0}.btns a{display:inline-block;margin:4px 10px 4px 0;padding:8px 14px;border:1px solid #c9d6ef;
+  border-radius:7px;background:#fff;text-decoration:none;font-size:14px}
+.shot{width:100%;border:1px solid #e1e6ee;border-radius:8px;background:#fff}
+figcaption{color:#6b7482;font-size:12.5px;margin-top:6px}
+footer{color:#8b939f;font-size:12.5px;margin-top:36px;border-top:1px solid #e1e6ee;padding-top:14px}
+</style></head><body><div class="wrap">
+<h1>完成比对文档 · 例 4-8</h1>
+<div class="meta">IF 三级跳：单条件 → 嵌套五级 → IF + AND/OR 组合 ｜ 第 4 次课 / WPS 表格 ｜ 网页：实操-表格1.html ｜ 考试环境：WPS Office 教育考试专用版（2025 年版考试大纲指定考试环境）</div>
+<div class="card"><span class="tag">用途</span> 本页按修订后的题目要求与解题步骤生成，是<b>交卷自查的结果基准</b>：
+逐项列出每一步应出现的可复核结果，配合模拟操作截图与解题结果文件使用。
+它<b>不是</b>素材包的一部分，不会预置答案动作；起始素材仍从本题素材包下载。</div>
+<div class="btns"><a href="%E5%AE%8C%E6%88%90%E7%BB%93%E6%9E%9C-%E7%BB%83%E4%B9%A04-8.xlsx">下载解题结果文件（完成结果-练习4-8.xlsx）</a><a href="操作示意.svg" target="_blank" rel="noopener">查看模拟操作截图</a>
+<a href="../../../%E5%AE%9E%E6%93%8D-%E8%A1%A8%E6%A0%BC1.html#mat-4-8">返回本题网页</a></div>
+<h2>一、本题起始素材包</h2><div class="card"><p>目录：<code>练习素材/练习4-8-IF与逻辑函数/</code>　｜　
+下载包：<code>练习素材/下载/练习4-8-IF与逻辑函数.zip</code></p><ul><li><code>素材-练习4-8.xlsx</code></li><li><code>素材说明.txt</code></li></ul></div>
+<h2>二、题目要求</h2><div class="card"><ol><li>打开本题素材包中的起始文件（A 列姓名，B 列总分）。</li><li>在 C2 用 IF 判断及格（≥60 及格），下拉到 C21。</li><li>在 D2 用嵌套 IF 给出五级等级：≥90 优、≥80 良、≥70 中、≥60 及格、其余不及格，下拉。</li><li>在 E2 用 IF + AND 按区间重写同一逻辑，下拉。</li><li>在 F2 用 AND 判断「语文、数学、英语三科均 ≥60」，返回「全科合格/有挂科」，下拉。</li><li>在 G2 用 OR 判断「三科中任一门 ≥90」，返回「有单科优秀/无」，下拉。</li><li>在 H2 用 IFERROR 包裹一个会出错的除法，验证兜底效果。</li><li>保存为 学号-姓名-练习4-8.xlsx。</li></ol></div>
+<h2>三、解题步骤（编号与下方核对表、截图编号一致）</h2><div class="card"><ol><li>单条件 IF。C2 输入 =IF(B2&gt;=60,&quot;及格&quot;,&quot;不及格&quot;) → 下拉到 C21。</li><li>嵌套 IF 的思路。从高到低判断，一旦命中就不再往下：D2 输入 =IF(B2&gt;=90,&quot;优&quot;,IF(B2&gt;=80,&quot;良&quot;,IF(B2&gt;=70,&quot;中&quot;,IF(B2&gt;=60,&quot;及格&quot;,&quot;不及格&quot;)))) → 下拉。</li><li>嵌套的括号数。4 层 IF 就有 4 组括号，写完后数一遍左右括号数量是否相等；WPS 输入时会自动提示当前处于第几层。</li><li>IF + AND 重写。E2 输入 =IF(B2&gt;=90,&quot;优&quot;,IF(AND(B2&gt;=80,B2&lt;90),&quot;良&quot;,IF(AND(B2&gt;=70,B2&lt;80),&quot;中&quot;,IF(AND(B2&gt;=60,B2&lt;70),&quot;及格&quot;,&quot;不及格&quot;)))) → 下拉。用 AND 把每个区间的上下界写全，条件之间不重叠、不留空档。</li><li>核对两种写法。把 D 列与 E 列逐行对照，应完全一致；不一致说明条件顺序或边界值错。</li><li>AND 组合。F2 输入 =IF(AND(B2&gt;=60,C2&gt;=60,D2&gt;=60),&quot;全科合格&quot;,&quot;有挂科&quot;)（按本题素材包内数据的实际列位置调整）→ 下拉。</li><li>OR 组合。G2 输入 =IF(OR(B2&gt;=90,C2&gt;=90,D2&gt;=90),&quot;有单科优秀&quot;,&quot;无&quot;) → 下拉。</li><li>IFERROR 演示。H2 输入 =IFERROR(B2/0,&quot;除数为零&quot;) → 显示「除数为零」而不是 #DIV/0!。</li><li>保存。Ctrl+S。</li></ol></div>
+<h2>四、完成效果 / 采分点</h2><div class="card">采分点C 列 IF 及格判断正确 · D 列嵌套 IF 五级等级正确（边界 90/80/70/60 无重叠无遗漏） · E 列 IF + AND 与 D 列结果完全一致 · F 列 AND、G 列 OR 逻辑正确 · H 列 IFERROR 生效</div>
+<h2>五、逐项完成核对表</h2><div class="card"><table>
+<thead><tr><th style="width:8%">步骤</th><th style="width:46%">关键操作路径</th><th>应出现的结果（可复核）</th></tr></thead>
+<tbody><tr><td>1</td><td>单条件 IF</td><td>C2、=IF(、B2、C21</td></tr><tr><td>2</td><td>嵌套 IF 的思路</td><td>D2、=IF(、B2</td></tr><tr><td>3</td><td>嵌套的括号数</td><td>嵌套的括号数</td></tr><tr><td>4</td><td>IF + AND 重写</td><td>E2、=IF(、B2</td></tr><tr><td>5</td><td>核对两种写法</td><td>核对两种写法</td></tr><tr><td>6</td><td>AND 组合</td><td>F2、=IF(、B2、C2、D2</td></tr><tr><td>7</td><td>OR 组合</td><td>G2、=IF(、B2、C2、D2</td></tr><tr><td>8</td><td>IFERROR 演示</td><td>H2、=IFERROR(、B2、「除数为零」</td></tr><tr><td>9</td><td>保存</td><td>保存</td></tr></tbody></table></div>
+<h2>六、模拟操作截图</h2><figure><img class="shot" src="操作示意.svg"
+alt="例 4-8 解题步骤模拟操作示意（WPS Office 教育考试专用版）">
+<figcaption>界面示意 · WPS Office 教育考试专用版 · 橙色编号与本题解题步骤序号一致；
+图中文字与数据取自本题素材包，功能入口取自本题解题步骤。</figcaption></figure>
+<div class="warn">核对方法：按网页解题步骤完成并另存自己的成稿后，逐行比对本表第 3 列的
+参数、公式、区域、文件名与对象数量；再对照网页「完成效果 / 采分点」检查版式是否一致。</div>
+<footer>WPS Office 教育考试专用版（2025 年版考试大纲指定考试环境） ｜ 组件术语：WPS 文字 / WPS 表格 / WPS 演示 ｜ 不引用具体小版本号，不与其他版本混用。</footer>
+</div></body></html>

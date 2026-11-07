@@ -15,8 +15,19 @@
   })();
   var BASE = SELF ? SELF.replace(/assets\/auth-ui\.js.*$/, '') : './';
 
-  /* 未登录时在脚本解析阶段即锁定滚动，避免正文先于登录墙短暂出现 */
-  try { if (A && !A.current()) document.documentElement.classList.add('aui-locked'); } catch (e) {}
+  /* 全屏登录墙只保留在账号类页面；课程 / 题库等内容页免登录可直接学习。
+     用户中心、班级群、模拟考试各自仍有功能级门禁（gateInto / allow），不受此调整影响。 */
+  var WALL_PAGES = ['用户中心.html', '群管理.html'];
+  function isWallPage() {
+    try { return WALL_PAGES.indexOf(decodeURIComponent(location.pathname.split('/').pop())) >= 0; }
+    catch (e) { return false; }
+  }
+  function guestDismissed() {
+    try { return sessionStorage.getItem('aui_guest') === '1'; } catch (e) { return false; }
+  }
+  /* 未登录且在账号类页面时，脚本解析阶段即锁定滚动，避免正文先于登录墙短暂出现 */
+  try { if (A && !A.current() && isWallPage() && !guestDismissed())
+    document.documentElement.classList.add('aui-locked'); } catch (e) {}
 
   function esc(s) {
     return String(s === null || s === undefined ? '' : s)
@@ -251,9 +262,11 @@
         '<div class="aui-wall-brand"><span class="aui-wall-logo">WPS</span>' +
           '<span class="aui-wall-name">大连财经学院 · 计算机国家二级考试（WPS 类）' +
           '<small>校内教学辅助资料 · 非官方考试网站</small></span></div>' +
-        '<p class="aui-wall-lead">本站全部内容需登录后使用。请用演示账号登录，或注册一个新账号。</p>' +
+        '<p class="aui-wall-lead">账号功能（用户中心 / 班级群）需登录；课程、实操训练与理论题库<b>免登录即可学习</b>。'
+          '请用演示账号登录、注册新账号，或直接返回学习中心。</p>' +
         '<div class="aui-tabs"><button data-tab="login">登录</button><button data-tab="reg">注册</button></div>' +
         '<div id="aui-wall-pane"></div>' +
+        '<button class="aui-btn ghost" data-aui="guest" style="width:100%;margin-top:12px">免登录，直接返回学习中心 →</button>' +
         '<div class="aui-hint">权限系统为纯前端演示：账号与数据仅保存在<b>本机浏览器</b>，不会上传到任何服务器，也不收集个人信息。默认演示账号 <code>admin / admin123</code>、<code>teacher / teacher123</code>、<code>student / student123</code>。</div>' +
         '<p class="aui-wall-foot">本站不提供报名、缴费、查分服务，与考试机构无隶属关系；考试政策以中国教育考试网 <a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener">ncre.neea.edu.cn</a> 为准。</p>' +
       '</div></div>';
@@ -272,6 +285,8 @@
     if (!A) { unlockPending(); return; }
     injectCSS();
     if (A.current()) { unlockPending(); unlockScroll(); return; }
+    // 内容页（含首页 / 实操训练 / 理论考试）免登录，核心模块首屏直达
+    if (!isWallPage() || guestDismissed()) { unlockPending(); unlockScroll(); return; }
     if (document.getElementById('aui-wall')) { unlockPending(); return; }
     var host = document.createElement('div');
     host.innerHTML = wallHTML();
@@ -281,6 +296,11 @@
     wall.querySelectorAll('.aui-tabs button').forEach(function (b) {
       b.onclick = function () { renderWallPane(wall, b.dataset.tab); };
     });
+    var g = wall.querySelector('[data-aui="guest"]');
+    if (g) g.onclick = function () {
+      try { sessionStorage.setItem('aui_guest', '1'); } catch (e) {}
+      location.href = BASE + 'index.html';
+    };
     renderWallPane(wall, 'login');
     unlockPending();
   }

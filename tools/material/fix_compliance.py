@@ -195,7 +195,7 @@ def sync_exercises_from_html():
 
     def clean(s):
         # 与最初解析 exercises.json 时的口径一致：去标签不留空格，避免产生无意义差异
-        return re.sub(r'\s+', ' ', H.unescape(re.sub(r'<[^>]+>', '', s))).strip()
+        return re.sub(r'\s+', ' ', H.unescape(re.sub(r'</?[A-Za-z][^>]*>', '', s))).strip()
 
     p = ROOT / 'tools/material/exercises.json'
     data = json.loads(p.read_text(encoding='utf-8'))

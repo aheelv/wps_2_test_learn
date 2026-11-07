@@ -1,0 +1,330 @@
+{
+ "files": 230,
+ "defects": {},
+ "summary": {},
+ "allowed": {
+  "reasons": {
+   "CMD_PDF": "教育考试专用版「文件」菜单真实命令名；操作题按此入口输出 PDF，不依赖外部软件",
+   "CMD_PAGE": "教育考试专用版现行功能区页面设置入口（旧称「页面布局」已全部清除）"
+  },
+  "summary": {
+   "CMD_PDF": 38,
+   "CMD_PAGE": 11
+  },
+  "files": {
+   "入门实操课.html": [
+    {
+     "rule": "CMD_PDF",
+     "line": 304,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 363,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 363,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 577,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 587,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 1480,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 1575,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 584,
+     "word": "「页面」选项卡"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 600,
+     "word": "「页面」选项卡"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 600,
+     "word": "「页面」选项卡"
+    }
+   ],
+   "实操-演示2.html": [
+    {
+     "rule": "CMD_PDF",
+     "line": 94,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 288,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 318,
+     "word": "输出为 PDF"
+    }
+   ],
+   "核查与重构报告.html": [
+    {
+     "rule": "CMD_PDF",
+     "line": 32,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 32,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 32,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 32,
+     "word": "「页面」选项卡"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 32,
+     "word": "「页面」选项卡"
+    }
+   ],
+   "考试模拟系统\\index.html": [
+    {
+     "rule": "CMD_PDF",
+     "line": 407,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 407,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 407,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 423,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 429,
+     "word": "「页面」选项卡"
+    }
+   ],
+   "11-6\\index.html": [
+    {
+     "rule": "CMD_PDF",
+     "line": 288,
+     "word": "输出为PDF"
+    }
+   ],
+   "理论题库\\index.html": [
+    {
+     "rule": "CMD_PDF",
+     "line": 291,
+     "word": "输出为PDF"
+    }
+   ],
+   "练习素材\\索引.html": [
+    {
+     "rule": "CMD_PAGE",
+     "line": 38,
+     "word": "「页面」选项卡"
+    }
+   ],
+   "assets\\curriculum.js": [
+    {
+     "rule": "CMD_PDF",
+     "line": 1199,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 4597,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 4665,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 4687,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 4762,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 4808,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 5767,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 8458,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 8462,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 5798,
+     "word": "「页面」选项卡"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 5972,
+     "word": "「页面」选项卡"
+    }
+   ],
+   "assets\\wps-img\\l1-file.svg": [
+    {
+     "rule": "CMD_PDF",
+     "line": 2,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 2,
+     "word": "输出为PDF"
+    }
+   ],
+   "练习素材\\练习1-4-页面设置与输出\\素材说明.txt": [
+    {
+     "rule": "CMD_PDF",
+     "line": 16,
+     "word": "输出为 PDF"
+    }
+   ],
+   "练习素材\\练习8-5-打包与输出\\素材说明.txt": [
+    {
+     "rule": "CMD_PDF",
+     "line": 15,
+     "word": "输出为 PDF"
+    }
+   ],
+   "练习素材\\完成比对\\练习1-16-报名通知综合题\\完成比对文档.html": [
+    {
+     "rule": "CMD_PDF",
+     "line": 31,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 35,
+     "word": "输出为PDF"
+    }
+   ],
+   "练习素材\\完成比对\\练习1-4-页面设置与输出\\完成比对文档.html": [
+    {
+     "rule": "CMD_PDF",
+     "line": 30,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 31,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 35,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 31,
+     "word": "「页面」选项卡"
+    }
+   ],
+   "练习素材\\完成比对\\练习4-2-打印区域与标题行\\完成比对文档.html": [
+    {
+     "rule": "CMD_PAGE",
+     "line": 31,
+     "word": "「页面」选项卡"
+    }
+   ],
+   "练习素材\\完成比对\\练习8-5-打包与输出\\完成比对文档.html": [
+    {
+     "rule": "CMD_PDF",
+     "line": 30,
+     "word": "输出为 PDF"
+    }
+   ]
+  }
+ },
+ "coverage": {
+  "points": 48,
+  "covered": 48,
+  "gaps": [],
+  "outside": 0,
+  "mix": 0,
+  "quiz_sections": {
+   "基础知识部分": 150,
+   "二级公共基础部分": 631
+  },
+  "quiz_total": 781
+ },
+ "verdict": {
+  "ops_questions": 72,
+  "ops_out_of_scope": 0,
+  "ops_knowledge_points": "48 / 48",
+  "ops_knowledge_gaps": [],
+  "ops_outside_questions": 0,
+  "version_mix": 0,
+  "syllabus_items": "28 / 28",
+  "syllabus_gaps": [],
+  "theory_sections": {
+   "基础知识部分": 150,
+   "二级公共基础部分": 631
+  },
+  "theory_total": 781,
+  "theory_scope": {
+   "ops": "操作题 80 分：离线 WPS Office 教育考试专用版，步骤不得依赖云端/AI/插件/宏",
+   "theory": "单选 20 分（含公共基础 10 分）：大纲明确含 PDF 处理与在线办公概念",
+   "source": "NCRE 二级 WPS Office 高级应用与设计考试大纲（2025 年版）"
+  },
+  "software": "WPS Office 教育考试专用版（2025 年版考试大纲指定考试环境）"
+ },
+ "rule_scope": {
+  "ops": "操作题正文：必须落在离线教育考试专用版功能集内",
+  "concept": "理论题与考试介绍：按 2025 大纲允许出现 PDF 处理、在线办公等概念题",
+  "version": "全站：组件名 / 命令名 / 选项卡名按教育考试专用版统一，无小版本号与旧版称谓"
+ }
+}
