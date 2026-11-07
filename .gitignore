@@ -1,18 +1,55 @@
-# 构建脚本与中间产物（不发布）
+# ==========================================================================
+# 版本控制忽略规则
+# 原则：只纳入站点运行与自学所需的源码、页面与资源；
+#       密钥 / 依赖 / 构建中间产物 / 本地临时文件一律不入库。
+# ==========================================================================
+
+# ---- 密钥与凭据（绝不入库）----
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+.git-credentials
+*token*.txt
+*secret*.json
+
+# ---- 依赖目录 ----
+node_modules/
+.venv/
+venv/
+site-packages/
+
+# ---- Python / 工具缓存 ----
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---- 构建中间产物 ----
 _build/
+tools/pdf/out/
+*.tmp
+*.bak
+*.log
 
-# 内部分享包（zip，不发布）
+# ---- 内部分享包与临时校验文件 ----
 .trae-html-share-packages/
+.tmp_*
+.t_*
+.chk_*
+.p2.*
+tools/_shots/
+_wps_publish_tmp/
 
-# 系统文件
+# ---- 系统文件 ----
 Thumbs.db
 desktop.ini
 .DS_Store
 
-# 发布校验留下的临时文件（.tmp_* / .t_* / .chk_*）
-.tmp_*
-.t_*
-.chk_*
-
-# 本地记忆与工具缓存
+# ---- 本地记忆与会话数据（不发布）----
 .workbuddy/
