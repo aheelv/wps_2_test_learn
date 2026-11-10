@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[2]
 REF = Path(r"D:\workbuddy\wps_2_test_learn-main\Word练习素材-练习3-2至3-8")
 OUT = ROOT / "练习素材"
 DL = OUT / "下载"
+ASSETS = Path(__file__).resolve().parent / "assets"   # 固定二进制素材（教学视频.mp4 等）
 DATA = json.load(open(Path(__file__).parent / "exercises.json", encoding="utf-8"))
 BY = {(e["ci"], e["seq"]): e for e in DATA}
 
@@ -137,9 +138,24 @@ def ds_loan():
             "利率敏感性": [["月供 \\ 年利率", 0.045, 0.049, 0.053]]}
 
 
+def ds_sales12():
+    """例 4-1 专用：题干声明的表头与 12 条记录（金额列留空，不预置答案）。
+
+    表头：日期 | 产品 | 数量 | 单价 | 金额
+    记录示例：2026-09-01 | 笔记本 | 12 | 4580 |
+    共 12 条，日期按天递增，产品在笔记本 / 台式机 / 显示器 / 键盘中轮换。
+    """
+    rows = [["日期", "产品", "数量", "单价", "金额"]]
+    prod = ["笔记本", "台式机", "显示器", "键盘"]
+    for i in range(12):
+        rows.append(["2026-09-%02d" % (1 + i), prod[i % 4],
+                     12 + (i * 3) % 9, 4580 + (i * 5) % 6 * 100, ""])
+    return {"Sheet1": rows}
+
+
 DATASETS = {"sales": ds_sales, "staff": ds_staff, "score": ds_score, "org": ds_org,
             "lookup": ds_lookup, "idcard": ds_idcard, "trend": ds_trend,
-            "share": ds_share, "loan": ds_loan}
+            "share": ds_share, "loan": ds_loan, "sales12": ds_sales12}
 
 
 # ---------------------------------------------------------------- 文档生成
@@ -220,13 +236,15 @@ def make_xlsx(path, e, spec):
         ws.freeze_panes = "A2"
         ws.row_dimensions[1].height = 22
     # 说明页：记录本题需要做哪些动作（但不代做）
-    note = wb.create_sheet("题目说明", 0)
-    note.append(["题号", e["no"]]); note.append(["模块", MODULE[e["ci"]]])
-    note.append(["题目", e["title"]]); note.append(["起始文件", path.name])
-    note.append(["说明", "本工作簿只提供原始数据；公式、函数、条件格式、图表、透视表、排序筛选等均按网页题目要求自行完成。"])
-    note.column_dimensions["A"].width = 14; note.column_dimensions["B"].width = 96
-    for r in note.iter_rows():
-        for c in r: c.font = Font(name="宋体", size=11)
+    # 从零建表的题（例 4-1）只保留 Sheet1，避免素材预置多余工作表与题目要求冲突。
+    if not spec.get("no_note"):
+        note = wb.create_sheet("题目说明", 0)
+        note.append(["题号", e["no"]]); note.append(["模块", MODULE[e["ci"]]])
+        note.append(["题目", e["title"]]); note.append(["起始文件", path.name])
+        note.append(["说明", "本工作簿只提供原始数据；公式、函数、条件格式、图表、透视表、排序筛选等均按网页题目要求自行完成。"])
+        note.column_dimensions["A"].width = 14; note.column_dimensions["B"].width = 96
+        for r in note.iter_rows():
+            for c in r: c.font = Font(name="宋体", size=11)
     wb.save(str(path))
 
 
@@ -304,11 +322,18 @@ def make_aux_xlsx(path, kind, e):
         for i, v in enumerate([128, 136, 145, 141, 158, 172, 168, 185]):
             ws.append(["%d 月" % (i + 1), v, "" if i == 0 else round((v / [128, 136, 145, 141, 158, 172, 168, 185][i - 1] - 1) * 100, 1)])
     else:
+        # 例 8-8 的自评对象是第 8-7 题的 10 项采分点，题目规定每项 2 分、满分 20 分。
+        # 旧版按本题 5 条要求 × 5 分生成，与题目要求不符，此处改为按 8-7 采分点生成。
         ws.title = "自评表"
         ws.append(["评分项", "满分", "自评分", "备注"])
-        for j, r in enumerate(e["reqs"][:8]):
-            ws.append(["要求 %d" % (j + 1), 5, "", clean(r)[:60]])
-        ws.append(["合计", len(e["reqs"][:8]) * 5, "", ""])
+        q87 = next((x for x in DATA if (x["ci"], x["seq"]) == (8, 7)), None)
+        score87 = clean(q87["score"]) if q87 else ""
+        score87 = re.sub(r"^采分点\s*", "", score87)
+        items = [x.strip(" ·") for x in re.split(r"[①②③④⑤⑥⑦⑧⑨⑩]", score87)
+                 if x.strip(" ·")]
+        for j, t in enumerate(items[:10], 1):
+            ws.append(["%d. %s" % (j, t[:52]), 2, "", ""])
+        ws.append(["合计", len(items[:10]) * 2, "", ""])
     for row in ws.iter_rows():
         for c in row: c.font = Font(name="宋体", size=11)
     for i in range(1, 5): ws.column_dimensions[chr(64 + i)].width = 22
@@ -316,10 +341,10 @@ def make_aux_xlsx(path, kind, e):
 
 
 def make_outline(path, e):
-    lines = ["2026 年春季实训成果汇报",
-             "\t一、实训背景与目标", "\t\t1. 课程定位", "\t\t2. 能力目标",
-             "\t二、实施过程", "\t\t1. 文字处理模块", "\t\t2. 电子表格模块", "\t\t3. 演示文稿模块",
-             "\t三、数据结果", "\t四、问题与改进", "\t五、下一步计划", "\t结束页"]
+    # 与例 7-1 题干「录入素材」声明的 8 条大纲完全一致：
+    # 8 个一级标题 → 从大纲导入后生成 8 张幻灯片（1 张标题 + 7 张内容）。
+    lines = ["大数据时代的企业决策", "数据从哪里来", "数据质量的三道关",
+             "从描述到预测", "可视化不是画图", "常见误区", "行动建议", "谢谢"]
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
@@ -400,6 +425,10 @@ def build_one(e, spec):
                 make_outline(ep, e)
             elif extra.endswith(".xlsx"):
                 make_aux_xlsx(ep, extra.split(".")[0], e)
+            elif extra.endswith(".mp4"):
+                if not (ASSETS / extra).exists():
+                    raise RuntimeError("固定视频素材缺失：%s" % (ASSETS / extra))
+                shutil.copy2(ASSETS / extra, ep)
             else:
                 raise RuntimeError("未知附件类型：" + extra)
             files.append((extra, extra_use(extra)))
@@ -432,6 +461,7 @@ def ref_use(fn, e):
 def extra_use(fn):
     if fn.endswith(".png"): return "图片源文件：供按题目要求插入并设置环绕/裁剪/背景"
     if fn.endswith(".wav"): return "音频源文件：供插入并测试跨页播放"
+    if fn.endswith(".mp4"): return "视频源文件：供插入并设置自动播放 / 全屏播放"
     if fn == "大纲.txt": return "大纲文本：供「从大纲生成幻灯片」导入"
     if "图表数据" in fn: return "图表数据源：供编辑图表数据"
     if "评分表" in fn: return "自评评分表：限时模拟后逐项打分"

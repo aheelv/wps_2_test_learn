@@ -56,7 +56,9 @@ SPECS = {
     (3, 8): dict(short="多窗口协作", kind="ref", refdir="例3-8-多窗口协作"),
 
     # ---------------- 第 4 次课 · 表格基础（8 题） ----------------
-    (4, 1): dict(short="工作簿与工作表", kind="xlsx", dataset="org"),
+    # 例 4-1 题干声明「日期 / 产品 / 数量 / 单价 / 金额，共 12 条」，且要求从 Sheet1
+    # 开始建表；使用专用数据集、不预置「题目说明」表，保证素材与题目要求一致。
+    (4, 1): dict(short="工作簿与工作表", kind="xlsx", dataset="sales12", no_note=True),
     (4, 2): dict(short="打印区域与标题行", kind="xlsx", dataset="sales"),
     (4, 3): dict(short="数据录入与格式", kind="xlsx", dataset="staff"),
     (4, 4): dict(short="条件格式与批注", kind="xlsx", dataset="score"),
@@ -87,24 +89,25 @@ SPECS = {
 
     # ---------------- 第 7 次课 · 演示基础（8 题） ----------------
     (7, 1): dict(short="从大纲生成幻灯片", kind="pptx", extra=["大纲.txt"], slides=1),
-    (7, 2): dict(short="视图与备注", kind="pptx", slides=6),
-    (7, 3): dict(short="主题与背景", kind="pptx", extra=["图1-封面背景.png"], slides=6),
-    (7, 4): dict(short="幻灯片母版", kind="pptx", extra=["图1-校徽logo.png"], slides=6),
-    (7, 5): dict(short="艺术字与文本效果", kind="pptx", slides=6),
+    (7, 2): dict(short="视图与备注", kind="pptx", slides=8),
+    (7, 3): dict(short="主题与背景", kind="pptx", extra=["图1-封面背景.png"], slides=8),
+    (7, 4): dict(short="幻灯片母版", kind="pptx", extra=["图1-校徽logo.png"], slides=8),
+    (7, 5): dict(short="艺术字与文本效果", kind="pptx", slides=8),
     (7, 6): dict(short="形状与智能图形", kind="pptx", slides=6),
     (7, 7): dict(short="图片处理与相册", kind="pptx",
                  extra=["图1-校园全景.png", "图2-实训车间.png", "图3-图书馆.png"], slides=6),
+    # 例 7-8 需要「素材视频」，题目按第 7 张操作；移除与题目无关的「图表数据.xlsx」
     (7, 8): dict(short="图表与音视频", kind="pptx",
-                 extra=["图表数据.xlsx", "背景音乐.wav"], slides=6),
+                 extra=["背景音乐.wav", "教学视频.mp4"], slides=8),
 
     # ---------------- 第 8 次课 · 演示输出（8 题） ----------------
     (8, 1): dict(short="对象动画", kind="pptx", slides=6),
     (8, 2): dict(short="切换与排练计时", kind="pptx", slides=6),
-    (8, 3): dict(short="超链接与动作", kind="pptx", slides=7),
+    (8, 3): dict(short="超链接与动作", kind="pptx", slides=8),
     (8, 4): dict(short="放映设置", kind="pptx", slides=8),
     (8, 5): dict(short="打包与输出", kind="pptx", slides=6),
     (8, 6): dict(short="文档保护与检查", kind="pptx", slides=6),
-    (8, 7): dict(short="六页汇报综合题", kind="pptx", extra=["图表数据.xlsx"], slides=6),
+    (8, 7): dict(short="六页汇报综合题", kind="pptx", slides=6),
     (8, 8): dict(short="限时模拟与自评", kind="pptx", extra=["评分表.xlsx"], slides=6),
 }
 

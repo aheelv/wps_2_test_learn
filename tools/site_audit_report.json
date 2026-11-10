@@ -1,5 +1,5 @@
 {
- "files": 230,
+ "files": 231,
  "defects": {},
  "summary": {},
  "allowed": {
@@ -30,37 +30,37 @@
     },
     {
      "rule": "CMD_PDF",
-     "line": 577,
+     "line": 580,
      "word": "输出为 PDF"
     },
     {
      "rule": "CMD_PDF",
+     "line": 590,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 1495,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 1591,
+     "word": "输出为 PDF"
+    },
+    {
+     "rule": "CMD_PAGE",
      "line": 587,
-     "word": "输出为PDF"
-    },
-    {
-     "rule": "CMD_PDF",
-     "line": 1480,
-     "word": "输出为PDF"
-    },
-    {
-     "rule": "CMD_PDF",
-     "line": 1575,
-     "word": "输出为 PDF"
-    },
-    {
-     "rule": "CMD_PAGE",
-     "line": 584,
      "word": "「页面」选项卡"
     },
     {
      "rule": "CMD_PAGE",
-     "line": 600,
+     "line": 604,
      "word": "「页面」选项卡"
     },
     {
      "rule": "CMD_PAGE",
-     "line": 600,
+     "line": 604,
      "word": "「页面」选项卡"
     }
    ],
@@ -72,12 +72,12 @@
     },
     {
      "rule": "CMD_PDF",
-     "line": 288,
+     "line": 292,
      "word": "输出为 PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 318,
+     "line": 323,
      "word": "输出为 PDF"
     }
    ],
@@ -228,14 +228,14 @@
    "练习素材\\练习1-4-页面设置与输出\\素材说明.txt": [
     {
      "rule": "CMD_PDF",
-     "line": 16,
+     "line": 15,
      "word": "输出为 PDF"
     }
    ],
    "练习素材\\练习8-5-打包与输出\\素材说明.txt": [
     {
      "rule": "CMD_PDF",
-     "line": 15,
+     "line": 14,
      "word": "输出为 PDF"
     }
    ],

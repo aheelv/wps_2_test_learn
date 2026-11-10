@@ -69,6 +69,7 @@ def mat_block(r, idx):
             elif fn.endswith('.pptx'): desc = '起始演示文稿（WPS 演示）'
             elif fn.endswith('.png'): desc = '图片源文件'
             elif fn.endswith('.wav'): desc = '音频源文件'
+            elif fn.endswith('.mp4'): desc = '视频源文件'
             elif fn.endswith('.txt'): desc = '大纲 / 说明文本'
             else: desc = '配套素材'
         lis.append('<li><code>%s</code><span>%s</span></li>' % (esc(fn), esc(desc)))

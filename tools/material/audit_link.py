@@ -14,7 +14,7 @@ E = json.load(open(ROOT / 'tools/material/exercises.json', encoding='utf-8'))
 M = json.load(open(ROOT / 'tools/material/manifest.json', encoding='utf-8'))
 BY = {(r['ci'], r['seq']): r for r in M}
 
-FILE_RE = re.compile(r'[\w\u4e00-\u9fa5\-.]+\.(?:docx|xlsx|pptx|png|txt|wav|pdf|zip)')
+FILE_RE = re.compile(r'[\w\u4e00-\u9fa5\-.]+\.(?:docx|xlsx|pptx|png|txt|wav|mp4|pdf|zip)')
 RANGE_RE = re.compile(r'\b([A-Z]{1,2})(\d+):([A-Z]{1,2})(\d+)\b')
 SLIDES_RE = re.compile(r'(?:共|计|为)\s*(\d+)\s*张|(?:共|计)\s*(\d+)\s*页')
 CODE_RE = re.compile(r'<code>(.*?)</code>', re.S)
@@ -128,9 +128,12 @@ def collect():
             if not v:
                 issues.append(dict(type='网页缺少', value=k))
 
-        for c in CODE_RE.findall(a):
-            fn = norm_fn(clean(c))
+        for m in CODE_RE.finditer(a):
+            fn = norm_fn(clean(m.group(1)))
             if not fn or not FILE_RE.fullmatch(fn or ''):
+                continue
+            # 学生导出 / 另存的目标文件不是起始素材（如「输出视频 → 演示视频.mp4」）
+            if OUT_WORDS.search(a[max(0, m.start() - 60):m.start()]):
                 continue
             if fn not in rec['files'] and fn not in ('素材说明.txt',):
                 issues.append(dict(type='网页引用文件不在包内', value=fn))
