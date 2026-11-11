@@ -30,37 +30,37 @@
     },
     {
      "rule": "CMD_PDF",
-     "line": 580,
+     "line": 583,
      "word": "输出为 PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 590,
+     "line": 599,
      "word": "输出为PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 1495,
+     "line": 1545,
      "word": "输出为PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 1591,
+     "line": 1642,
      "word": "输出为 PDF"
     },
     {
      "rule": "CMD_PAGE",
-     "line": 587,
+     "line": 596,
      "word": "「页面」选项卡"
     },
     {
      "rule": "CMD_PAGE",
-     "line": 604,
+     "line": 614,
      "word": "「页面」选项卡"
     },
     {
      "rule": "CMD_PAGE",
-     "line": 604,
+     "line": 614,
      "word": "「页面」选项卡"
     }
    ],
@@ -72,12 +72,12 @@
     },
     {
      "rule": "CMD_PDF",
-     "line": 292,
+     "line": 300,
      "word": "输出为 PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 323,
+     "line": 333,
      "word": "输出为 PDF"
     }
    ],

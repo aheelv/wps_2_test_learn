@@ -16,9 +16,11 @@ from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from specs import SPECS, MODULE, ENV
+import content
 
 ROOT = Path(__file__).resolve().parents[2]
 REF = Path(r"D:\workbuddy\wps_2_test_learn-main\Word练习素材-练习3-2至3-8")
+GOLDEN = ROOT / "11-11"      # 用户提供的第 4~6 次课权威素材包
 OUT = ROOT / "练习素材"
 DL = OUT / "下载"
 ASSETS = Path(__file__).resolve().parent / "assets"   # 固定二进制素材（教学视频.mp4 等）
@@ -31,6 +33,23 @@ TAG_RE = re.compile(r"</?[A-Za-z][^>]*>")   # 只剥真实标签，保留 <=79 /
 
 def clean(s):
     return re.sub(r"\s+", " ", H.unescape(TAG_RE.sub("", s))).strip()
+
+
+def clean_lines(s):
+    """按行清洗起始素材，保留段落结构。
+
+    起始素材的行与行就是文档里的段落（题目常要求「标题与正文是两个独立段落」
+    「三段仍是三段」），所以这里不能像 clean() 那样把换行压成空格。
+    """
+    out = []
+    for ln in re.split(r"[\n\r]+", str(s or "")):
+        ln = re.sub(r"<br\s*/?>", "\n", ln, flags=re.I)
+        for sub in ln.split("\n"):
+            sub = H.unescape(TAG_RE.sub("", sub))
+            sub = re.sub(r"[ \t\u3000]+", " ", sub).strip()
+            if sub:
+                out.append(sub)
+    return out
 
 
 # 网页未写 <div class="score"> 时，用网页自评表 / 题目要求补齐「完成效果」，
@@ -170,7 +189,6 @@ def doc_font(run, size=12):
 def make_docx(path, e, spec):
     from docx import Document
     from docx.shared import Cm, Pt
-    from docx.enum.text import WD_ALIGN_PARAGRAPH
     d = Document()
     sec = d.sections[0]
     sec.page_width, sec.page_height = Cm(21), Cm(29.7)
@@ -181,33 +199,23 @@ def make_docx(path, e, spec):
     from docx.oxml.ns import qn
     st.element.rPr.rFonts.set(qn("w:eastAsia"), "宋体")
 
-    title = "【%s 练习素材】%s" % (e["no"], e["title"])
-    p = d.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    doc_font(p.add_run(title), 14)
-    p.runs[0].bold = True
-
-    body = clean(e["src"]) if e["src"] else ""
-    lines = [x.strip() for x in re.split(r"[\n\r]+", body) if x.strip()]
+    # 起始文字优先取本题专用内容（content.TEXTS），其次取题干登记的「起始素材」，
+    # 两者都没有时才退回到主题模板。文档保持干净：不含任何说明性提示段，
+    # 学生打开即可直接按题目要求排版。
+    lines = list(content.TEXTS.get((e["ci"], e["seq"]), []) or [])
+    if not lines:
+        lines = clean_lines(e["src"] if e["src"] else "")
     if not lines:
         t = spec.get("topic", e["title"])
         lines = [
             t,
             "本文件为第 %d 次课「%s」的起始素材。请按网页中的题目要求，在 WPS 文字中完成全部操作。" % (e["ci"], e["title"]),
             "素材仅提供未经排版的原始文字，字体、段落、样式、页眉页脚、题注、目录等格式效果均需按题目要求自行设置，不在素材中预置。",
-            "原始文字：2026 年春季学期，学院围绕计算机应用能力培养组织了系列实训。实训以项目任务为主线，"
-            "覆盖文档排版、数据处理与演示汇报三个模块，学生需在规定时间内独立完成并提交作品。",
-            "第二组文字：数据表明，参与实训的学生在格式规范、函数运用与版式设计三项指标上均有明显提升，"
-            "其中格式规范一项提升最为显著。指导教师建议后续增加长文档协作与批量处理的训练比重。",
         ]
-    for i, line in enumerate(lines):
+    for line in lines:
         p = d.add_paragraph()
         p.paragraph_format.space_after = Pt(6)
         doc_font(p.add_run(line), 12)
-
-    d.add_paragraph()
-    p = d.add_paragraph()
-    doc_font(p.add_run("（素材文件结束。请勿在本文件上预置答案效果；完成后按题目要求另存为「学号-姓名-练习%s-%d.docx」。）"
-                       % (e["ci"], e["seq"])), 10)
     d.save(str(path))
 
 
@@ -248,34 +256,84 @@ def make_xlsx(path, e, spec):
     wb.save(str(path))
 
 
+def png_bytes(label, W=1200, H=760):
+    """生成教学示意图 PNG 的字节流，用于嵌入演示文稿。"""
+    import io
+    from PIL import Image, ImageDraw, ImageFont
+    im = Image.new("RGB", (W, H), "#eef3fb")
+    dr = ImageDraw.Draw(im)
+    fp = None
+    for cand in [r"C:\Windows\Fonts\msyh.ttc", r"C:\Windows\Fonts\simhei.ttf",
+                 r"C:\Windows\Fonts\simsun.ttc"]:
+        if os.path.exists(cand):
+            fp = cand
+            break
+
+    def font(sz):
+        return ImageFont.truetype(fp, sz) if fp else ImageFont.load_default()
+
+    dr.rectangle([24, 24, W - 24, H - 24], outline="#b7c9e6", width=3)
+    dr.text((56, 48), label, fill="#1c4ed8", font=font(42))
+    base, vals = H - 110, [190, 268, 225, 330, 296, 372, 318]
+    for i, v in enumerate(vals):
+        x = 130 + i * 140
+        dr.rectangle([x, base - v, x + 84, base], fill="#5b8fe0" if i % 2 == 0 else "#8fb3e8",
+                     outline="#3f6db5")
+        dr.text((x + 14, base - v - 36), str(v), fill="#33404e", font=font(22))
+    dr.line([80, base, W - 80, base], fill="#8a97a8", width=2)
+    dr.text((56, H - 70), "教学示意图 · 自拟数据 · 300dpi 输出", fill="#6b7683", font=font(20))
+    buf = io.BytesIO()
+    im.save(buf, format="PNG", dpi=(300, 300))
+    buf.seek(0)
+    return buf
+
+
 def make_pptx(path, e, spec):
+    """按题目定制起始演示文稿。
+
+    三种形态：
+        DECKS    逐页给出标题与要点（内容与本题操作对象一致）
+        DECK_BLANK  只给占位符、不预置内容（题目要求从零新建并自填）
+        其余       保留通用结构，但正文改为与本题主题相关的内容
+    """
     from pptx import Presentation
     from pptx.util import Inches, Pt as PPt
+    key = (e["ci"], e["seq"])
     prs = Presentation()
     prs.slide_width, prs.slide_height = Inches(13.333), Inches(7.5)
-    n = spec.get("slides", 6)
-    titles = ["2026 年春季实训成果汇报", "目录", "一、实训背景与目标", "二、实施过程",
-              "三、数据结果", "四、问题与改进", "五、下一步计划", "结束页"]
-    bullets = ["覆盖文档排版、数据处理与演示汇报三个模块", "以项目任务为主线，按周推进",
-               "共 8 次课、32 小节、72 道实操题", "操作题按点给分，过程与结果都要留痕"]
-    for i in range(n):
-        if i == 0:
-            s = prs.slides.add_slide(prs.slide_layouts[0])
-            s.shapes.title.text = titles[0]
-            s.placeholders[1].text = "第 %d 次课 · %s ｜ 起始素材" % (e["ci"], e["title"][:24])
-        elif i == n - 1:
-            s = prs.slides.add_slide(prs.slide_layouts[1])
-            s.shapes.title.text = "谢谢观看"
-            s.placeholders[1].text = "请按题目要求完成动画、切换、链接与输出设置"
-        else:
-            s = prs.slides.add_slide(prs.slide_layouts[1])
-            s.shapes.title.text = titles[min(i, len(titles) - 1)]
-            s.placeholders[1].text = "\n".join(bullets[(i - 1) % 4:(i - 1) % 4 + 3])
-        for sh in s.shapes:
-            if sh.has_text_frame:
-                for p in sh.text_frame.paragraphs:
-                    for r in p.runs:
-                        r.font.size = PPt(24 if sh == s.shapes.title else 18)
+
+    blank = content.DECK_BLANK.get(key)
+    plan = content.DECKS.get(key)
+    if blank:
+        n, layout_kind = blank
+        lay = prs.slide_layouts[0] if layout_kind == "layout0" else prs.slide_layouts[1]
+        for _ in range(n):
+            prs.slides.add_slide(lay)
+    else:
+        if not plan:
+            plan = [(e["title"], ["起始素材：按题目要求在 WPS 演示中完成全部操作"])]
+        for i, (title, bullets) in enumerate(plan):
+            s = prs.slides.add_slide(prs.slide_layouts[0] if i == 0 else prs.slide_layouts[1])
+            s.shapes.title.text = title
+            body = s.placeholders[1].text_frame
+            body.clear()
+            for j, b in enumerate(bullets):
+                para = body.paragraphs[0] if j == 0 else body.add_paragraph()
+                para.text = b
+            for sh in s.shapes:
+                if sh.has_text_frame:
+                    for p in sh.text_frame.paragraphs:
+                        for r in p.runs:
+                            r.font.size = PPt(28 if sh == s.shapes.title else 18)
+            r = s.shapes.title.text_frame.paragraphs[0].runs
+            if r:
+                r[0].font.bold = True
+        # 题干说明「起始文件第 N 张已有图片」的，把图直接放进起始文稿
+        for pg, label in content.DECK_IMG.get(key, {}).items():
+            if 1 <= pg <= len(prs.slides):
+                sl = prs.slides[pg - 1]
+                sl.shapes.add_picture(png_bytes(label), Inches(3.1), Inches(3.4),
+                                      width=Inches(7.0))
     prs.save(str(path))
 
 
@@ -413,7 +471,14 @@ def build_one(e, spec):
         kind = spec["kind"]
         main = "素材-练习%d-%d.%s" % (ci, seq, kind)
         p = dest / main
-        {"docx": make_docx, "xlsx": make_xlsx, "pptx": make_pptx}[kind](p, e, spec)
+        if spec.get("golden"):
+            # 第 4~6 次课：以用户提供的 11-11 目录为准，原样复制权威工作簿
+            src = GOLDEN / folder / main
+            if not src.exists():
+                raise RuntimeError("权威素材缺失：%s" % src)
+            shutil.copy2(src, p)
+        else:
+            {"docx": make_docx, "xlsx": make_xlsx, "pptx": make_pptx}[kind](p, e, spec)
         files.append((main, "起始素材（%s）：解题步骤的操作对象" % MODULE[ci]))
         for extra in spec.get("extra", []):
             ep = dest / extra
@@ -470,15 +535,30 @@ def extra_use(fn):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
+    only = set()
+    for a in sys.argv[1:]:
+        if a.isdigit():
+            only.add(int(a))
     rows = []
+    old_manifest = {}
+    mf = Path(__file__).parent / "manifest.json"
+    if only and mf.exists():
+        for r in json.load(open(mf, encoding="utf-8")):
+            old_manifest[(r["ci"], r["seq"])] = r
     for e in DATA:
         key = (e["ci"], e["seq"])
         spec = SPECS[key]
+        if only and e["ci"] not in only:
+            r = old_manifest.get(key)
+            if r:
+                rows.append(r)
+            continue
         folder, files, zp = build_one(e, spec)
         rows.append(dict(no=e["no"], ci=e["ci"], seq=e["seq"], title=e["title"],
                          page=e["page"], folder=folder, zip=zp.name,
                          files=[f for f, _ in files], module=MODULE[e["ci"]]))
         print("%-9s %s" % (e["no"], folder))
+    rows.sort(key=lambda r: (r["ci"], r["seq"]))
     json.dump(rows, open(Path(__file__).parent / "manifest.json", "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
 

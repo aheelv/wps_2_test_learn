@@ -51,5 +51,9 @@ Thumbs.db
 desktop.ini
 .DS_Store
 
+# ---- Office 临时锁文件与重复归档 ----
+~$*
+11-11.zip
+
 # ---- 本地记忆与会话数据（不发布）----
 .workbuddy/

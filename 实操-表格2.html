@@ -131,7 +131,7 @@
             <span class="badge">17 分钟</span>
             <button class="fold" type="button" data-fold>收起步骤</button>
           </header>
-          <div class="ex-b"><div class="mat" id="mat-5-1"><div class="mat-h"><span class="mat-tag">练习素材包</span><b>练习5-1-查找引用函数.zip</b><span class="mat-size">10 KB</span></div><div class="mat-b"><ul class="mat-files"><li><code>素材-练习5-1.xlsx</code><span>数据表 / 数据源（WPS 表格）</span></li><li><code>素材说明.txt</code><span>文件清单 / 题目要求 / 完成效果 / 环境口径</span></li></ul><p class="mat-note">解题步骤中凡需打开素材，均使用本包内的起始文件；若题目要求从零新建，请以包内文字/数据为录入内容，参数与题目要求保持一致。包内「素材说明.txt」列有完整题目要求与完成效果（采分点）。格式、公式、图表、动画、修订、目录、题注等答案动作均<b>不预置</b>。</p></div><a class="mat-dl" href="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E4%B8%8B%E8%BD%BD/%E7%BB%83%E4%B9%A05-1-%E6%9F%A5%E6%89%BE%E5%BC%95%E7%94%A8%E5%87%BD%E6%95%B0.zip" download="练习5-1-查找引用函数.zip">&#11015; 下载本题素材包</a><a class="cmp-dl" href="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9/%E7%BB%83%E4%B9%A05-1-%E6%9F%A5%E6%89%BE%E5%BC%95%E7%94%A8%E5%87%BD%E6%95%B0/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9%E6%96%87%E6%A1%A3.html" target="_blank" rel="noopener" title="例 5-1 完成比对文档">完成比对文档</a></div>
+          <div class="ex-b"><div class="mat" id="mat-5-1"><div class="mat-h"><span class="mat-tag">练习素材包</span><b>练习5-1-查找引用函数.zip</b><span class="mat-size">8 KB</span></div><div class="mat-b"><ul class="mat-files"><li><code>素材-练习5-1.xlsx</code><span>数据表 / 数据源（WPS 表格）</span></li><li><code>素材说明.txt</code><span>文件清单 / 题目要求 / 完成效果 / 环境口径</span></li></ul><p class="mat-note">解题步骤中凡需打开素材，均使用本包内的起始文件；若题目要求从零新建，请以包内文字/数据为录入内容，参数与题目要求保持一致。包内「素材说明.txt」列有完整题目要求与完成效果（采分点）。格式、公式、图表、动画、修订、目录、题注等答案动作均<b>不预置</b>。</p></div><a class="mat-dl" href="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E4%B8%8B%E8%BD%BD/%E7%BB%83%E4%B9%A05-1-%E6%9F%A5%E6%89%BE%E5%BC%95%E7%94%A8%E5%87%BD%E6%95%B0.zip" download="练习5-1-查找引用函数.zip">&#11015; 下载本题素材包</a><a class="cmp-dl" href="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9/%E7%BB%83%E4%B9%A05-1-%E6%9F%A5%E6%89%BE%E5%BC%95%E7%94%A8%E5%87%BD%E6%95%B0/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9%E6%96%87%E6%A1%A3.html" target="_blank" rel="noopener" title="例 5-1 完成比对文档">完成比对文档</a></div>
             <div class="req">
               <div class="kicker">题目要求</div>
               <ol><li>打开本题素材包中的起始文件（「成绩」表 A 列学号、B 列姓名（空）、C 列专业（空）、D 列总分；「学生信息」表 A 学号、B 姓名、C 专业）。</li><li>在「成绩」表 <b>B2</b> 用 <b>VLOOKUP 精确匹配</b>按学号查姓名，下拉到 <b>B21</b>。</li><li>在 <b>C2</b> 用同样方法查专业，下拉到 C21。<b>查找区域必须绝对引用。</b></li><li>用 <b>IFERROR</b> 包裹，使查不到的学号显示「<b>未找到</b>」。</li><li>在 J1:K6 建立绩点对照表（0→0、60→1.0、70→2.0、80→3.0、90→4.0），在 <b>F2</b> 用<b>近似匹配</b>按总分返回绩点，下拉到 F21。</li><li>抽查 85 分的绩点应为 <b>2.0</b>（80 ≤ 85 &lt; 90）。</li><li>保存为 <code>学号-姓名-练习5-1.xlsx</code>。</li></ol>
@@ -139,6 +139,8 @@
             <div class="kicker">解题步骤</div>
             <ol class="steps"><li><b>打开本题素材包中的起始文件，先看方向。</b>VLOOKUP 只能<b>从左往右</b>查：查找值必须位于查找区域的<b>第 1 列</b>。这里学号在两表都是 A 列，方向正确。</li><li><b>写姓名公式。</b>B2 输入 <span class="fx">=VLOOKUP($A2,学生信息!$A$2:$C$21,2,0)</span> → <kbd>Enter</kbd>。</li><li><b>逐个参数确认。</b>① 查找值 <code>$A2</code>：锁列不锁行，右拉时仍取学号列；② 区域 <code>学生信息!$A$2:$C$21</code>：跨表 + 全绝对，下拉不会漂移；③ 返回列号 <b>2</b>：从区域第 1 列（A 学号）数起，姓名是第 2 列；④ 匹配方式 <b>0</b>：精确匹配。</li><li><b>下拉。</b>选中 B2 → 双击填充柄（或拖到 B21）。逐行检查是否有 #N/A。</li><li><b>查专业。</b>C2 输入 <span class="fx">=VLOOKUP($A2,学生信息!$A$2:$C$21,3,0)</span> → 下拉。<b>只有返回列号从 2 变成 3</b>，其余不动。</li><li><b>加兜底。</b>把 B2 改为 <span class="fx">=IFERROR(VLOOKUP($A2,学生信息!$A$2:$C$21,2,0),&quot;未找到&quot;)</span> → 下拉。C2 同样处理。</li><li><b>建对照表。</b>J1 输入「分数」、K1 输入「绩点」；J2:J6 依次 0、60、70、80、90；K2:K6 依次 0、1.0、2.0、3.0、4.0。<br><b>首列必须升序</b>，这是近似匹配的硬性前提。</li><li><b>近似匹配。</b>F2 输入 <span class="fx">=VLOOKUP(D2,$J$2:$K$6,2,1)</span> → 下拉。<br>第 4 参数 <b>1</b>（或 TRUE）表示「找不到精确值就取不超过它的最大值」。</li><li><b>验证边界。</b>85 → 取 80 对应 2.0；90 → 取 90 对应 4.0；59 → 小于最小值，返回 #N/A（可用 IFERROR 兜成 0）。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
             <div class="steps-shot"><figure><a href="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9/%E7%BB%83%E4%B9%A05-1-%E6%9F%A5%E6%89%BE%E5%BC%95%E7%94%A8%E5%87%BD%E6%95%B0/%E6%93%8D%E4%BD%9C%E7%A4%BA%E6%84%8F.svg" target="_blank" rel="noopener"><img src="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9/%E7%BB%83%E4%B9%A05-1-%E6%9F%A5%E6%89%BE%E5%BC%95%E7%94%A8%E5%87%BD%E6%95%B0/%E6%93%8D%E4%BD%9C%E7%A4%BA%E6%84%8F.svg" alt="例 5-1 解题步骤模拟操作示意（WPS Office 教育考试专用版）"></a><figcaption>图：例 5-1 解题步骤操作路径示意 · 橙色编号与上方步骤序号一致 · WPS Office 教育考试专用版</figcaption></figure></div>
+            
+            
             
             
             
@@ -171,6 +173,8 @@
             <div class="kicker">解题步骤</div>
             <ol class="steps"><li><b>理解为什么用 INDEX+MATCH。</b>VLOOKUP 只能「查找值在左、返回值在右」；按姓名查学号是「返回值在左」，必须换组合。</li><li><b>先写 MATCH。</b>MATCH 的作用是「找位置」：<code>MATCH(I2,学生信息!$B$2:$B$21,0)</code> 返回姓名在 B 列中的第几个（相对位置）。</li><li><b>再套 INDEX。</b>H2 输入 <span class="fx">=INDEX(学生信息!$A$2:$A$21,MATCH(I2,学生信息!$B$2:$B$21,0))</span> → <kbd>Enter</kbd>。<br>读法：在 A 列里，取「姓名所在的那个位置」的值。</li><li><b>HLOOKUP。</b>H3 输入 <span class="fx">=HLOOKUP(&quot;第三季度&quot;,$B$1:$E$2,2,0)</span> → <kbd>Enter</kbd>。<br>HLOOKUP 与 VLOOKUP 只差一个方向：它在<b>首行</b>横向找，返回指定<b>行号</b>的值。</li><li><b>INDIRECT。</b>H4 输入 <span class="fx">=INDIRECT(&quot;'&quot;&amp;I4&amp;&quot;'!B2&quot;)</span> → <kbd>Enter</kbd>。在 I4 输入「1月」，公式就去取 <code>'1月'!B2</code>。<br>单引号是为了兼容以数字开头或含空格的工作表名。</li><li><b>验证 INDIRECT。</b>把 I4 改成「2月」，H4 的值应立即变为 2 月表的 B2——这就是「动态表名」。</li><li><b>OFFSET。</b>H5 输入 <span class="fx">=SUM(OFFSET(B2,0,0,5,3))</span> → <kbd>Enter</kbd>。<br>五个参数：基准点 B2、向下偏移 0 行、向右偏移 0 列、高度 5 行、宽度 3 列。</li><li><b>核对 OFFSET 区域。</b>选中公式中的 OFFSET 部分按 <kbd>F9</kbd> 可临时看到它引用的区域内容，按 <kbd>Esc</kbd> 退出不改变公式。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
             <div class="steps-shot"><figure><a href="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9/%E7%BB%83%E4%B9%A05-2-%E5%8F%8D%E5%90%91%E6%9F%A5%E6%89%BE%E4%B8%8E%E5%8A%A8%E6%80%81%E5%BC%95%E7%94%A8/%E6%93%8D%E4%BD%9C%E7%A4%BA%E6%84%8F.svg" target="_blank" rel="noopener"><img src="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9/%E7%BB%83%E4%B9%A05-2-%E5%8F%8D%E5%90%91%E6%9F%A5%E6%89%BE%E4%B8%8E%E5%8A%A8%E6%80%81%E5%BC%95%E7%94%A8/%E6%93%8D%E4%BD%9C%E7%A4%BA%E6%84%8F.svg" alt="例 5-2 解题步骤模拟操作示意（WPS Office 教育考试专用版）"></a><figcaption>图：例 5-2 解题步骤操作路径示意 · 橙色编号与上方步骤序号一致 · WPS Office 教育考试专用版</figcaption></figure></div>
+            
+            
             
             
             
@@ -231,6 +235,8 @@
             
             
             
+            
+            
             <div class="score"><b>采分点</b>D 列 MID 起始位 7、长度 8 且显示为 1998-05-12 · E 列性别判断取第 17 位且奇男偶女 · F 列 DATEDIF 用 "y" 且结果正确 · G 列 RIGHT 取 4 位 · H 列 SUBSTITUTE 去掉全部「-」 · I 列 TEXT 格式正确 · J 列连接符与分隔符正确</div>
             <div class="callout warn">
               <h4>易错提醒</h4>
@@ -255,6 +261,8 @@
             <div class="kicker">解题步骤</div>
             <ol class="steps"><li><b>算工龄。</b>D2 输入 <span class="fx">=DATEDIF(B2,TODAY(),&quot;y&quot;)</span> → 下拉。<br>TODAY() 不带参数，返回当天日期，每次打开文件自动更新。</li><li><b>算零头月数。</b>E2 输入 <span class="fx">=DATEDIF(B2,TODAY(),&quot;ym&quot;)</span> → 下拉。结果为「除去整年之后剩下的月数」。</li><li><b>算到期日。</b>F2 输入 <span class="fx">=EDATE(B2,C2*12)</span> → 下拉。<br>EDATE 的作用是「在指定日期上加/减若干个月」，自动处理大小月与闰年。</li><li><b>设日期格式。</b>选中 F2:F21 → <kbd>Ctrl</kbd>+<kbd>1</kbd> → 日期 → 选「yyyy-mm-dd」或自定义 <code>yyyy&quot;年&quot;m&quot;月&quot;d&quot;日&quot;</code>。</li><li><b>算月末。</b>G2 输入 <span class="fx">=EOMONTH(B2,0)</span> → 返回入职当月的最后一天。第二参数 0 表示当月，1 表示下月月末，-1 表示上月月末。</li><li><b>第 15 个工作日。</b>H2 输入 <span class="fx">=WORKDAY(B2,15)</span> → 从入职日起往后数 15 个工作日（自动跳过周六周日）。<br>若需排除法定节假日，用第四参数（节假日区域）。</li><li><b>工作日天数。</b>I2 输入 <span class="fx">=NETWORKDAYS(B2,TODAY())</span> → 返回两日期之间的工作日数（含首尾）。</li><li><b>提取年月。</b>J2 输入 <span class="fx">=YEAR(B2)</span>；K2 输入 <span class="fx">=MONTH(B2)</span> → 下拉。</li><li><b>核对。</b>抽查一人：入职 2019-03-15、合同 3 年，到期日应为 2022-03-15。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
             <div class="steps-shot"><figure><a href="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9/%E7%BB%83%E4%B9%A05-4-%E6%97%A5%E6%9C%9F%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%87%BD%E6%95%B0/%E6%93%8D%E4%BD%9C%E7%A4%BA%E6%84%8F.svg" target="_blank" rel="noopener"><img src="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9/%E7%BB%83%E4%B9%A05-4-%E6%97%A5%E6%9C%9F%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%87%BD%E6%95%B0/%E6%93%8D%E4%BD%9C%E7%A4%BA%E6%84%8F.svg" alt="例 5-4 解题步骤模拟操作示意（WPS Office 教育考试专用版）"></a><figcaption>图：例 5-4 解题步骤操作路径示意 · 橙色编号与上方步骤序号一致 · WPS Office 教育考试专用版</figcaption></figure></div>
+            
+            
             
             
             
@@ -315,6 +323,8 @@
             
             
             
+            
+            
             <div class="score"><b>采分点</b>H2 SUMPRODUCT 多条件结果正确 · H3 SUMIFS 求和区域在最前且结果与 H2 一致 · H4 COUNTIFS 条件 ">5000" 写法正确 · H5 AVERAGEIFS 正确 · H6 数组公式有大括号（三键输入） · H7 去重计数结果等于实际部门数</div>
             <div class="callout warn">
               <h4>易错提醒</h4>
@@ -339,6 +349,8 @@
             <div class="kicker">解题步骤</div>
             <ol class="steps"><li><b>排名。</b>C2 输入 <span class="fx">=RANK.EQ(B2,$B$2:$B$21,0)</span> → 下拉。<br>第三参数 <b>0</b> 表示降序（分数越高名次越靠前）；写 1 表示升序。</li><li><b>验证排名。</b>最高分那行的名次应为 1；两人同分时会出现并列名次（如两个第 3），这是 RANK.EQ 的正常行为。</li><li><b>取第 N 名。</b>D2 输入 <span class="fx">=LARGE($B$2:$B$21,3)</span> → 第 3 大的分数；D3 输入 <span class="fx">=SMALL($B$2:$B$21,2)</span> → 第 2 小的分数。</li><li><b>中位数。</b>D4 输入 <span class="fx">=MEDIAN($B$2:$B$21)</span>。中位数与平均数的差，能看出分数是否偏斜。</li><li><b>百分位。</b>D5 输入 <span class="fx">=PERCENTILE($B$2:$B$21,0.9)</span> → 第 90 百分位，意思是「90% 的人低于这个分数」。</li><li><b>分段①≥90。</b>F2 输入 <span class="fx">=COUNTIFS($B$2:$B$21,&quot;&gt;=90&quot;)</span>。</li><li><b>分段②80~89。</b>F3 输入 <span class="fx">=COUNTIFS($B$2:$B$21,&quot;&gt;=80&quot;,$B$2:$B$21,&quot;&lt;=89&quot;)</span>。<br>区间必须<b>首尾相接、不重叠</b>，否则会有分数被算两次或一次不算。</li><li><b>其余三段。</b>F4 <code>&gt;=70 且 &lt;=79</code>；F5 <code>&gt;=60 且 &lt;=69</code>；F6 <code>&lt;60</code>。</li><li><b>核对总数。</b>F7 输入 <span class="fx">=SUM(F2:F6)</span>，应等于 20；不等说明区间有重叠或遗漏。</li><li><b>算占比。</b>G2 输入 <span class="fx">=F2/$F$7</span> → 下拉到 G6 → 设为百分比格式 1 位小数。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
             <div class="steps-shot"><figure><a href="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9/%E7%BB%83%E4%B9%A05-6-%E6%8E%92%E5%90%8D%E4%B8%8E%E7%BB%9F%E8%AE%A1%E5%88%86%E5%B8%83/%E6%93%8D%E4%BD%9C%E7%A4%BA%E6%84%8F.svg" target="_blank" rel="noopener"><img src="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9/%E7%BB%83%E4%B9%A05-6-%E6%8E%92%E5%90%8D%E4%B8%8E%E7%BB%9F%E8%AE%A1%E5%88%86%E5%B8%83/%E6%93%8D%E4%BD%9C%E7%A4%BA%E6%84%8F.svg" alt="例 5-6 解题步骤模拟操作示意（WPS Office 教育考试专用版）"></a><figcaption>图：例 5-6 解题步骤操作路径示意 · 橙色编号与上方步骤序号一致 · WPS Office 教育考试专用版</figcaption></figure></div>
+            
+            
             
             
             
@@ -399,6 +411,8 @@
             
             
             
+            
+            
             <div class="score"><b>采分点</b>双关键字排序顺序正确（部门升序 + 金额降序） · 自定义序列排序结果符合指定部门顺序 · 按单元格颜色排序红色在顶端 · 自动筛选前 10 项正确 · 文本包含筛选正确</div>
             <div class="callout warn">
               <h4>易错提醒</h4>
@@ -423,6 +437,8 @@
             <div class="kicker">解题步骤</div>
             <ol class="steps"><li><b>理解条件区域规则。</b>条件区域的第一行必须是<b>与原表完全一致的字段名</b>；<b>同一行</b>的多个条件是「<b>与</b>」，<b>不同行</b>是「<b>或</b>」。</li><li><b>建「与」条件。</b>H1 输入「部门」、I1 输入「金额」；H2 输入「销售部」、I2 输入 <code>&gt;5000</code>。<br>字段名可以从原表直接复制，避免多空格。</li><li><b>启动高级筛选。</b>点数据区任一单元格 →「数据」→「<b>高级筛选</b>」。</li><li><b>设三个区域。</b>「方式」选「<b>将筛选结果复制到其他位置</b>」→ 列表区域 <code>$A$1:$F$31</code> → 条件区域 <code>$H$1:$I$2</code> → 复制到 <code>$A$35</code> → 确定。</li><li><b>检查结果。</b>A35 起应有表头 + 符合条件的记录，且每行金额都 &gt; 5000、部门都是销售部。</li><li><b>建「或」条件。</b>H5 输入「部门」；H6 输入「销售部」；<b>H7</b> 输入「技术部」（同一列、不同行）。<br>注意此处不需要第二列字段名，只写一列即可表达「或」。</li><li><b>再筛选。</b>「数据」→「高级筛选」→ 列表区域 <code>$A$1:$F$31</code> → 条件区域 <code>$H$5:$H$7</code> → 复制到 <code>$H$10</code> → 确定。</li><li><b>不重复记录。</b>「数据」→「高级筛选」→ 列表区域 <code>$A$1:$F$31</code> → <b>不设条件区域</b> → 勾选「<b>选择不重复的记录</b>」→ 复制到 <code>$H$30</code> → 确定。<br>若只想提取部门列，可先单独选中 B 列再操作。</li><li><b>核对条数。</b>用 <code>COUNTA</code> 数一下结果行数，与手工筛选的结果比对。</li><li><b>保存。</b><kbd>Ctrl</kbd>+<kbd>S</kbd>。</li></ol>
             <div class="steps-shot"><figure><a href="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9/%E7%BB%83%E4%B9%A05-8-%E9%AB%98%E7%BA%A7%E7%AD%9B%E9%80%89/%E6%93%8D%E4%BD%9C%E7%A4%BA%E6%84%8F.svg" target="_blank" rel="noopener"><img src="./%E7%BB%83%E4%B9%A0%E7%B4%A0%E6%9D%90/%E5%AE%8C%E6%88%90%E6%AF%94%E5%AF%B9/%E7%BB%83%E4%B9%A05-8-%E9%AB%98%E7%BA%A7%E7%AD%9B%E9%80%89/%E6%93%8D%E4%BD%9C%E7%A4%BA%E6%84%8F.svg" alt="例 5-8 解题步骤模拟操作示意（WPS Office 教育考试专用版）"></a><figcaption>图：例 5-8 解题步骤操作路径示意 · 橙色编号与上方步骤序号一致 · WPS Office 教育考试专用版</figcaption></figure></div>
+            
+            
             
             
             

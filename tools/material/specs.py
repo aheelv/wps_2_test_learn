@@ -56,59 +56,60 @@ SPECS = {
     (3, 8): dict(short="多窗口协作", kind="ref", refdir="例3-8-多窗口协作"),
 
     # ---------------- 第 4 次课 · 表格基础（8 题） ----------------
-    # 例 4-1 题干声明「日期 / 产品 / 数量 / 单价 / 金额，共 12 条」，且要求从 Sheet1
-    # 开始建表；使用专用数据集、不预置「题目说明」表，保证素材与题目要求一致。
-    (4, 1): dict(short="工作簿与工作表", kind="xlsx", dataset="sales12", no_note=True),
-    (4, 2): dict(short="打印区域与标题行", kind="xlsx", dataset="sales"),
-    (4, 3): dict(short="数据录入与格式", kind="xlsx", dataset="staff"),
-    (4, 4): dict(short="条件格式与批注", kind="xlsx", dataset="score"),
-    (4, 5): dict(short="单元格引用", kind="xlsx", dataset="sales"),
-    (4, 6): dict(short="公式与错误排查", kind="xlsx", dataset="sales"),
-    (4, 7): dict(short="统计与取整函数", kind="xlsx", dataset="score"),
-    (4, 8): dict(short="IF与逻辑函数", kind="xlsx", dataset="score"),
+    # 第 4~6 次课共 24 题的起始工作簿，由用户提供的 11-11 目录为准（golden=True），
+    # build.py 直接复制 11-11/练习N-M-短名/素材-练习N-M.xlsx，内容与题目逐条对应。
+    (4, 1): dict(short="工作簿与工作表", kind="xlsx", golden=True),
+    (4, 2): dict(short="打印区域与标题行", kind="xlsx", golden=True),
+    (4, 3): dict(short="数据录入与格式", kind="xlsx", golden=True),
+    (4, 4): dict(short="条件格式与批注", kind="xlsx", golden=True),
+    (4, 5): dict(short="单元格引用", kind="xlsx", golden=True),
+    (4, 6): dict(short="公式与错误排查", kind="xlsx", golden=True),
+    (4, 7): dict(short="统计与取整函数", kind="xlsx", golden=True),
+    (4, 8): dict(short="IF与逻辑函数", kind="xlsx", golden=True),
 
     # ---------------- 第 5 次课 · 表格函数（8 题） ----------------
-    (5, 1): dict(short="查找引用函数", kind="xlsx", dataset="lookup"),
-    (5, 2): dict(short="反向查找与动态引用", kind="xlsx", dataset="lookup"),
-    (5, 3): dict(short="身份证与文本函数", kind="xlsx", dataset="idcard"),
-    (5, 4): dict(short="日期与工作日函数", kind="xlsx", dataset="staff"),
-    (5, 5): dict(short="多条件求和", kind="xlsx", dataset="sales"),
-    (5, 6): dict(short="排名与统计分布", kind="xlsx", dataset="score"),
-    (5, 7): dict(short="排序与筛选", kind="xlsx", dataset="sales"),
-    (5, 8): dict(short="高级筛选", kind="xlsx", dataset="sales"),
+    (5, 1): dict(short="查找引用函数", kind="xlsx", golden=True),
+    (5, 2): dict(short="反向查找与动态引用", kind="xlsx", golden=True),
+    (5, 3): dict(short="身份证与文本函数", kind="xlsx", golden=True),
+    (5, 4): dict(short="日期与工作日函数", kind="xlsx", golden=True),
+    (5, 5): dict(short="多条件求和", kind="xlsx", golden=True),
+    (5, 6): dict(short="排名与统计分布", kind="xlsx", golden=True),
+    (5, 7): dict(short="排序与筛选", kind="xlsx", golden=True),
+    (5, 8): dict(short="高级筛选", kind="xlsx", golden=True),
 
     # ---------------- 第 6 次课 · 表格分析（8 题） ----------------
-    (6, 1): dict(short="分类汇总", kind="xlsx", dataset="sales"),
-    (6, 2): dict(short="合并计算与有效性", kind="xlsx", dataset="sales"),
-    (6, 3): dict(short="组合图表双轴", kind="xlsx", dataset="trend"),
-    (6, 4): dict(short="饼图与迷你图", kind="xlsx", dataset="share"),
-    (6, 5): dict(short="数据透视表", kind="xlsx", dataset="sales"),
-    (6, 6): dict(short="透视图与切片器", kind="xlsx", dataset="sales"),
-    (6, 7): dict(short="模拟分析与方案", kind="xlsx", dataset="loan"),
-    (6, 8): dict(short="保护与打印输出", kind="xlsx", dataset="sales"),
+    (6, 1): dict(short="分类汇总", kind="xlsx", golden=True),
+    (6, 2): dict(short="合并计算与有效性", kind="xlsx", golden=True),
+    (6, 3): dict(short="组合图表双轴", kind="xlsx", golden=True),
+    (6, 4): dict(short="饼图与迷你图", kind="xlsx", golden=True),
+    (6, 5): dict(short="数据透视表", kind="xlsx", golden=True),
+    (6, 6): dict(short="透视图与切片器", kind="xlsx", golden=True),
+    (6, 7): dict(short="模拟分析与方案", kind="xlsx", golden=True),
+    (6, 8): dict(short="保护与打印输出", kind="xlsx", golden=True),
 
     # ---------------- 第 7 次课 · 演示基础（8 题） ----------------
-    (7, 1): dict(short="从大纲生成幻灯片", kind="pptx", extra=["大纲.txt"], slides=1),
-    (7, 2): dict(short="视图与备注", kind="pptx", slides=8),
-    (7, 3): dict(short="主题与背景", kind="pptx", extra=["图1-封面背景.png"], slides=8),
-    (7, 4): dict(short="幻灯片母版", kind="pptx", extra=["图1-校徽logo.png"], slides=8),
-    (7, 5): dict(short="艺术字与文本效果", kind="pptx", slides=8),
-    (7, 6): dict(short="形状与智能图形", kind="pptx", slides=6),
+    # 起始文稿的具体页标题与正文见 content.DECKS / DECK_BLANK / DECK_IMG。
+    # 例 7-8 需要「素材视频」，题目按第 7 张操作；移除与题目无关的「图表数据.xlsx」。
+    (7, 1): dict(short="从大纲生成幻灯片", kind="pptx", extra=["大纲.txt"]),
+    (7, 2): dict(short="视图与备注", kind="pptx"),
+    (7, 3): dict(short="主题与背景", kind="pptx", extra=["图1-封面背景.png"]),
+    (7, 4): dict(short="幻灯片母版", kind="pptx", extra=["图1-校徽logo.png"]),
+    (7, 5): dict(short="艺术字与文本效果", kind="pptx"),
+    (7, 6): dict(short="形状与智能图形", kind="pptx"),
     (7, 7): dict(short="图片处理与相册", kind="pptx",
-                 extra=["图1-校园全景.png", "图2-实训车间.png", "图3-图书馆.png"], slides=6),
-    # 例 7-8 需要「素材视频」，题目按第 7 张操作；移除与题目无关的「图表数据.xlsx」
+                 extra=["图1-校园全景.png", "图2-实训车间.png", "图3-图书馆.png"]),
     (7, 8): dict(short="图表与音视频", kind="pptx",
-                 extra=["背景音乐.wav", "教学视频.mp4"], slides=8),
+                 extra=["背景音乐.wav", "教学视频.mp4"]),
 
     # ---------------- 第 8 次课 · 演示输出（8 题） ----------------
-    (8, 1): dict(short="对象动画", kind="pptx", slides=6),
-    (8, 2): dict(short="切换与排练计时", kind="pptx", slides=6),
-    (8, 3): dict(short="超链接与动作", kind="pptx", slides=8),
-    (8, 4): dict(short="放映设置", kind="pptx", slides=8),
-    (8, 5): dict(short="打包与输出", kind="pptx", slides=6),
-    (8, 6): dict(short="文档保护与检查", kind="pptx", slides=6),
-    (8, 7): dict(short="六页汇报综合题", kind="pptx", slides=6),
-    (8, 8): dict(short="限时模拟与自评", kind="pptx", extra=["评分表.xlsx"], slides=6),
+    (8, 1): dict(short="对象动画", kind="pptx"),
+    (8, 2): dict(short="切换与排练计时", kind="pptx"),
+    (8, 3): dict(short="超链接与动作", kind="pptx"),
+    (8, 4): dict(short="放映设置", kind="pptx"),
+    (8, 5): dict(short="打包与输出", kind="pptx"),
+    (8, 6): dict(short="文档保护与检查", kind="pptx"),
+    (8, 7): dict(short="六页汇报综合题", kind="pptx"),
+    (8, 8): dict(short="限时模拟与自评", kind="pptx", extra=["评分表.xlsx"]),
 }
 
 KIND_BY_CI = {1: "docx", 2: "docx", 3: "docx", 4: "xlsx", 5: "xlsx", 6: "xlsx", 7: "pptx", 8: "pptx"}
