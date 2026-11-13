@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="在全部免费资源中按关键词、分类与推荐度检索。">
+<meta name="author" content="WPS 二级免费资源站">
+<title>全站检索 · WPS 二级免费资源站</title>
+<link rel="icon" type="image/x-icon" href="assets/template/favicon.ico">
+<link href="assets/template/styles.css" rel="stylesheet">
+<link href="assets/css/site.css" rel="stylesheet">
+</head>
+<body data-base="">
+<nav class="navbar navbar-expand-lg site-nav navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><span class="brand-mark">W2</span>WPS 二级免费资源站</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+      aria-controls="mainNav" aria-expanded="false" aria-label="切换导航"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center"><li class="nav-item"><a class="nav-link" href="index.html">首页</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="categories.html" data-bs-toggle="dropdown" role="button" aria-expanded="false">分类浏览</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="category/docs.html">文档教程 <span class="text-muted small">(8)</span></a></li><li><a class="dropdown-item" href="category/courses.html">视频课程 <span class="text-muted small">(7)</span></a></li><li><a class="dropdown-item" href="category/opensource.html">开源项目 <span class="text-muted small">(3)</span></a></li><li><a class="dropdown-item" href="category/templates.html">模板素材 <span class="text-muted small">(4)</span></a></li><li><a class="dropdown-item" href="category/tools.html">工具服务 <span class="text-muted small">(7)</span></a></li><li><a class="dropdown-item" href="category/reference.html">设计参考 <span class="text-muted small">(6)</span></a></li><li><hr class="dropdown-divider"></li><li><a class="dropdown-item fw-bold" href="categories.html">查看全部分类 →</a></li></ul></li><li class="nav-item"><a class="nav-link" href="guide.html">备考指南</a></li><li class="nav-item"><a class="nav-link active" href="search.html">全站检索</a></li><li class="nav-item"><a class="nav-link" href="about.html">关于</a></li></ul>
+      <form class="d-flex site-search ms-lg-3" action="search.html" method="get" role="search">
+        <input class="form-control form-control-sm" type="search" name="q" placeholder="搜索资源…" aria-label="搜索资源">
+        <button class="btn btn-sm" type="submit">检索</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<div class="search-hero"><div class="container">
+  <h1 class="fw-bold mb-2">全站检索</h1>
+  <p class="text-muted mb-3">在 35 条资源的名称、用途、获取方式、免费限制、标签与考纲映射中做客户端全文匹配，浏览器端即时完成。</p>
+  <div class="input-group mb-3">
+    <input class="form-control" id="q" type="search" placeholder="输入关键词，多个词用空格分隔（如：表格 免费）" autocomplete="off">
+    <button class="btn" id="searchBtn" type="button">检索</button>
+  </div>
+  <div class="d-flex flex-wrap gap-2 align-items-center">
+    <span class="small text-muted me-1">热门：</span><button type="button" class="hot-word" data-q="透视表">透视表</button><button type="button" class="hot-word" data-q="母版">母版</button><button type="button" class="hot-word" data-q="交叉引用">交叉引用</button><button type="button" class="hot-word" data-q="真题">真题</button><button type="button" class="hot-word" data-q="零基础">零基础</button><button type="button" class="hot-word" data-q="需邀请码">需邀请码</button><button type="button" class="hot-word" data-q="在线版">在线版</button><button type="button" class="hot-word" data-q="模拟考试">模拟考试</button><button type="button" class="hot-word" data-q="超纲">超纲</button>
+  </div>
+</div></div>
+<div class="container py-4" id="searchApp">
+  <div class="filter-bar">
+    <div class="row g-3 align-items-end">
+      <div class="col-md-4"><label for="catFilter">限定分类</label>
+        <select class="form-select" id="catFilter"><option value="">全部分类</option><option value="docs">文档教程（8）</option><option value="courses">视频课程（7）</option><option value="opensource">开源项目（3）</option><option value="templates">模板素材（4）</option><option value="tools">工具服务（7）</option><option value="reference">设计参考（6）</option></select></div>
+      <div class="col-md-4"><label for="ratingFilter">最低推荐度</label>
+        <select class="form-select" id="ratingFilter">
+          <option value="0">全部</option><option value="5">★★★★★</option>
+          <option value="4">★★★★ 及以上</option><option value="3">★★★ 及以上</option></select></div>
+      <div class="col-md-4 text-md-end pb-1"><span class="result-count" id="resultCount"></span></div>
+    </div>
+  </div>
+  <div class="row" id="results"></div>
+  <div class="empty-state" id="emptyState">没有匹配的资源。试试更短的关键词，或清空分类与推荐度限制。</div>
+  <noscript><div class="callout mt-3">检索功能需要 JavaScript。若已关闭，请改用「分类浏览」逐页查看，本站所有详情页均为静态页面。</div></noscript>
+  <div class="prose mt-4"><h2>检索说明</h2>
+    <ul class="mb-0">
+      <li>支持多个关键词（空格分隔，需同时匹配），例如「透视表 免费」。</li>
+      <li>匹配范围含名称、用途、获取方式、免费限制、注意事项、标签、考纲条目与链接文字。</li>
+      <li>结果按推荐度排序；顶部导航与分类页的搜索框会把关键词带到这里。</li>
+      <li>按 <code>/</code> 键可快速聚焦搜索框。所有资源详情页链接均为站内相对路径，部署后随正式域名自动解析。</li>
+    </ul>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-5">
+        <h6>WPS 二级免费资源站</h6>
+        <p class="small mb-2">面向 NCRE 二级 WPS Office 高级应用与设计（科目代码 67）的免费资源索引。依据 2025 年版考试大纲与官方样题整理，资料核验于 2026-11-11。</p>
+        <p class="small mb-0">页面框架基于 <a href="https://github.com/StartBootstrap/startbootstrap-blog-home" target="_blank" rel="noopener noreferrer">Start Bootstrap · Blog Home</a>（MIT）。</p>
+      </div>
+      <div class="col-6 col-md-3"><h6>分类导航</h6><ul class="foot-links"><li><a href="category/docs.html">文档教程</a></li><li><a href="category/courses.html">视频课程</a></li><li><a href="category/opensource.html">开源项目</a></li><li><a href="category/templates.html">模板素材</a></li><li><a href="category/tools.html">工具服务</a></li><li><a href="category/reference.html">设计参考</a></li></ul></div>
+      <div class="col-6 col-md-4"><h6>站点页面</h6><ul class="foot-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="categories.html">分类总览</a></li>
+        <li><a href="guide.html">备考指南</a></li>
+        <li><a href="search.html">全站检索</a></li>
+        <li><a href="about.html">关于与说明</a></li>
+        <li><a href="TEMPLATE.md">模板与许可证</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom d-flex flex-wrap justify-content-between gap-2">
+      <span>资料内容由公开免费资源整理，版权归各原作者所有；本站仅作索引与学习规划。</span>
+      <span>生成日期 2026-11-13 · 纯静态，无追踪、无外部依赖</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/vendor/bootstrap.bundle.min.js"></script>
+<script src="assets/template/scripts.js"></script>
+<script src="data/resources.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

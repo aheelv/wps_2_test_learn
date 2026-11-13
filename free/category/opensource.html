@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="开源项目 — GitHub / Gitee 题库仓库与在线版自建备考站。可在线访问、可下载复用，但需留意版本时效。">
+<meta name="author" content="WPS 二级免费资源站">
+<title>开源项目 · WPS 二级免费资源站</title>
+<link rel="icon" type="image/x-icon" href="../assets/template/favicon.ico">
+<link href="../assets/template/styles.css" rel="stylesheet">
+<link href="../assets/css/site.css" rel="stylesheet">
+</head>
+<body data-base="../">
+<nav class="navbar navbar-expand-lg site-nav navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html"><span class="brand-mark">W2</span>WPS 二级免费资源站</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+      aria-controls="mainNav" aria-expanded="false" aria-label="切换导航"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center"><li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li><li class="nav-item dropdown"><a class="nav-link active dropdown-toggle" href="../categories.html" data-bs-toggle="dropdown" role="button" aria-expanded="false">分类浏览</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../category/docs.html">文档教程 <span class="text-muted small">(8)</span></a></li><li><a class="dropdown-item" href="../category/courses.html">视频课程 <span class="text-muted small">(7)</span></a></li><li><a class="dropdown-item" href="../category/opensource.html">开源项目 <span class="text-muted small">(3)</span></a></li><li><a class="dropdown-item" href="../category/templates.html">模板素材 <span class="text-muted small">(4)</span></a></li><li><a class="dropdown-item" href="../category/tools.html">工具服务 <span class="text-muted small">(7)</span></a></li><li><a class="dropdown-item" href="../category/reference.html">设计参考 <span class="text-muted small">(6)</span></a></li><li><hr class="dropdown-divider"></li><li><a class="dropdown-item fw-bold" href="../categories.html">查看全部分类 →</a></li></ul></li><li class="nav-item"><a class="nav-link" href="../guide.html">备考指南</a></li><li class="nav-item"><a class="nav-link" href="../search.html">全站检索</a></li><li class="nav-item"><a class="nav-link" href="../about.html">关于</a></li></ul>
+      <form class="d-flex site-search ms-lg-3" action="../search.html" method="get" role="search">
+        <input class="form-control form-control-sm" type="search" name="q" placeholder="搜索资源…" aria-label="搜索资源">
+        <button class="btn btn-sm" type="submit">检索</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<div class="breadcrumb-bar"><div class="container"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../index.html">首页</a></li><li class="breadcrumb-item"><a href="../categories.html">分类总览</a></li><li class="breadcrumb-item active" aria-current="page">开源项目</li></ol></div></div>
+<div class="page-head"><div class="container d-flex align-items-start gap-3 flex-wrap">
+  <div class="cat-icon mb-0" style="background:#059669;width:56px;height:56px" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5l-4 7 4 7M16 5l4 7-4 7M14 4l-4 16"/></svg></div>
+  <div><h1>开源项目</h1><p>GitHub / Gitee 题库仓库与在线版自建备考站。可在线访问、可下载复用，但需留意版本时效。</p>
+    <div class="mt-2 small text-muted"><strong>适用场景：</strong>需要可下载、可在线访问、可二次整理的资料包</div></div>
+</div></div>
+<div class="container">
+  <div class="filter-bar">
+    <div class="row g-3 align-items-end">
+      <div class="col-md-5"><label for="filterInput">在本分类内搜索</label>
+        <input class="form-control" id="filterInput" type="search" placeholder="输入关键词，如「透视表」「免费」「母版」"></div>
+      <div class="col-md-3"><label for="minRating">最低推荐度</label>
+        <select class="form-select" id="minRating">
+          <option value="0">全部</option><option value="5">★★★★★</option>
+          <option value="4">★★★★ 及以上</option><option value="3">★★★ 及以上</option></select></div>
+      <div class="col-md-4"><label>热门标签（点击筛选）</label><div class="tag-filter"><button type="button" class="tag-btn" data-tag="单选">单选</button><button type="button" class="tag-btn" data-tag="题库">题库</button><button type="button" class="tag-btn" data-tag="GitHub">GitHub</button><button type="button" class="tag-btn" data-tag="Gitee">Gitee</button><button type="button" class="tag-btn" data-tag="可在线">可在线</button><button type="button" class="tag-btn" data-tag="国内访问">国内访问</button><button type="button" class="tag-btn" data-tag="在线">在线</button><button type="button" class="tag-btn" data-tag="在线版">在线版</button><button type="button" class="tag-btn" data-tag="时效风险">时效风险</button><button type="button" class="tag-btn" data-tag="模拟考试">模拟考试</button></div></div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+    <div class="result-count">当前显示 <strong id="visibleCount">3</strong> / 3 条</div>
+    <a class="small" href="../search.html?cat=opensource">在全站检索中筛选此分类 →</a>
+  </div>
+  <div class="row" data-filter-root><div class="col-md-6 col-xl-4 mb-4 filter-item" data-text="github仓库995414558/ncre（二级wps目录）可下载的选择题背诵包，适合背单选，不适合作为备考主线。提供「最新wps选择题背诵【救命版】」「【打印版】wps题目合集.pdf」「二级wpsoffice选择题背诵版202203.zip」，用于考前集中背20分单选。打开github目录页直接浏览或下载文件，也可gitclone整仓在线使用。公开仓库免费下载；github访问速度受网络影响，可用gitee镜像替代。实测目录内只有选择题，没有操作题素材；最后提交为2022年4月，明显滞后于2025年版大纲。仅可背单选，不可用于判断新考点。仓库混有一级/二级资料，注意区分。开源项目开源项目github题库单选可在线时效风险单项选择题20分github二级wps目录github.comgitee镜像（国内稳定入口）gitee.com" data-tags="GitHub|题库|单选|可在线|时效风险" data-rating="3">
+  <div class="rcard">
+    <div class="rcard-top" style="background:#059669"></div>
+    <div class="rcard-body">
+      <div class="d-flex justify-content-between align-items-start mb-2 gap-2">
+        <span class="chip chip-kind">开源项目</span><span class="stars">★★★<span class="off">★★</span></span>
+      </div>
+      <a class="rcard-title" href="../resource/o-github-ncre.html">GitHub 仓库 995414558/ncre（二级 WPS 目录）</a>
+      <p class="rcard-sum">可下载的选择题背诵包，适合背单选，不适合作为备考主线。</p>
+      <div class="mb-2"><span class="chip">GitHub</span><span class="chip">题库</span><span class="chip">单选</span></div>
+      <div class="rcard-foot">
+        <span>零基础 <b>高</b> · 备考 <b>低</b></span>
+        <a href="../resource/o-github-ncre.html">详情 →</a>
+      </div>
+    </div>
+  </div>
+</div><div class="col-md-6 col-xl-4 mb-4 filter-item" data-text="gitee镜像caozha/ncregithub题库的国内镜像，解决访问不稳定问题。与github仓库内容对应，用于国内网络环境下快速下载选择题背诵包。打开gitee仓库页浏览或下载。公开仓库免费；部分附件下载可能需要登录gitee账号。镜像内容同样滞后于2025年版大纲；未逐文件比对与github是否完全一致。开源项目开源项目gitee镜像题库单选国内访问单项选择题20分gitee仓库gitee.com" data-tags="Gitee|镜像|题库|单选|国内访问" data-rating="3">
+  <div class="rcard">
+    <div class="rcard-top" style="background:#059669"></div>
+    <div class="rcard-body">
+      <div class="d-flex justify-content-between align-items-start mb-2 gap-2">
+        <span class="chip chip-kind">开源项目</span><span class="stars">★★★<span class="off">★★</span></span>
+      </div>
+      <a class="rcard-title" href="../resource/o-gitee-ncre.html">Gitee 镜像 caozha/ncre</a>
+      <p class="rcard-sum">GitHub 题库的国内镜像，解决访问不稳定问题。</p>
+      <div class="mb-2"><span class="chip">Gitee</span><span class="chip">镜像</span><span class="chip">题库</span></div>
+      <div class="rcard-foot">
+        <span>零基础 <b>高</b> · 备考 <b>低</b></span>
+        <a href="../resource/o-gitee-ncre.html">详情 →</a>
+      </div>
+    </div>
+  </div>
+</div><div class="col-md-6 col-xl-4 mb-4 filter-item" data-text="wps二级备考站wps_2_test_learn（在线版）公开在线的完整教学包：考纲对照、教学日历、培训课件与网页版模拟考试系统。含44课时×官方大纲条目正/反向对照与考频统计、11次课教学日历、292页培训课件、word练习素材，以及120分钟计时+自动评分+逐题解析的网页版模拟考试系统。浏览器访问在线备考站https://aheelv.github.io/wps_2_test_learn，由首页进入「实操训练」「理论考试」「全真模拟考试」等模块；所有子页面均为公开静态页面，无需安装或账号。公开免费的githubpages站点，无需账号即可访问；本站仅作索引，不复制分发其文件。依据2025年版大纲编写，课时按分值配置（文字12/表格12/演示8/单选8/模拟4）。2026-11-12已复核在线版首页及模拟考试系统、考纲对照表、培训课件等子页面均可正常访问。在线资源开源项目在线版在线模拟考试自动评分考纲对照四大板块全覆盖在线备考站首页（githubpages）aheelv.github.io实操训练·72道题aheelv.github.io理论考试·781道题aheelv.github.io" data-tags="在线版|在线|模拟考试|自动评分|考纲对照" data-rating="5">
+  <div class="rcard">
+    <div class="rcard-top" style="background:#059669"></div>
+    <div class="rcard-body">
+      <div class="d-flex justify-content-between align-items-start mb-2 gap-2">
+        <span class="chip chip-kind">开源项目</span><span class="stars">★★★★★<span class="off"></span></span>
+      </div>
+      <a class="rcard-title" href="../resource/o-local-site.html">WPS 二级备考站 wps_2_test_learn（在线版）</a>
+      <p class="rcard-sum">公开在线的完整教学包：考纲对照、教学日历、培训课件与网页版模拟考试系统。</p>
+      <div class="mb-2"><span class="chip">在线版</span><span class="chip">在线</span><span class="chip">模拟考试</span></div>
+      <div class="rcard-foot">
+        <span>零基础 <b>高</b> · 备考 <b>极高</b></span>
+        <a href="../resource/o-local-site.html">详情 →</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+  <div class="empty-state" id="filterEmpty">没有符合条件的资源，试试清空关键词或标签。</div>
+  <div class="prose mt-4"><h2>其他分类</h2><p><a class="chip chip-accent" href="docs.html">文档教程</a><a class="chip chip-accent" href="courses.html">视频课程</a><a class="chip chip-accent" href="templates.html">模板素材</a><a class="chip chip-accent" href="tools.html">工具服务</a><a class="chip chip-accent" href="reference.html">设计参考</a></p>
+    <p class="mb-0 small text-muted">本页卡片为静态内容，关闭 JavaScript 也可正常浏览与跳转；搜索与标签筛选为渐进增强。</p></div>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-5">
+        <h6>WPS 二级免费资源站</h6>
+        <p class="small mb-2">面向 NCRE 二级 WPS Office 高级应用与设计（科目代码 67）的免费资源索引。依据 2025 年版考试大纲与官方样题整理，资料核验于 2026-11-11。</p>
+        <p class="small mb-0">页面框架基于 <a href="https://github.com/StartBootstrap/startbootstrap-blog-home" target="_blank" rel="noopener noreferrer">Start Bootstrap · Blog Home</a>（MIT）。</p>
+      </div>
+      <div class="col-6 col-md-3"><h6>分类导航</h6><ul class="foot-links"><li><a href="../category/docs.html">文档教程</a></li><li><a href="../category/courses.html">视频课程</a></li><li><a href="../category/opensource.html">开源项目</a></li><li><a href="../category/templates.html">模板素材</a></li><li><a href="../category/tools.html">工具服务</a></li><li><a href="../category/reference.html">设计参考</a></li></ul></div>
+      <div class="col-6 col-md-4"><h6>站点页面</h6><ul class="foot-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../categories.html">分类总览</a></li>
+        <li><a href="../guide.html">备考指南</a></li>
+        <li><a href="../search.html">全站检索</a></li>
+        <li><a href="../about.html">关于与说明</a></li>
+        <li><a href="../TEMPLATE.md">模板与许可证</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom d-flex flex-wrap justify-content-between gap-2">
+      <span>资料内容由公开免费资源整理，版权归各原作者所有；本站仅作索引与学习规划。</span>
+      <span>生成日期 2026-11-13 · 纯静态，无追踪、无外部依赖</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/vendor/bootstrap.bundle.min.js"></script>
+<script src="../assets/template/scripts.js"></script>
+<script src="../data/resources.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,1341 @@
+/* 由 tools/build.py 从 data/resources.json 生成，请勿手改。 */
+window.SITE_DATA = {
+  "generated": "2026-11-13",
+  "resources": [
+    {
+      "id": "d-outline-pdf",
+      "name": "官方《考试大纲（2025 年版）》PDF",
+      "category": "docs",
+      "kind": "官方文件",
+      "summary": "唯一权威范围界定：四大板块逐条列出，一切取舍以它为准。",
+      "purpose": "确认考什么、不考什么；核对每个知识点归属哪条大纲；识别网上资料是否超纲或过时。",
+      "access": "中国教育考试网发布页直接下载；本站已留存站内 PDF 副本，可在详情页直接打开。",
+      "free": "完全免费、无需登录、可自由下载与打印。",
+      "rating": 5,
+      "zero": "中",
+      "exam": "极高",
+      "links": [
+        {
+          "label": "官方原文 PDF（wsk.neea.edu.cn）",
+          "url": "https://wsk.neea.edu.cn/res/Home/2412/a3710fb2bca4187351c0373377baa145.pdf"
+        }
+      ],
+      "asset": "assets/files/NCRE2_WPS_考试大纲_2025版.pdf",
+      "tags": [
+        "考纲",
+        "官方",
+        "PDF",
+        "必读"
+      ],
+      "syllabus": [
+        "全部四大板块"
+      ],
+      "caveat": "务必使用 2025 年版。GitHub 上大量题库基于 2022 年版大纲，条目已有差异。",
+      "related": [
+        "d-sample-pdf",
+        "r-syllabus-coverage",
+        "r-scope-boundary"
+      ]
+    },
+    {
+      "id": "d-sample-pdf",
+      "name": "官方《样题及参考答案》PDF",
+      "category": "docs",
+      "kind": "官方文件",
+      "summary": "10 道单选 + 3 道操作题完整题面，定义了考试的真实颗粒度。",
+      "purpose": "逐字精读每项参数要求（磅值、厘米数、效果名称、编号格式），作为练习与自检的唯一基准。",
+      "access": "中国教育考试网发布页直接下载；本站已留存站内 PDF 副本。",
+      "free": "完全免费、无需登录、可自由下载与打印。",
+      "rating": 5,
+      "zero": "中",
+      "exam": "极高",
+      "links": [
+        {
+          "label": "官方原文 PDF（ncre.neea.edu.cn）",
+          "url": "https://ncre.neea.edu.cn/res/Home/2508/a1a667aaf0c4fe94703259727083ec6b.pdf"
+        }
+      ],
+      "asset": "assets/files/NCRE2_WPS_样题及参考答案.pdf",
+      "tags": [
+        "样题",
+        "官方",
+        "PDF",
+        "必读",
+        "难度基准"
+      ],
+      "syllabus": [
+        "二、文字文档",
+        "三、数据表格",
+        "四、演示文稿"
+      ],
+      "caveat": "样题难度明显高于一般「零基础速成」资料，属于 Word/PPT 高级应用层级。不要只做一遍。",
+      "related": [
+        "d-outline-pdf",
+        "r-sample-difficulty",
+        "t-sample-assets"
+      ]
+    },
+    {
+      "id": "d-cross-ref",
+      "name": "WPS 365 官方博客《WPS交叉引用常见问题，一次给你说清楚》",
+      "category": "docs",
+      "kind": "外部资源",
+      "summary": "官方问答体图文，专治题注、交叉引用与 F9 更新域反复失败。",
+      "purpose": "掌握引用选项卡 → 交叉引用；理解支持的引用类型（标题、图表、题注、书签、脚注、尾注）；学会全选后 F9 批量更新域。",
+      "access": "浏览器直接打开 WPS 365 博客页面。",
+      "free": "页面公开免费、无需登录。官方站点内容，图文结合度最高的一档。",
+      "rating": 4,
+      "zero": "高",
+      "exam": "高",
+      "links": [
+        {
+          "label": "打开官方图文",
+          "url": "https://plus.wps.cn/blog/p120323.html"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "文字",
+        "交叉引用",
+        "题注",
+        "F9",
+        "官方图文"
+      ],
+      "syllabus": [
+        "二.5 分栏分页分节与内容引用"
+      ],
+      "caveat": "只解决引用这一块，不能替代系统课。F9 不刷新是考场最常见白做原因。",
+      "related": [
+        "d-csdn-caption",
+        "c-fast-pass",
+        "c-damao-real"
+      ]
+    },
+    {
+      "id": "d-pivot-blog",
+      "name": "WPS 365 官方博客《手把手教你用WPS表格数据透视表做数据汇总》",
+      "category": "docs",
+      "kind": "外部资源",
+      "summary": "数据透视表官方图文步骤，补齐免费入门课的最大缺口。",
+      "purpose": "插入透视表 → 配置行/列/值字段 → 改汇总方式、小数位数、分组 → 数据透视图；关闭分类汇总与总计。",
+      "access": "浏览器直接打开 WPS 365 博客页面，建议与同主题视频配套使用。",
+      "free": "页面公开免费、无需登录。",
+      "rating": 4,
+      "zero": "高",
+      "exam": "高",
+      "links": [
+        {
+          "label": "打开官方图文",
+          "url": "https://plus.wps.cn/blog/p119499.html"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "表格",
+        "数据透视表",
+        "官方图文",
+        "高频考点"
+      ],
+      "syllabus": [
+        "三.6 数据透视表和数据透视图"
+      ],
+      "caveat": "透视表在官方大纲单列一条，三门新手入门课均未涉及，必须单独补。",
+      "related": [
+        "c-pivot-video",
+        "c-fast-pass",
+        "r-syllabus-coverage"
+      ]
+    },
+    {
+      "id": "d-smartart-blog",
+      "name": "WPS 365 官方博客《手把手教你用WPS SmartArt做智能图形》",
+      "category": "docs",
+      "kind": "外部资源",
+      "summary": "官方图文讲清智能图形库、方向、颜色与尺寸设置入口。",
+      "purpose": "插入 → 智能图形；熟悉图形库分类（列表/流程/循环/层次结构/关系/矩阵/棱锥图/图片）；选择模板并填充数据。",
+      "access": "浏览器直接打开 WPS 365 博客页面。",
+      "free": "页面公开免费、无需登录。图文结合度最高的一档。",
+      "rating": 4,
+      "zero": "高",
+      "exam": "高",
+      "links": [
+        {
+          "label": "打开官方图文",
+          "url": "https://plus.wps.cn/blog/p121707.html"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "演示",
+        "SmartArt",
+        "智能图形",
+        "官方图文"
+      ],
+      "syllabus": [
+        "四.3 文本艺术字图形智能图形"
+      ],
+      "caveat": "样题要求「梯形列表 + 方向从右往左 + 预设第 4 个色值 + 高 8cm 宽 25cm」，纯操作但极易卡壳。注意 SmartArt 与 WPS AI 智能美化是两回事，前者在考纲内。",
+      "related": [
+        "c-wpp-basic",
+        "c-damao-real",
+        "r-scope-boundary"
+      ]
+    },
+    {
+      "id": "d-csdn-caption",
+      "name": "CSDN《WPS智能题注功能详解：自动编号与交叉引用技巧》",
+      "category": "docs",
+      "kind": "外部资源",
+      "summary": "讲原理而非菜单位置，帮助理解题注自动编号机制。",
+      "purpose": "理解题注自动编号原理，以及交叉引用如何随原编号自动更新。",
+      "access": "浏览器直接打开 CSDN 文章页。",
+      "free": "文章页公开可读；CSDN 部分内容可能触发登录/会员提示，本站不保证长期可访问。",
+      "rating": 3,
+      "zero": "中",
+      "exam": "高",
+      "links": [
+        {
+          "label": "打开文章",
+          "url": "https://blog.csdn.net/weixin_36073714/article/details/166182229"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "文字",
+        "题注",
+        "交叉引用",
+        "图文博客"
+      ],
+      "syllabus": [
+        "二.5 内容引用"
+      ],
+      "caveat": "偏原理，对纯操作型零基础略抽象；建议先看官方图文再读这篇。",
+      "related": [
+        "d-cross-ref",
+        "c-fast-pass"
+      ]
+    },
+    {
+      "id": "d-csdn-checklist",
+      "name": "CSDN《计算机二级WPS文字|表格|演示考点》",
+      "category": "docs",
+      "kind": "外部资源",
+      "summary": "可打印的考点速查清单，适合考前 2 小时查漏。",
+      "purpose": "按模块归纳 IF 等单条件/多条件判断写法与表格操作要点，作为清单快速扫一遍。",
+      "access": "浏览器直接打开 CSDN 文章页。",
+      "free": "文章页公开可读；第三方站点，存在登录弹窗与内容失效风险，不作学习主力。",
+      "rating": 3,
+      "zero": "高",
+      "exam": "中",
+      "links": [
+        {
+          "label": "打开文章",
+          "url": "https://blog.csdn.net/LIURUOYUN333/article/details/159388108"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "考点清单",
+        "查漏",
+        "表格",
+        "图文博客"
+      ],
+      "syllabus": [
+        "三.4 引用公式函数"
+      ],
+      "caveat": "清单体、以文字为主，讲解深度有限。仅用于第 4 周查漏，不能当主线。",
+      "related": [
+        "r-4week-plan",
+        "c-fast-pass"
+      ]
+    },
+    {
+      "id": "d-csdn-animation",
+      "name": "CSDN《WPS演示文稿动画与母版设计：计算机二级考试核心技巧》",
+      "category": "docs",
+      "kind": "外部资源",
+      "summary": "动画与母版的原理性图文介绍，示例参数与官方样题不一致。",
+      "purpose": "了解动画效果设置、统一设置动画（SmartArt 轮子进入、逐个显示、持续时间）、切换效果与自动换片。",
+      "access": "浏览器直接打开 CSDN 文章页。",
+      "free": "文章页公开可读；第三方站点，存在失效风险。",
+      "rating": 2,
+      "zero": "高",
+      "exam": "中",
+      "links": [
+        {
+          "label": "打开文章",
+          "url": "https://blog.csdn.net/weixin_33691700/article/details/91909444"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "演示",
+        "动画",
+        "母版",
+        "图文博客",
+        "谨慎使用"
+      ],
+      "syllabus": [
+        "四.4 动画切换链接交互"
+      ],
+      "caveat": "举例的「淡出 / 10 秒」与官方样题要求的「平滑 / 3 秒」不符，讲的是原理与建议而不是考场路径，不要当操作手册。",
+      "related": [
+        "c-damao-real",
+        "r-sample-difficulty"
+      ]
+    },
+    {
+      "id": "c-fast-pass",
+      "name": "WPS 官方《计算机二级 高效通关课》（35 节 / 07:17:34）",
+      "category": "courses",
+      "kind": "外部资源",
+      "summary": "与 2025 年版大纲映射最精确的一套官方系统课，备考主线。",
+      "purpose": "第 1—2 章文字（9 节）、第 3—5 章表格（17 节）、第 6 章演示（9 节），逐条对应大纲四大板块；含图文技巧与练习文档。",
+      "access": "WPS 学堂课程页在线播放；建议在 WPS 客户端内打开以便同步练习文档。",
+      "free": "课程页公开免费观看。调研时已核验完整目录与时长，但未逐节确认视频可用性与全部免费状态，若个别章节提示登录请以页面为准。",
+      "rating": 5,
+      "zero": "中",
+      "exam": "极高",
+      "links": [
+        {
+          "label": "WPS 学堂课程页",
+          "url": "https://www.wps.cn/learning/course/detail/id/330010.html"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "官方课程",
+        "系统课",
+        "主线",
+        "文字",
+        "表格",
+        "演示"
+      ],
+      "syllabus": [
+        "一、综合应用基础",
+        "二、文字文档 9 条",
+        "三、数据表格 9 条",
+        "四、演示文稿 6 条"
+      ],
+      "caveat": "前 4 节从零起步，之后默认已会基础编辑，不适合作为唯一入门源。零基础需搭配三门新手入门课。",
+      "related": [
+        "c-word-basic",
+        "c-et-basic",
+        "c-wpp-basic",
+        "c-damao-real",
+        "r-syllabus-coverage"
+      ]
+    },
+    {
+      "id": "c-word-basic",
+      "name": "WPS 官方《WPS文字新手入门课》（63 节 / 01:48:44）",
+      "category": "courses",
+      "kind": "外部资源",
+      "summary": "真正从界面起步的零基础字典，每节 1—3 分钟，按需回查。",
+      "purpose": "7 大章覆盖文档基础编辑、样式与编号、页眉页脚与目录、文档表格、图文混排与艺术字、审阅与邮件合并、打印输出。",
+      "access": "WPS 学堂课程页在线播放，按章节定位需要的操作。",
+      "free": "课程页公开免费观看。目录与时长已核验，未逐节确认全部免费状态。",
+      "rating": 5,
+      "zero": "极高",
+      "exam": "良好",
+      "links": [
+        {
+          "label": "WPS 学堂课程页",
+          "url": "https://www.wps.cn/learning/course/detail/id/804.html"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "官方课程",
+        "零基础",
+        "文字",
+        "字典"
+      ],
+      "syllabus": [
+        "二.1—二.9"
+      ],
+      "caveat": "多级编号自定义格式、题注按章编号、交叉引用、目录更新保持格式、分节后独立页眉页脚只点到为止，需回通关课补。不要从头到尾刷完 7 小时才碰真题。",
+      "related": [
+        "c-fast-pass",
+        "d-cross-ref",
+        "r-learning-order"
+      ]
+    },
+    {
+      "id": "c-et-basic",
+      "name": "WPS 官方《WPS表格新手入门课》（48 节 / 01:25:21）",
+      "category": "courses",
+      "kind": "外部资源",
+      "summary": "表格零基础字典，基础操作与常用函数覆盖极好。",
+      "purpose": "7 章覆盖表格初认识、数据快速录入（Ctrl+E、下拉菜单）、数据查找分析（分列、条件格式、分类汇总）、函数计算（三类引用、VLOOKUP/IF/SUMIF）、常用图表、高效技巧、保护与打印。",
+      "access": "WPS 学堂课程页在线播放。",
+      "free": "课程页公开免费观看。目录与时长已核验，未逐节确认全部免费状态。",
+      "rating": 5,
+      "zero": "极高",
+      "exam": "良好",
+      "links": [
+        {
+          "label": "WPS 学堂课程页",
+          "url": "https://www.wps.cn/learning/course/detail/id/635.html"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "官方课程",
+        "零基础",
+        "表格",
+        "函数",
+        "字典"
+      ],
+      "syllabus": [
+        "三.1—三.5",
+        "三.7"
+      ],
+      "caveat": "完全未涉及数据透视表，也不讲跨表复制引用的陷阱，这两块必须另补。",
+      "related": [
+        "c-fast-pass",
+        "c-pivot-video",
+        "d-pivot-blog"
+      ]
+    },
+    {
+      "id": "c-wpp-basic",
+      "name": "WPS 官方《WPS演示新手入门课》（59 节 / 01:33:26）",
+      "category": "courses",
+      "kind": "外部资源",
+      "summary": "从「PPT 正确制作步骤」讲起的演示零基础课。",
+      "purpose": "5 章覆盖幻灯片基础操作、段落排版、页面布局与母版、音视频表格与图形、配色美化与动画。",
+      "access": "WPS 学堂课程页在线播放。",
+      "free": "课程页公开免费观看。目录与时长已核验，未逐节确认全部免费状态。",
+      "rating": 5,
+      "zero": "极高",
+      "exam": "良好",
+      "links": [
+        {
+          "label": "WPS 学堂课程页",
+          "url": "https://www.wps.cn/learning/course/detail/id/917.html"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "官方课程",
+        "零基础",
+        "演示",
+        "母版",
+        "字典"
+      ],
+      "syllabus": [
+        "四.1—四.4"
+      ],
+      "caveat": "缺口是超链接交互、SmartArt 深度用法、自定义放映方案，这三项正是样题第 13 小题的考点。",
+      "related": [
+        "c-fast-pass",
+        "d-smartart-blog",
+        "c-damao-real"
+      ]
+    },
+    {
+      "id": "c-pivot-video",
+      "name": "WPS 官方《数据透视表 实例与应用》专题（16:09）",
+      "category": "courses",
+      "kind": "外部资源",
+      "summary": "16 分钟专项补齐透视表，与官方图文博客构成双通道。",
+      "purpose": "插入透视表、字段配置、修改值汇总方式、增加小数位数、分组、数据透视图、带标签单元格合并且居中、不显示分类汇总与总计。",
+      "access": "WPS 学堂专题页在线播放，配套阅读官方博客图文。",
+      "free": "课程页公开免费观看；目录与时长已核验。",
+      "rating": 4,
+      "zero": "高",
+      "exam": "高",
+      "links": [
+        {
+          "label": "WPS 学堂专题页",
+          "url": "https://www.wps.cn/learning/course/detail/id/37.html"
+        },
+        {
+          "label": "配套官方图文",
+          "url": "https://plus.wps.cn/blog/p119499.html"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "官方课程",
+        "表格",
+        "数据透视表",
+        "专项",
+        "高频考点"
+      ],
+      "syllabus": [
+        "三.6 数据透视表和数据透视图"
+      ],
+      "caveat": "透视表是真题里几乎每套表格题都出现的高频项，却是最常被零基础跳过的考点。",
+      "related": [
+        "d-pivot-blog",
+        "c-et-basic",
+        "c-fast-pass"
+      ]
+    },
+    {
+      "id": "c-damao-real",
+      "name": "大猫计算机二级《WPS计算机二级真题讲解》（分 P 精讲）",
+      "category": "courses",
+      "kind": "外部资源",
+      "summary": "考纲覆盖最完整、精准命中样题难度，展示「到底点哪里」。",
+      "purpose": "三大模块真题复盘：文字按考场动线走完样式/编号/题注/交叉引用/分节页眉页脚；表格固化函数写法与引用拖动；演示展示艺术字预设样式名、动画方向、切换速度、母版超链接。",
+      "access": "B 站 UP 主空间按合集查找；另有分 P 时间轴文字目录可当索引，不必盲找。",
+      "free": "B 站公开视频免费观看（部分清晰度/功能需登录或大会员）；合集需通过站内搜索标题定位。",
+      "rating": 5,
+      "zero": "低",
+      "exam": "极高",
+      "links": [
+        {
+          "label": "UP 主空间",
+          "url": "https://space.bilibili.com/268511330"
+        },
+        {
+          "label": "旧版分 P 文字目录（B 站专栏）",
+          "url": "https://www.bilibili.com/opus/843654610571755558"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "真题",
+        "视频",
+        "冲刺",
+        "文字",
+        "表格",
+        "演示",
+        "动线"
+      ],
+      "syllabus": [
+        "二、三、四全部操作题模块"
+      ],
+      "caveat": "纯真题复盘，零基础直接看会晕，务必先过系统课。账号归属存疑：同名分 P 目录最早见于「耶耶气泡水」名下，与播放量最高的「大猫计算机二级」合集可能是转载关系，公开页面无法确证，故只建议通过 B 站搜索标题定位。",
+      "related": [
+        "c-fast-pass",
+        "r-4week-plan",
+        "r-sample-difficulty"
+      ]
+    },
+    {
+      "id": "c-damao-extra",
+      "name": "大猫补充视频《新增知识点》与《选择题（各科通用）》",
+      "category": "courses",
+      "kind": "外部资源",
+      "summary": "覆盖大纲年度调整与公共基础知识，第 4 周集中使用前查漏。",
+      "purpose": "《2026年3月WPS计算机二级考试新增知识点》(21:38) 用于发现当年新增考点；《计算机二级 选择题（各科通用）》(02:59:25) 用于公共基础 10 分的计算题（进制、容量换算）。",
+      "access": "B 站 UP 主空间内按标题搜索，或从真题讲解合集关联推荐进入。",
+      "free": "B 站公开视频免费观看，部分功能需登录；未提供稳定直链，需站内搜索标题。",
+      "rating": 4,
+      "zero": "中",
+      "exam": "中",
+      "links": [
+        {
+          "label": "UP 主空间（按标题搜索）",
+          "url": "https://space.bilibili.com/268511330"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "新增考点",
+        "公共基础",
+        "单选",
+        "视频"
+      ],
+      "syllabus": [
+        "公共基础知识 10 分"
+      ],
+      "caveat": "大纲每年会调整，新增知识点这一条最容易被漏掉。公共基础只占 10 分，不要花超过 3 天。",
+      "related": [
+        "c-damao-real",
+        "r-4week-plan",
+        "o-github-ncre"
+      ]
+    },
+    {
+      "id": "o-github-ncre",
+      "name": "GitHub 仓库 995414558/ncre（二级 WPS 目录）",
+      "category": "opensource",
+      "kind": "开源项目",
+      "summary": "可下载的选择题背诵包，适合背单选，不适合作为备考主线。",
+      "purpose": "提供「最新WPS选择题背诵【救命版】」「【打印版】WPS题目合集.pdf」「二级WPS Office选择题背诵版202203.zip」，用于考前集中背 20 分单选。",
+      "access": "打开 GitHub 目录页直接浏览或下载文件，也可 git clone 整仓在线使用。",
+      "free": "公开仓库免费下载；GitHub 访问速度受网络影响，可用 Gitee 镜像替代。",
+      "rating": 3,
+      "zero": "高",
+      "exam": "低",
+      "links": [
+        {
+          "label": "GitHub 二级 WPS 目录",
+          "url": "https://github.com/995414558/ncre/tree/main/%E4%BA%8C%E7%BA%A7%20WPS%20Office%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8%E4%B8%8E%E8%AE%BE%E8%AE%A1"
+        },
+        {
+          "label": "Gitee 镜像（国内稳定入口）",
+          "url": "https://gitee.com/caozha/ncre"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "GitHub",
+        "题库",
+        "单选",
+        "可在线",
+        "时效风险"
+      ],
+      "syllabus": [
+        "单项选择题 20 分"
+      ],
+      "caveat": "实测目录内只有选择题，没有操作题素材；最后提交为 2022 年 4 月，明显滞后于 2025 年版大纲。仅可背单选，不可用于判断新考点。仓库混有一级/二级资料，注意区分。",
+      "related": [
+        "o-gitee-ncre",
+        "d-outline-pdf",
+        "c-damao-extra"
+      ]
+    },
+    {
+      "id": "o-gitee-ncre",
+      "name": "Gitee 镜像 caozha/ncre",
+      "category": "opensource",
+      "kind": "开源项目",
+      "summary": "GitHub 题库的国内镜像，解决访问不稳定问题。",
+      "purpose": "与 GitHub 仓库内容对应，用于国内网络环境下快速下载选择题背诵包。",
+      "access": "打开 Gitee 仓库页浏览或下载。",
+      "free": "公开仓库免费；部分附件下载可能需要登录 Gitee 账号。",
+      "rating": 3,
+      "zero": "高",
+      "exam": "低",
+      "links": [
+        {
+          "label": "Gitee 仓库",
+          "url": "https://gitee.com/caozha/ncre"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "Gitee",
+        "镜像",
+        "题库",
+        "单选",
+        "国内访问"
+      ],
+      "syllabus": [
+        "单项选择题 20 分"
+      ],
+      "caveat": "镜像内容同样滞后于 2025 年版大纲；未逐文件比对与 GitHub 是否完全一致。",
+      "related": [
+        "o-github-ncre",
+        "d-outline-pdf"
+      ]
+    },
+    {
+      "id": "o-local-site",
+      "name": "WPS 二级备考站 wps_2_test_learn（在线版）",
+      "category": "opensource",
+      "kind": "在线资源",
+      "summary": "公开在线的完整教学包：考纲对照、教学日历、培训课件与网页版模拟考试系统。",
+      "purpose": "含 44 课时 × 官方大纲条目正/反向对照与考频统计、11 次课教学日历、292 页培训课件、Word 练习素材，以及 120 分钟计时 + 自动评分 + 逐题解析的网页版模拟考试系统。",
+      "access": "浏览器访问在线备考站 https://aheelv.github.io/wps_2_test_learn ，由首页进入「实操训练」「理论考试」「全真模拟考试」等模块；所有子页面均为公开静态页面，无需安装或账号。",
+      "free": "公开免费的 GitHub Pages 站点，无需账号即可访问；本站仅作索引，不复制分发其文件。",
+      "rating": 5,
+      "zero": "高",
+      "exam": "极高",
+      "links": [
+        {
+          "label": "在线备考站首页（GitHub Pages）",
+          "url": "https://aheelv.github.io/wps_2_test_learn"
+        },
+        {
+          "label": "实操训练 · 72 道题",
+          "url": "https://aheelv.github.io/wps_2_test_learn/实操训练.html"
+        },
+        {
+          "label": "理论考试 · 781 道题",
+          "url": "https://aheelv.github.io/wps_2_test_learn/理论考试.html"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "在线版",
+        "在线",
+        "模拟考试",
+        "自动评分",
+        "考纲对照"
+      ],
+      "syllabus": [
+        "四大板块全覆盖"
+      ],
+      "caveat": "依据 2025 年版大纲编写，课时按分值配置（文字 12 / 表格 12 / 演示 8 / 单选 8 / 模拟 4）。2026-11-12 已复核在线版首页及模拟考试系统、考纲对照表、培训课件等子页面均可正常访问。",
+      "related": [
+        "u-exam-sim",
+        "t-syllabus-map",
+        "t-training-slides",
+        "r-4week-plan"
+      ]
+    },
+    {
+      "id": "t-sample-assets",
+      "name": "官方样题操作题素材文件",
+      "category": "templates",
+      "kind": "模板素材",
+      "summary": "考试固定给定的 WPS.docx / ET.xlsx / WPP.pptx 及辅助素材，实操必须使用。",
+      "purpose": "在原始素材上逐条完成样题要求，练习「后续操作均基于原文件」这一评分规则，避免另存新文件导致不得分。",
+      "access": "官方样题 PDF 中列出素材清单与要求；实际素材随官方样题包或考试模拟软件提供，本站仅提供清单与操作规范说明。",
+      "free": "素材本身随官方免费样题发布；本站不托管第三方网盘副本，避免失效与版权风险。",
+      "rating": 5,
+      "zero": "中",
+      "exam": "极高",
+      "links": [
+        {
+          "label": "官方样题 PDF（含素材清单）",
+          "url": "https://ncre.neea.edu.cn/res/Home/2508/a1a667aaf0c4fe94703259727083ec6b.pdf"
+        }
+      ],
+      "asset": "assets/files/NCRE2_WPS_样题及参考答案.pdf",
+      "tags": [
+        "素材",
+        "实操",
+        "评分规则",
+        "样题"
+      ],
+      "syllabus": [
+        "二、三、四操作题"
+      ],
+      "caveat": "文字题用 WPS.docx；表格题用 ET.xlsx + 绩效后台数据.txt；演示题用 WPP.pptx + 背景.png。不得增删幻灯片。这是评分规则不是知识点，但必须最先知道。",
+      "related": [
+        "d-sample-pdf",
+        "u-exam-sim",
+        "r-learning-order"
+      ]
+    },
+    {
+      "id": "t-course-materials",
+      "name": "WPS 官方通关课配套「练习文档 + 图文技巧」",
+      "category": "templates",
+      "kind": "模板素材",
+      "summary": "每节官方课程配套的图文说明与练习文件，可脱离视频复看。",
+      "purpose": "按节跟着练习文档动手做，把看过的操作步骤复现一遍；图文技巧可作为考后速查卡。",
+      "access": "在 WPS 学堂课程页每节下方获取，或在 WPS 客户端内打开课程同步领取。",
+      "free": "随公开免费课程提供；个别练习文档可能需要登录 WPS 账号才能下载。",
+      "rating": 4,
+      "zero": "高",
+      "exam": "高",
+      "links": [
+        {
+          "label": "通关课课程页",
+          "url": "https://www.wps.cn/learning/course/detail/id/330010.html"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "练习文档",
+        "图文技巧",
+        "课程配套",
+        "实操"
+      ],
+      "syllabus": [
+        "按课程章节对应"
+      ],
+      "caveat": "练习文档偏功能演示，不等同于真题素材；最终仍要回到官方样题与真题讲解。",
+      "related": [
+        "c-fast-pass",
+        "t-sample-assets"
+      ]
+    },
+    {
+      "id": "t-syllabus-map",
+      "name": "44 课时考纲对照表与教学日历",
+      "category": "templates",
+      "kind": "在线资源",
+      "summary": "把官方大纲逐条映射到课时与考频，用于判断投入优先级。",
+      "purpose": "正向（大纲条目 → 课时）与反向（课时 → 大纲条目）对照，配合考频统计决定时间分配；11 次课 44 课时日历用于排进度。",
+      "access": "在线备考站「考纲对照表」页 https://aheelv.github.io/wps_2_test_learn/考纲对照表.html 直接查阅；本站「备考指南」页提供整理后的速查版。",
+      "free": "在线页面公开免费；本站不复制其原始文件，提供「备考指南」速查版与在线原文链接。",
+      "rating": 4,
+      "zero": "中",
+      "exam": "高",
+      "links": [
+        {
+          "label": "在线考纲对照表",
+          "url": "https://aheelv.github.io/wps_2_test_learn/考纲对照表.html"
+        },
+        {
+          "label": "在线教学日历",
+          "url": "https://aheelv.github.io/wps_2_test_learn/教学日历.html"
+        },
+        {
+          "label": "本站考纲映射速查",
+          "url": "guide.html"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "考纲",
+        "课时",
+        "考频",
+        "计划",
+        "在线版"
+      ],
+      "syllabus": [
+        "四大板块"
+      ],
+      "caveat": "课时按分值配置：文字 12 / 表格 12 / 演示 8 / 单选 8 / 模拟 4。演示仅 8 课时不代表可以只花 1 天。",
+      "related": [
+        "o-local-site",
+        "r-syllabus-coverage",
+        "r-4week-plan"
+      ]
+    },
+    {
+      "id": "t-training-slides",
+      "name": "292 页培训课件与 Word 练习素材",
+      "category": "templates",
+      "kind": "在线资源",
+      "summary": "在线备考站提供的成体系课件与练习素材，适合授课或自学讲义。",
+      "purpose": "作为讲义按章节阅读，配合 Word 练习素材做文字模块的分项训练。",
+      "access": "在线备考站「培训课件」页 https://aheelv.github.io/wps_2_test_learn/培训课件.html 查阅，提供 HTML 放映与 .pptx 两种格式。",
+      "free": "在线页面公开免费；本站不复制分发其课件文件。",
+      "rating": 3,
+      "zero": "中",
+      "exam": "中",
+      "links": [
+        {
+          "label": "在线培训课件（HTML 放映 / PPTX）",
+          "url": "https://aheelv.github.io/wps_2_test_learn/培训课件.html"
+        },
+        {
+          "label": "在线练习素材索引",
+          "url": "https://aheelv.github.io/wps_2_test_learn/练习素材/索引.html"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "课件",
+        "PPTX",
+        "讲义",
+        "在线版",
+        "练习"
+      ],
+      "syllabus": [
+        "按讲义章节对应"
+      ],
+      "caveat": "课件属教学材料而非真题，参数要求以官方样题为准。",
+      "related": [
+        "o-local-site",
+        "t-syllabus-map"
+      ]
+    },
+    {
+      "id": "u-wps-platform",
+      "name": "WPS 教学平台（官方题库 + 12 套模拟卷）",
+      "category": "tools",
+      "kind": "平台服务",
+      "summary": "最接近真实考试环境的官方练习工具，但个人无法自助开通。",
+      "purpose": "提供官方题库、12 套模拟卷、实时模拟考试，覆盖一级/二级全部知识点。",
+      "access": "WPS 客户端内搜索「WPS教学平台」或点击左侧「100分」图标；高校通过 wpsplus.com 邀请链接开企业账号。",
+      "free": "学校统一开通后对学生免费；各校邀请码不同，通常需通过继续教育学院/教务处获取，个人无法自行注册。",
+      "rating": 4,
+      "zero": "中",
+      "exam": "极高",
+      "links": [
+        {
+          "label": "WPS 官网",
+          "url": "https://www.wps.cn/"
+        },
+        {
+          "label": "WPS 学堂",
+          "url": "https://www.wps.cn/learning/"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "官方题库",
+        "模拟卷",
+        "需邀请码",
+        "考试环境"
+      ],
+      "syllabus": [
+        "全科目"
+      ],
+      "caveat": "免费但门槛在账号而非费用。若学校未开通，可改用在线版全真模拟考试系统完成整卷演练。",
+      "related": [
+        "u-exam-sim",
+        "u-wps-exam-edition"
+      ]
+    },
+    {
+      "id": "u-exam-sim",
+      "name": "网页版 120 分钟计时评分模拟考试系统",
+      "category": "tools",
+      "kind": "在线资源",
+      "summary": "可在线直接运行的全真演练工具：120 分钟计时、自动评分、逐题解析。",
+      "purpose": "第 4 周做 2 套完整 120 分钟全真卷，训练时间分配（单选 15 / 文字 35 / 表格 40 / 演示 25 / 检查 5 分钟）。",
+      "access": "浏览器打开在线版「考试模拟系统」：https://aheelv.github.io/wps_2_test_learn/考试模拟系统/index.html ，无需安装、无需账号。",
+      "free": "在线页面公开免费、无需账号，浏览器直接运行。",
+      "rating": 5,
+      "zero": "中",
+      "exam": "极高",
+      "links": [
+        {
+          "label": "全真模拟考试系统（在线入口）",
+          "url": "https://aheelv.github.io/wps_2_test_learn/考试模拟系统/index.html"
+        },
+        {
+          "label": "在线备考站首页",
+          "url": "https://aheelv.github.io/wps_2_test_learn"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "模拟考试",
+        "计时",
+        "自动评分",
+        "在线",
+        "在线版"
+      ],
+      "syllabus": [
+        "全真卷"
+      ],
+      "caveat": "是教学包自带的模拟卷而非官方真题；评分规则用于自检，最终标准仍以官方样题与考纲为准。",
+      "related": [
+        "o-local-site",
+        "u-wps-platform",
+        "r-4week-plan"
+      ]
+    },
+    {
+      "id": "u-wps-exam-edition",
+      "name": "WPS Office 教育考试专用版（考试环境）",
+      "category": "tools",
+      "kind": "软件工具",
+      "summary": "考场实际使用的软件版本，界面差异会导致操作找不到。",
+      "purpose": "在考前至少完整跑 2 次全真卷，确保所有操作路径与考场一致；官方通关课明确标注适用此版本。",
+      "access": "按考点或学校通知安装 WPS Office 教育考试专用版；日常练习版可从 WPS 官网 https://www.wps.cn/ 获取。",
+      "free": "考试专用版通常由考点或学校渠道提供，个人获取方式需以中国教育考试网/学校通知为准；日常版 WPS 个人使用免费但界面可能与专用版不同。",
+      "rating": 5,
+      "zero": "中",
+      "exam": "极高",
+      "links": [
+        {
+          "label": "中国教育考试网 NCRE",
+          "url": "https://ncre.neea.edu.cn/"
+        },
+        {
+          "label": "WPS 官网",
+          "url": "https://www.wps.cn/"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "考试环境",
+        "软件",
+        "必做",
+        "版本差异"
+      ],
+      "syllabus": [
+        "全科目"
+      ],
+      "caveat": "这是最容易被忽略的失分来源：菜单名称与位置差异会直接吃掉考场时间。不要用日常版或 MS Office 练手替代。",
+      "related": [
+        "u-wps-platform",
+        "u-exam-sim",
+        "d-outline-pdf"
+      ]
+    },
+    {
+      "id": "u-wps-academy",
+      "name": "WPS 学堂（课程平台）",
+      "category": "tools",
+      "kind": "平台服务",
+      "summary": "全部官方免费系统课的承载平台，可按课程 ID 直达。",
+      "purpose": "集中访问通关课、三门新手入门课与透视表专题；课程页同时提供图文技巧与练习文档。",
+      "access": "浏览器访问 wps.cn/learning，或用详情页给出的课程 ID 直达。",
+      "free": "课程目录页公开免费；调研已通过浏览器渲染核验 35 / 63 / 48 / 59 节目录与时长，但未逐节确认视频可用性与是否全部免费。",
+      "rating": 4,
+      "zero": "高",
+      "exam": "高",
+      "links": [
+        {
+          "label": "WPS 学堂",
+          "url": "https://www.wps.cn/learning/"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "平台",
+        "官方课程",
+        "目录",
+        "入口"
+      ],
+      "syllabus": [
+        "按课程覆盖"
+      ],
+      "caveat": "站内课程混杂职场提效内容（如宏、WPS AI、多维表格），这些属于超纲内容，不要误当备考资料。",
+      "related": [
+        "c-fast-pass",
+        "r-scope-boundary"
+      ]
+    },
+    {
+      "id": "u-bilibili",
+      "name": "B 站（真题讲解与时间轴目录）",
+      "category": "tools",
+      "kind": "平台服务",
+      "summary": "真题精讲的发布平台，分 P 时间轴文字目录是最有价值的索引。",
+      "purpose": "按标题搜索真题讲解合集与新增知识点视频；用分 P 时间轴目录直接跳到某个考点，避免盲找。",
+      "access": "浏览器或客户端访问 B 站，搜索「WPS计算机二级真题讲解」等标题。",
+      "free": "公开视频免费观看；高清画质、倍速等部分功能可能需要登录或大会员。UP 主空间与专栏页公开可访问。",
+      "rating": 4,
+      "zero": "中",
+      "exam": "高",
+      "links": [
+        {
+          "label": "大猫计算机二级空间",
+          "url": "https://space.bilibili.com/268511330"
+        },
+        {
+          "label": "分 P 时间轴目录（专栏）",
+          "url": "https://www.bilibili.com/opus/843654610571755558"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "平台",
+        "视频",
+        "时间轴",
+        "索引"
+      ],
+      "syllabus": [
+        "按视频覆盖"
+      ],
+      "caveat": "分 P 目录最早出现在「耶耶气泡水」名下，与「大猫计算机二级」合集可能是转载关系，公开页面无法确证，故以标题搜索为准。",
+      "related": [
+        "c-damao-real",
+        "c-damao-extra"
+      ]
+    },
+    {
+      "id": "u-zhihu-huke",
+      "name": "知乎知学堂 / 虎课网（补充平台，未完全核验）",
+      "category": "tools",
+      "kind": "平台服务",
+      "summary": "检索过程中遇到的补充来源，免费状态未确认，故不列入推荐主线。",
+      "purpose": "知乎知学堂课程页可见 WPS 文字 45 节、WPS 计算机二级合集 35 节；虎课网有 WPS 相关图文教程。",
+      "access": "站内搜索课程名称。",
+      "free": "知乎知学堂页面文本可提取，但课程完整免费状态未确认；虎课网尝试访问 2 个页面均返回「点击进行身份验证」，未能确认内容与免费状态。",
+      "rating": 1,
+      "zero": "中",
+      "exam": "低",
+      "links": [
+        {
+          "label": "知乎知学堂",
+          "url": "https://www.zhihu.com/edu"
+        },
+        {
+          "label": "虎课网",
+          "url": "https://huke88.com/"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "补充",
+        "未核验",
+        "谨慎",
+        "可能付费"
+      ],
+      "syllabus": [],
+      "caveat": "本次调研明确未将虎课网列入推荐，原因是无法在线核验内容与免费状态。此条目仅作为「已检索但未采纳」的记录保留，避免后续重复检索。",
+      "related": [
+        "r-eval-method",
+        "u-wps-academy"
+      ]
+    },
+    {
+      "id": "u-ncre-official",
+      "name": "中国教育考试网 NCRE 官网",
+      "category": "tools",
+      "kind": "平台服务",
+      "summary": "大纲、样题、报名与考试通知的唯一权威发布源。",
+      "purpose": "下载大纲与样题原文、核对科目代码 67、查看年度考试安排与大纲调整通知。",
+      "access": "浏览器直接访问 ncre.neea.edu.cn。",
+      "free": "公开免费，无需登录即可查阅公告与下载资料。",
+      "rating": 5,
+      "zero": "高",
+      "exam": "高",
+      "links": [
+        {
+          "label": "NCRE 官网",
+          "url": "https://ncre.neea.edu.cn/"
+        }
+      ],
+      "asset": "",
+      "tags": [
+        "官方",
+        "大纲",
+        "样题",
+        "权威"
+      ],
+      "syllabus": [
+        "科目代码 67"
+      ],
+      "caveat": "每年大纲可能调整，备考前务必回访一次；本站资料核验时间为 2026-11-11。",
+      "related": [
+        "d-outline-pdf",
+        "d-sample-pdf",
+        "c-damao-extra"
+      ]
+    },
+    {
+      "id": "r-syllabus-coverage",
+      "name": "考纲条款 → 资源覆盖映射速查表",
+      "category": "reference",
+      "kind": "站内整理",
+      "summary": "把 2025 年版大纲每一条对应到主资源、补充资源与覆盖度结论。",
+      "purpose": "快速判断某个考点该看哪套课；识别覆盖薄弱项（PDF 处理、数组公式与模拟分析）。",
+      "access": "本站「备考指南」页的考纲映射章节，或详情页直接查看结论。",
+      "free": "本站内容，完全免费、随站点一同部署。",
+      "rating": 5,
+      "zero": "中",
+      "exam": "极高",
+      "links": [
+        {
+          "label": "打开备考指南",
+          "url": "guide.html"
+        }
+      ],
+      "asset": "content/考纲映射.md",
+      "tags": [
+        "考纲",
+        "映射",
+        "覆盖度",
+        "速查"
+      ],
+      "syllabus": [
+        "四大板块 29 条"
+      ],
+      "caveat": "两个真实缺口：① PDF 处理只有通关课 1-3 约 13 分钟覆盖，建议了解即可；② 数组公式、模拟分析所有免费视频课均未系统讲解，遇真题再针对性查。",
+      "related": [
+        "d-outline-pdf",
+        "c-fast-pass",
+        "r-scope-boundary"
+      ]
+    },
+    {
+      "id": "r-sample-difficulty",
+      "name": "官方样题难度基准（三大模块考点颗粒度）",
+      "category": "reference",
+      "kind": "站内整理",
+      "summary": "校准预期：样题属于「高级应用」而非「Office 基础操作」。",
+      "purpose": "列出文字 11 小题、表格 12 小题、演示 13 小题涉及的具体难点，据此判断一份资料是否够用。",
+      "access": "本站「备考指南」页的难度基准章节。",
+      "free": "本站内容，完全免费、随站点一同部署。",
+      "rating": 5,
+      "zero": "中",
+      "exam": "极高",
+      "links": [
+        {
+          "label": "打开备考指南",
+          "url": "guide.html"
+        }
+      ],
+      "asset": "content/样题难度基准.md",
+      "tags": [
+        "样题",
+        "难度",
+        "预期校准",
+        "速查"
+      ],
+      "syllabus": [
+        "文字 30 分",
+        "表格 30 分",
+        "演示 20 分"
+      ],
+      "caveat": "文字已考到多级编号重新编号、题注按章编号、交叉引用、分 4 节独立页眉页脚、目录更新保持格式；不要用一级 WPS 或 Office 基础速成书的难度来预期这场考试。",
+      "related": [
+        "d-sample-pdf",
+        "c-damao-real",
+        "r-learning-order"
+      ]
+    },
+    {
+      "id": "r-learning-order",
+      "name": "知识点分级学习顺序 L0—L6",
+      "category": "reference",
+      "kind": "站内整理",
+      "summary": "按依赖关系自下而上排列三个模块的学习层级，标注每层资源入口。",
+      "purpose": "避免跳跃学习：先做通用底层（界面与文件、快捷键、素材规范），再按文字 6 级 / 表格 6 级 / 演示 5 级推进。",
+      "access": "本站「备考指南」页的学习顺序章节。",
+      "free": "本站内容，完全免费、随站点一同部署。",
+      "rating": 5,
+      "zero": "高",
+      "exam": "高",
+      "links": [
+        {
+          "label": "打开备考指南",
+          "url": "guide.html"
+        }
+      ],
+      "asset": "content/学习顺序.md",
+      "tags": [
+        "学习顺序",
+        "分层",
+        "路径",
+        "规划"
+      ],
+      "syllabus": [
+        "三模块全部"
+      ],
+      "caveat": "分节符是文字模块的分水岭，引用体系是最难关；引用 + F4/F9 快捷键必须提前掌握，否则考场时间不够。",
+      "related": [
+        "r-4week-plan",
+        "c-word-basic",
+        "c-et-basic"
+      ]
+    },
+    {
+      "id": "r-4week-plan",
+      "name": "4 周 48 小时入门复习计划",
+      "category": "reference",
+      "kind": "站内整理",
+      "summary": "按每周 12 小时排布学习内容、配套资源、练习与真题演练。",
+      "purpose": "W1 地基 + 文字上半；W2 文字下半 + 表格前半；W3 表格下半 + 演示；W4 查漏 + 单选 + 全真模考。",
+      "access": "本站「备考指南」页的四周计划章节。",
+      "free": "本站内容，完全免费、随站点一同部署。",
+      "rating": 5,
+      "zero": "高",
+      "exam": "极高",
+      "links": [
+        {
+          "label": "打开备考指南",
+          "url": "guide.html"
+        }
+      ],
+      "asset": "content/四周计划.md",
+      "tags": [
+        "计划",
+        "四周",
+        "模考",
+        "时间分配"
+      ],
+      "syllabus": [
+        "全科目"
+      ],
+      "caveat": "资源配置原则：文字 30 分、表格 30 分优先吃透；演示 20 分靠母版 + 动画 + 超链接拿分；单选最后 1 周集中背。考前 1 天只看自己的速查表与错题本，不碰新知识点。",
+      "related": [
+        "r-learning-order",
+        "u-exam-sim",
+        "c-damao-real"
+      ]
+    },
+    {
+      "id": "r-scope-boundary",
+      "name": "超纲边界清单与易误判考点",
+      "category": "reference",
+      "kind": "站内整理",
+      "summary": "明确哪些内容不用学，哪些看着超纲其实必考。",
+      "purpose": "跳过 VBA/JS 宏、WPS AI、多维表格、完整 PDF 组件等超纲内容；同时避免误漏邮件合并、数据透视表、文档网格、SmartArt、柔化边缘等真实考点。",
+      "access": "本站「备考指南」页的超纲边界章节。",
+      "free": "本站内容，完全免费、随站点一同部署。",
+      "rating": 5,
+      "zero": "高",
+      "exam": "高",
+      "links": [
+        {
+          "label": "打开备考指南",
+          "url": "guide.html"
+        }
+      ],
+      "asset": "content/超纲边界.md",
+      "tags": [
+        "超纲",
+        "取舍",
+        "易误判",
+        "避坑"
+      ],
+      "syllabus": [
+        "全科目"
+      ],
+      "caveat": "SmartArt 智能图形是考纲内的老功能，与 WPS AI 排版是两回事；不要因排斥 AI 而漏掉 SmartArt。另外要确认资料标的是二级还是一级。",
+      "related": [
+        "d-outline-pdf",
+        "r-syllabus-coverage",
+        "d-smartart-blog"
+      ]
+    },
+    {
+      "id": "r-eval-method",
+      "name": "资源三维评价方法与取舍结论",
+      "category": "reference",
+      "kind": "站内整理",
+      "summary": "本站在筛选每条资源时使用的三维标准与最终一句话结论。",
+      "purpose": "用「零基础友好度 / 图文结合度 / 备考适配度」三个维度判断资料定位，避免把真题课当入门课、把职场课当备考课。",
+      "access": "本站「关于」页的评价方法说明，各资源详情页也标注了三维结论。",
+      "free": "本站内容，完全免费、随站点一同部署。",
+      "rating": 4,
+      "zero": "高",
+      "exam": "中",
+      "links": [
+        {
+          "label": "打开关于页",
+          "url": "about.html"
+        }
+      ],
+      "asset": "content/README.md",
+      "tags": [
+        "评价方法",
+        "三维",
+        "取舍",
+        "方法论"
+      ],
+      "syllabus": [],
+      "caveat": "若只选三样：官方通关课（教有哪些）+ 大猫真题讲解（教怎么做）+ 官方样题 PDF（定颗粒度）。三门新手入门课当字典回查，不要从头刷。",
+      "related": [
+        "c-fast-pass",
+        "c-damao-real",
+        "d-sample-pdf"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "docs",
+      "name": "文档教程",
+      "accent": "#2563eb",
+      "desc": "官方图文博客、技术专栏与官方 PDF 文件。适合按考点定点查阅、逐字核验参数，而不是从头刷。",
+      "use": "卡在某个具体操作、需要权威图文步骤时查阅"
+    },
+    {
+      "id": "courses",
+      "name": "视频课程",
+      "accent": "#7c3aed",
+      "desc": "WPS 官方学堂系统课与 B 站真题精讲。系统课按考纲顺序打底，真题讲解负责打通考场动线。",
+      "use": "按模块系统学习，或考前跟做整套真题"
+    },
+    {
+      "id": "opensource",
+      "name": "开源项目",
+      "accent": "#059669",
+      "desc": "GitHub / Gitee 题库仓库与在线版自建备考站。可在线访问、可下载复用，但需留意版本时效。",
+      "use": "需要可下载、可在线访问、可二次整理的资料包"
+    },
+    {
+      "id": "templates",
+      "name": "模板素材",
+      "accent": "#d97706",
+      "desc": "官方样题操作题素材、课程配套练习文档、考纲对照表与教学课件，用于真正动手练。",
+      "use": "把看懂变成做对，必须在素材文件上实操"
+    },
+    {
+      "id": "tools",
+      "name": "工具服务",
+      "accent": "#db2777",
+      "desc": "题库平台、模拟考试系统、考试专用版软件与内容发布平台，多数有账号或安装前提。",
+      "use": "全真模考、环境对齐、内容检索入口"
+    },
+    {
+      "id": "reference",
+      "name": "设计参考",
+      "accent": "#0891b2",
+      "desc": "考纲映射、难度基准、学习顺序、四周计划与超纲边界。用于规划取舍，不是学习材料本身。",
+      "use": "制定计划、判断哪些内容该学、哪些该跳过"
+    }
+  ]
+};
