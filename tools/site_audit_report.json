@@ -1,5 +1,5 @@
 {
- "files": 231,
+ "files": 233,
  "defects": {},
  "summary": {},
  "allowed": {
@@ -8,76 +8,76 @@
    "CMD_PAGE": "教育考试专用版现行功能区页面设置入口（旧称「页面布局」已全部清除）"
   },
   "summary": {
-   "CMD_PDF": 38,
-   "CMD_PAGE": 11
+   "CMD_PDF": 42,
+   "CMD_PAGE": 15
   },
   "files": {
    "入门实操课.html": [
     {
      "rule": "CMD_PDF",
-     "line": 304,
+     "line": 305,
      "word": "输出为 PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 363,
+     "line": 364,
      "word": "输出为PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 363,
+     "line": 364,
      "word": "输出为PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 583,
+     "line": 588,
      "word": "输出为 PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 599,
+     "line": 604,
      "word": "输出为PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 1545,
+     "line": 1562,
      "word": "输出为PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 1642,
+     "line": 1659,
      "word": "输出为 PDF"
     },
     {
      "rule": "CMD_PAGE",
-     "line": 596,
+     "line": 601,
      "word": "「页面」选项卡"
     },
     {
      "rule": "CMD_PAGE",
-     "line": 614,
+     "line": 619,
      "word": "「页面」选项卡"
     },
     {
      "rule": "CMD_PAGE",
-     "line": 614,
+     "line": 619,
      "word": "「页面」选项卡"
     }
    ],
    "实操-演示2.html": [
     {
      "rule": "CMD_PDF",
-     "line": 94,
+     "line": 95,
      "word": "输出为 PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 300,
+     "line": 305,
      "word": "输出为 PDF"
     },
     {
      "rule": "CMD_PDF",
-     "line": 333,
+     "line": 339,
      "word": "输出为 PDF"
     }
    ],
@@ -210,6 +210,48 @@
     {
      "rule": "CMD_PAGE",
      "line": 5972,
+     "word": "「页面」选项卡"
+    }
+   ],
+   "assets\\knowledge-data.js": [
+    {
+     "rule": "CMD_PDF",
+     "line": 3,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 3,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 3,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PDF",
+     "line": 3,
+     "word": "输出为PDF"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 3,
+     "word": "「页面」选项卡"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 3,
+     "word": "「页面」选项卡"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 3,
+     "word": "「页面」选项卡"
+    },
+    {
+     "rule": "CMD_PAGE",
+     "line": 3,
      "word": "「页面」选项卡"
     }
    ],
