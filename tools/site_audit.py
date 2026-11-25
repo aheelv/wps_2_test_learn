@@ -101,13 +101,35 @@ def in_tag(text, pos):
     return text.rfind('<', 0, pos) > text.rfind('>', 0, pos)
 
 
+# 说明性/否定语境豁免：命中词出现在「不提供 / 不要求 / 没有 / 确认没有 / 不含」
+# 等解释为何改用等价操作的句子里时，属于正确的版本口径说明，不计为缺陷。
+# 与 audit_steps.py 的 EXEMPT 口径一致；判定只看命中位置前后的同一句（以 。；< > 为界）。
+EXEMPT_CONTEXT = re.compile(
+    r'(不提供|不要求|不含|没有|无需|禁止|避免|不依赖|确认没有|一律不用|均不)[^。；<>]{0,60}$')
+
+
+def in_exempt_context(text, pos):
+    # 取命中词之前、同一句内的片段
+    left = max(text.rfind('。', 0, pos), text.rfind('；', 0, pos),
+               text.rfind('<', 0, pos), text.rfind('>', 0, pos)) + 1
+    return bool(EXEMPT_CONTEXT.search(text[left:pos]))
+
+
 def scan_file(p):
     """返回 (缺陷, 白名单命中)；元素均为 (规则码, 行号, 命中词)，不保留整段原文。"""
     text = strip_quotes(p.read_text(encoding='utf-8', errors='ignore'))
-    ops = any(h in str(p) for h in OPS_HINT)
+    # 题库衍生数据（知识图谱的题目解析含单选题干扰项原文）不作为「操作要求」扫描，
+    # 与 11-6/quiz_data.json、考试模拟系统题库同理；其讲解性文本已单独做术语统一。
+    quiz_derived = p.name in ('knowledge-graph-data.js', 'knowledge-data.js')
+    ops = any(h in str(p) for h in OPS_HINT) and not quiz_derived
     out, allow = [], []
     for code, pat in VERSION_RULES + WORDING_RULES:
+        # 单选题干扰项原文（如「将文档另存为 PDF」）属题目内容，非操作要求；题库衍生数据跳过 WORD_PDF
+        if quiz_derived and code == 'WORD_PDF':
+            continue
         for m in re.finditer(pat, text, re.I):
+            if in_exempt_context(text, m.start()):
+                continue
             out.append((code, text.count('\n', 0, m.start()) + 1, m.group(0)[:24]))
     for code, pat, _why in ALLOWED_RULES:
         for m in re.finditer(pat, text, re.I):
@@ -116,6 +138,8 @@ def scan_file(p):
         for code, _desc, pat in audit_steps.RULES:
             for m in re.finditer(pat, text, re.I):
                 if code == 'NET' and in_tag(text, m.start()):
+                    continue
+                if in_exempt_context(text, m.start()):
                     continue
                 out.append(('OUT_' + code, text.count('\n', 0, m.start()) + 1,
                             m.group(0)[:24]))

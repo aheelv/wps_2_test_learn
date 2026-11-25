@@ -26,6 +26,7 @@
    {"name": "学习中心", "href": "./index.html", "tier": "home", "active": ["index.html"]},
    {"name": "实操训练", "href": "./实操训练.html", "tier": "core", "active": ["实操训练.html", "入门实操课.html", "实操-文字2.html", "实操-文字3.html", "实操-表格1.html", "实操-表格2.html", "实操-表格3.html", "实操-演示1.html", "实操-演示2.html", "练习素材/索引.html"]},
    {"name": "理论考试", "href": "./理论考试.html", "tier": "core", "active": ["理论考试.html", "理论题库/index.html"]},
+   {"name": "知识图谱", "href": "./知识图谱.html", "tier": "core", "active": ["知识图谱.html"]},
    {"name": "模拟考试", "href": "./考试模拟系统/index.html", "tier": "bridge", "active": ["考试模拟系统/index.html"]}
   ],
   "support_groups": [

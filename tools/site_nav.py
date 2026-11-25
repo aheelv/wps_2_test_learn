@@ -88,7 +88,7 @@ def render_subnav(page):
 def site_bar(prefix, current):
     """独立应用（题库 / 模拟系统 / 课件）顶部的一致站点条，纯内联样式，不依赖全站 CSS。"""
     links = [('学习中心', 'index.html'), ('实操训练', '实操训练.html'),
-             ('理论考试', '理论考试.html'), ('模拟考试', '考试模拟系统/index.html')]
+             ('理论考试', '理论考试.html'), ('知识图谱', '知识图谱.html'), ('模拟考试', '考试模拟系统/index.html')]
     a = ''.join('<a href="%s%s" style="color:#fff;text-decoration:none;'
                 'padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.12)">%s</a>'
                 % (prefix, h, n) for n, h in links)
@@ -143,6 +143,7 @@ def patch_special():
     if old:
         new = ('<div id="decknav"><a href="./index.html">学习中心</a>'
                '<a href="./实操训练.html">实操训练</a><a href="./理论考试.html">理论考试</a>'
+               '<a href="./知识图谱.html">知识图谱</a>'
                '<a href="./考试模拟系统/index.html">模拟考试</a></div>')
         s = s.replace(old.group(0), new, 1)
         p.write_text(s, encoding='utf-8')
@@ -154,7 +155,8 @@ def patch_special():
     if old:
         new = ('<div class="bk-nav">\n        '
                '<a href="./index.html">学习中心</a><a href="./实操训练.html">实操训练</a>'
-               '<a href="./理论考试.html">理论考试</a><a href="./考纲对照表.html">考纲对照表</a>'
+               '<a href="./理论考试.html">理论考试</a><a href="./知识图谱.html">知识图谱</a>'
+               '<a href="./考纲对照表.html">考纲对照表</a>'
                '<a href="./考试模拟系统/index.html">模拟考试</a>\n      </div>')
         s = s.replace(old.group(0), new, 1)
         p.write_text(s, encoding='utf-8')
@@ -244,7 +246,7 @@ __SUBNAV__
 <footer class="footer"><div class="wrap"><div class="cols"><div><h4>学习中心</h4>
 <p class="small">__DISCLAIMER__</p></div><div><h4>核心模块</h4><p class="small">
 <a href="./实操训练.html">实操训练</a> · <a href="./理论考试.html">理论考试</a> ·
-<a href="./考试模拟系统/index.html">模拟考试</a></p></div></div>
+<a href="./知识图谱.html">知识图谱</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p></div></div>
 <div class="disc">© 大连财经学院 · 计算机国家二级考试（WPS 类）课程组 ｜ 非官方考试网站</div></div></footer>
 </body></html>"""
     th = CFG['theory']

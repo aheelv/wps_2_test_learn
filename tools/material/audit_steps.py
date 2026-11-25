@@ -71,15 +71,31 @@ def load():
     return out
 
 
+# 说明性/否定语境白名单：命中词出现在这些短语中时属于「解释为何改用等价操作」，
+# 并非真的调用越界功能，不计为违规（与人工逐题核验口径一致）。
+EXEMPT = [
+    r'不提供[^。]{0,30}(检查兼容性|嵌入字体|删除背景|相册|压缩图片|裁剪音频|淡化)',
+    r'没有[^。]{0,24}(日程表|方案管理器|方案摘要|智能图形编辑器)',
+    r'不用[^。]{0,20}(变体|平滑)',
+    r'确认没有依赖联网',
+    r'不含[^。]{0,16}(个人信息|真实)',
+]
+
+
+def is_exempt(text):
+    return any(re.search(p, text or '') for p in EXEMPT)
+
+
 def scan(q):
     hits = []
     for code, desc, pat in RULES:
         for i, t in enumerate(q['steps'], 1):
-            if re.search(pat, t, re.I):
+            if re.search(pat, t, re.I) and not is_exempt(t):
                 hits.append(dict(rule=code, where='step', idx=i, text=t))
         for field in ('req', 'score'):
-            if re.search(pat, q[field] or '', re.I):
-                hits.append(dict(rule=code, where=field, idx=0, text=q[field]))
+            v = q[field] or ''
+            if re.search(pat, v, re.I) and not is_exempt(v):
+                hits.append(dict(rule=code, where=field, idx=0, text=v))
     return hits
 
 

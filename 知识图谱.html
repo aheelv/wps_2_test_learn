@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WPS 国家二级考试知识图谱｜知识点 · 考试要点 · 经典题目分析 · 考试详解 | 大连财经学院 计算机国家二级（WPS 类）</title>
+<meta name="description" content="大连财经学院计算机国家二级考试（WPS 类）校内教学辅助资料：知识图谱模块，按知识点、考试要点、经典题目分析、考试详解重构 5 大模块知识，交互式展示层级与关联。">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="stylesheet" href="./assets/knowledge-graph.css">
+</head><body>
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">WPS</span><span>大连财经学院 · 计算机国家二级（WPS 类）<small>校内教学辅助资料 · 非官方</small></span></a>
+  <!-- SITE-NAV-BEGIN -->
+  <nav class="navlinks">
+    <a href="./index.html">学习中心</a>
+    <a class="core" href="./实操训练.html">实操训练</a>
+    <a class="core" href="./理论考试.html">理论考试</a>
+    <a class="on core" href="./知识图谱.html">知识图谱</a>
+    <a href="./考试模拟系统/index.html">模拟考试</a>
+  </nav>
+<!-- SITE-NAV-END -->
+</div></header>
+<!-- SITE-SUBNAV-BEGIN -->
+<div class="subnav"><div class="wrap"><span class="sn-label">考试信息</span><a href="./考试介绍.html">考试介绍</a><a href="./教学大纲.html">教学大纲</a><a href="./考纲对照表.html">考纲对照表</a><span class="sn-sep"></span><span class="sn-label">教学资源</span><a href="./培训课件.html">培训课件</a><a href="./电子书.html">电子书</a><a href="./教案.html">教案</a><a href="./教学日历.html">教学日历</a><a href="./资料汇编.html">资料汇编</a><span class="sn-sep"></span><span class="sn-label">站点服务</span><a href="./用户中心.html">用户中心</a><a href="./群管理.html">群管理</a><a href="./使用说明.html">使用说明</a><a href="./关于本站.html">关于本站</a><a href="./整站内容配置.html">整站内容配置</a><a href="./核查与重构报告.html">核查与重构报告</a></div></div>
+<!-- SITE-SUBNAV-END -->
+
+<div class="noticebar"><div class="wrap"><span class="nb-ic">ⓘ</span><span><b>大连财经学院</b> 计算机国家二级考试（WPS 类）校内教学辅助资料 · <b>本站为非官方考试网站</b>，不提供报名、缴费、查分服务，不收集任何个人信息。理论题进度只保存在本机浏览器。</span></div></div>
+
+<section class="kg-hero"><div class="wrap">
+  <div class="eyebrow">知识图谱 · 5 大模块 · 24 知识域 · 92 个知识点 · 404 处题目解析</div>
+  <div class="kg-title">
+    <h1>WPS 国家二级考试知识图谱</h1>
+    <span class="badge">D3.js v7 本地化</span>
+    <span class="badge">2025 版大纲</span>
+  </div>
+  <p class="sub">把课程数据、考试要点、经典题目与详解重构为<b>可交互的知识网络</b>：实线表示「属于」层级，虚线表示知识点之间的关联。点击节点，右侧即时展开该知识点的考试要点、典型题目解析和详细讲解；支持按模块筛选、关键词搜索、缩放拖拽与层级/力导向切换。</p>
+  <div class="kg-stats" id="kg-stats"></div>
+</div></section>
+
+<main class="wrap">
+  <div class="kg-layout">
+    <!-- 左侧筛选 -->
+    <aside class="kg-panel">
+      <h3 class="kg-ph"><span class="dot"></span>图谱导航</h3>
+      <div class="kg-side">
+        <input id="kg-search" class="kg-search" type="search" placeholder="搜索知识点 / 要点…" aria-label="搜索知识点">
+        <h4>布局方式</h4>
+        <div class="kg-mode">
+          <button class="on" data-layout="force">力导向</button>
+          <button data-layout="radial">层级</button>
+        </div>
+        <h4>考试模块</h4>
+        <div class="kg-filter" id="kg-filter-list"></div>
+        <div class="kg-legend">
+          <div><i style="background:#16324f"></i>考试总览</div>
+          <div><i style="background:#2563eb"></i>公共基础</div>
+          <div><i style="background:#e8503a"></i>文字文档</div>
+          <div><i style="background:#16a34a"></i>电子表格</div>
+          <div><i style="background:#7c3aed"></i>演示文稿</div>
+          <div><i style="background:#b45309"></i>冲刺模拟</div>
+          <div style="margin-top:6px"><span class="line"></span>层级归属</div>
+          <div><span class="line rel"></span>知识点关联</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 中间图谱 -->
+    <section class="kg-panel">
+      <h3 class="kg-ph"><span class="dot"></span>知识网络　<span style="margin-left:auto;font-weight:600;color:var(--muted);font-size:12px">当前显示 <span id="kg-visible-count">0</span> 个节点</span></h3>
+      <div class="kg-canvas-wrap" id="kg-graph-wrap">
+        <svg id="kg-graph" role="img" aria-label="WPS 二级考试知识图谱"></svg>
+        <div class="kg-tip" id="kg-tip"></div>
+        <div class="kg-toolbar">
+          <button id="kg-zoom-in" title="放大">＋</button>
+          <button id="kg-zoom-out" title="缩小">－</button>
+          <button id="kg-reset" title="重置视图">⟲</button>
+        </div>
+        <div class="kg-canvas-note">滚轮缩放 · 拖拽节点 · 点击查看详情</div>
+      </div>
+    </section>
+
+    <!-- 右侧详情 -->
+    <aside class="kg-panel kg-detail">
+      <h3 class="kg-ph"><span class="dot"></span>节点详情</h3>
+      <div class="kg-detail-inner" id="kg-detail-body"></div>
+    </aside>
+  </div>
+
+  <section class="section-sm">
+    <h2>使用说明与数据来源</h2>
+    <div class="grid g2">
+      <div class="card">
+        <h3>怎么读这张图</h3>
+        <ul class="clean">
+          <li><b>层级结构：</b>根节点 → 5 大考试模块 → 24 个知识域 → 92 个知识点，实线箭头表示「属于」。</li>
+          <li><b>关联边：</b>虚线表示知识点之间的交叉关联（如同源考点、共享主题），帮助你建立知识迁移路径。</li>
+          <li><b>节点详情：</b>点击任一节点，右侧显示考试要点、难点提醒、考试详解、经典题目解析和站内延伸入口。</li>
+          <li><b>筛选与搜索：</b>左侧按模块过滤或输入关键词；「层级」布局可将知识点按父节点排列，便于纵向阅读。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>内容来源与可扩展性</h3>
+        <p class="small">图谱内容全部来自本站既有资料：<code>assets/curriculum.js</code>（课程知识与考试要点）、<code>考试模拟系统</code>（120 道单选的题干、选项与解析）、<code>实操训练</code> 8 次课 72 题、<code>考纲对照表</code> 与 <code>电子书</code>。数据由 <code>tools/build_knowledge_graph.py</code> 从上述数据源生成，扩展内容只需维护源数据并重新生成 <code>assets/knowledge-graph-data.js</code>。</p>
+        <p class="small mb0">可视化引擎采用 <a href="https://github.com/d3/d3" target="_blank" rel="noopener">D3.js v7</a>（GitHub 11.4 万星标、持续维护，ISC 许可），已下载至 <code>assets/vendor/</code> 本地加载，离线可用，不依赖外部 CDN。</p>
+      </div>
+    </div>
+    <p class="kg-foot">本站为校内教学辅助资料，依据《全国计算机等级考试（NCRE）二级 WPS Office 高级应用与设计考试大纲（2025 年版）》编写。考试政策以中国教育考试网公告为准。</p>
+  </section>
+</main>
+
+<footer class="footer"><div class="wrap"><div class="cols">
+  <div><h4>核心模块</h4><p class="small"><a href="./实操训练.html">实操训练 · 72 题</a> · <a href="./理论考试.html">理论考试 · 781 题</a> · <a href="./考试模拟系统/index.html">模拟考试</a></p></div>
+  <div><h4>辅助资料</h4><p class="small"><a href="./考试介绍.html">考试介绍</a> · <a href="./教学大纲.html">教学大纲</a> · <a href="./考纲对照表.html">考纲对照表</a> · <a href="./整站内容配置.html">整站内容配置</a></p></div>
+  <div><h4>说明</h4><p class="small">依据 2025 年版官方大纲编写；校内教学辅助资料，非官方考试网站，不收集个人信息。</p></div>
+</div><div class="disc">© 大连财经学院 · 计算机国家二级考试（WPS 类）课程组 ｜ 考试政策以中国教育考试网公告为准</div></div></footer>
+
+<script src="./assets/vendor/d3.v7.min.js"></script>
+<script src="./assets/knowledge-graph-data.js"></script>
+<script src="./assets/knowledge-graph.js"></script>
+<script>
+(function(){
+  var d = window.KNOWLEDGE_GRAPH;
+  var c = d.meta.counts;
+  var items = [
+    [c.nodes, '图谱节点'], [c.points, '核心知识点'], [24, '知识域'],
+    [120, '经典题目解析'], ['100', '满分 · 60 合格']
+  ];
+  document.getElementById('kg-stats').innerHTML = items.map(function(x){
+    return '<div class="kg-stat"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';
+  }).join('');
+})();
+</script>
+</body></html>

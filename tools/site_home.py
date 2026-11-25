@@ -70,6 +70,7 @@ def hero():
   <div class="flex mt2">
     <a class="btn accent" href="./实操训练.html">▶ 进入实操训练（72 题）</a>
     <a class="btn ghost" href="./理论考试.html">📝 进入理论考试（781 题）</a>
+    <a class="btn ghost" href="./知识图谱.html">🕸 打开知识图谱</a>
     <a class="btn ghost" href="./考试模拟系统/index.html">🖥 全真模拟考试</a>
   </div>
   <div class="hero-stats">
