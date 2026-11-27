@@ -124,8 +124,9 @@ def scan_file(p):
     ops = any(h in str(p) for h in OPS_HINT) and not quiz_derived
     out, allow = [], []
     for code, pat in VERSION_RULES + WORDING_RULES:
-        # 单选题干扰项原文（如「将文档另存为 PDF」）属题目内容，非操作要求；题库衍生数据跳过 WORD_PDF
-        if quiz_derived and code == 'WORD_PDF':
+        # 单选题原文/解析属题目内容，非本站操作要求；题库衍生数据跳过
+        # WORD_PDF（干扰项「另存为 PDF」）与 VER_MIX（解析中的「保留不同版本」指文件副本）。
+        if quiz_derived and code in ('WORD_PDF', 'VER_MIX'):
             continue
         for m in re.finditer(pat, text, re.I):
             if in_exempt_context(text, m.start()):
@@ -154,6 +155,63 @@ def coverage():
     return dict(points=len(rows), covered=len(rows) - len(gaps),
                 gaps=[g['point'] for g in gaps], outside=len(outside), mix=len(mix),
                 quiz_sections=sections, quiz_total=sum(sections.values()))
+
+
+def knowledge_graph():
+    """知识图谱专项核查：锚点唯一、链接可达、72 题全覆盖、理论题不重复。"""
+    issues = []
+    graph_src = (ROOT / 'assets/knowledge-graph-data.js').read_text(encoding='utf-8')
+    m = re.search(r'window\.KNOWLEDGE_GRAPH\s*=\s*(\{.*\})\s*;', graph_src, re.S)
+    if not m:
+        return dict(issues=['知识图谱数据无法解析'])
+    g = json.loads(m.group(1))
+    ex = json.load(open(ROOT / 'tools/material/exercises.json', encoding='utf-8'))
+    ex_by_key = {'%d-%d' % (e['ci'], e['seq']): e for e in ex}
+
+    # 题页锚点必须唯一
+    anchor_index = {}
+    for page in sorted(set(e['page'] for e in ex)):
+        text = (ROOT / page).read_text(encoding='utf-8')
+        ids = re.findall(r'<article[^>]*class="ex"[^>]*id="([^"]+)"', text)
+        dup = sorted({x for x in ids if ids.count(x) > 1})
+        if dup:
+            issues.append('%s 题目锚点重复：%s' % (page, ','.join(dup)))
+        anchor_index[page] = set(ids)
+
+    practicals = g.get('practicals', {})
+    if set(practicals) != set(ex_by_key):
+        issues.append('知识图谱操作题集合与 exercises.json 不一致')
+
+    for key, p in practicals.items():
+        page = p.get('page', '')
+        href = p.get('href', '')
+        anchor = p.get('anchor', '')
+        if page not in anchor_index or anchor not in anchor_index[page]:
+            issues.append('%s 锚点 %s 在 %s 中不存在' % (key, anchor, page))
+        if href != './%s#%s' % (page, anchor):
+            issues.append('%s 跳转链接不是精确锚点：%s' % (key, href))
+        if not p.get('reqs') or not p.get('explanation'):
+            issues.append('%s 缺少题目内容或清晰讲解' % key)
+
+    point_nodes = [n for n in g.get('nodes', []) if n.get('type') == 'point']
+    for n in point_nodes:
+        if n.get('parent', '')[:2] in ('M2', 'M3', 'M4') and not n.get('practicalKeys'):
+            issues.append('%s 缺少关联操作题' % n.get('id'))
+        for l in n.get('links', []):
+            if l.get('href') in ('./实操训练.html', '实操训练.html'):
+                issues.append('%s 仍使用泛化实操链接' % n.get('id'))
+
+    qids = [q.get('id') for n in point_nodes for q in n.get('questions', [])]
+    if len(qids) != 120 or len(set(qids)) != 120:
+        issues.append('理论题挂载不是 120 道唯一题：%d / %d' % (len(qids), len(set(qids))))
+
+    counts = g.get('meta', {}).get('counts', {})
+    return dict(
+        nodes=counts.get('nodes'), points=counts.get('points'),
+        theoryQuestions=counts.get('theoryQuestions'),
+        practicals=counts.get('practicals'), practicalLinks=counts.get('practicalLinks'),
+        issues=issues,
+    )
 
 
 def verdicts(cov):
@@ -190,7 +248,9 @@ def main():
     c = Counter(x[0] for h in hits.values() for x in h)
     ca = Counter(x[0] for a in allowed.values() for x in a)
     cov = coverage()
+    kg = knowledge_graph()
     v = verdicts(cov)
+    v['knowledge_graph'] = kg
     print('扫描文件 %d 个 ｜ 缺陷命中 %d 处 ｜ 白名单（现行命令名）%d 处' %
           (len(FILES), sum(len(h) for h in hits.values()), sum(len(a) for a in allowed.values())))
     for k, n in c.most_common():
@@ -201,10 +261,15 @@ def main():
     print('\n逐题合规：%d 题 / %d 处越界 ｜ 知识点 %s ｜ 大纲 %s ｜ 理论题 %d' %
           (v['ops_questions'], v['ops_out_of_scope'], v['ops_knowledge_points'],
            v['syllabus_items'], v['theory_total']))
+    print('知识图谱：%s 知识点 ｜ %s 道操作题 / %s 条关联 ｜ %s 道理论题 ｜ 问题 %d 处' %
+          (kg.get('points'), kg.get('practicals'), kg.get('practicalLinks'),
+           kg.get('theoryQuestions'), len(kg.get('issues', []))))
     if '--detail' in sys.argv:
         for f, h in sorted(hits.items()):
             for code, line, word in h[:14]:
                 print('  %-44s L%-6d %-16s %s' % (f, line, code, word))
+        for issue in kg.get('issues', [])[:30]:
+            print('  %-44s %s' % ('KNOWLEDGE_GRAPH', issue))
     if '--report' in sys.argv:
         json.dump(dict(
             files=len(FILES),
@@ -217,6 +282,7 @@ def main():
                 files={f: [dict(rule=a, line=b, word=c) for a, b, c in h]
                        for f, h in allowed.items()}),
             coverage=cov,
+            knowledge_graph=kg,
             verdict=v,
             rule_scope=dict(
                 ops='操作题正文：必须落在离线教育考试专用版功能集内',
@@ -225,7 +291,7 @@ def main():
             ),
         ), open(ROOT / 'tools' / 'site_audit_report.json', 'w', encoding='utf-8'),
             ensure_ascii=False, indent=1)
-    return len(hits)
+    return len(hits) + len(kg.get('issues', []))
 
 
 if __name__ == '__main__':

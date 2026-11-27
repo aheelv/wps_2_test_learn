@@ -10,6 +10,7 @@
 3. 例题固定五段式：题目要求 → 录入素材 → 解题步骤 → 采分点 → 易错提醒
 """
 import os
+import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -49,8 +50,16 @@ def li(items, cls=""):
     return "".join("<li>%s</li>" % x for x in items)
 
 
+def exercise_anchor(P, ex_i, ex):
+    """题号即锚点：例 5-3 → e5-3，保证同一页 8 道题的 id 唯一。"""
+    m = re.search(r'(\d+)\s*[-－—]\s*(\d+)', str(ex.get("no", "")))
+    if m:
+        return "e%s-%s" % (m.group(1), m.group(2))
+    return "e%d-%d" % (P["seq"], ex_i + 1)
+
+
 def render_ex(P, sec_i, ex_i, ex):
-    eid = "e%d-%d" % (P["seq"], ex_i + 1)
+    eid = exercise_anchor(P, ex_i, ex)
     badges = "".join('<span class="badge info">%s</span>' % t for t in ex.get("tags", []))
     src = ""
     if ex.get("src"):

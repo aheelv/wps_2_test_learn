@@ -99,7 +99,7 @@ UI_TERMS = {
 
 FILE_RE = re.compile(r"[\w\u4e00-\u9fa5\-.]+\.(?:docx|xlsx|pptx|png|txt|wav|mp4|pdf|zip)")
 SHEET_RE = re.compile(r"[「『\"]([^」』\"]{2,12})[」』\"]")
-OUT_WORDS = re.compile(r"(输出为|保存为|导出为|另存为|生成|命名为|文件名)")
+OUT_WORDS = re.compile(r"(输出为|保存为|导出为|另存为|生成|命名为|文件名|核对)")
 # 起始素材里的「说明行」：描述数据而非要逐字录入的正文
 DESC_LINE = re.compile(
     r"^(表头|记录示例|记录格式|示例|说明|注|备注|口径|共\s*\d+\s*条)"

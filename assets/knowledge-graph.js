@@ -141,14 +141,54 @@
     });
   }
 
+  var PRACTICALS = DATA.practicals || {};
+
+  function practicalKeysOf(n) {
+    if (!n) return [];
+    if (n.type === 'point') return n.practicalKeys || [];
+    var out = [];
+    nodes.forEach(function (x) {
+      if (x.type !== 'point' || !x.practicalKeys) return;
+      if (x.id === n.id || x.parent === n.id || ancestorOf(x, n.id)) {
+        out = out.concat(x.practicalKeys);
+      }
+    });
+    return out.filter(function (k, i, a) { return a.indexOf(k) === i; });
+  }
+
+  function renderPractical(key) {
+    var p = PRACTICALS[key];
+    if (!p) return '';
+    var h = [];
+    h.push('<div class="kg-practical">');
+    h.push('<div class="pt-h"><span class="pt-no">' + escapeHtml(p.no) + '</span><b>' + escapeHtml(p.title) + '</b></div>');
+    if (p.reqs && p.reqs.length) {
+      h.push('<div class="pt-sec"><b>题目要求</b><ol>');
+      p.reqs.forEach(function (r) { h.push('<li>' + escapeHtml(r) + '</li>'); });
+      h.push('</ol></div>');
+    }
+    if (p.explanation) h.push('<div class="pt-sec"><b>清晰讲解</b><p>' + escapeHtml(p.explanation) + '</p></div>');
+    if (p.steps && p.steps.length) {
+      h.push('<div class="pt-sec"><b>关键步骤</b><ol class="pt-steps">');
+      p.steps.forEach(function (s) { h.push('<li>' + escapeHtml(s) + '</li>'); });
+      h.push('</ol></div>');
+    }
+    if (p.mistakes) h.push('<div class="pt-sec warn"><b>易错提醒</b><p>' + escapeHtml(p.mistakes) + '</p></div>');
+    h.push('<div class="pt-foot"><a href="' + escapeHtml(p.href) + '">直达 ' + escapeHtml(p.no) + ' 题目与完整讲解 →</a></div>');
+    h.push('</div>');
+    return h.join('');
+  }
+
   function renderDetail(id) {
     var box = document.getElementById('kg-detail-body');
     if (!id || !byId[id]) {
       box.innerHTML = '<div class="kg-empty"><div class="ic">🕸️</div>' +
-        '点击图谱中的任一节点<br>查看考试要点、典型题目解析与详细讲解</div>';
+        '点击图谱中的任一节点<br>查看考试要点、关联操作题与详细讲解</div>';
       return;
     }
     var n = byId[id];
+    var pkeys = practicalKeysOf(n);
+    var limit = n.type === 'point' ? pkeys.length : Math.min(pkeys.length, 6);
     var h = [];
     h.push('<span class="kg-kind" style="background:' + fillOf(n) + '1a;color:' + fillOf(n) + '">' + TYPE_NAME[n.type] + '</span>');
     h.push('<h2>' + escapeHtml(n.name) + '</h2>');
@@ -158,7 +198,8 @@
     if (n.meta && n.meta.lesson) meta.push('第 ' + n.meta.lesson + ' 课时');
     var childCount = nodes.filter(function (x) { return x.parent === id; }).length;
     if (childCount) meta.push('下含 ' + childCount + ' 个子节点');
-    if (n.questions && n.questions.length) meta.push('经典题 ' + n.questions.length + ' 道');
+    if (pkeys.length) meta.push('关联操作题 ' + pkeys.length + ' 道');
+    if (n.questions && n.questions.length) meta.push('理论题 ' + n.questions.length + ' 道');
     if (meta.length) h.push('<div class="kg-meta">' + meta.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</div>');
 
     if (n.brief) h.push('<p>' + escapeHtml(n.brief) + '</p>');
@@ -170,6 +211,15 @@
     }
     if (n.difficulty) h.push('<h4>易错 / 难点</h4><p>' + escapeHtml(n.difficulty) + '</p>');
     if (n.detail) h.push('<h4>考试详解</h4><p>' + escapeHtml(n.detail) + '</p>');
+    if (n.examFocus) h.push('<h4>考试中的考法</h4><p>' + escapeHtml(n.examFocus) + '</p>');
+
+    if (limit) {
+      h.push('<h4>关联操作题 · ' + pkeys.length + ' 道</h4>');
+      for (var i = 0; i < limit; i++) h.push(renderPractical(pkeys[i]));
+      if (limit < pkeys.length) {
+        h.push('<p class="kg-more">仅显示前 ' + limit + ' 道，点开子知识点可查看全部 ' + pkeys.length + ' 道。</p>');
+      }
+    }
 
     if (n.questions && n.questions.length) {
       h.push('<h4>经典题目分析</h4>');
@@ -189,7 +239,7 @@
     }
 
     if (n.links && n.links.length) {
-      h.push('<h4>站内延伸</h4><div class="kg-links">');
+      h.push('<h4>学习资源与例题入口</h4><div class="kg-links">');
       n.links.forEach(function (l) {
         h.push('<a href="' + escapeHtml(l.href) + '">' + escapeHtml(l.label) + ' →</a>');
       });
@@ -205,7 +255,12 @@
     var visible = {};
     nodes.forEach(function (n) {
       var okModule = f === 'ALL' || n.id === f || n.parent === f || ancestorOf(n, f);
-      var text = (n.name + ' ' + (n.brief || '') + ' ' + (n.detail || '')).toLowerCase();
+      var text = (n.name + ' ' + (n.brief || '') + ' ' + (n.detail || '') +
+        ' ' + (n.examFocus || '') + ' ' +
+        (n.practicalKeys || []).map(function (k) {
+          var p = PRACTICALS[k];
+          return p ? (p.no + ' ' + p.title + ' ' + (p.reqs || []).join(' ') + ' ' + p.explanation) : '';
+        }).join(' ')).toLowerCase();
       var okKw = !kw || text.indexOf(kw) >= 0;
       n.hidden = !(okModule && okKw);
       if (!n.hidden) visible[n.id] = true;

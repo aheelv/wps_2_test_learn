@@ -24,13 +24,13 @@
 <div class="noticebar"><div class="wrap"><span class="nb-ic">ⓘ</span><span><b>大连财经学院</b> 计算机国家二级考试（WPS 类）校内教学辅助资料 · <b>本站为非官方考试网站</b>，不提供报名、缴费、查分服务，不收集任何个人信息。理论题进度只保存在本机浏览器。</span></div></div>
 
 <section class="kg-hero"><div class="wrap">
-  <div class="eyebrow">知识图谱 · 5 大模块 · 24 知识域 · 92 个知识点 · 404 处题目解析</div>
+  <div class="eyebrow">知识图谱 · 5 大模块 · 24 知识域 · 92 个知识点 · 72 道操作题精准关联 · 120 道理论题解析</div>
   <div class="kg-title">
     <h1>WPS 国家二级考试知识图谱</h1>
     <span class="badge">D3.js v7 本地化</span>
     <span class="badge">2025 版大纲</span>
   </div>
-  <p class="sub">把课程数据、考试要点、经典题目与详解重构为<b>可交互的知识网络</b>：实线表示「属于」层级，虚线表示知识点之间的关联。点击节点，右侧即时展开该知识点的考试要点、典型题目解析和详细讲解；支持按模块筛选、关键词搜索、缩放拖拽与层级/力导向切换。</p>
+  <p class="sub">把课程数据、考试要点、操作题与理论题重构为<b>可交互的知识网络</b>：实线表示「属于」层级，虚线表示知识点之间的关联。点击节点，右侧即时展开该知识点的考试要点、操作题题目内容与清晰讲解、典型题目解析和考试详解；操作题链接直达具体例题位置，支持按模块筛选、关键词搜索、缩放拖拽与层级/力导向切换。</p>
   <div class="kg-stats" id="kg-stats"></div>
 </div></section>
 
@@ -91,7 +91,7 @@
         <ul class="clean">
           <li><b>层级结构：</b>根节点 → 5 大考试模块 → 24 个知识域 → 92 个知识点，实线箭头表示「属于」。</li>
           <li><b>关联边：</b>虚线表示知识点之间的交叉关联（如同源考点、共享主题），帮助你建立知识迁移路径。</li>
-          <li><b>节点详情：</b>点击任一节点，右侧显示考试要点、难点提醒、考试详解、经典题目解析和站内延伸入口。</li>
+          <li><b>节点详情：</b>点击任一知识点，右侧显示考试要点、难点提醒、关联操作题（题目内容 + 清晰讲解 + 易错提醒）、考试详解、理论题解析，以及直达具体例题的链接。</li>
           <li><b>筛选与搜索：</b>左侧按模块过滤或输入关键词；「层级」布局可将知识点按父节点排列，便于纵向阅读。</li>
         </ul>
       </div>
@@ -119,8 +119,8 @@
   var d = window.KNOWLEDGE_GRAPH;
   var c = d.meta.counts;
   var items = [
-    [c.nodes, '图谱节点'], [c.points, '核心知识点'], [24, '知识域'],
-    [120, '经典题目解析'], ['100', '满分 · 60 合格']
+    [c.nodes, '图谱节点'], [c.points, '核心知识点'], [c.domains, '知识域'],
+    [c.practicals, '关联操作题'], [c.theoryQuestions, '理论题解析']
   ];
   document.getElementById('kg-stats').innerHTML = items.map(function(x){
     return '<div class="kg-stat"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';
